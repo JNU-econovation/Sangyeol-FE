@@ -1,0 +1,53 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist",
+    "noEmit": true,
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*",
+        "./public/*"
+      ],
+      "@shared/*": [
+        "./src/components/common/shared/*"
+      ],
+      "@icons/*": [
+        "./src/components/common/shared/ui/icons/*"
+      ],
+      "@pages/*": [
+        "./src/components/features/pages/*"
+      ],
+      "@widgets/*": [
+        "./src/components/features/widgets/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@entities/*": [
+        "./src/components/common/entities/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
