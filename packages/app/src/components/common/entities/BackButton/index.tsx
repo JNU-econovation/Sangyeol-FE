@@ -1,4 +1,4 @@
-import BackButtonUi from "@components/common/shared/ui/BackButtonUi";
+import BackButtonUi from "@shared/ui/BackButtonUi";
 import { router } from "expo-router";
 import { useCallback } from "react";
 

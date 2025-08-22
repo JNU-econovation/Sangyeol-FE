@@ -11,7 +11,7 @@ import type { TabContextType } from "./types";
 //TODO: 탭이 변경되면 상단으로 스크롤 되도록 구현하기
 //TODO: 탭이 변경되면 해당 탭 전체가 화면에 보이도록 탭 리스트 스크롤 되도록 구현하기
 
-interface TabProps extends PropsWithChildren {
+export interface TabProps extends PropsWithChildren {
   onChange?: (selectedTab: string | null) => void;
 }
 

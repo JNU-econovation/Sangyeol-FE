@@ -1,15 +1,7 @@
 import { memo } from "react";
 
 import useTabContext from "../../hooks/useTabContext";
-
-interface TabContentChildrenProps<TabLabel extends string = string> {
-  tabItems: TabLabel[];
-  selectedTab: TabLabel | null;
-  selectedTabIndex: number | null;
-}
-interface TabContentProps<TabLabel extends string = string> {
-  children: (props: TabContentChildrenProps<TabLabel>) => React.ReactNode;
-}
+import type { TabContentProps, TabContentChildrenProps } from "../../types";
 
 function TabContentImpl<TabLabel extends string = string>({
   children,

@@ -1,16 +1,8 @@
-import type { BorderColorType } from "@/types/css";
 import { cn } from "@/utils/cn";
 import { memo, useEffect } from "react";
 
 import useTabContext from "../../hooks/useTabContext";
-
-interface TabProps {
-  label: string;
-  defaultSelected?: boolean;
-  selectedColor?: BorderColorType;
-  defaultColor?: BorderColorType;
-  grow?: boolean;
-}
+import type { TabProps } from "../../types";
 export default memo(function Tab({
   label,
   defaultSelected = false,

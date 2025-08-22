@@ -3,10 +3,7 @@
 
 import { isValidElement, memo, useEffect } from "react";
 import useTabContext from "../../hooks/useTabContext";
-
-interface TabListProps {
-  children: React.ReactNode[];
-}
+import type { TabListProps } from "../../types";
 export default memo(function TabList({ children }: TabListProps) {
   const { setTabItemsHandler } = useTabContext();
 
