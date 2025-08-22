@@ -35,7 +35,7 @@ export default Suspense.with(
     const { mountainId, courseId } = params;
     const selectedTagId =
       (searchParams.get("tag") as keyof typeof MAP.BASE_AND_FACILITY) ||
-      MAP.BASE.facilityName;
+      MAP.BASE.id;
 
     const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
     const { data: basesData } = useBasesQuery({ mountainId });
@@ -60,7 +60,7 @@ export default Suspense.with(
           type: facilityType,
           name: facilityName,
           coordinate,
-        })
+        }),
       );
     }, [facilities, bases, selectedTagId]);
 
@@ -90,5 +90,5 @@ export default Suspense.with(
         </MapView>
       </div>
     );
-  }
+  },
 );
