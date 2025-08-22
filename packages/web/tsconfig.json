@@ -1,9 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "composite": true,
+    "composite": false,
     "outDir": "dist",
     "noEmit": true,
+    "declaration": false,
     "baseUrl": ".",
     "plugins": [
       {

@@ -6,14 +6,17 @@
     "packages/*"
   ],
   "scripts": {
+    "dev:app": "yarn workspace app start",
+    "dev:web": "yarn workspace web dev",
+    "build:web": "yarn workspace web build",
+    "start:web": "yarn workspace web start",
+    "build:app-ios": "yarn workspace app ios",
+    "build:app-android": "yarn workspace app android",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "dev:app": "yarn workspace app start",
-    "dev:web": "yarn workspace web dev",
-    "build:web": "yarn workspace web build"
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",

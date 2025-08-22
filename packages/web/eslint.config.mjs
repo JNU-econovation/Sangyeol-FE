@@ -27,6 +27,8 @@ const eslintConfig = [
         ecmaFeatures: {
           jsx: true,
         },
+        tsconfigRootDir: __dirname,
+        project: "./tsconfig.json",
       },
     },
     linterOptions: {
