@@ -17,4 +17,5 @@ export const COLORS = {
 
   error: "#ff0000",
   success: "#2D6EFF",
+  warning: "#F7B419",
 } as const;
