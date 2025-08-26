@@ -5,6 +5,7 @@ export const COLORS = {
   mainWhite: "#ffffff",
 
   subGray: "#dadada",
+  subTitleGray: "#9D9D9D",
   gray200: "#828282", //disabled text
   gray20: "#7f7f7f",
   gray30: "#d9d9d9",
