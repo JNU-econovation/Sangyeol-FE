@@ -43,9 +43,6 @@ export default function Index() {
   }, [loaded, error]);
 
   if (!loaded && !error) return null;
-  // if (accessToken) return <Redirect href="/(tabs)/home" />;
-  // return <Redirect href={"/starter"} />;
-  //TODO: 테스트를 위한 코드
-  if (accessToken) return <Redirect href="/onboarding/profile" />;
-  return <Redirect href="/onboarding/profile" />;
+  if (accessToken) return <Redirect href="/(tabs)/home" />;
+  return <Redirect href={"/starter"} />;
 }
