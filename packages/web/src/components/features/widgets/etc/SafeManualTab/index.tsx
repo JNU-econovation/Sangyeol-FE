@@ -21,7 +21,7 @@ export default function SafeManualTab() {
         router.replace(url);
       }
     },
-    [router]
+    [router],
   );
 
   return (
@@ -47,7 +47,7 @@ export default function SafeManualTab() {
             return (
               <div className="px-6 grow h-full overflow-y-scroll hide-scrollbar">
                 <Spacing size={12} />
-                <p className="font-bold text-3xl text-main-green">
+                <p className="font-bold text-3xl text-primary">
                   {selectedContent.title}
                 </p>
                 <Spacing size={2} />

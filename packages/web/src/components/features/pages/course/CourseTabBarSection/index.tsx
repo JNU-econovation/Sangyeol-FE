@@ -39,7 +39,9 @@ export default Suspense.with(
       //TODO: 지금은 length, difficulty만 지원하지만, ui가 나오지 않아 우선적으로 다른 정렬 기준의 경우 length로 처리
       // sortBy: sortBy ?? "length",
       sortBy:
-        sortBy === "my" || sortBy === "popular" ? "length" : sortBy ?? "length",
+        sortBy === "my" || sortBy === "popular"
+          ? "length"
+          : (sortBy ?? "length"),
     });
 
     const { courses } = courseList;
@@ -56,14 +58,14 @@ export default Suspense.with(
               key={`${index}-${tabTitle}`}
               onClick={() => {
                 router.replace(
-                  `${ROUTE.MOUNTAIN_COURSE(mountainId)}?sort=${sort}`
+                  `${ROUTE.MOUNTAIN_COURSE(mountainId)}?sort=${sort}`,
                 );
               }}
             >
               <div
                 className={cn("px-3 py-1 text-white rounded-full text-sm", {
                   "bg-gray-400": sort !== sortBy,
-                  "bg-main-green": sort === sortBy,
+                  "bg-primary": sort === sortBy,
                 })}
               >
                 {tabTitle}
@@ -89,5 +91,5 @@ export default Suspense.with(
         </ul>
       </section>
     );
-  }
+  },
 );

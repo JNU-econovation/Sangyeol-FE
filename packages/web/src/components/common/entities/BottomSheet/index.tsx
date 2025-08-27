@@ -42,7 +42,7 @@ export default memo(function BottomSheet({
     const deltaY = e.clientY - startY;
     const newHeight = Math.max(
       MIN_CONTENT_HEIGHT,
-      Math.min(maxContentHeight, contentHeight - deltaY)
+      Math.min(maxContentHeight, contentHeight - deltaY),
     );
 
     setCurrentY(e.clientY);
@@ -61,7 +61,7 @@ export default memo(function BottomSheet({
     const deltaY = e.clientY - startY;
     const newHeight = Math.max(
       MIN_CONTENT_HEIGHT,
-      Math.min(maxContentHeight, contentHeight - deltaY)
+      Math.min(maxContentHeight, contentHeight - deltaY),
     );
 
     // 스냅 로직
@@ -88,7 +88,7 @@ export default memo(function BottomSheet({
     const deltaY = e.touches[0].clientY - startY;
     const newHeight = Math.max(
       MIN_CONTENT_HEIGHT,
-      Math.min(maxContentHeight, contentHeight - deltaY)
+      Math.min(maxContentHeight, contentHeight - deltaY),
     );
 
     setCurrentY(e.touches[0].clientY);
@@ -108,7 +108,7 @@ export default memo(function BottomSheet({
     const deltaY = e.changedTouches[0].clientY - startY;
     const newHeight = Math.max(
       MIN_CONTENT_HEIGHT,
-      Math.min(maxContentHeight, contentHeight - deltaY)
+      Math.min(maxContentHeight, contentHeight - deltaY),
     );
 
     // 스냅 로직
@@ -170,7 +170,7 @@ export default memo(function BottomSheet({
     <div
       ref={bottomSheet}
       className={cn(
-        "rounded-3xl bg-white overflow-hidden transition-all transform-gpu shadow-md"
+        "rounded-3xl bg-white overflow-hidden transition-all transform-gpu shadow-md",
       )}
     >
       <button
@@ -188,7 +188,7 @@ export default memo(function BottomSheet({
           setCurrentY(e.touches[0].clientY);
         }}
       >
-        <div className="w-16 h-2 bg-main-green rounded-2xl" />
+        <div className="w-16 h-2 bg-primary rounded-2xl" />
       </button>
 
       {debug && (

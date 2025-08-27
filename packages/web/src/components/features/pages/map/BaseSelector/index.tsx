@@ -9,7 +9,7 @@ import { useEffect, useMemo } from "react";
 export default Suspense.with(
   {
     fallback: (
-      <div className="h-10 w-full animate-pulse bg-gray-100 rounded-2xl border border-main-green opacity-50" />
+      <div className="h-10 w-full animate-pulse bg-gray-100 rounded-2xl border border-primary opacity-50" />
     ),
     name: "BaseSelector",
   },
@@ -38,7 +38,7 @@ export default Suspense.with(
           ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
             tag: searchParams.get("tag") ?? MAP.BASE.id,
             baseId: baseDetails[0].baseId,
-          })
+          }),
         );
       }
     }, [mountainId, courseId, searchParams, router, baseDetails]);
@@ -57,10 +57,10 @@ export default Suspense.with(
             ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
               tag: searchParams.get("tag") ?? MAP.BASE.id,
               baseId,
-            })
+            }),
           );
         }}
       />
     );
-  }
+  },
 );

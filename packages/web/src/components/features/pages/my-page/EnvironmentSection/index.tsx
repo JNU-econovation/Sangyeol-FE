@@ -14,7 +14,7 @@ export default function EnvironmentSection() {
   return (
     <section className="border-b border-gray-30">
       <Spacing size={4} />
-      <Text fontSize="text-sm" color="text-main-green">
+      <Text fontSize="text-sm" color="text-primary">
         환경
       </Text>
       <Spacing size={2} />
@@ -32,7 +32,7 @@ export default function EnvironmentSection() {
         <Text
           fontSize="text-base"
           fontWeight="font-medium"
-          color="text-main-green"
+          color="text-primary"
           opacity={"opacity-50"}
         >
           버전 정보
@@ -40,7 +40,7 @@ export default function EnvironmentSection() {
         <Text
           fontSize="text-base"
           fontWeight="font-medium"
-          color="text-main-green"
+          color="text-primary"
           opacity={"opacity-50"}
         >
           {"2.0.0"}

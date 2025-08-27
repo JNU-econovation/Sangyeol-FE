@@ -18,7 +18,7 @@ export default Suspense.with(
   {
     fallback: (
       <div className="w-full h-full relative flex justify-center items-center">
-        <div className="absolute inset-0 bg-main-green opacity-5 animate-ping w-full h-full" />
+        <div className="absolute inset-0 bg-primary opacity-5 animate-ping w-full h-full" />
         <Spinner size="md" />
       </div>
     ),

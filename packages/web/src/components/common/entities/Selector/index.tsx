@@ -14,7 +14,7 @@ interface SelectorProps {
 export default function Selector({ options, onSelect, value }: SelectorProps) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [selectedOptionValue, setSelectedOptionValue] = useState<string | null>(
-    value || null
+    value || null,
   );
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
       }}
     >
       <div
-        className="border-2 border-main-green rounded-2xl font-semibold text-base text-center text-black"
+        className="border-2 border-primary rounded-2xl font-semibold text-base text-center text-black"
         onClick={(e) => {
           if (e.target == e.currentTarget) {
             setOptionsOpen(!optionsOpen);

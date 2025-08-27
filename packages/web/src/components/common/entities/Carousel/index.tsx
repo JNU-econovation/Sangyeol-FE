@@ -93,7 +93,7 @@ export default function Carousel({ items }: CarouselProps) {
         {items.map((_, index) => (
           <div
             className={cn("w-2 h-2 rounded-full", {
-              "bg-main-green": currentIndex === index,
+              "bg-primary": currentIndex === index,
               "bg-gray-20": currentIndex !== index,
             })}
             key={index}

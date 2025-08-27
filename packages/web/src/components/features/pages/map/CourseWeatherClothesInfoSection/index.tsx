@@ -12,7 +12,7 @@ export default Suspense.with(
   {
     // TODO: 스캘레톤 컴포넌트로 변경
     fallback: (
-      <div className="w-full bg-green-10 animate-pulse h-28 opacity-20 rounded-2xl" />
+      <div className="w-full bg-green-500 animate-pulse h-28 opacity-20 rounded-2xl" />
     ),
     name: "CourseWeatherClothesInfoSection",
   },
@@ -34,7 +34,7 @@ export default Suspense.with(
     const { baseDetails } = data;
 
     const baseDetail = baseDetails.find(
-      ({ baseId }) => `${baseId}` === `${selectedBaseId}`
+      ({ baseId }) => `${baseId}` === `${selectedBaseId}`,
     );
 
     if (!baseDetail) {
@@ -45,7 +45,7 @@ export default Suspense.with(
 
     return (
       // height값이 고정되어있습니다! 주의해주세요!
-      <div className="grid grid-cols-2 bg-green-10 rounded-2xl p-2.5 h-28">
+      <div className="grid grid-cols-2 bg-green-500 rounded-2xl p-2.5 h-28">
         <p className="font-bold text-gray-20">기상 정보</p>
         <p className="font-bold text-gray-20">산행 복장</p>
         <div className="flex items-center justify-around">
@@ -69,5 +69,5 @@ export default Suspense.with(
         </div>
       </div>
     );
-  }
+  },
 );

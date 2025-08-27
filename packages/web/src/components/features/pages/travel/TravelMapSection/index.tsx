@@ -9,7 +9,7 @@ import { Suspense } from "@suspensive/react";
 export default Suspense.with(
   {
     fallback: (
-      <div className="absolute top-0 left-0 w-screen h-screen bg-main-green opacity-10" />
+      <div className="absolute top-0 left-0 w-screen h-screen bg-primary opacity-10" />
     ),
     name: "TravelMapSection",
     clientOnly: true,
@@ -42,5 +42,5 @@ export default Suspense.with(
         )}
       </TravelMapBridgeListener>
     );
-  }
+  },
 );

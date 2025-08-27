@@ -1,6 +1,6 @@
 export type BorderColorType =
-  | "border-main-green"
-  | "border-sub-gray"
+  | "border-primary"
+  | "border-gray-600"
   | "border-gray-10"
   | "border-gray-20"
   | "border-gray-30"
@@ -9,8 +9,8 @@ export type BorderColorType =
   | "border-error-message";
 
 export type ColorType =
-  | "text-main-green"
-  | "text-sub-gray"
+  | "text-primary"
+  | "text-gray-600"
   | "text-gray-10"
   | "text-gray-20"
   | "text-gray-30"

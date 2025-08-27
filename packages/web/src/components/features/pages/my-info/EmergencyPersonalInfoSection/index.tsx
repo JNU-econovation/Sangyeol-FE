@@ -15,7 +15,7 @@ export default function EmergencyPersonalInfoSection() {
 
   return (
     <section>
-      <Text fontSize="text-sm" fontWeight="font-semibold" color="text-sub-gray">
+      <Text fontSize="text-sm" fontWeight="font-semibold" color="text-gray-600">
         위급 시 개인 정보
       </Text>
       <Spacing size={8} />
@@ -29,7 +29,7 @@ export default function EmergencyPersonalInfoSection() {
         }
         right={
           <div className="flex items-center gap-2">
-            <Text fontSize="text-xl" color="text-sub-gray">
+            <Text fontSize="text-xl" color="text-gray-600">
               kg
             </Text>
             <button onClick={() => onClearEmergencyPersonalInfo("weight")}>
@@ -49,7 +49,7 @@ export default function EmergencyPersonalInfoSection() {
         }
         right={
           <div className="flex items-center gap-2">
-            <Text fontSize="text-xl" color="text-sub-gray">
+            <Text fontSize="text-xl" color="text-gray-600">
               cm
             </Text>
             <button onClick={() => onClearEmergencyPersonalInfo("height")}>
@@ -69,7 +69,7 @@ export default function EmergencyPersonalInfoSection() {
         }
         right={
           <div className="flex items-center gap-2">
-            <Text fontSize="text-xl" color="text-sub-gray">
+            <Text fontSize="text-xl" color="text-gray-600">
               형
             </Text>
             <button onClick={() => onClearEmergencyPersonalInfo("bloodType")}>
@@ -82,7 +82,7 @@ export default function EmergencyPersonalInfoSection() {
       {/* <button onClick={openModal} className="flex justify-center w-full">
         <Text
           className="text-center"
-          color="text-main-green"
+          color="text-primary"
           opacity="opacity-80"
         >
           회원 탈퇴
