@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "stack-link": "workspace:^",
     "@suspensive/react": "^3.3.0",
     "@tanstack/react-query": "^5.76.1",
     "@tanstack/react-query-devtools": "^5.75.1",
