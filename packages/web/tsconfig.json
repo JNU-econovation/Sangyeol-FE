@@ -4,7 +4,6 @@
     "composite": false,
     "outDir": "dist",
     "noEmit": true,
-    "declaration": false,
     "baseUrl": ".",
     "plugins": [
       {

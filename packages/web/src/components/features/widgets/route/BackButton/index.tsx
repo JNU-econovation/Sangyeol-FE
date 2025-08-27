@@ -1,11 +1,15 @@
 "use client";
 
-import useStackLinkBack from "@/service/StackLink/hooks/useStackLinkBack";
+import { useStackLinkBack } from "stack-link";
 import useRouteBackBridge from "@hooks/feature/bridge/useRouteBackBridge";
 import LeftChevronIcon from "@icons/LeftChevronIcon";
 import { useRouter } from "next/navigation";
 
-export default function BackButton() {
+interface BackButtonProps {
+  animation?: "none" | "fade" | "slide";
+}
+
+export default function BackButton({ animation }: BackButtonProps) {
   const { goBack, canGoBack } = useStackLinkBack();
   const goBackBridge = useRouteBackBridge();
   const router = useRouter();
@@ -21,7 +25,9 @@ export default function BackButton() {
           goBackBridge();
           return;
         }
-        goBack();
+        goBack({
+          animation: animation || "slide",
+        });
       }}
     >
       <LeftChevronIcon alt="뒤로 가기" />
