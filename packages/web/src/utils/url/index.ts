@@ -13,11 +13,11 @@ export const updateSearchParams = ({
   searchParamName: string;
   paramValue: string | null | undefined;
 }) => {
-  let url;
+  let url: URL;
   if (!href) {
     if (typeof window === "undefined")
       throw new Error(
-        "[updateSearchParams] href값을 주지 않으면, 꼭 클라이언트단에서만 사용되어야 합니다."
+        "[updateSearchParams] href값을 주지 않으면, 꼭 클라이언트단에서만 사용되어야 합니다.",
       );
 
     url = new URL(window.location.href);
