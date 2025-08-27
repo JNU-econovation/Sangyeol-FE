@@ -102,7 +102,7 @@ const useTravelWithoutCourse = () => {
             sendSetMapPolylineMessage([
               {
                 path: traveledPath,
-                strokeColor: COLORS.gray20,
+                strokeColor: COLORS.gray900,
               },
             ]);
 

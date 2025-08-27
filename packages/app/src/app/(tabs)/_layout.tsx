@@ -21,7 +21,7 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: COLORS.mainGreen,
+          tabBarActiveTintColor: COLORS.green - 800,
           animation: "fade",
           tabBarStyle: {
             backgroundColor: COLORS.mainWhite,

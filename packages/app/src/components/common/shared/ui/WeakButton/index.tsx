@@ -61,7 +61,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonStyledProps>(
     paddingVertical: paddingVertical ? paddingVertical : 6,
     paddingHorizontal: paddingHorizontal ? paddingHorizontal : 18,
     borderRadius: 8,
-    borderColor: borderColor ? COLORS[borderColor] : COLORS.gray200,
+    borderColor: borderColor ? COLORS[borderColor] : COLORS.gray900,
     borderWidth: 1,
     width: fullWidth ? "100%" : undefined,
     alignItems: "center",
@@ -73,7 +73,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonStyledProps>(
 );
 
 const StyledText = styled.Text<ButtonStyledProps>`
-  color: ${({ color }) => (color ? COLORS[color] : COLORS.gray200)};
+  color: ${({ color }) => (color ? COLORS[color] : COLORS.gray900)};
   font-size: ${({ fontSize }) => (fontSize ? fontSize + "px" : "16px")};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : "bold")};
   text-align: center;

@@ -82,13 +82,13 @@ const OnboardFormSection = () => {
         title="이메일"
         titleSpacing={0}
         placeholder="입력하기"
-        backgroundColor="inputGray"
-        borderColor="inputGray"
+        backgroundColor="gray600"
+        borderColor="gray600"
         paddingVertical={16}
         keyboardType="email-address"
         onChangeText={setEmail}
         value={email}
-        placeholderTextColor={COLORS.subGray}
+        placeholderTextColor={COLORS.gray600}
         helperText={
           email && emailSchema.safeParse(email).error?.message
             ? "존재하지 않는 이메일입니다."
@@ -97,7 +97,7 @@ const OnboardFormSection = () => {
         helperTextSpacing={12}
         helperTextProps={{
           fontSize: 14,
-          color: "mainRed",
+          color: "red",
         }}
         contentRightComponent={
           <InputRightSideContainer>
@@ -120,15 +120,15 @@ const OnboardFormSection = () => {
         title="인증 번호"
         titleSpacing={0}
         placeholder="입력하기"
-        backgroundColor="inputGray"
-        borderColor="inputGray"
+        backgroundColor="gray600"
+        borderColor="gray600"
         paddingVertical={16}
         keyboardType="number-pad"
         onChangeText={setVerificationCode}
         value={verificationCode}
         maxLength={6}
         editable={!!verificationCodeSent}
-        placeholderTextColor={COLORS.subGray}
+        placeholderTextColor={COLORS.gray600}
         contentRightComponent={
           verificationCodeSent > 0 && (
             <InputRightSideContainer>

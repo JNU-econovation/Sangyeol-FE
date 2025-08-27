@@ -28,7 +28,7 @@ const DetailReport = () => {
                 multiline
                 numberOfLines={3}
                 textAlignVertical="top"
-                placeholderTextColor={COLORS.gray200}
+                placeholderTextColor={COLORS.gray900}
                 placeholder={REPORT_CONTENT_PLACEHOLDER}
               />
             )}
@@ -62,14 +62,14 @@ const DetailReport = () => {
                       labelText="이름"
                       value="홍길동"
                       editable={false}
-                      backgroundColor="subGray"
+                      backgroundColor="gray600"
                     />
                     <Spacing size={12} />
                     <LabeledInput
                       labelText="전화번호"
                       value="010-0101-0101"
                       editable={false}
-                      backgroundColor="subGray"
+                      backgroundColor="gray600"
                     />
                   </>
                 }

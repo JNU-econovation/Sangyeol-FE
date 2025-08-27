@@ -24,24 +24,24 @@ const HomeNavGridSection = () => {
     <Container>
       <ButtonContainer>
         <HomeLinkButton activeOpacity={0.8} onPress={goCourse}>
-          <Text fontSize={20} fontWeight="semibold" color="mainGreen">
+          <Text fontSize={20} fontWeight="semibold" color="primary">
             코스검색
           </Text>
           <View>
-            <Text fontSize={12} fontWeight="semibold" color="subTitleGray">
+            <Text fontSize={12} fontWeight="semibold" color="gray800">
               내비게이션 및
             </Text>
-            <Text fontSize={12} fontWeight="semibold" color="subTitleGray">
+            <Text fontSize={12} fontWeight="semibold" color="gray800">
               코스 기록
             </Text>
           </View>
         </HomeLinkButton>
 
         <HomeLinkButton activeOpacity={0.8} onPress={goTravel}>
-          <Text fontSize={20} fontWeight="semibold" color="mainGreen">
+          <Text fontSize={20} fontWeight="semibold" color="primary">
             산행시작
           </Text>
-          <Text fontSize={12} fontWeight="semibold" color="subTitleGray">
+          <Text fontSize={12} fontWeight="semibold" color="gray800">
             운동 기록하기
           </Text>
         </HomeLinkButton>
@@ -51,23 +51,23 @@ const HomeNavGridSection = () => {
 
       <ButtonContainer>
         <HomeLinkButton activeOpacity={0.8} onPress={goReport}>
-          <Text fontSize={20} fontWeight="semibold" color="warning">
+          <Text fontSize={20} fontWeight="semibold" color="yellow">
             신고하기
           </Text>
-          <Text fontSize={12} fontWeight="semibold" color="subTitleGray">
+          <Text fontSize={12} fontWeight="semibold" color="gray800">
             구조대 신고
           </Text>
         </HomeLinkButton>
 
         <HomeLinkButton activeOpacity={0.8} onPress={goManual}>
-          <Text fontSize={20} fontWeight="semibold" color="mainGreen">
+          <Text fontSize={20} fontWeight="semibold" color="primary">
             안전 매뉴얼
           </Text>
           <View>
-            <Text fontSize={12} fontWeight="semibold" color="subTitleGray">
+            <Text fontSize={12} fontWeight="semibold" color="gray800">
               사고발생시
             </Text>
-            <Text fontSize={12} fontWeight="semibold" color="subTitleGray">
+            <Text fontSize={12} fontWeight="semibold" color="gray800">
               대처방법
             </Text>
           </View>

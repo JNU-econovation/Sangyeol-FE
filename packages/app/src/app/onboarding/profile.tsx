@@ -9,7 +9,7 @@ const ProfileSettingScreen = () => {
     <ScreenContainer>
       <Spacing size={36} />
       <HeaderContainer>
-        <Text color="mainGreen" fontSize={24} fontWeight={"medium"}>
+        <Text color="primary" fontSize={24} fontWeight={"medium"}>
           프로필 설정
         </Text>
       </HeaderContainer>

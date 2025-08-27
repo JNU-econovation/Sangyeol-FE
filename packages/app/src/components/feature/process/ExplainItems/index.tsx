@@ -11,7 +11,7 @@ const ExplainItem1 = () => {
   return (
     <ScreenView>
       <Container>
-        <Text fontSize={30} fontWeight="bold" color="mainGreen">
+        <Text fontSize={30} fontWeight="bold" color="primary">
           안전한 모험의 시작
         </Text>
         <Guide1Image />
@@ -42,7 +42,7 @@ const ExplainItem2 = () => {
   return (
     <ScreenView>
       <Container>
-        <Text fontSize={30} fontWeight="bold" color="mainGreen">
+        <Text fontSize={30} fontWeight="bold" color="primary">
           안전을 위한 스마트 가이드
         </Text>
         <Guide2Image />
@@ -72,7 +72,7 @@ const ExplainItem3 = () => {
   return (
     <ScreenView>
       <Container>
-        <Text fontSize={30} fontWeight="bold" color="mainGreen">
+        <Text fontSize={30} fontWeight="bold" color="primary">
           나만의 멸종위기 동물 키우기
         </Text>
         <Guide3Image />
@@ -102,7 +102,7 @@ const ExplainItem4 = () => {
   return (
     <ScreenView>
       <Container>
-        <Text fontSize={30} fontWeight="bold" color="mainGreen">
+        <Text fontSize={30} fontWeight="bold" color="primary">
           깃대종 식물 키우기
         </Text>
         {/* <Guide3Image /> */}

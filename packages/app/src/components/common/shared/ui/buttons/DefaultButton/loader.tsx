@@ -21,7 +21,7 @@ const DefaultButtonLoader = ({
   paddingHorizontal = 20,
   width = 80,
   height,
-  backgroundColor = "gray20",
+  backgroundColor = "gray900",
   title,
   color = "black",
 }: DefaultButtonLoaderProps) => {
@@ -69,7 +69,7 @@ const ButtonSkeleton = styled.View<{
 const TextSkeleton = styled.View`
   width: 40px;
   height: 14px;
-  background-color: ${COLORS.gray200};
+  background-color: ${COLORS.gray900};
   border-radius: 4px;
 `;
 

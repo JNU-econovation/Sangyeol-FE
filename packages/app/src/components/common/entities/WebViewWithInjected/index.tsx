@@ -160,7 +160,7 @@ const WebViewWithInjected = ({
               top: 0,
               left: 0,
               height: 2,
-              backgroundColor: COLORS.mainGreen,
+              backgroundColor: COLORS.green - 800,
               zIndex: 9999,
               width: "100%",
               borderTopEndRadius: 1,
