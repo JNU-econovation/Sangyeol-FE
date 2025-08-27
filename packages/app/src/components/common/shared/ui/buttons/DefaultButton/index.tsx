@@ -61,7 +61,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonStyledProps>(
   }) => ({
     backgroundColor: backgroundColor
       ? COLORS[backgroundColor]
-      : COLORS.mainGreen,
+      : COLORS.green - 800,
     paddingVertical: paddingVertical || 16,
     paddingHorizontal: paddingHorizontal || 20,
     borderRadius: 8,

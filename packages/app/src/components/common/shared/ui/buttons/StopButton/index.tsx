@@ -60,7 +60,7 @@ const ActionButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  background-color: ${COLORS.mainGreen};
+  background-color: ${COLORS.green - 800};
   width: 64px;
   height: 64px;
   border-radius: 32px;

@@ -17,7 +17,7 @@ const ReportScreen = () => {
   }, []);
 
   return (
-    <ScreenContainer backgroundColor="mainGreen">
+    <ScreenContainer backgroundColor="primary">
       <Spacing size={20} />
       <Header />
 
@@ -39,10 +39,10 @@ const ReportScreen = () => {
         activeOpacity={0.8}
         onPress={handleGoToImmediatelyReport}
       >
-        <Text fontSize={48} color="mainRed" fontWeight="semibold">
+        <Text fontSize={48} color="red" fontWeight="semibold">
           즉시
         </Text>
-        <Text color="mainGreen" fontSize={36} fontWeight="semibold">
+        <Text color="primary" fontSize={36} fontWeight="semibold">
           신고하기
         </Text>
       </ImmediatelyReportLink>
@@ -52,14 +52,14 @@ const ReportScreen = () => {
       <DetailReportLink activeOpacity={0.8} onPress={handleGoToDetailReport}>
         <Text
           fontSize={48}
-          color="mainGreen"
+          color="primary"
           fontWeight="semibold"
           textAlign="right"
         >
           상세
         </Text>
         <Text
-          color="mainGreen"
+          color="primary"
           fontSize={36}
           fontWeight="semibold"
           textAlign="right"

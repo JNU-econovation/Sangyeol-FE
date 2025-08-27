@@ -77,7 +77,7 @@ const TravelScreen = () => {
 const Screen = styled.SafeAreaView<{ count: number }>`
   flex: 1;
   background-color: ${({ count }) =>
-    count === 0 ? COLORS.mainWhite : COLORS.mainGreen};
+    count === 0 ? COLORS.mainWhite : COLORS.green800};
 `;
 
 const Container = styled.View`
@@ -87,7 +87,7 @@ const Container = styled.View`
 
 const CounterContainer = styled.View<{ count: number }>`
   height: ${({ count }) => (count === 0 ? "0" : "100%")};
-  background-color: ${COLORS.mainGreen};
+  background-color: ${COLORS.green800};
   overflow: hidden;
   flex: 1;
   align-items: center;
@@ -109,7 +109,7 @@ const WebviewContainer = styled.View<{ count: number }>`
   left: 0;
   z-index: ${({ count }) => (count === 0 ? 100 : -10)};
   transition: all 3s ease-in-out;
-  background-color: ${COLORS.mainRed};
+  background-color: ${COLORS.red};
 `;
 
 export default TravelScreen;

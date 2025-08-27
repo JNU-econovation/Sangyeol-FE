@@ -36,10 +36,10 @@ const EmailField = () => {
           title="이메일"
           titleSpacing={0}
           placeholder="입력하기"
-          backgroundColor="inputGray"
-          borderColor="inputGray"
+          backgroundColor="gray600"
+          borderColor="gray600"
           paddingVertical={16}
-          placeholderTextColor={COLORS.subGray}
+          placeholderTextColor={COLORS.gray600}
           helperText={HELPER.PROFILE_FORM.EMAIL[watch("emailFieldHelperState")]}
           onChangeText={(email) => {
             checkEmail(email);

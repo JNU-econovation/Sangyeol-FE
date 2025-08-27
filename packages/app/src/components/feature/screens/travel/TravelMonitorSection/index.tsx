@@ -102,7 +102,7 @@ const TimeDisplay = styled.Text`
 `;
 
 const MetricsContainer = styled.View`
-  background-color: ${COLORS.green20};
+  background-color: ${COLORS.green500};
   border-radius: 12px;
   padding: 16px;
   flex-direction: row;
@@ -139,7 +139,7 @@ const MetricUnit = styled.Text`
 const Divider = styled.View`
   height: 40px;
   width: 1px;
-  background-color: ${COLORS.gray20};
+  background-color: ${COLORS.gray900};
   opacity: 0.5;
 `;
 

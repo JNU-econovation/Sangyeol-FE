@@ -20,10 +20,10 @@ const LoginScreen = () => {
       <Spacing size={24} />
 
       <TitleContainer>
-        <Text fontSize={30} fontWeight="bold" color="mainGreen">
+        <Text fontSize={30} fontWeight="bold" color="primary">
           그럼,
         </Text>
-        <Text fontSize={30} fontWeight="bold" color="mainGreen">
+        <Text fontSize={30} fontWeight="bold" color="primary">
           모험을 시작해볼까요?
         </Text>
         <TitleStarPositioner>

@@ -28,14 +28,14 @@ const ListItemCard = ({
           <Text
             fontSize={16}
             fontWeight="normal"
-            color={disabled ? "gray200" : "black"}
+            color={disabled ? "gray900" : "black"}
           >
             {title}
           </Text>
           <Text
             fontSize={16}
             fontWeight="normal"
-            color={disabled ? "gray200" : "mainGreen"}
+            color={disabled ? "gray900" : "primary"}
           >
             필수
           </Text>
@@ -76,8 +76,7 @@ const PermissionListItem = styled.View<Pick<ListItemCardProps, "disabled">>`
   align-items: center;
   justify-content: space-between;
   padding-inline: 20px;
-  background-color: ${({ disabled }) =>
-    disabled ? COLORS.disabledGray : "white"};
+  background-color: ${({ disabled }) => (disabled ? COLORS.gray400 : "white")};
   elevation: 4;
 `;
 

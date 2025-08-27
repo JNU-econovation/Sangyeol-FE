@@ -48,7 +48,7 @@ const PositionSelectField = ({
         <Textarea
           value={`위도 ${convertToDMS(lat, lng).split(", ")[0]} 경도 ${convertToDMS(lat, lng).split(", ")[1]}`}
           editable={false}
-          backgroundColor="subGray"
+          backgroundColor="gray600"
         />
       }
     />

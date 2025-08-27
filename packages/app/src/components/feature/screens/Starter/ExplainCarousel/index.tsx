@@ -85,8 +85,7 @@ const ExplainCarousel = () => {
             <View
               key={i}
               style={{
-                backgroundColor:
-                  i === index ? COLORS.mainGreen : COLORS.subGray,
+                backgroundColor: i === index ? COLORS.green800 : COLORS.gray600,
                 width: 8,
                 height: 8,
                 borderRadius: "100%",

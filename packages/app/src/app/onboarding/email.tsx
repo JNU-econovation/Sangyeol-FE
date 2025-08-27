@@ -11,7 +11,7 @@ const EmailOnboardingScreen = () => {
       <Header />
       <Spacing size={30} />
       <Container>
-        <Text fontWeight="semibold" color="mainGreen" fontSize={24}>
+        <Text fontWeight="semibold" color="primary" fontSize={24}>
           메일 인증
         </Text>
         <Spacing size={40} />

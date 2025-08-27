@@ -84,10 +84,10 @@ const NicknameField = Suspense.with(
             title="닉네임"
             titleSpacing={0}
             placeholder={randomNickname}
-            backgroundColor="inputGray"
-            borderColor="inputGray"
+            backgroundColor="gray600"
+            borderColor="gray600"
             paddingVertical={16}
-            placeholderTextColor={COLORS.subGray}
+            placeholderTextColor={COLORS.gray600}
             helperText={
               HELPER.PROFILE_FORM.NICKNAME[watch("nicknameFieldHelperState")]
             }

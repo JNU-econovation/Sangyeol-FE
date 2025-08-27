@@ -14,7 +14,7 @@ const immediatelyReport = () => {
       <Spacing size={38} />
 
       <ContentContainer>
-        <Text color="mainGreen" fontWeight="bold" fontSize={24}>
+        <Text color="primary" fontWeight="bold" fontSize={24}>
           현 위치 전송 안내
         </Text>
         <Spacing size={7} />

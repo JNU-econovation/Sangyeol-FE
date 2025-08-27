@@ -16,7 +16,7 @@ const _FormTextareaField = ({ title, ...props }: TextAreaFieldProps) => {
       multiline
       numberOfLines={3}
       textAlignVertical="top"
-      placeholderTextColor={COLORS.gray200}
+      placeholderTextColor={COLORS.gray900}
       value={field.state.value}
       onChangeText={field.handleChange}
       {...props}

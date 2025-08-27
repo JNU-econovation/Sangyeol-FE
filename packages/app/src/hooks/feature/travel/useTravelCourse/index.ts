@@ -109,11 +109,11 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
             sendSetMapPolylineMessage([
               {
                 path: coordinates.slice(0, index + 1),
-                strokeColor: COLORS.gray20,
+                strokeColor: COLORS.gray900,
               },
               {
                 path: coordinates.slice(index),
-                strokeColor: COLORS.mainGreen,
+                strokeColor: COLORS.green800,
               },
             ]);
 
