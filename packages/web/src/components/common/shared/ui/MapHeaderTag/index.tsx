@@ -18,9 +18,9 @@ export default function MapHeaderTag({
       className={cn(
         " border rounded-full text-sm px-3 shrink-0 py-1 border-gray-30",
         {
-          "bg-main-green text-white": isSelected,
+          "bg-primary text-white": isSelected,
           "bg-white": !isSelected,
-        }
+        },
       )}
       onClick={onClickHandler}
     >

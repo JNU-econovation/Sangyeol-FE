@@ -8,7 +8,7 @@ export default function LogoutButton() {
 
   return (
     <button onClick={openLogoutModal} className="w-full">
-      <Text fontSize="text-sm" color="text-main-green">
+      <Text fontSize="text-sm" color="text-primary">
         로그아웃
       </Text>
     </button>

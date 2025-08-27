@@ -30,11 +30,11 @@ export default function TravelMonitorSection() {
   return (
     <section className="bg-white rounded-xl z-50 px-4">
       <div className="flex justify-center items-center gap-6 -translate-y-1/2">
-        <button className="bg-main-green rounded-full w-16 h-16 flex justify-center items-center gap-2  active:scale-95 transition-transform duration-200 ease-in-out">
+        <button className="bg-primary rounded-full w-16 h-16 flex justify-center items-center gap-2  active:scale-95 transition-transform duration-200 ease-in-out">
           <div className="h-8 w-1.5 bg-white rounded-xs" />
           <div className="h-8 w-1.5 bg-white rounded-xs" />
         </button>
-        <button className="bg-main-green rounded-full w-16 h-16 flex justify-center items-center active:scale-95 transition-transform duration-200 ease-in-out">
+        <button className="bg-primary rounded-full w-16 h-16 flex justify-center items-center active:scale-95 transition-transform duration-200 ease-in-out">
           <div className="bg-white w-5 h-5 rounded-xs" />
         </button>
       </div>
@@ -45,7 +45,7 @@ export default function TravelMonitorSection() {
 
       <Spacing size={4} />
 
-      <div className="bg-green-20 rounded-xl p-4 flex justify-between items-center ">
+      <div className="bg-green-500 rounded-xl p-4 flex justify-between items-center ">
         <div className="flex gap-2 translate-y-2">
           <span>🏃‍♂️‍➡️</span>
           <div>

@@ -35,7 +35,7 @@ export default function ManualGridSection() {
         className="p-4 rounded-lg shadow break-keep"
         onClick={routeManualDetailInjury}
       >
-        <span className="text-main-green font-bold text-lg text-center">
+        <span className="text-primary font-bold text-lg text-center">
           신체 부상
         </span>
         <Spacing size={8} />
@@ -49,7 +49,7 @@ export default function ManualGridSection() {
         className="p-4 rounded-lg shadow break-keep"
         onClick={routeManualDetailTemperature}
       >
-        <span className="text-main-green font-bold text-lg text-center">
+        <span className="text-primary font-bold text-lg text-center">
           체온 및 대사 이상
         </span>
         <Spacing size={8} />
@@ -66,7 +66,7 @@ export default function ManualGridSection() {
         className="p-4 rounded-lg shadow break-keep"
         onClick={routeManualDetailAnimal}
       >
-        <span className="text-main-green font-bold text-lg text-center">
+        <span className="text-primary font-bold text-lg text-center">
           동물 및 자연환경 피해
         </span>
         <Spacing size={2} />
@@ -83,7 +83,7 @@ export default function ManualGridSection() {
         className="p-4 rounded-lg shadow break-keep"
         onClick={routeManualDetailDistress}
       >
-        <span className="text-main-green font-bold text-lg text-center">
+        <span className="text-primary font-bold text-lg text-center">
           조난 및 고립
         </span>
         <Spacing size={8} />

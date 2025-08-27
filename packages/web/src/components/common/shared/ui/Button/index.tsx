@@ -8,7 +8,7 @@ export const ButtonVariants = cva(
   {
     variants: {
       color: {
-        green: "bg-main-green text-white",
+        green: "bg-primary text-white",
         kakaoYellow: "bg-kakao-yellow text-black",
         black: "bg-black text-white",
         white: "bg-white text-black",
@@ -29,7 +29,7 @@ export const ButtonVariants = cva(
       size: "lg",
       fullWidth: false,
     },
-  }
+  },
 );
 
 interface ButtonProps

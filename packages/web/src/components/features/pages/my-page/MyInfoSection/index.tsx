@@ -43,7 +43,7 @@ export default function MyInfoSection() {
           </Text>
           <BlackRightArrowIcon width={10} height={10} />
         </button>
-        <Text fontSize="text-base" color="text-main-green">
+        <Text fontSize="text-base" color="text-primary">
           {"test@naver.com"}
         </Text>
         <Spacing size={4} />
@@ -52,7 +52,7 @@ export default function MyInfoSection() {
             <Text
               fontSize="text-base"
               fontWeight="font-semibold"
-              color="text-main-green"
+              color="text-primary"
             >
               산행 기록
             </Text>
@@ -61,7 +61,7 @@ export default function MyInfoSection() {
             <Text
               fontSize="text-base"
               fontWeight="font-semibold"
-              color="text-main-green"
+              color="text-primary"
             >
               코스 북마크
             </Text>

@@ -16,7 +16,7 @@ export default function PersonalInfoSection() {
 
   return (
     <section>
-      <Text fontSize="text-sm" fontWeight="font-semibold" color="text-sub-gray">
+      <Text fontSize="text-sm" fontWeight="font-semibold" color="text-gray-600">
         내 정보 관리
       </Text>
       <Spacing size={6} />

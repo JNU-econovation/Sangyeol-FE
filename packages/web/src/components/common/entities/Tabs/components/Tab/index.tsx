@@ -23,10 +23,10 @@ export default memo(function Tab({
       className={cn(
         "px-4 py-2 transition-all border-b-2 border-transparent shrink-0",
         {
-          [selectedColor || "border-main-green"]: selectedTab === label,
+          [selectedColor || "border-primary"]: selectedTab === label,
           [defaultColor || ""]: selectedTab !== label,
           grow: grow,
-        }
+        },
       )}
       onClick={() => setSelectedTabHandler(label)}
     >

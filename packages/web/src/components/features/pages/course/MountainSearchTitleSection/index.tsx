@@ -6,11 +6,7 @@ export default function MountainSearchTitleSection() {
       <Text display="block" fontSize="text-2xl" fontWeight="font-semibold">
         검색하고 싶은
       </Text>
-      <Text
-        color="text-main-green"
-        fontSize="text-2xl"
-        fontWeight="font-semibold"
-      >
+      <Text color="text-primary" fontSize="text-2xl" fontWeight="font-semibold">
         산
       </Text>
       <Text fontSize="text-2xl" fontWeight="font-semibold">

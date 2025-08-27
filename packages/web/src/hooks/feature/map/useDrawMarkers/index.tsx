@@ -24,15 +24,15 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
       type === "BASE"
         ? "/icons/Base.svg"
         : type === "EMERGENCY_KIT"
-        ? "/icons/Emergency_Kit.svg"
-        : type === "MARKET"
-        ? "/icons/Market.svg"
-        : type === "RENTAL"
-        ? "/icons/Rental.svg"
-        : type === "TOILET"
-        ? "/icons/Toilet.svg"
-        : "/icons/Base.svg",
-    []
+          ? "/icons/Emergency_Kit.svg"
+          : type === "MARKET"
+            ? "/icons/Market.svg"
+            : type === "RENTAL"
+              ? "/icons/Rental.svg"
+              : type === "TOILET"
+                ? "/icons/Toilet.svg"
+                : "/icons/Base.svg",
+    [],
   );
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
             updateSearchParams({
               searchParamName: "baseId",
               paramValue: `${id}`,
-            })
+            }),
           );
         });
         eventListenersRef.current.push(listener);
@@ -71,7 +71,7 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
           map: map,
           title: name,
           icon: {
-            content: `<div class="bg-white border-2 border-main-green rounded-full py-1 px-2 text-xs font-bold text-main-green shadow translate-x-7 pointer-events-none shrink-0 w-fit">${name}</div>`,
+            content: `<div class="bg-white border-2 border-primary rounded-full py-1 px-2 text-xs font-bold text-primary shadow translate-x-7 pointer-events-none shrink-0 w-fit">${name}</div>`,
             size: new naver.maps.Size(130, 30),
             anchor: new naver.maps.Point(50, 15),
           },
@@ -128,7 +128,7 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
         markerLabelsRef.current.forEach((label) => {
           label.setMap(map);
         });
-      }
+      },
     );
 
     return () => {

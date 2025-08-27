@@ -19,7 +19,7 @@ export default function CourseBaseTab({
   children,
 }: CourseBaseTabProps) {
   const [selectedCourseName, setSelectedCourseName] = useState<string | null>(
-    courseList[0]
+    courseList[0],
   );
 
   return (
@@ -30,9 +30,9 @@ export default function CourseBaseTab({
             className={cn(
               "px-4 py-1 rounded-full transition-all grow shrink-0",
               {
-                "border border-main-green bg-white":
+                "border border-primary bg-white":
                   selectedCourseName === courseName,
-              }
+              },
             )}
             key={`${index}-${courseName}`}
             onClick={() => {

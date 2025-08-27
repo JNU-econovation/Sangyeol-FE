@@ -25,7 +25,7 @@ export default function CustomerCenterSection() {
 
   return (
     <section className="border-b border-gray-30">
-      <Text fontSize="text-sm" color="text-main-green" fontWeight="font-medium">
+      <Text fontSize="text-sm" color="text-primary" fontWeight="font-medium">
         고객 센터
       </Text>
       <Spacing size={2} />

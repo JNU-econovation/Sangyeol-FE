@@ -9,7 +9,7 @@ import { useParams, useSearchParams } from "next/navigation";
 export default Suspense.with(
   {
     fallback: (
-      <div className="h-10 w-full animate-pulse bg-gray-100 rounded-2xl border border-main-green opacity-50" />
+      <div className="h-10 w-full animate-pulse bg-gray-100 rounded-2xl border border-primary opacity-50" />
     ),
     name: "CourseImageInfoSection",
   },
@@ -29,7 +29,7 @@ export default Suspense.with(
     }
 
     const baseDetail = baseDetails.find(
-      ({ baseId }) => `${baseId}` === `${selectedBaseId}`
+      ({ baseId }) => `${baseId}` === `${selectedBaseId}`,
     );
 
     if (!baseDetail) {
@@ -39,7 +39,7 @@ export default Suspense.with(
     const { images } = baseDetail;
     return (
       //height값이 고정되어있습니다! 주의해주세요! (h-28)
-      <div className="grid grid-cols-2 bg-green-10 rounded-2xl p-2 h-28">
+      <div className="grid grid-cols-2 bg-green-500 rounded-2xl p-2 h-28">
         <div className="flex items-center justify-center w-full h-full">
           <Image
             src={images[0]}
@@ -58,5 +58,5 @@ export default Suspense.with(
         </div>
       </div>
     );
-  }
+  },
 );
