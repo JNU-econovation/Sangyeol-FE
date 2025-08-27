@@ -1,7 +1,7 @@
 "use client";
 
 import ROUTE from "@/constants/route";
-import { StackLink } from "@/service/StackLink";
+import { StackLink } from "stack-link";
 import Spacing from "@shared/layout/Spacing";
 import MountainBgItem from "@shared/ui/MountainBgItem";
 
