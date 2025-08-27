@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.json",
+  "tsconfigRootDir": "../../.",
+  "compilerOptions": {
+    "composite": false,
+    "outDir": "dist",
+    "noEmit": true,
+    "baseUrl": ".",
+    "rootDir": "../../.",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*",
+        "./public/*"
+      ],
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
