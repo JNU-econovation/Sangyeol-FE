@@ -11,15 +11,11 @@ import {
 import { createPortal } from "react-dom";
 import useStackContext from "../../hooks/useStackContext";
 import Iframe from "../Iframe";
+import type { StackLinkParams } from "../../types";
 
 const DEFAULT_DURATION = 240;
 
-interface StackLinkedProps extends PropsWithChildren {
-  href: string;
-  // duration?: number;
-  preLoad?: boolean;
-  animation?: "slide" | "none";
-}
+export interface StackLinkedProps extends PropsWithChildren, StackLinkParams {}
 
 export default function StackLink({
   href,
@@ -75,7 +71,7 @@ export default function StackLink({
     const main = document.getElementById("stack-main");
     if (!main) {
       console.error(
-        "[StackLink] Main element not found. Ensure it exists in your layout."
+        "[StackLink] Main element not found. Ensure it exists in your layout.",
       );
       return;
     }
@@ -126,7 +122,7 @@ export default function StackLink({
             >
               {preLoad && <Iframe src={href} />}
             </div>,
-            portalElement
+            portalElement,
           )}
       </div>
     </>
