@@ -6,3 +6,10 @@ export interface StackContextType {
   push: (path: PathTuple) => void;
   pop: () => void;
 }
+
+export interface StackLinkParams {
+  href: string;
+  // duration?: number;
+  preLoad?: boolean;
+  animation?: "slide" | "none";
+}
