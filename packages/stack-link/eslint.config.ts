@@ -5,7 +5,7 @@ export default defineConfig([
   ...tseslint.configs.recommended,
 
   {
-    ignores: ["node_modules/", ".next/", "out/", "public/"],
+    ignores: ["node_modules/", ".next/", "out/", "public/", "dist/"],
   },
   {
     files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],

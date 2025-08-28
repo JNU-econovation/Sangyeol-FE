@@ -2,25 +2,29 @@
   "name": "stack-link",
   "packageManager": "yarn@4.9.3",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "tsup ./src/index.ts --watch",
+    "build": "tsup ./src/index.ts",
+    "start": "tsup",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
-  "dependencies": {
-    "next": "^15.5.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+  "peerDependencies": {
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.5.0"
   },
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   }
 }
