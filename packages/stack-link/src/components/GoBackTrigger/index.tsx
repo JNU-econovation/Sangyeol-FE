@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 
-import useStackContext from "../../hooks/useStackContext";
+import useStackContext from "@hooks/useStackContext";
 
 import { useRouter } from "next/navigation";
 
@@ -25,7 +25,7 @@ export default function GoBackTrigger() {
     const main = document.getElementById("stack-main");
     if (!main) {
       console.error(
-        "[GoBackTrigger] Main element not found. Ensure it exists in your layout."
+        "[GoBackTrigger] Main element not found. Ensure it exists in your layout.",
       );
       return;
     }
@@ -88,7 +88,7 @@ export default function GoBackTrigger() {
         !isNavigating &&
         createPortal(
           <div className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50 select-none" />,
-          portalElement
+          portalElement,
         )}
 
       {createPortal(
@@ -105,7 +105,7 @@ export default function GoBackTrigger() {
             setIsTouching(true);
           }}
         />,
-        document.body
+        document.body,
       )}
     </>
   );

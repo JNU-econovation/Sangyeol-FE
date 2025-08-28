@@ -9,9 +9,10 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
-import useStackContext from "../../hooks/useStackContext";
-import Iframe from "../Iframe";
-import type { StackLinkParams } from "../../types";
+
+import useStackContext from "@hooks/useStackContext";
+import type { StackLinkParams } from "@models/index";
+import Iframe from "@components/Iframe";
 
 const DEFAULT_DURATION = 240;
 

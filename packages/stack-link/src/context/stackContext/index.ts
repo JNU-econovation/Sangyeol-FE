@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { StackContextType } from "../../types";
+import { StackContextType } from "@models/index";
 
 const StackContext = createContext<StackContextType | undefined>(undefined);
 
