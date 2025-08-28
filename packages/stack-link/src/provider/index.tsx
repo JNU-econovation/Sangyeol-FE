@@ -2,9 +2,9 @@
 
 import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 
-import StackContext from "../context/stackContext";
-import type { PathTuple } from "../types";
-import GoBackTrigger from "../components/GoBackTrigger";
+import StackContext from "@context/stackContext";
+import type { PathTuple } from "@models/index";
+import GoBackTrigger from "@components/GoBackTrigger";
 
 export default function StackLinkProvider({ children }: PropsWithChildren) {
   const [history, setHistory] = useState<PathTuple[]>([]);

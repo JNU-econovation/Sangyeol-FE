@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
-import useStackContext from "../useStackContext";
+import useStackContext from "@hooks/useStackContext";
 
 //TODO: 애니메이션 타입 따로 관리
 type AnimationType = "slide" | "fade" | "none";

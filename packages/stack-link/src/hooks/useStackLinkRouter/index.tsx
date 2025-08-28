@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import useStackContext from "../useStackContext";
-import Iframe from "../../components/Iframe";
-import type { StackLinkParams } from "../../types";
+// import { createPortal } from "react-dom";
+import useStackContext from "@hooks/useStackContext";
+// import Iframe from "../../components/Iframe";
+import type { StackLinkParams } from "@models/index";
 
 const DEFAULT_DURATION = 240;
 

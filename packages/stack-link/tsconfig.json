@@ -2,11 +2,11 @@
   "extends": "../../tsconfig.json",
   "tsconfigRootDir": "../../.",
   "compilerOptions": {
-    "composite": false,
+    "composite": true,
     "outDir": "dist",
-    "noEmit": true,
     "baseUrl": ".",
-    "rootDir": "../../.",
+    "rootDir": "./src",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
@@ -17,13 +17,23 @@
         "./src/*",
         "./public/*"
       ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@context/*": [
+        "./src/context/*"
+      ]
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

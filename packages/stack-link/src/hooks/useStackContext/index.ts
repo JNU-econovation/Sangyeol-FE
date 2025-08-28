@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import StackContext from "../../context/stackContext";
+import StackContext from "@context/stackContext";
 
 const useStackContext = () => {
   const context = useContext(StackContext);
