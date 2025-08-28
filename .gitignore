@@ -63,7 +63,7 @@ Thumbs.db
 # Yarn (node_modules mode)
 .pnp.*
 .yarn/*
-!.yarn/cache
+.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
