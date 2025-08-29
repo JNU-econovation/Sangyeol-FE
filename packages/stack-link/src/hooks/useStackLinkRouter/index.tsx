@@ -1,11 +1,11 @@
 "use client";
 
+import Iframe from "@components/Iframe";
+import useStackContext from "@hooks/useStackContext";
+import type { StackLinkParams } from "@models/index";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-// import { createPortal } from "react-dom";
-import useStackContext from "@hooks/useStackContext";
-// import Iframe from "../../components/Iframe";
-import type { StackLinkParams } from "@models/index";
+import { createRoot } from "react-dom/client";
 
 const DEFAULT_DURATION = 240;
 
@@ -18,29 +18,34 @@ export default function useStackLinkRouter({
 }: UseStackLinkRouterProps) {
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
 
-  const iframeRef = useRef<HTMLDivElement>(null);
+  const preloadFrameRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isNavigatingRef = useRef(false);
-  const originalStylesRef = useRef<{
-    transition: string;
-    transform: string;
-    zIndex: string;
-  }>({
-    transition: "",
-    transform: "",
-    zIndex: "",
-  });
 
   const router = useRouter();
   const { push } = useStackContext();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (prefetchHref) router.prefetch(prefetchHref);
 
     const element = document.getElementById("stack-root") || document.body;
+
+    element.style.position = "fixed";
+    element.style.top = "0";
+    element.style.width = "100vw";
+    element.style.height = "100vh";
+    element.style.backgroundColor = "#ffffff";
+    element.style.transform = "translateZ(0) translateX(100%)";
+    element.style.willChange = "transform";
+    element.style.zIndex = "999";
+    element.style.pointerEvents = "none";
+    element.style.userSelect = "none";
+
     setPortalElement(element);
 
-    const currentIframe = iframeRef.current;
+    const currentIframe = preloadFrameRef.current;
 
     return () => {
       if (timerRef.current) {
@@ -48,10 +53,10 @@ export default function useStackLinkRouter({
       }
 
       const main = document.getElementById("stack-main");
-      if (main && originalStylesRef.current) {
-        main.style.transition = originalStylesRef.current.transition;
-        main.style.transform = originalStylesRef.current.transform;
-        main.style.zIndex = originalStylesRef.current.zIndex;
+      if (main) {
+        main.style.transition = "";
+        main.style.transform = "";
+        main.style.zIndex = "";
       }
 
       if (currentIframe) {
@@ -72,8 +77,8 @@ export default function useStackLinkRouter({
         return;
       }
 
-      if (!iframeRef.current) {
-        console.error("Iframe reference is not set.");
+      if (!preloadFrameRef.current) {
+        console.error("preloadFrame reference is not set.");
         return;
       }
 
@@ -84,48 +89,59 @@ export default function useStackLinkRouter({
         clearTimeout(timerRef.current);
       }
 
-      originalStylesRef.current = {
-        transition: main.style.transition,
-        transform: main.style.transform,
-        zIndex: main.style.zIndex,
-      };
+      if (animation === "slide") {
+        main.style.transition = `transform ${animDuration}ms ease-in-out`;
+        main.style.transform = "translateX(-20%)";
 
-      main.style.transition = `transform ${animDuration}ms ease-in-out`;
-      main.style.transform = "translateX(-20%)";
+        preloadFrameRef.current.style.transform = "translateX(-100%)";
+        preloadFrameRef.current.style.transition = `transform ${animDuration}ms ease-in-out`;
 
-      iframeRef.current.style.transform = "translateX(-100%)";
-      iframeRef.current.style.transition = `transform ${animDuration}ms ease-in-out`;
+        push([window.location.href, href]);
 
-      push([window.location.href, href]);
+        timerRef.current = setTimeout(() => {
+          main.style.transition = "";
+          main.style.transform = "translateX(0)";
+          main.style.zIndex = "-999";
+          router.push(href);
+          isNavigatingRef.current = false;
+        }, animDuration);
+      }
 
-      timerRef.current = setTimeout(() => {
-        main.style.transition = "";
-        main.style.transform = "translateX(0)";
+      if (animation === "none") {
+        preloadFrameRef.current.style.transform = "translateX(0)";
+        preloadFrameRef.current.style.transition = "none";
         main.style.zIndex = "-999";
+        // 스택에 현재 경로와 이동한 경로 추가
+        push([window.location.href, href]);
         router.push(href);
-        isNavigatingRef.current = false;
-      }, animDuration);
+      }
     },
     [prefetchHref, push, router],
   );
 
   // 자동으로 portal 렌더링
   useEffect(() => {
+    if (typeof window === "undefined") return;
     if (!portalElement) return;
 
     const portalDiv = document.createElement("div");
-    portalDiv.className =
-      "fixed w-screen h-screen top-0 transform-gpu translate-x-full bg-white z-[999] select-none";
 
-    if (prefetchHref) {
-      const iframe = document.createElement("iframe");
-      iframe.src = prefetchHref;
-      iframe.className = "w-screen h-screen hide-scrollbar";
-      portalDiv.appendChild(iframe);
-    }
+    portalDiv.style.position = "fixed";
+    portalDiv.style.top = "0";
+    portalDiv.style.width = "100vw";
+    portalDiv.style.height = "100vh";
+    portalDiv.style.backgroundColor = "#ffffff";
+    portalDiv.style.transform = "translateZ(0) translateX(100%)";
+    portalDiv.style.willChange = "transform";
+    portalDiv.style.zIndex = "999";
+    portalDiv.style.pointerEvents = "none";
+    portalDiv.style.userSelect = "none";
 
     portalElement.appendChild(portalDiv);
-    iframeRef.current = portalDiv;
+    preloadFrameRef.current = portalDiv;
+
+    if (prefetchHref)
+      createRoot(portalDiv).render(<Iframe src={prefetchHref} />);
 
     return () => {
       if (portalDiv.parentNode) {
