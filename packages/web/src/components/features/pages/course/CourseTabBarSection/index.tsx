@@ -2,13 +2,13 @@
 
 import MAP from "@/constants/map";
 import ROUTE from "@/constants/route";
-import { StackLink } from "@/service/StackLink";
 import { cn } from "@/utils/cn";
 import useCoursesOfMountainQuery from "@hooks/feature/query/query/useCoursesOfMountainQuery";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import CourseListWithBookmarkMutate from "@widgets/course/CourseListWithBookmarkMutate";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { StackLink } from "stack-link";
 
 //inner imports
 import CourseTabBarSectionLoader from "./loader";

@@ -1,5 +1,5 @@
 import ModalProvider from "@/service/modal/provider";
-import { StackLinkProvider } from "@/service/StackLink";
+import { StackLinkProvider } from "stack-link";
 import TanstackQueryProvider from "@entities/TanstackQueryProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";

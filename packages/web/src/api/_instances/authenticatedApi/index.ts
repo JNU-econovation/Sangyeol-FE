@@ -1,4 +1,4 @@
-import { isInStackFrame } from "@/service/StackLink";
+import { isInStackFrame } from "stack-link";
 import { ErrorResponse } from "@/types/api";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
@@ -37,7 +37,7 @@ authenticatedApi.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 authenticatedApi.interceptors.response.use(
@@ -48,7 +48,7 @@ authenticatedApi.interceptors.response.use(
   async (error: AxiosError<ErrorResponse>) => {
     const err = Object.assign(
       new Error(
-        error.response?.data?.message || "알 수 없는 오류가 발생했습니다."
+        error.response?.data?.message || "알 수 없는 오류가 발생했습니다.",
       ),
       {
         name: "ApiError",
@@ -57,12 +57,12 @@ authenticatedApi.interceptors.response.use(
         httpStatus: error.response?.status,
         url: error.config?.url,
         cause: error,
-      }
+      },
     ) as Error &
       ErrorResponse & { httpStatus?: number; url?: string; cause?: unknown };
 
     return Promise.reject(err);
-  }
+  },
 );
 
 export default authenticatedApi;
