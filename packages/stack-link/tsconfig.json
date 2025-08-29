@@ -2,11 +2,12 @@
   "extends": "../../tsconfig.json",
   "tsconfigRootDir": "../../.",
   "compilerOptions": {
-    "composite": true,
+    "composite": false,
     "outDir": "dist",
     "baseUrl": ".",
     "rootDir": "./src",
     "jsx": "react-jsx",
+    "incremental": false,
     "plugins": [
       {
         "name": "next"

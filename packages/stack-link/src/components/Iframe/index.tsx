@@ -8,6 +8,16 @@ interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
 
 export default function Iframe({ src, ...props }: IframeProps) {
   return (
-    <iframe src={src} {...props} className="w-screen h-screen hide-scrollbar" />
+    <iframe
+      src={src}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        overflow: "auto",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      }}
+      {...props}
+    />
   );
 }

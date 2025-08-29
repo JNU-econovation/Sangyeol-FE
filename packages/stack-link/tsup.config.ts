@@ -6,7 +6,12 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   format: ["cjs", "esm"],
-  dts: false,
+  dts: {
+    compilerOptions: {
+      incremental: false,
+      composite: false,
+    },
+  },
   banner: {
     js: '"use client";',
   },

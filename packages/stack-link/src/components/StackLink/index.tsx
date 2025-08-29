@@ -13,6 +13,7 @@ import { createPortal } from "react-dom";
 import useStackContext from "@hooks/useStackContext";
 import type { StackLinkParams } from "@models/index";
 import Iframe from "@components/Iframe";
+import { isInStackFrame } from "@/utils";
 
 const DEFAULT_DURATION = 240;
 
@@ -26,7 +27,7 @@ export default function StackLink({
   animation = "slide",
 }: StackLinkedProps) {
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const preloadFrameRef = useRef<HTMLIFrameElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const originalStylesRef = useRef<{
     transition: string;
@@ -45,9 +46,19 @@ export default function StackLink({
     router.prefetch(href);
 
     const element = document.getElementById("stack-root") || document.body;
+    element.style.position = "fixed";
+    element.style.top = "0";
+    element.style.width = "100vw";
+    element.style.height = "100vh";
+    element.style.backgroundColor = "#ffffff";
+    element.style.transform = "translateZ(0) translateX(100%)";
+    element.style.willChange = "transform";
+    element.style.zIndex = "999";
+    element.style.pointerEvents = "none";
+    element.style.userSelect = "none";
     setPortalElement(element);
 
-    const currentIframe = iframeRef.current;
+    const currentIframe = preloadFrameRef.current;
 
     return () => {
       if (timerRef.current) {
@@ -69,7 +80,8 @@ export default function StackLink({
 
   const slideScreen = useCallback(() => {
     if (typeof window === "undefined") return;
-    const main = document.getElementById("stack-main");
+    //TODO: 하드코딩 피하기
+    const main = document.getElementById("stack-main"); // 실제 컨텐츠가 있는 곳
     if (!main) {
       console.error(
         "[StackLink] Main element not found. Ensure it exists in your layout.",
@@ -83,49 +95,61 @@ export default function StackLink({
       clearTimeout(timerRef.current);
     }
 
-    originalStylesRef.current = {
-      transition: main.style.transition,
-      transform: main.style.transform,
-      zIndex: main.style.zIndex,
-    };
+    if (animation === "slide") {
+      main.style.transition = `transform ${animDuration}ms ease-in-out`;
+      main.style.transform = "translateX(-20%)";
 
-    main.style.transition = `transform ${animDuration}ms ease-in-out`;
-    main.style.transform = "translateX(-20%)";
+      if (!preloadFrameRef.current) {
+        console.error("Iframe reference is not set.");
+        return;
+      }
+      preloadFrameRef.current.style.transform = "translateX(-100%)";
+      preloadFrameRef.current.style.transition = `transform ${animDuration}ms ease-in-out`;
 
-    if (!iframeRef.current) {
-      console.error("Iframe reference is not set.");
-      return;
+      // 스택에 현재 경로와 이동한 경로 추가
+      push([window.location.href, href]);
+
+      timerRef.current = setTimeout(() => {
+        main.style.transition = "";
+        main.style.transform = "translateX(0)";
+        main.style.zIndex = "-999";
+        router.push(href);
+      }, animDuration);
     }
 
-    iframeRef.current.style.transform = "translateX(-100%)";
-    iframeRef.current.style.transition = `transform ${animDuration}ms ease-in-out`;
-
-    // 스택에 현재 경로와 이동한 경로 추가
-    push([window.location.href, href]);
-
-    timerRef.current = setTimeout(() => {
-      main.style.transition = "";
-      main.style.transform = "translateX(0)";
+    if (animation === "none") {
+      preloadFrameRef.current.style.transform = "translateX(0)";
+      preloadFrameRef.current.style.transition = "none";
       main.style.zIndex = "-999";
+      // 스택에 현재 경로와 이동한 경로 추가
+      push([window.location.href, href]);
       router.push(href);
-    }, animDuration);
+
+      // timerRef.current = setTimeout(() => {}, animDuration);
+    }
   }, [animation, href, push, router]);
 
+  if (typeof window === "undefined" || isInStackFrame()) return null;
+
   return (
-    <>
-      <div onClick={slideScreen} className="transform-gpu">
-        {children}
-        {portalElement &&
-          createPortal(
-            <div
-              ref={iframeRef}
-              className="fixed w-screen h-screen top-0 transform-gpu translate-x-full bg-white z-[999] select-none"
-            >
-              {preLoad && <Iframe src={href} />}
-            </div>,
-            portalElement,
-          )}
-      </div>
-    </>
+    <div onClick={slideScreen}>
+      {children}
+      {portalElement &&
+        createPortal(
+          <div
+            ref={preloadFrameRef}
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
+          >
+            {preLoad && <Iframe src={href} />}
+          </div>,
+          portalElement,
+        )}
+    </div>
   );
 }

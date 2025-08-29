@@ -2,9 +2,9 @@
 
 import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 
+import GoBackTrigger from "@components/GoBackTrigger";
 import StackContext from "@context/stackContext";
 import type { PathTuple } from "@models/index";
-import GoBackTrigger from "@components/GoBackTrigger";
 
 export default function StackLinkProvider({ children }: PropsWithChildren) {
   const [history, setHistory] = useState<PathTuple[]>([]);
@@ -29,7 +29,14 @@ export default function StackLinkProvider({ children }: PropsWithChildren) {
 
   return (
     <StackContext.Provider value={{ portalElement, history, push, pop }}>
-      <div id="stack-main" className="relative bg-white transform-gpu">
+      <div
+        id="stack-main"
+        style={{
+          position: "relative",
+          backgroundColor: "white",
+          transform: "gpu",
+        }}
+      >
         {children}
       </div>
       <div id="stack-root" />
