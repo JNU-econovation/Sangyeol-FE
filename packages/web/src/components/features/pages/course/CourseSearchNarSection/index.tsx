@@ -2,7 +2,7 @@
 
 import ROUTE from "@/constants/route";
 // import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
-import { StackLink } from "@/service/StackLink";
+import { StackLink } from "stack-link";
 import SearchInput from "@shared/ui/SearchInput";
 import { useParams } from "next/navigation";
 import { FocusEvent, useCallback } from "react";
