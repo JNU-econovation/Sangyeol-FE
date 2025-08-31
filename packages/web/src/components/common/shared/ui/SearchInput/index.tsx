@@ -11,9 +11,9 @@ export default function SearchInput({
   ...props
 }: SearchInputProps) {
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <input
-        className="rounded-full text-lg p-4 shadow z-30 w-full"
+        className="rounded-full text-lg p-4 shadow w-full relative bg-white"
         ref={inputRef}
         type="text"
         {...props}
