@@ -62,9 +62,9 @@ const CurrentSearchMountainSection = () => {
   return (
     <section>
       <div className="flex justify-between">
-        <span className="text-xl">최근 검색어</span>
+        <span className="text-md font-semibold text-gray-900">최근 검색어</span>
         <button onClick={handleDeleteAll}>
-          <span className="text-sm">전체 삭제</span>
+          <span className="text-sm font-semibold text-gray-900">전체 삭제</span>
         </button>
       </div>
       <Spacing size={5} />
