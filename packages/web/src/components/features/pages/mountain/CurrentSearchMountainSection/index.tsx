@@ -1,12 +1,14 @@
 "use client";
 
 import ROUTE from "@/constants/route";
+import useFlush from "@/hooks/common/useFlush";
 import Spacing from "@shared/layout/Spacing";
 import TagItemWithCancel from "@shared/ui/TagItemWithCancel";
 import { useCallback } from "react";
 import { useStackLinkRouter } from "stack-link";
 
 const CurrentSearchMountainSection = () => {
+  const { flush } = useFlush();
   const { navigate } = useStackLinkRouter({
     prefetchHref: ROUTE.MOUNTAIN_COURSE("1"),
   });
@@ -43,6 +45,7 @@ const CurrentSearchMountainSection = () => {
         "currenMountainSearchList",
         JSON.stringify(newCurrentSearchData),
       );
+      flush();
     },
     [],
   );
@@ -51,6 +54,7 @@ const CurrentSearchMountainSection = () => {
     if (typeof window === "undefined") return;
 
     localStorage.removeItem("currenMountainSearchList");
+    flush();
   }, []);
 
   if (typeof window === "undefined") return null;
@@ -69,16 +73,17 @@ const CurrentSearchMountainSection = () => {
       </div>
       <Spacing size={5} />
       <div className="flex flex-row gap-2 flex-wrap">
-        {prevData.map(({ mountainId, name }, index) => (
-          <TagItemWithCancel
-            key={index}
-            text={name}
-            onClickTag={() => handleClickTag({ mountainId, name })}
-            onClickCancel={() => {
-              handleClickCancel({ mountainId, name });
-            }}
-          />
-        ))}
+        {prevData &&
+          prevData.map(({ mountainId, name }, index) => (
+            <TagItemWithCancel
+              key={index}
+              text={name}
+              onClickTag={() => handleClickTag({ mountainId, name })}
+              onClickCancel={() => {
+                handleClickCancel({ mountainId, name });
+              }}
+            />
+          ))}
       </div>
     </section>
   );
