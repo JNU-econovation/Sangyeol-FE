@@ -74,9 +74,11 @@ export default Suspense.with(
           initPosition={{
             //TODO: 단정 대신 추론으로 사용하기
             longitude:
-              MOUNTAIN[mountainId as keyof typeof MOUNTAIN].coordinate[0],
+              MOUNTAIN[mountainId]?.coordinate[0] ??
+              MOUNTAIN.default.coordinate[0],
             latitude:
-              MOUNTAIN[mountainId as keyof typeof MOUNTAIN].coordinate[1],
+              MOUNTAIN[mountainId]?.coordinate[1] ??
+              MOUNTAIN.default.coordinate[1],
           }}
         >
           {({ map }) => {
