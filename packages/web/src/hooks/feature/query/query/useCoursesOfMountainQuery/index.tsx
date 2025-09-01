@@ -7,7 +7,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 interface UseCoursesOfMountainQueryProps {
   mountainId: string;
-  sortBy: CourseSortType;
+  sortBy?: CourseSortType;
 }
 
 const useCoursesOfMountainQuery = ({

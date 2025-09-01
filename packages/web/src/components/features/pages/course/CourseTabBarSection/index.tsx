@@ -39,9 +39,7 @@ export default Suspense.with(
       //TODO: 지금은 length, difficulty만 지원하지만, ui가 나오지 않아 우선적으로 다른 정렬 기준의 경우 length로 처리
       // sortBy: sortBy ?? "length",
       sortBy:
-        sortBy === "my" || sortBy === "popular"
-          ? "length"
-          : (sortBy ?? "length"),
+        sortBy === "my" || sortBy === "popular" ? null : (sortBy ?? "length"),
     });
 
     const { courses } = courseList;
