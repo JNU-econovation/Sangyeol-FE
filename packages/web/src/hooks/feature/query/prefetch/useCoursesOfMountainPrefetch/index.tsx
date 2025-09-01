@@ -1,5 +1,5 @@
 import {
-  COURSES_OF_MOUNTAIN,
+  COURSES_OF_MOUNTAIN_API_PATH,
   CourseSortType,
   getCoursesOfMountainApi,
 } from "@api/v1/mountains/[mountainId]/courses";
@@ -15,7 +15,9 @@ const useCoursesOfMountainPrefetch = ({
   sortBy,
 }: UseCoursesOfMountainPrefetchProps) => {
   return usePrefetchQuery({
-    queryKey: [COURSES_OF_MOUNTAIN(mountainId, { searchParams: { sortBy } })],
+    queryKey: [
+      COURSES_OF_MOUNTAIN_API_PATH(mountainId, { searchParams: { sortBy } }),
+    ],
     queryFn: () => getCoursesOfMountainApi({ mountainId, sortBy }),
     staleTime: 1000 * 60 * 5, // 5m
     gcTime: 1000 * 60 * 60, // 1h
