@@ -13,12 +13,12 @@ export const DifficultyTagVariants = cva(
   {
     variants: {
       difficulty: {
-        EASY: "text-green-500",
-        NORMAL: "text-yellow-500",
-        HARD: "text-red-500",
+        EASY: "text-success",
+        NORMAL: "text-warning",
+        HARD: "text-error",
       },
     },
-  }
+  },
 );
 
 interface DifficultyTagProps {
