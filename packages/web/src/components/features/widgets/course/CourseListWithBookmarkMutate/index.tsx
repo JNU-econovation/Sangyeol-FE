@@ -1,8 +1,10 @@
+import { CourseSortType } from "@/api/v1/mountains/[mountainId]/courses";
 import type { CourseDifficulty } from "@/types/course";
 import useBookmarkMutation from "@hooks/feature/query/mutate/useBookmarkMutation";
 import useDeleteBookmarkMutation from "@hooks/feature/query/mutate/useDeleteBookmarkMutation";
 import CoursePathwayPrefetcher from "@pages/course/CoursePathwayPrefetcher";
 import CourseList from "@shared/ui/CourseList";
+import { useParams, useSearchParams } from "next/navigation";
 
 interface CourseListWithBookmarkMutateProps {
   id: string;
@@ -22,8 +24,17 @@ export default function CourseListWithBookmarkMutate({
   image,
   ...props
 }: CourseListWithBookmarkMutateProps) {
-  const { mutate: postBookmark } = useBookmarkMutation();
-  const { mutate: deleteBookmark } = useDeleteBookmarkMutation();
+  const { mountainId } = useParams<{ mountainId: string }>();
+  const searchParams = useSearchParams();
+
+  const { mutate: postBookmark } = useBookmarkMutation({
+    mountainId,
+    sortBy: searchParams.get("sort") as CourseSortType,
+  });
+  const { mutate: deleteBookmark } = useDeleteBookmarkMutation({
+    mountainId,
+    sortBy: searchParams.get("sort") as CourseSortType,
+  });
 
   return (
     <>
