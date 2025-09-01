@@ -5,8 +5,9 @@ export type CourseSortType = "length" | "difficulty";
 
 export const COURSES_OF_MOUNTAIN_API_PATH = (
   mountainId: string,
-  { searchParams: { sortBy } }: { searchParams: { sortBy: CourseSortType } },
-) => `api/v1/mountains/${mountainId}/courses?sort=${sortBy}`;
+  { searchParams }: { searchParams?: { sortBy: CourseSortType } },
+) =>
+  `api/v1/mountains/${mountainId}/courses${searchParams ? "?" + new URLSearchParams(searchParams).toString() : ""}`;
 
 export interface GetCoursesOfMountainResponse {
   courses: Course[];
@@ -14,7 +15,7 @@ export interface GetCoursesOfMountainResponse {
 
 interface GetCoursesOfMountainApiParams {
   mountainId: string;
-  sortBy: CourseSortType;
+  sortBy?: CourseSortType;
 }
 
 export const getCoursesOfMountainApi = async ({
