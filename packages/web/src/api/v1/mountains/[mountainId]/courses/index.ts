@@ -1,24 +1,14 @@
 import authenticatedApi from "@/api/_instances/authenticatedApi";
-import { CourseDifficulty } from "@/types/course";
+import type { Course } from "@/types/course";
 
 export type CourseSortType = "length" | "difficulty";
 
-export const COURSES_OF_MOUNTAIN = (
+export const COURSES_OF_MOUNTAIN_API_PATH = (
   mountainId: string,
-  { searchParams: { sortBy } }: { searchParams: { sortBy: CourseSortType } }
+  { searchParams: { sortBy } }: { searchParams: { sortBy: CourseSortType } },
 ) => `api/v1/mountains/${mountainId}/courses?sort=${sortBy}`;
 
-interface Course {
-  id: string;
-  name: string;
-  length: number;
-  duration: number;
-  difficulty: CourseDifficulty;
-  bookmark: boolean;
-  image: string;
-}
-
-interface GetCoursesOfMountainResponse {
+export interface GetCoursesOfMountainResponse {
   courses: Course[];
 }
 
@@ -33,7 +23,7 @@ export const getCoursesOfMountainApi = async ({
 }: GetCoursesOfMountainApiParams) => {
   const response = await authenticatedApi<GetCoursesOfMountainResponse>({
     method: "get",
-    url: COURSES_OF_MOUNTAIN(mountainId, { searchParams: { sortBy } }),
+    url: COURSES_OF_MOUNTAIN_API_PATH(mountainId, { searchParams: { sortBy } }),
   });
 
   return response.data;
