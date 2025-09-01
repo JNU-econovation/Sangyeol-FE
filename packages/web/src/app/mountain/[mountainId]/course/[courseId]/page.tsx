@@ -13,7 +13,7 @@ export default function CourseDetailPage() {
         <Spacing size={8} />
         <MapHeaderNavbar />
       </div>
-      <PositionBottom bottom={88}>
+      <PositionBottom bottom={80}>
         <div className="px-6">
           <CourseDetailBottomSheetSection />
         </div>
