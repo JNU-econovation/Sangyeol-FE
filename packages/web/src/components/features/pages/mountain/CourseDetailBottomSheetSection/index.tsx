@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 "use client";
 
+import useGetCourseDetails from "@hooks/feature/course/useGetCourseDetails";
 import BottomSheet from "@entities/BottomSheet";
 import Carousel from "@entities/Carousel";
 import BaseSelector from "@pages/map/BaseSelector";
@@ -8,8 +9,19 @@ import CourseImageInfoSection from "@pages/map/CourseImageInfoSection";
 import CourseWeatherClothesInfoSection from "@pages/map/CourseWeatherClothesInfoSection";
 import Spacing from "@shared/layout/Spacing";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
+import { useParams } from "next/navigation";
 
 export default function CourseDetailBottomSheetSection() {
+  const { mountainId, courseId } = useParams<{
+    mountainId: string;
+    courseId: string;
+  }>();
+
+  const { difficulty, duration, length } = useGetCourseDetails({
+    mountainId,
+    courseId,
+  });
+
   return (
     <section>
       <BottomSheet>
@@ -18,8 +30,11 @@ export default function CourseDetailBottomSheetSection() {
           <BaseSelector />
         </div>
         <Spacing size={2} />
-        {/* TODO: 추후 정보를 가져올 수 있는 방안이 생기면 수정 */}
-        <CourseMetaDataUi difficulty="EASY" distance={123} time={23} />
+        <CourseMetaDataUi
+          difficulty={difficulty}
+          distance={length}
+          time={duration}
+        />
         <Spacing size={2} />
 
         <Carousel
