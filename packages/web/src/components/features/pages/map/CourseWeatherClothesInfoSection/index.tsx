@@ -1,6 +1,6 @@
 "use client";
 
-import useBasesDetailQuery from "@hooks/feature/query/query/useBasesDetailQuery";
+import useGetBaseDetails from "@/hooks/feature/course/useGetBaseDetails";
 import ClothesIcon from "@icons/ClothesIcon";
 import SunnyIcon from "@icons/SunnyIcon";
 import { Suspense } from "@suspensive/react";
@@ -22,26 +22,10 @@ export default Suspense.with(
       courseId: string;
     }>();
     const searchParams = useSearchParams();
-    const { data } = useBasesDetailQuery({ mountainId });
-
-    const selectedBaseId =
-      searchParams.get("baseId") || data.baseDetails[0]?.baseId;
-
-    if (!selectedBaseId) {
-      return <div className="p-4">기본 정보가 없습니다.</div>;
-    }
-
-    const { baseDetails } = data;
-
-    const baseDetail = baseDetails.find(
-      ({ baseId }) => `${baseId}` === `${selectedBaseId}`,
-    );
-
-    if (!baseDetail) {
-      return <div className="p-4">기본 정보가 없습니다.</div>;
-    }
-
-    const { weather, recommendedOutfit, temperature } = baseDetail;
+    const { weather, temperature, recommendedOutfit } = useGetBaseDetails({
+      mountainId,
+      baseId: searchParams.get("baseId"),
+    });
 
     return (
       // height값이 고정되어있습니다! 주의해주세요!
