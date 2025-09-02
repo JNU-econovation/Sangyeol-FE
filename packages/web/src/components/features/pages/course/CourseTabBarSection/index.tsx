@@ -73,11 +73,16 @@ export default Suspense.with(
         </div>
         <Spacing size={4} />
         <ul className="flex flex-col gap-4 bg-gray-200 p-6 overflow-y-auto flex-1">
-          {courses.map(({ id, ...props }, index) => (
+          {courses.map(({ id, peakBaseId, ...props }, index) => (
             <StackLink
-              href={ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, id, {
-                tag: MAP.BASE.id,
-              })}
+              href={ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, id, [
+                {
+                  tag: MAP.BASE.id,
+                },
+                {
+                  baseId: peakBaseId,
+                },
+              ])}
               key={id}
               animation="none"
             >

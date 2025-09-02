@@ -35,10 +35,12 @@ export default Suspense.with(
     useEffect(() => {
       if (!searchParams.get("baseId") && baseDetails.length > 0) {
         router.replace(
-          ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
-            tag: searchParams.get("tag") ?? MAP.BASE.id,
-            baseId: baseDetails[0].baseId,
-          }),
+          ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, [
+            {
+              tag: searchParams.get("tag") ?? MAP.BASE.id,
+              baseId: baseDetails[0].baseId,
+            },
+          ]),
         );
       }
     }, [mountainId, courseId, searchParams, router, baseDetails]);
@@ -54,10 +56,12 @@ export default Suspense.with(
         value={selectorValue}
         onSelect={(baseId) => {
           router.replace(
-            ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
-              tag: searchParams.get("tag") ?? MAP.BASE.id,
-              baseId,
-            }),
+            ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, [
+              {
+                tag: searchParams.get("tag") ?? MAP.BASE.id,
+                baseId,
+              },
+            ]),
           );
         }}
       />
