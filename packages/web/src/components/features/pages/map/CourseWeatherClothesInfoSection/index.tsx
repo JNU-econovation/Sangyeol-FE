@@ -1,6 +1,7 @@
 "use client";
 
-import useGetBaseDetails from "@/hooks/feature/course/useGetBaseDetails";
+import WEATHER from "@/constants/weather";
+import useGetBaseDetails from "@hooks/feature/course/useGetBaseDetails";
 import ClothesIcon from "@icons/ClothesIcon";
 import SunnyIcon from "@icons/SunnyIcon";
 import { Suspense } from "@suspensive/react";
@@ -33,13 +34,13 @@ export default Suspense.with(
         <p className="font-bold text-gray-20">기상 정보</p>
         <p className="font-bold text-gray-20">산행 복장</p>
         <div className="flex items-center justify-around">
-          <SunnyIcon alt="맑은 날씨" />
+          {WEATHER[weather]?.icon}
           <div>
             <p className="text-3xl font-extralight">
               {temperature}
               <span className="text-2xl">&deg;C</span>
             </p>
-            <p className="text-sm font-bold">{weather}</p>
+            <p className="text-sm font-bold">{WEATHER[weather]?.name}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
