@@ -3,16 +3,25 @@ import authenticatedApi from "@/api/_instances/authenticatedApi";
 export const BASES_DETAIL_API_PATH = (mountainId: string) =>
   `api/v1/bases/${mountainId}/details`;
 
+type Weather =
+  | "Thunderstorm"
+  | "Drizzle"
+  | "Rain"
+  | "Snow"
+  | "Mist"
+  | "Clear"
+  | "Clouds";
+
 interface BaseInfo {
   baseId: string;
   name: string;
-  weather: string; //todo: 날씨 타입 정의
+  weather: Weather;
   temperature: string;
   recommendedOutfit: null;
   images: [string, string];
 }
 
-interface GetBasesDetailApiResponse {
+export interface GetBasesDetailApiResponse {
   mountainId: string;
   baseDetails: BaseInfo[];
 }
