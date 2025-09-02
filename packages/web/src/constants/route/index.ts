@@ -10,16 +10,10 @@ const ROUTE = {
   MOUNTAIN_COURSE_DETAIL: (
     mountainId: string,
     courseId: string,
-    searchParams?: Record<string, string>[],
+    searchParams?: Record<string, string>,
   ) =>
-    `/mountain/${mountainId}/course/${courseId}?${
-      searchParams
-        ? searchParams
-            .map(
-              (param) => `${Object.keys(param)[0]}=${Object.values(param)[0]}`,
-            )
-            .join("&")
-        : ""
+    `/mountain/${mountainId}/course/${courseId}${
+      searchParams ? `?${new URLSearchParams(searchParams).toString()}` : ""
     }`,
   MOUNTAIN_COURSE_SEARCH: (mountainId: string) =>
     `/mountain/${mountainId}/course/search`,
