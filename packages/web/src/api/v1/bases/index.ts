@@ -4,7 +4,7 @@ import type { BaseMarker } from "@/types/map";
 export const BASES_API_PATH = (mountainId: string) =>
   `api/v1/bases?mountainId=${mountainId}`;
 
-interface GetBasesApiResponse {
+export interface GetBasesApiResponse {
   mountainId: string;
   bases: BaseMarker[];
 }
