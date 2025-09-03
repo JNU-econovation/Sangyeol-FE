@@ -16,7 +16,7 @@ export default function MapHeaderTag({
   return (
     <button
       className={cn(
-        " border rounded-full text-sm px-3 shrink-0 py-1 border-gray-30",
+        " border rounded-full text-sm px-3 shrink-0 py-1 border-gray-600",
         {
           "bg-primary text-white": isSelected,
           "bg-white": !isSelected,
