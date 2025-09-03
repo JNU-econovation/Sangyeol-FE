@@ -1,10 +1,11 @@
 import MAP from "@/constants/map";
 import ROUTE from "@/constants/route";
 import Selector from "@entities/Selector";
+import useGetCourseDetails from "@hooks/feature/course/useGetCourseDetails";
 import useBasesDetailQuery from "@hooks/feature/query/query/useBasesDetailQuery";
 import { Suspense } from "@suspensive/react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 export default Suspense.with(
   {
@@ -22,6 +23,7 @@ export default Suspense.with(
     const router = useRouter();
 
     const { data } = useBasesDetailQuery({ mountainId });
+    const { peakBaseId } = useGetCourseDetails({ mountainId, courseId });
 
     const { baseDetails } = data;
 
@@ -32,35 +34,31 @@ export default Suspense.with(
       }));
     }, [baseDetails]);
 
-    useEffect(() => {
-      if (!searchParams.get("baseId") && baseDetails.length > 0) {
-        router.replace(
-          ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
-            tag: searchParams.get("tag") ?? MAP.BASE.id,
-            baseId: baseDetails[0].baseId,
-          }),
-        );
-      }
-    }, [mountainId, courseId, searchParams, router, baseDetails]);
-
-    const selectorValue = searchParams.get("baseId");
-    if (!selectorValue) {
+    const selectedBaseId = searchParams.get("baseId");
+    if (!selectedBaseId) {
       return null;
     }
 
     return (
-      <Selector
-        options={options}
-        value={selectorValue}
-        onSelect={(baseId) => {
-          router.replace(
-            ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
-              tag: searchParams.get("tag") ?? MAP.BASE.id,
-              baseId,
-            }),
-          );
-        }}
-      />
+      <div className="relative">
+        <Selector
+          options={options}
+          value={selectedBaseId}
+          onSelect={(baseId) => {
+            router.replace(
+              ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
+                tag: searchParams.get("tag") ?? MAP.BASE.id,
+                baseId,
+              }),
+            );
+          }}
+        />
+        {+peakBaseId === +selectedBaseId && (
+          <div className="absolute top-0 left-4.5 h-full flex items-center pointer-events-none">
+            <p className="text-yellow text-xs">pick</p>
+          </div>
+        )}
+      </div>
     );
   },
 );
