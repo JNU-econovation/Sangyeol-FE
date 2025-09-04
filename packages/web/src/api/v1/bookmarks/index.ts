@@ -3,7 +3,7 @@ import { Course } from "@/types/course";
 
 export const BOOKMARK_API_PATH = "api/v1/bookmarks";
 
-interface GetBookmarksResponse {
+export interface GetBookmarksResponse {
   bookmarkList: Course[];
 }
 

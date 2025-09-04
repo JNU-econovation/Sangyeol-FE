@@ -4,7 +4,7 @@ import type { FacilityMarker } from "@/types/map";
 export const FACILITY_API_PATH = (mountainId: string) =>
   `api/v1/facilities?mountainId=${mountainId}`;
 
-interface GetFacilitiesApiResponse {
+export interface GetFacilitiesApiResponse {
   mountainId: string;
   facilities: FacilityMarker[];
 }

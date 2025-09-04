@@ -2,7 +2,7 @@
 
 import { createContext } from "react";
 
-interface ModalContextType {
+export interface ModalContextType {
   addModalAsync: (modalComponent: React.ReactNode) => void;
   closeModalAsync: () => void;
 }
