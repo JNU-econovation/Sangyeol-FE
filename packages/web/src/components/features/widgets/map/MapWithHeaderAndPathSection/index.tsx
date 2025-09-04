@@ -33,10 +33,7 @@ export default Suspense.with(
     const searchParams = useSearchParams();
 
     const { mountainId, courseId } = params;
-    // const selectedTagIds = searchParams.getAll("tag") as (
-    //   | keyof typeof MAP.BASE_AND_FACILITY
-    //   | typeof MAP.BASE.id
-    // )[];
+
     const selectedTagIds = useMemo(() => {
       const raw = searchParams.getAll("tag");
       const allowed = new Set<string>([
