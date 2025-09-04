@@ -1,6 +1,7 @@
 import { cn } from "@/utils/cn";
 import Spacing from "@shared/layout/Spacing";
 import { useEffect, useState } from "react";
+import SelectorCloseIcon from "@icons/SelectorCloseIcon";
 
 interface SelectorProps {
   options: {
@@ -30,14 +31,14 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
         }
       }}
     >
-      <div
-        className="border-2 border-primary rounded-2xl font-semibold text-base text-center text-black"
+      <button
+        className="border-2 border-primary rounded-2xl font-semibold text-base text-center text-black w-full"
         onClick={(e) => {
-          if (e.target == e.currentTarget) {
+          if (e.target !== e.currentTarget) {
             setOptionsOpen(!optionsOpen);
             return;
           }
-          setOptionsOpen(false);
+          setOptionsOpen(true);
         }}
         role="combobox"
         aria-expanded={optionsOpen}
@@ -49,9 +50,14 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
           }
         }}
       >
-        {options.find(({ value }) => `${value}` === `${selectedOptionValue}`)
-          ?.text ?? "Select an option"}
-      </div>
+        <p>
+          {options.find(({ value }) => `${value}` === `${selectedOptionValue}`)
+            ?.text ?? "Select an option"}
+        </p>
+        <div className="absolute top-1/2 right-4 -translate-y-1/2">
+          <SelectorCloseIcon />
+        </div>
+      </button>
 
       <div className="absolute max-h-32 overflow-y-auto w-full bg-white rounded-b-2xl shadow-lg">
         <Spacing size={2} />
@@ -63,6 +69,8 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
                 "bg-gray-30": `${value}` === `${selectedOptionValue}`,
                 visible: optionsOpen,
                 invisible: !optionsOpen,
+                "text-primary font-semibold":
+                  `${value}` === `${selectedOptionValue}`,
               })}
               onClick={() => {
                 if (value === selectedOptionValue) return;
