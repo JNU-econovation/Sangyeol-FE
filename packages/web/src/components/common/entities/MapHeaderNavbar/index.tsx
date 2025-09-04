@@ -1,22 +1,28 @@
 "use client";
 
 import MAP from "@/constants/map";
-import { updateSearchParams } from "@/utils/url";
 import MapHeaderTag from "@shared/ui/MapHeaderTag";
-import BackButton from "@/components/features/widgets/route/BackButton";
+import { Suspense } from "@suspensive/react";
+import BackButton from "@widgets/route/BackButton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-import { Suspense } from "@suspensive/react";
 
 export default Suspense.with(
   { name: "MapHeaderNavbar" },
   function MapHeaderNavbar() {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const selectedTagId = searchParams.get("tag") || MAP.BASE.facilityName;
+    const selectedTagIds = searchParams.getAll("tag") as (
+      | keyof typeof MAP.BASE_AND_FACILITY
+      | typeof MAP.BASE.id
+    )[];
 
     const mapHeaderTags = useMemo(() => {
-      return [...Object.keys(MAP.BASE_AND_FACILITY)].map((id) => ({
+      return (
+        Object.keys(
+          MAP.BASE_AND_FACILITY,
+        ) as (keyof typeof MAP.BASE_AND_FACILITY)[]
+      ).map((id) => ({
         id,
         text: MAP.BASE_AND_FACILITY[id as keyof typeof MAP.BASE_AND_FACILITY]
           .facilityName,
@@ -32,14 +38,27 @@ export default Suspense.with(
               <li key={text} className="flex-shrink-0">
                 <MapHeaderTag
                   text={text}
-                  isSelected={id === selectedTagId}
+                  isSelected={selectedTagIds.includes(id)}
                   onClickHandler={() => {
+                    if (selectedTagIds.includes(id)) {
+                      const searchParams = new URLSearchParams(
+                        window.location.search,
+                      );
+                      searchParams.delete("tag");
+                      const newTags = selectedTagIds.filter(
+                        (tag) => tag !== id,
+                      );
+                      newTags.forEach((tag) => {
+                        searchParams.append("tag", tag);
+                      });
+
+                      router.replace(
+                        `${window.location.pathname}?${searchParams.toString()}`,
+                      );
+                      return;
+                    }
                     router.replace(
-                      updateSearchParams({
-                        href: window.location.href,
-                        searchParamName: "tag",
-                        paramValue: id,
-                      })
+                      `${window.location.pathname}?${searchParams}&tag=${id}`,
                     );
                   }}
                 />
@@ -49,5 +68,5 @@ export default Suspense.with(
         </div>
       </section>
     );
-  }
+  },
 );

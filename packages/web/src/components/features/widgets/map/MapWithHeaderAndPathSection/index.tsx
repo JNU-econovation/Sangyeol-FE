@@ -33,9 +33,10 @@ export default Suspense.with(
     const searchParams = useSearchParams();
 
     const { mountainId, courseId } = params;
-    const selectedTagId =
-      (searchParams.get("tag") as keyof typeof MAP.BASE_AND_FACILITY) ||
-      MAP.BASE.id;
+    const selectedTagIds = searchParams.getAll("tag") as (
+      | keyof typeof MAP.BASE_AND_FACILITY
+      | typeof MAP.BASE.id
+    )[];
 
     const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
     const { data: basesData } = useBasesQuery({ mountainId });
@@ -46,23 +47,31 @@ export default Suspense.with(
     const { bases } = basesData;
 
     const markers: Markers[] = useMemo(() => {
-      if (selectedTagId === MAP.BASE.id) {
-        return bases.map(({ baseId, coordinate, name }) => ({
-          id: baseId,
-          name: name,
-          coordinate,
-          type: MAP.BASE.id,
-        }));
-      }
-      return getFacilitiesByFacilityType(facilities, selectedTagId).map(
-        ({ coordinate, facilityId, facilityName, facilityType }) => ({
-          id: facilityId,
-          type: facilityType,
-          name: facilityName,
-          coordinate,
-        }),
-      );
-    }, [facilities, bases, selectedTagId]);
+      const result = [];
+      selectedTagIds.forEach((selectedTagId) => {
+        if (selectedTagId === MAP.BASE.id) {
+          result.push(
+            ...bases.map(({ baseId, coordinate, name }) => ({
+              id: baseId,
+              name: name,
+              coordinate,
+              type: MAP.BASE.id,
+            })),
+          );
+        }
+        result.push(
+          ...getFacilitiesByFacilityType(facilities, selectedTagId).map(
+            ({ coordinate, facilityId, facilityName, facilityType }) => ({
+              id: facilityId,
+              type: facilityType,
+              name: facilityName,
+              coordinate,
+            }),
+          ),
+        );
+      });
+      return result;
+    }, [facilities, bases, selectedTagIds]);
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">

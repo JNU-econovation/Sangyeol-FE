@@ -39,15 +39,14 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
     if (!map || !markers || markers.length === 0 || !enable) return;
 
     markers.forEach(({ id, coordinate, name, type }) => {
-      // console.log(`Drawing marker: ${name} at ${coordinate}`);
       const marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(coordinate[1], coordinate[0]),
-        map: map,
+        map: null,
         title: name,
         icon: {
           url: getIconUrl(type),
           size: new naver.maps.Size(30, 30),
-          anchor: new naver.maps.Point(50, 15),
+          anchor: new naver.maps.Point(15, 15),
         },
         zIndex: type === "BASE" ? 1000 : 1,
       });
@@ -68,10 +67,12 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
       if (type !== "TOILET" && type !== "EMERGENCY_KIT") {
         const markerLabel = new naver.maps.Marker({
           position: new naver.maps.LatLng(coordinate[1], coordinate[0]),
-          map: map,
+          map: null,
           title: name,
           icon: {
-            content: `<div class="bg-white border-2 border-primary rounded-full py-1 px-2 text-xs font-bold text-primary shadow translate-x-7 pointer-events-none shrink-0 w-fit">${name}</div>`,
+            content: `<div class="h-full flex items-center max-w-[30px]">
+            <button class="bg-white border border-primary rounded-full py-0.5 px-2 text-xs font-semibold text-primary translate-x-16 pointer-events-none shrink-0">${name}</button>
+            </div>`,
             size: new naver.maps.Size(130, 30),
             anchor: new naver.maps.Point(50, 15),
           },
@@ -79,6 +80,19 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
         markerLabelsRef.current.push(markerLabel);
       }
     });
+
+    // 생성 후 즉시 줌 조건 적용
+    const currentZoom = map.getZoom();
+    if (currentZoom > 11) {
+      drawnMarkersRef.current.forEach((marker) => {
+        marker.setMap(map);
+      });
+    }
+    if (currentZoom > 13) {
+      markerLabelsRef.current.forEach((label) => {
+        label.setMap(map);
+      });
+    }
 
     return () => {
       eventListenersRef.current.forEach((listener) => {
@@ -112,7 +126,7 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
           return;
         }
 
-        if (currentZoom <= 12) {
+        if (currentZoom <= 13) {
           drawnMarkersRef.current.forEach((marker) => {
             marker.setMap(map);
           });
