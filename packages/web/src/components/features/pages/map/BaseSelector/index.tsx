@@ -1,5 +1,6 @@
+"use client";
+
 import MAP from "@/constants/map";
-import ROUTE from "@/constants/route";
 import Selector from "@entities/Selector";
 import useGetCourseDetails from "@hooks/feature/course/useGetCourseDetails";
 import useBasesDetailQuery from "@hooks/feature/query/query/useBasesDetailQuery";
