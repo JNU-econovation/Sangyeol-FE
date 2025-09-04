@@ -45,12 +45,10 @@ export default Suspense.with(
           options={options}
           value={selectedBaseId}
           onSelect={(baseId) => {
-            router.replace(
-              ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
-                tag: searchParams.get("tag") ?? MAP.BASE.id,
-                baseId,
-              }),
-            );
+            const params = new URLSearchParams(window.location.search);
+            if (!params.has("tag")) params.set("tag", MAP.BASE.id);
+            params.set("baseId", String(baseId));
+            router.replace(`${window.location.pathname}?${params.toString()}`);
           }}
         />
         {+peakBaseId === +selectedBaseId && (

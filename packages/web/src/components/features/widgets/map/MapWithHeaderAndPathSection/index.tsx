@@ -33,10 +33,21 @@ export default Suspense.with(
     const searchParams = useSearchParams();
 
     const { mountainId, courseId } = params;
-    const selectedTagIds = searchParams.getAll("tag") as (
-      | keyof typeof MAP.BASE_AND_FACILITY
-      | typeof MAP.BASE.id
-    )[];
+    // const selectedTagIds = searchParams.getAll("tag") as (
+    //   | keyof typeof MAP.BASE_AND_FACILITY
+    //   | typeof MAP.BASE.id
+    // )[];
+    const selectedTagIds = useMemo(() => {
+      const raw = searchParams.getAll("tag");
+      const allowed = new Set<string>([
+        MAP.BASE.id,
+        ...Object.keys(MAP.BASE_AND_FACILITY),
+      ]);
+      return Array.from(new Set(raw.filter((t) => allowed.has(t)))) as (
+        | keyof typeof MAP.BASE_AND_FACILITY
+        | typeof MAP.BASE.id
+      )[];
+    }, [searchParams]);
 
     const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
     const { data: basesData } = useBasesQuery({ mountainId });
