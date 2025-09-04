@@ -13,7 +13,7 @@ interface Pathway {
   coordinates: Coordinate[];
 }
 
-interface GetPathwayOfCourseResponse {
+export interface GetPathwayOfCourseResponse {
   pathways: Pathway[];
 }
 

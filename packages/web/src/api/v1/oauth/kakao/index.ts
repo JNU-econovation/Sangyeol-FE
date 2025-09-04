@@ -2,7 +2,7 @@ import publicApi from "@api/_instances/publicApi";
 
 export const KAKAO_LOGIN_URI = `api/v1/oauth/kakao/login`;
 
-interface KakaoLoginResponse {
+export interface KakaoLoginResponse {
   uri: string;
 }
 
