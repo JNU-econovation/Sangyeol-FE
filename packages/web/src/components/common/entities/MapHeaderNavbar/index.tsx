@@ -40,25 +40,18 @@ export default Suspense.with(
                   text={text}
                   isSelected={selectedTagIds.includes(id)}
                   onClickHandler={() => {
-                    if (selectedTagIds.includes(id)) {
-                      const searchParams = new URLSearchParams(
-                        window.location.search,
-                      );
-                      searchParams.delete("tag");
-                      const newTags = selectedTagIds.filter(
-                        (tag) => tag !== id,
-                      );
-                      newTags.forEach((tag) => {
-                        searchParams.append("tag", tag);
-                      });
-
-                      router.replace(
-                        `${window.location.pathname}?${searchParams.toString()}`,
-                      );
-                      return;
+                    const params = new URLSearchParams(window.location.search);
+                    const idStr = String(id);
+                    const current = params.getAll("tag");
+                    if (current.includes(idStr)) {
+                      const next = current.filter((t) => t !== idStr);
+                      params.delete("tag");
+                      next.forEach((t) => params.append("tag", t));
+                    } else {
+                      params.append("tag", idStr);
                     }
                     router.replace(
-                      `${window.location.pathname}?${searchParams}&tag=${id}`,
+                      `${window.location.pathname}?${params.toString()}`,
                     );
                   }}
                 />
