@@ -30,9 +30,9 @@ export default Suspense.with(
 
     return (
       // height값이 고정되어있습니다! 주의해주세요!
-      <div className="grid grid-cols-2 bg-green-500 rounded-2xl p-2.5 h-28">
-        <p className="font-bold text-gray-20">기상 정보</p>
-        <p className="font-bold text-gray-20">산행 복장</p>
+      <div className="grid grid-cols-2 bg-green-500 rounded-2xl p-2.5 h-36">
+        <div className="font-bold text-gray-900">기상 정보</div>
+        <div className="font-bold text-gray-900">산행 복장</div>
         <div className="flex items-center justify-around">
           {WEATHER[weather]?.icon}
           <div>
@@ -40,16 +40,19 @@ export default Suspense.with(
               {temperature}
               <span className="text-2xl">&deg;C</span>
             </p>
-            <p className="text-sm font-bold">{WEATHER[weather]?.name}</p>
+            <p className="text-sm font-bold text-gray-900">
+              {WEATHER[weather]?.name}
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <ClothesIcon alt="옷 아이콘" />
           <div>
-            <p className="text-xl font-bold">
+            <p className="text-lg font-bold text-black-800">
               {recommendedOutfit ?? "추천 복장"}
             </p>
-            <p className="text-sm">긴팔 긴바지 착용 권장</p>
+            <p className="text-xs text-black-800">긴팔 긴바지 착용 권장</p>
+            <button className="w-5 h-2 bg-primary rounded-2xl" />
           </div>
         </div>
       </div>

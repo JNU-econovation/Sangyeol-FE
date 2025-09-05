@@ -32,7 +32,7 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
       }}
     >
       <button
-        className="border-2 border-primary rounded-2xl font-semibold text-base text-center text-black w-full"
+        className="border border-primary rounded-full font-medium text-base text-center text-black w-full py-1"
         onClick={(e) => {
           if (e.target !== e.currentTarget) {
             setOptionsOpen(!optionsOpen);
@@ -59,7 +59,7 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
         </div>
       </button>
 
-      <div className="absolute max-h-32 overflow-y-auto w-full bg-white rounded-b-2xl shadow-lg">
+      <div className="absolute max-h-42 overflow-y-auto w-full bg-white rounded-b-2xl shadow-lg">
         <Spacing size={2} />
         {optionsOpen &&
           options.map(({ text, value }, index) => (

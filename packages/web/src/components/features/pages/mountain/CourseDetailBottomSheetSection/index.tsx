@@ -29,13 +29,13 @@ export default function CourseDetailBottomSheetSection() {
         <div className="min-h-6">
           <BaseSelector />
         </div>
-        <Spacing size={2} />
+        <Spacing size={4} />
         <CourseMetaDataUi
           difficulty={difficulty}
           distance={length}
           time={duration}
         />
-        <Spacing size={2} />
+        <Spacing size={4} />
 
         <Carousel
           items={[
@@ -43,7 +43,7 @@ export default function CourseDetailBottomSheetSection() {
             <CourseImageInfoSection />,
           ]}
         />
-        <Spacing size={2} />
+        <Spacing size={4} />
       </BottomSheet>
     </section>
   );

@@ -2,8 +2,6 @@
 
 import useBasesDetailQuery from "@hooks/feature/query/query/useBasesDetailQuery";
 import { Suspense } from "@suspensive/react";
-
-import Image from "next/image";
 import { useParams, useSearchParams } from "next/navigation";
 
 export default Suspense.with(
@@ -38,24 +36,24 @@ export default Suspense.with(
 
     const { images } = baseDetail;
     return (
-      //height값이 고정되어있습니다! 주의해주세요! (h-28)
-      <div className="grid grid-cols-2 bg-green-500 rounded-2xl p-2 h-28">
-        <div className="flex items-center justify-center w-full h-full">
-          <Image
-            src={images[0]}
-            alt="코스 상세 사진"
-            width={110}
-            height={100}
-          />
-        </div>
-        <div className="flex items-center justify-center">
-          <Image
-            src={images[1]}
-            alt="코스 상세 사진"
-            width={110}
-            height={110}
-          />
-        </div>
+      //height값이 고정되어있습니다! 주의해주세요! (h-36)
+      <div className="grid grid-cols-2 bg-green-500 rounded-2xl p-2 h-36 gap-4">
+        <div
+          className="flex items-center justify-center w-full h-full rounded-2xl"
+          style={{
+            backgroundImage: `url(${images[0]})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div
+          className="flex items-center justify-center  rounded-2xl"
+          style={{
+            backgroundImage: `url(${images[1]})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
       </div>
     );
   },

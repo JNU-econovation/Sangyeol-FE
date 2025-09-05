@@ -54,7 +54,7 @@ export default Suspense.with(
         />
         {+peakBaseId === +selectedBaseId && (
           <div className="absolute top-0 left-4.5 h-full flex items-center pointer-events-none">
-            <p className="text-yellow text-xs">pick</p>
+            <p className="text-yellow text-xs font-semibold">pick</p>
           </div>
         )}
       </div>
