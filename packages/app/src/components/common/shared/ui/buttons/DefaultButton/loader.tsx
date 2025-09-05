@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 import { COLORS } from "@styles/colorPalette";
 
-interface DefaultButtonLoaderProps {
+export interface DefaultButtonLoaderProps {
   fullWidth?: boolean;
   paddingVertical?: number;
   paddingHorizontal?: number;
