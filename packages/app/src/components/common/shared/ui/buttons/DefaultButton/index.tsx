@@ -3,7 +3,8 @@ import styled from "@emotion/native";
 import { ReactNode } from "react";
 
 import DefaultButtonLoader from "./loader";
-interface ButtonStyledProps {
+
+export interface ButtonStyledProps {
   fullWidth?: boolean;
   disabled?: boolean;
   backgroundColor?: keyof typeof COLORS;
