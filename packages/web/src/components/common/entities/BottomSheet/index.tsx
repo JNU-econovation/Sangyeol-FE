@@ -174,7 +174,7 @@ export default memo(function BottomSheet({
       )}
     >
       <button
-        className="w-full flex items-center justify-center pt-3 pb-6 select-none h-fit"
+        className="w-full flex items-center justify-center pt-3 pb-3 select-none h-fit"
         onMouseDown={(e) => {
           e.preventDefault();
           setIsPressed(true);
@@ -188,7 +188,7 @@ export default memo(function BottomSheet({
           setCurrentY(e.touches[0].clientY);
         }}
       >
-        <div className="w-16 h-2 bg-primary rounded-2xl" />
+        <div className="w-16 h-1.5 bg-primary rounded-2xl" />
       </button>
 
       {debug && (
