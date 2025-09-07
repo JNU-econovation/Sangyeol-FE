@@ -3,7 +3,7 @@ import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
-import { useBridge } from "@/service/bridge";
+import { useBridge } from "bridge/web";
 
 interface Position {
   latitude: number;
@@ -26,7 +26,7 @@ const useSetReportPositionBridge = () => {
         },
       });
     },
-    [request]
+    [request],
   );
 };
 

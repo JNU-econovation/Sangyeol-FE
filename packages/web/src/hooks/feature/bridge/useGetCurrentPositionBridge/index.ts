@@ -3,7 +3,7 @@ import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
-import { useBridge } from "@/service/bridge";
+import { useBridge } from "bridge/web";
 
 interface Coords {
   accuracy: number;
@@ -41,7 +41,7 @@ const useGetCurrentPositionBridge = () => {
         },
       });
     },
-    [request]
+    [request],
   );
 };
 

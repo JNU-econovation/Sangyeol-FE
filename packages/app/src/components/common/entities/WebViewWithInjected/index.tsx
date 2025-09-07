@@ -5,18 +5,16 @@ import {
   INJECT_TOKEN,
   SET_VIEWPORT_RATE,
 } from "@constants/webview";
-import useGetCurrentPosition from "@hooks/feature/useGetCurrentPosition";
-import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
 import {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@model/webview";
-import WebviewWithBridge from "@service/bridge/components/WebviewWithBridge";
 import useToast from "@service/toast";
 import { useTokenStore } from "@store/secureStorage/useTokenStore/index";
 import { COLORS } from "@styles/colorPalette";
 import { getPathToRoute } from "@utils/bridge";
 import { logMessageWithTime } from "@utils/log";
+import { WebviewWithBridge } from "bridge/native";
 import { router } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Animated, BackHandler, View } from "react-native";
@@ -160,7 +158,7 @@ const WebViewWithInjected = ({
               top: 0,
               left: 0,
               height: 2,
-              backgroundColor: COLORS.green - 800,
+              backgroundColor: COLORS.primary,
               zIndex: 9999,
               width: "100%",
               borderTopEndRadius: 1,
