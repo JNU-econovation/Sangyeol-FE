@@ -3,7 +3,7 @@ import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@model/webview";
-import usePostMessageBridge from "@service/bridge/hooks/usePostMessageBridge";
+import { usePostMessageBridge } from "bridge/native";
 import { useCallback } from "react";
 
 interface Path {

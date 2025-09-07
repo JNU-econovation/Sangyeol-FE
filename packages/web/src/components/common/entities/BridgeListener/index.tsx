@@ -1,4 +1,4 @@
-import BridgeRequestListener from "@/service/bridge/components/BridgeRequestListener";
+import { BridgeRequestListener } from "bridge/web";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,
@@ -11,7 +11,7 @@ export default function BridgeListener(
       MessageEventRequestData,
       MessageEventResponseData
     >
-  >
+  >,
 ) {
   return (
     <BridgeRequestListener<MessageEventRequestData, MessageEventResponseData>

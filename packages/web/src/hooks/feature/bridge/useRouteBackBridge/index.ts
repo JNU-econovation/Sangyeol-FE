@@ -1,4 +1,4 @@
-import { useBridge } from "@/service/bridge";
+import { useBridge } from "bridge/web";
 import { useCallback } from "react";
 import type {
   MessageEventRequestData,

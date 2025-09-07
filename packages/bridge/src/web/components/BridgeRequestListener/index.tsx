@@ -34,11 +34,11 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
       {
         if (syn !== BRIDGE.SET)
           throw new Error(
-            "웹뷰 핸드쉐이크 메시지의 syn 값이 올바르지 않습니다. syn 값은 1이어야 합니다."
+            "웹뷰 핸드쉐이크 메시지의 syn 값이 올바르지 않습니다. syn 값은 1이어야 합니다.",
           );
         if (ack === null)
           throw new Error(
-            "웹뷰 핸드쉐이크 메시지의 ack 값이 null입니다. 올바른 ack 값을 포함해야 합니다."
+            "웹뷰 핸드쉐이크 메시지의 ack 값이 null입니다. 올바른 ack 값을 포함해야 합니다.",
           );
       }
       setIsReady(true);
@@ -70,17 +70,17 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
 
         if (ack !== null)
           throw new Error(
-            "클라이언트에서 보낸 요청에 ack가 포함되어 있습니다."
+            "클라이언트에서 보낸 요청에 ack가 포함되어 있습니다.",
           );
 
         if (syn === 1)
           throw new Error(
-            "핸드쉐이크가 끝난 시점에서 웹뷰 핸드쉐이크 메시지가 도착하였습니다."
+            "핸드쉐이크가 끝난 시점에서 웹뷰 핸드쉐이크 메시지가 도착하였습니다.",
           );
 
         if (requestValidator && !requestValidator(body)) {
           throw new Error(
-            "요청 메시지의 유효성 검사에 실패하였습니다. 요청 메시지를 확인해주세요."
+            "요청 메시지의 유효성 검사에 실패하였습니다. 요청 메시지를 확인해주세요.",
           );
         }
 

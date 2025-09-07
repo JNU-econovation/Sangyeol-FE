@@ -1,5 +1,5 @@
 import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
-import { useBridge } from "@/service/bridge";
+import { useBridge } from "bridge/web";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
