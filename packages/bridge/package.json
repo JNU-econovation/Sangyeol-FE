@@ -1,0 +1,33 @@
+{
+  "name": "bridge",
+  "packageManager": "yarn@4.9.3",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "start": "tsup"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*",
+    "react-native-webview": "*"
+  },
+  "devDependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-webview": "^13.13.5",
+    "tsup": "^8.5.0",
+    "typescript": "^5.1.0"
+  },
+  "exports": {
+    "./native": {
+      "import": "./dist/native/index.mjs",
+      "require": "./dist/native/index.js"
+    },
+    "./web": {
+      "import": "./dist/web/index.mjs",
+      "require": "./dist/web/index.js"
+    }
+  }
+}
