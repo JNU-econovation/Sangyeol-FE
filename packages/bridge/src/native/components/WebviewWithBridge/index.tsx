@@ -95,6 +95,7 @@ const WebviewWithBridge = <ReqMessage, ResMessage>({
       // body가 있는 일반 요청 메시지 처리
       if (!body) return;
 
+      //TODO: middleware는 응답을 완전히 처리하지 않도록 하거나, return값이 있다면 낚아채는 식으로 변경 필요
       middleware?.(body);
 
       // normal message
@@ -158,18 +159,7 @@ const WebviewWithBridge = <ReqMessage, ResMessage>({
     [onBridgeMessage, middleware, isReady],
   );
 
-  return (
-    <WebView
-      ref={webViewRef}
-      onMessage={handleMessage}
-      // iOS 제스처 방지
-      // bounces={false}
-      // scrollEnabled={true}
-      // decelerationRate="normal"
-      // contentInsetAdjustmentBehavior="never"
-      {...props}
-    />
-  );
+  return <WebView ref={webViewRef} onMessage={handleMessage} {...props} />;
 };
 
 export default WebviewWithBridge;

@@ -8,7 +8,7 @@ export class WebViewBridge {
   private R_WND: RWindow = new RWindow();
 
   public createMessage = <BodyType>(
-    ref: React.RefObject<WebView<{}> | null>,
+    ref: React.RefObject<WebView | null>,
     {
       ack = null,
       syn = 0,

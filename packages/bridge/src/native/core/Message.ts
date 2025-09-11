@@ -46,6 +46,7 @@ class Message<BodyType = unknown> {
     };
   };
 
+  // 메시지 전송 및 콜백 등록
   public send = <ResMessageType>(callback?: (m: ResMessageType) => void) => {
     Message.sendWebviewMessage(this.ref, this.createNewMessageObj());
 
