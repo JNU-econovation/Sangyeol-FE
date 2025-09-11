@@ -203,6 +203,10 @@ const WebViewWithInjected = ({
           setCanGoForward(navState.canGoForward);
         }}
         webviewDebuggingEnabled={true}
+        bounces={false}
+        scrollEnabled={true}
+        decelerationRate="normal"
+        contentInsetAdjustmentBehavior="never"
       />
     </View>
   );
