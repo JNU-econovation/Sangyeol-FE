@@ -46,7 +46,6 @@ const TravelScreen = () => {
     // 카운트다운이 끝난 후 여행 시작 화면으로 이동
     const timeout = setTimeout(() => {
       setCount(0);
-      // router.replace("/travel/withoutCourseTravel");
       router.replace("/travel/withoutCourse/withoutCourseTravel");
     }, DEFAULT_COUNT * 1000);
 
