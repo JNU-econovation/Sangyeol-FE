@@ -18,8 +18,9 @@ const useTravelWithoutCourse = () => {
     setTravelState,
     setDistance,
     intervalId,
-    addTimelog,
+    addTimelog, // (type: 'start' | 'pause' | 'restart' | 'end', time: number) => void. 여행 타임로그 추가 함수. 이는 올바른 시간 계산을 위하여 로그를 스택으로 남기는 함수이다.
     setIntervalId,
+    clearIntervalId,
     pushTraveledPath,
     traveledPath,
     setConnectedURL,
@@ -39,9 +40,12 @@ const useTravelWithoutCourse = () => {
         return;
       }
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
+      // 현재 위지를 단발성으로 가져와서
       let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
         .coords;
+      // traveledPath에 추가 (traveledPath는 사용자의 위치를 배열로 저장하고, 이를 화면에 그린다.)
       pushTraveledPath([longitude, latitude]);
+      // 서버로 start 메시지 전송
       if (socket && shouldStartTravel) {
         socket.sendMessage({
           event: "start",
@@ -55,6 +59,7 @@ const useTravelWithoutCourse = () => {
     })();
   }, [shouldStartTravel]);
 
+  // 소켓 연결 및 메시지 처리 함수
   const connect = () => {
     if (!TRAVEL_SOCKET_URL) {
       console.warn("[useTravelCourse] 소켓 URL이 정의되지 않았습니다.");
@@ -65,6 +70,7 @@ const useTravelWithoutCourse = () => {
       return;
     }
 
+    // 새로운 소켓 연결 생성
     socketManager.makeNewConnection({
       url: TRAVEL_SOCKET_URL,
       token: accessToken,
@@ -99,6 +105,7 @@ const useTravelWithoutCourse = () => {
             // console.log("[useTravelWithCourse] 서버로부터 받은 데이터:", data);
             setDistance(travelDistance);
 
+            // traveledPath를 폴리라인으로 그리기 (웹뷰인 경우에만 동작)
             sendSetMapPolylineMessage([
               {
                 path: traveledPath,
@@ -106,7 +113,9 @@ const useTravelWithoutCourse = () => {
               },
             ]);
 
+            // 만약 도착 완료 상태라면
             if (isArrived) {
+              // 설정값들 초기화(종료 시 상태로 변경)
               setTravelState("completed");
               addTimelog("end", Date.now());
               showToast({
@@ -115,14 +124,13 @@ const useTravelWithoutCourse = () => {
                 text2: "즐거운 여행 되세요!",
               });
 
-              if (intervalId) {
-                clearInterval(intervalId);
-                setIntervalId(null);
-              }
+              // 반복해서 웹소켓으로 위치 전송하는 인터벌 제거
+              clearIntervalId();
 
               // 종료
-              Location.getCurrentPositionAsync({})
+              Location.getCurrentPositionAsync({}) // 현재 위치를 다시 한 번 받아서
                 .then(({ coords: { longitude, latitude } }) => {
+                  // 서버로 end 메시지 전송
                   socketManager.getSocket(TRAVEL_SOCKET_URL)?.sendMessage({
                     event: "end",
                     data: {
@@ -132,6 +140,8 @@ const useTravelWithoutCourse = () => {
                   });
                 })
                 .then(() => {
+                  // 1.5초 뒤에 소켓 연결 종료
+                  // 3초 뒤에 이전 화면으로 이동
                   setTimeout(() => {
                     socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
                     setTravelState("idle");
@@ -152,14 +162,14 @@ const useTravelWithoutCourse = () => {
             }
           }
         }
+        // 여행 시작 요청에 대한 응답 처리
         if (event === "start" && status === "success" && data) {
           // console.log("[useTravelCourse] 여행 시작:", data);
           setTravelState("in-progress");
           addTimelog("start", Date.now());
-          if (intervalId) {
-            clearInterval(intervalId);
-            setIntervalId(null);
-          }
+          if (intervalId) clearIntervalId();
+
+          // TRAVEL_SOCKET_INTERVAL초마다 현재 위치를 서버로 전송하는 인터벌 설정
           const newIntervalId = setInterval(async () => {
             if (!TRAVEL_SOCKET_URL) {
               console.warn(
@@ -196,10 +206,8 @@ const useTravelWithoutCourse = () => {
         if (event === "end" && status === "success" && data) {
           console.log("[useTravelCourse] 여행 끝:", data);
           socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
-          if (intervalId) {
-            clearInterval(intervalId);
-            setIntervalId(null);
-          }
+          if (intervalId) clearIntervalId();
+
           // setTravelState("completed");
           addTimelog("end", Date.now());
           router.replace("/");
