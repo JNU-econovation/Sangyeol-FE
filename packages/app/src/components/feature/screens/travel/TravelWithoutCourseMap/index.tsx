@@ -62,7 +62,7 @@ const getScaledRadius = (baseRadius: number, zoomLevel: number) => {
   return baseRadius * scale;
 };
 
-const TravelMap = () => {
+const TravelWithoutCourseMap = () => {
   const { location, isLoading: isLocationLoading } = useRealTimeLocation({
     accuracy: "highest",
     timeInterval: 2000,
@@ -94,6 +94,8 @@ const TravelMap = () => {
       onCameraChanged={(event) => {
         setZoomLevel(event.zoom);
       }}
+      logoAlign="BottomLeft"
+      logoMargin={{ bottom: 200, left: 20 }}
     >
       {/* <NaverMapPathOverlay coords={coordConvertor(traveledPath)} /> */}
       {Array.from({ length: 10 }, (_, i) => ({
@@ -134,4 +136,4 @@ const TravelMap = () => {
   );
 };
 
-export default TravelMap;
+export default TravelWithoutCourseMap;
