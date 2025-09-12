@@ -13,7 +13,7 @@ const INTERVAL_CYCLE = 100; // 100 milliseconds
 
 const TravelMonitorSection = () => {
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간
-  const { distance, travelState, getElapsedTime } = useTravelStateStore(); //
+  const { distance, travelState, getElapsedTime } = useTravelStateStore();
 
   useEffect(() => {
     const interval = setInterval(() => {
