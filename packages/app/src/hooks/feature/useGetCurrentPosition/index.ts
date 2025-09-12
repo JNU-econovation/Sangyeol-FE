@@ -1,6 +1,11 @@
 import * as Location from "expo-location";
 import { useEffect, useState } from "react";
 
+/**
+ * 현재 위치를 가져오는 훅입니다.
+ * 호출 시 위치 권한을 요청하고, 허용되면 현재 위치를 1회 가져옵니다.
+ * 만약 주기적인 위치 업데이트가 필요하다면, useRealTimeLocation 훅을 사용하세요.
+ */
 const useGetCurrentPosition = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null,

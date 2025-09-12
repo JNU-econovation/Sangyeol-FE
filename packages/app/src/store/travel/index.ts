@@ -12,7 +12,8 @@ interface TravelStateStore {
   connectedURL: string | null;
   timelog: [TravelTimelogType, number][];
   setTravelState: (state: TravelState) => void;
-  setIntervalId: (id: number | null) => void;
+  setIntervalId: (id: number | null) => void; // 인터벌 ID 설정 함수. 이는 지속적으로 소캣 서버로 위치를 전송하는 데 사용된다.
+  clearIntervalId: () => void;
   setDistance: (distance: number) => void;
   pushTraveledPath: (path: Coordinate) => void;
   setConnectedURL: (url: string | null) => void;
@@ -21,7 +22,7 @@ interface TravelStateStore {
   reset: () => void;
 }
 
-const useTravelStateStore = create<TravelStateStore>((set) => ({
+export const useTravelStateStore = create<TravelStateStore>((set, get) => ({
   travelState: "idle",
   intervalId: null,
   distance: 0,
@@ -31,6 +32,13 @@ const useTravelStateStore = create<TravelStateStore>((set) => ({
   setTravelState: (state) => set({ travelState: state }),
   setIntervalId: (id) => set({ intervalId: id }),
   setDistance: (distance) => set({ distance }),
+  clearIntervalId: () => {
+    const { intervalId } = get();
+    if (intervalId) {
+      clearInterval(intervalId);
+      set({ intervalId: null });
+    }
+  },
   pushTraveledPath: (path) =>
     set((state) => ({
       traveledPath: [...state.traveledPath, path],

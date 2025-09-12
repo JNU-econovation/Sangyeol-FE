@@ -12,12 +12,12 @@ import { useEffect, useState } from "react";
 const INTERVAL_CYCLE = 100; // 100 milliseconds
 
 const TravelMonitorSection = () => {
-  const [elapsedTime, setElapsedTime] = useState(0); // milliseconds
-  const { distance, travelState, getElapsedTime } = useTravelStateStore();
+  const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간
+  const { distance, travelState, getElapsedTime } = useTravelStateStore(); //
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setElapsedTime(getElapsedTime());
+      setElapsedTime(getElapsedTime()); //TODO: 상태를 상태로 넣고 있음. 수정 필요
     }, INTERVAL_CYCLE);
     return () => clearInterval(interval);
   }, [getElapsedTime, travelState]);
@@ -26,6 +26,7 @@ const TravelMonitorSection = () => {
     <Container>
       <Spacing size={24} />
       <ButtonContainer>
+        {/* 여행 상태에 따른 버튼 렌더링 */}
         {travelState === "in-progress" && (
           <>
             <TravelPauseButton />

@@ -19,10 +19,11 @@ const DEFAULT_COUNT = 3;
  */
 
 const TravelScreen = () => {
-  const [count, setCount] = useState(DEFAULT_COUNT);
+  const [count, setCount] = useState(DEFAULT_COUNT); // 카운트다운에서 사용하는 수
   const { travelState } = useTravelStateStore();
 
   useEffect(() => {
+    // 이미 여행이 시작된 상태라면, 경고를 띄우고 기본 코스 ID로 이동 (여행은 여행 시작되지 않은 상태(idle)에서만 시작 가능)
     if (travelState !== "idle") {
       console.warn("[TravelScreen] 여행이 이미 시작되었습니다.");
 
@@ -30,6 +31,7 @@ const TravelScreen = () => {
       return;
     }
 
+    // 카운트다운 시작
     const intervalId = setInterval(() => {
       setCount((prevCount) => {
         if (prevCount > 1) {
@@ -41,6 +43,7 @@ const TravelScreen = () => {
       });
     }, 1000);
 
+    // 카운트다운이 끝난 후 여행 시작 화면으로 이동
     const timeout = setTimeout(() => {
       setCount(0);
       // router.replace("/travel/withoutCourseTravel");
