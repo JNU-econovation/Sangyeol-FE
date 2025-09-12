@@ -1,5 +1,6 @@
+import TravelWithCourseMap from "@components/feature/screens/travel/TravelWithCourseMap";
 import TravelMonitorSection from "@screens/travel/TravelMonitorSection";
-import TravelWithCourseMapWebview from "@screens/travel/TravelWithCourseMapWebview";
+// import TravelWithCourseMapWebview from "@screens/travel/TravelWithCourseMapWebview";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "react";
@@ -9,7 +10,8 @@ const WithCourseTravelScreen = () => {
     <>
       <Spacing size={16} />
       <Suspense>
-        <TravelWithCourseMapWebview />
+        {/* <TravelWithCourseMapWebview /> */}
+        <TravelWithCourseMap />
       </Suspense>
       <PositionBottom bottom={24}>
         <TravelMonitorSection />
