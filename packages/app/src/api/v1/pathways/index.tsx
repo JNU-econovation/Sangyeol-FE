@@ -5,7 +5,7 @@ import { Coordinate } from "@model/map";
 export const PATHWAY_API_PATH = (courseId: string) =>
   `api/v1/pathways?courseId=${encodeURIComponent(courseId)}`;
 
-interface Pathway {
+export interface Pathway {
   pathwayId: string;
   deptBaseId: number;
   destBaseId: number;
@@ -13,7 +13,7 @@ interface Pathway {
   coordinates: Coordinate[];
 }
 
-interface GetPathwayOfCourseResponse {
+export interface GetPathwayOfCourseResponse {
   pathways: Pathway[];
 }
 
