@@ -3,6 +3,7 @@ export { default as LeftArrowSVG } from "@assets/icons/Left_Arrow.svg";
 export { default as RightArrowSVG } from "@assets/icons/Right_Arrow.svg";
 export { default as LeftArrowWithWhiteBgSVG } from "@assets/icons/Left_Arrow_Black.svg";
 export { default as BackArrow } from "@assets/icons/Back_Arrow.svg";
+export { default as BackButton } from "@assets/icons/Back_Button.svg";
 
 //image
 export { default as StarSVG } from "@assets/icons/Star.svg";
