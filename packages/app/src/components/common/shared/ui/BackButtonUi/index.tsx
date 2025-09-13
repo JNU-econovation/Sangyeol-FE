@@ -1,18 +1,22 @@
 import styled from "@emotion/native";
-import { BackArrow } from "@shared/ui/Icons";
+import { BackArrow, BackButton } from "@shared/ui/Icons";
 
-interface BackButtonUiProps {
+export interface BackButtonUiProps {
   onPress?: () => void;
+  background: boolean;
 }
 
-const BackButtonUi = ({ onPress }: BackButtonUiProps) => {
+const BackButtonUi = ({ onPress, background }: BackButtonUiProps) => {
   return (
-    <BackButtonContainer onPress={onPress}>
-      <BackArrow />
+    <BackButtonContainer onPress={onPress} background={background}>
+      {!background && <BackArrow />}
+      {background && <BackButton />}
     </BackButtonContainer>
   );
 };
 
-const BackButtonContainer = styled.TouchableOpacity``;
+const BackButtonContainer = styled.TouchableOpacity<
+  Omit<BackButtonUiProps, "onPress">
+>``;
 
 export default BackButtonUi;
