@@ -21,12 +21,15 @@ const DEFAULT_COUNT = 3;
 const TravelScreen = () => {
   const [count, setCount] = useState(DEFAULT_COUNT);
   const { travelState } = useTravelStateStore();
-  const { courseId } = useLocalSearchParams<{ courseId: string }>();
+  const { courseId, mountainId } = useLocalSearchParams<{
+    courseId: string;
+    mountainId: string;
+  }>();
 
   useEffect(() => {
     if (travelState !== "idle") {
       console.warn("[TravelScreen] 여행이 이미 시작되었습니다.");
-      router.replace(`/travel/${courseId}/travel`);
+      router.replace(`/travel/${mountainId}/${courseId}/travel`);
       return;
     }
 
@@ -43,7 +46,7 @@ const TravelScreen = () => {
 
     const timeout = setTimeout(() => {
       setCount(0);
-      router.replace(`/travel/${courseId}/travel`);
+      router.replace(`/travel/${mountainId}/${courseId}/travel`);
     }, DEFAULT_COUNT * 1000);
 
     return () => {
