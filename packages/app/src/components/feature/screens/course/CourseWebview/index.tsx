@@ -15,17 +15,19 @@ const CourseWebview = () => {
             !body ||
             typeof body !== "object" ||
             !("courseId" in body) ||
-            typeof body.courseId !== "string"
+            !("mountainId" in body) ||
+            typeof body.courseId !== "string" ||
+            typeof body.mountainId !== "string"
           ) {
             return {
               name: "start-travel",
               status: "error",
-              error: "courseId is required",
+              error: "courseId and mountainId are required",
             };
           }
 
-          const { courseId } = body;
-          router.push(`/travel/${courseId}`);
+          const { courseId, mountainId } = body;
+          router.push(`/travel/${mountainId}/${courseId}`);
           return {
             name: "start-travel",
             status: "success",
