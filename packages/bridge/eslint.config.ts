@@ -26,15 +26,7 @@ export default defineConfig([
     rules: {
       // 강력하게 설정된 규칙들
       "no-console": ["error", { allow: ["warn", "error"] }],
-      "no-unused-vars": [
-        "error",
-        {
-          varsIgnorePattern: "^_",
-          argsIgnorePattern: "^_",
-          ignoreRestSiblings: true,
-          args: "none", // 함수 파라미터 체크 비활성화
-        },
-      ],
+      "no-unused-vars": "off",
       "prefer-const": "error",
       "no-var": "error", // var 사용 금지
 
@@ -42,7 +34,11 @@ export default defineConfig([
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": [
         "error",
-        { argsIgnorePattern: "^_" },
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
       ],
     },
   },
