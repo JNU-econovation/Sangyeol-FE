@@ -12,19 +12,21 @@ const useGetRealtimeHeading = () => {
   const targetHeading = useSharedValue(0);
 
   useEffect(() => {
-    Location.watchHeadingAsync((headingData) => {
-      setIsLoading(false);
-      const currentHeading = headingData.trueHeading || headingData.magHeading;
-      targetHeading.value = currentHeading;
-    }).then((subscription) => {
-      subscriptionRef.current = subscription;
-    });
-
-    return () => {
-      if (subscriptionRef.current) {
-        subscriptionRef.current.remove();
+    (async () => {
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") return;
+        const sub = await Location.watchHeadingAsync((headingData) => {
+          setIsLoading(false);
+          const currentHeading =
+            headingData.trueHeading ?? headingData.magHeading ?? 0;
+          targetHeading.value = currentHeading;
+        });
+        subscriptionRef.current = sub;
+      } catch (e) {
+        console.warn("[useGetRealtimeHeading] watchHeadingAsync failed:", e);
       }
-    };
+    })();
   }, []);
 
   // 부드러운 애니메이션 (60fps)
