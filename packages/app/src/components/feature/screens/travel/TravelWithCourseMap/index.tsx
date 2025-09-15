@@ -32,15 +32,13 @@ const TravelWithCourseMap = () => {
     courseId,
   });
 
-  const courses = useMemo(() => {
-    return pathways
-      .map(({ coordinates }) => {
-        return coordinates.map((coord) => {
-          return { latitude: coord[1], longitude: coord[0] };
-        });
-      })
-      .flat() as unknown as { latitude: number; longitude: number }[];
-  }, [pathways]);
+  const courses = useMemo(
+    () =>
+      pathways.flatMap(({ coordinates }) =>
+        coordinates.map(([lng, lat]) => ({ latitude: lat, longitude: lng })),
+      ),
+    [pathways],
+  );
 
   return (
     <Container>
