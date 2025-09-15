@@ -1,6 +1,6 @@
 class RWindow {
   // TODO: 단순 id를 담는 것이 아닌 객체로 변경 고려 (메시지 body를 제외한 모든 정보 담기)
-  public RWND_BUFFER: Set<string>;
+  private RWND_BUFFER: Set<string>;
 
   //TODO: WeakMap으로 변경 고려 => RWND_BUFFER에서 객체를 제거하면 GC가 콜백도 제거해줄 것임
   private callbackBuffer: Map<string, ((resMessage?: any) => void)[]> =
