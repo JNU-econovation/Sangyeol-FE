@@ -3,7 +3,7 @@ import { BackArrow, BackButton } from "@shared/ui/Icons";
 
 export interface BackButtonUiProps {
   onPress?: () => void;
-  background: boolean;
+  background?: boolean;
 }
 
 const BackButtonUi = ({ onPress, background }: BackButtonUiProps) => {
