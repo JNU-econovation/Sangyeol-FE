@@ -74,7 +74,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonStyledProps>(
 );
 
 const StyledText = styled.Text<ButtonStyledProps>`
-  color: ${({ color }) => (color ? COLORS[color] : COLORS.black)};
+  color: ${({ color }) => (color ? COLORS[color] : COLORS.mainWhite)};
   font-size: ${({ fontSize }) => (fontSize ? fontSize + "px" : "16px")};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : "bold")};
   text-align: center;
