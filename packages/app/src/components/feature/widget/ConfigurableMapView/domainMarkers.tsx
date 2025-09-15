@@ -14,11 +14,11 @@ interface DomainMarkersProps {
 const DomainMarkers = ({
   zoomLevel,
   showOverlays,
-  bases,
-  toilets,
-  markets,
-  rentals,
-  emergencyKits,
+  bases = [],
+  toilets = [],
+  markets = [],
+  rentals = [],
+  emergencyKits = [],
 }: DomainMarkersProps) => {
   return (
     <>
