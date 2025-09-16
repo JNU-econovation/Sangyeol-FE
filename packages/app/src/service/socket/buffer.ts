@@ -18,17 +18,6 @@ class SocketBuffer {
   }
 
   public removeSocket(url: string): void {
-    const existing = this.socketBuffer[url]?.socket;
-    if (existing) {
-      try {
-        existing.disconnect();
-      } catch (e) {
-        console.warn(
-          "[SocketBuffer] Error while disconnecting socket on remove.",
-          e,
-        );
-      }
-    }
     delete this.socketBuffer[url];
   }
 
