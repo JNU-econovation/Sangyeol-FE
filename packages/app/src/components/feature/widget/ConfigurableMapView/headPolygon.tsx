@@ -6,13 +6,14 @@ import {
   createViewDirectionPolygon,
   getScaledRadius,
 } from "@utils/map";
+import { memo } from "react";
 
 //TODO: 상위에서 데이터를 의존하면서, 몇몇은 내부에서 데이터를 의존하는 형태가 있음. 둘 중 하나로 통일해야함
 interface HeadPolygonProps {
   zoomLevel: number;
 }
 
-const HeadPolygon = ({ zoomLevel }: HeadPolygonProps) => {
+const HeadPolygon = memo(({ zoomLevel }: HeadPolygonProps) => {
   const { heading, isLoading: isHeadingLoading } = useGetRealtimeHeading();
   const { location, isLoading: isLocationLoading } = useRealTimeLocation({
     accuracy: "highest",
@@ -46,6 +47,6 @@ const HeadPolygon = ({ zoomLevel }: HeadPolygonProps) => {
       ))}
     </>
   );
-};
+});
 
 export default HeadPolygon;
