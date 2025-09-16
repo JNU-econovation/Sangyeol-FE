@@ -103,16 +103,4 @@ const CounterContainer = styled.View<{ count: number }>`
   width: 100%;
 `;
 
-const WebviewContainer = styled.View<{ count: number }>`
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: ${({ count }) => (count === 0 ? 100 : -10)};
-  transition: all 3s ease-in-out;
-  background-color: ${COLORS.red};
-`;
-
 export default TravelScreen;

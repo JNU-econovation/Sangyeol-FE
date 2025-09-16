@@ -1,4 +1,5 @@
 import styled from "@emotion/native";
+import useTravelWithoutCourse from "@hooks/feature/travel/useTravelWithoutCourse";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 import useTravelStateStore from "@store/travel";
@@ -21,6 +22,13 @@ const DEFAULT_COUNT = 3;
 const TravelScreen = () => {
   const [count, setCount] = useState(DEFAULT_COUNT); // 카운트다운에서 사용하는 수
   const { travelState } = useTravelStateStore();
+
+  const { connect } = useTravelWithoutCourse();
+
+  // 여행 시작 시 소켓 연결
+  useEffect(() => {
+    connect();
+  }, []);
 
   useEffect(() => {
     // 이미 여행이 시작된 상태라면, 경고를 띄우고 기본 코스 ID로 이동 (여행은 여행 시작되지 않은 상태(idle)에서만 시작 가능)
@@ -102,18 +110,6 @@ const CounterContainer = styled.View<{ count: number }>`
   transition: all 3s ease-in-out;
   width: 100%;
   /* opacity: ${({ count }) => (count === 0 ? "0" : "1")}; */
-`;
-
-const WebviewContainer = styled.View<{ count: number }>`
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: ${({ count }) => (count === 0 ? "100000000" : "-10")};
-  transition: all 3s ease-in-out;
-  background-color: ${COLORS.red};
 `;
 
 export default TravelScreen;
