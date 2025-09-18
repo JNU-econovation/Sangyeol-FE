@@ -3,8 +3,14 @@ import { ImageBackground } from "react-native";
 import HomeNavGridSection from "@screens/Home/HomeNavGridSection";
 // import ScreenContainer from "@shared/layout/Screen";
 import Spacing from "@shared/layout/Spacing";
+import { router } from "expo-router";
+import { useEffect } from "react";
 
 const HomeScreen = () => {
+  useEffect(() => {
+    router.prefetch("/(tabs)/home/course");
+  }, []);
+
   return (
     <Container source={require("@assets/images/Home_Background.png")}>
       <HomeNavGridSection />
