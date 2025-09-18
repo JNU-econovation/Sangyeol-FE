@@ -6,7 +6,7 @@ import type {
 import { usePostMessageBridge } from "bridge/native";
 import { useCallback } from "react";
 
-interface Path {
+export interface Path {
   path: Coordinate[];
   strokeWeight?: number;
   strokeColor?: string;

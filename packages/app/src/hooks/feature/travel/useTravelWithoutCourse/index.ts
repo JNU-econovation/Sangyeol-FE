@@ -1,5 +1,5 @@
 // import useSetMapPolylineBridge from "@hooks/feature/bridge/useSetMapPolylineBridge";
-import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
+import useRealTimeLocation from "@hooks/feature/location/useRealTimeLocation";
 import SocketManager from "@service/socket/manager";
 import useToast from "@service/toast";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
@@ -114,7 +114,6 @@ const useTravelWithoutCourse = () => {
         console.warn("[useTravelCourse] 소켓 연결이 종료되었습니다.");
         setTravelState("idle");
         setConnectedURL(null);
-        reset();
       },
       onError: (error) => {
         console.error("[useTravelCourse] 소켓 연결 오류:", error);
@@ -178,7 +177,7 @@ const useTravelWithoutCourse = () => {
                   }, 1500);
 
                   setTimeout(() => {
-                    router.replace("/travel/result");
+                    router.replace("/travel/withoutCourse/result");
                   }, 3000);
                 });
             }
@@ -247,7 +246,7 @@ const useTravelWithoutCourse = () => {
             setTravelState("completed");
           }, 500);
 
-          router.replace("/travel/result");
+          router.replace("/travel/withoutCourse/result");
         }
       },
     });
@@ -258,7 +257,7 @@ const useTravelWithoutCourse = () => {
       console.warn("[useTravelCourse] 소켓 URL이 정의되지 않았습니다.");
       return;
     }
-    reset();
+    // reset();
   };
 
   return {

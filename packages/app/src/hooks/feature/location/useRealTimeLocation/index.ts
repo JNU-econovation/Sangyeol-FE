@@ -1,21 +1,27 @@
 import * as Location from "expo-location";
 import { useEffect, useState, useRef } from "react";
 
-type LocationAccuracy = "lowest" | "low" | "balanced" | "high" | "highest";
+export type LocationAccuracy =
+  | "lowest"
+  | "low"
+  | "balanced"
+  | "high"
+  | "highest";
 
-interface UseRealTimeLocationOptions {
+export interface UseRealTimeLocationOptions {
   accuracy?: LocationAccuracy; // 위치 정확도 수준 (기본값: "high")
   timeInterval?: number; // 위치 업데이트 시간 간격 (밀리초, 기본값: 1000ms)
   distanceInterval?: number; // 위치 업데이트 거리 간격 (미터, 기본값: 1m)
 }
 
-const ACCURACY_MAP: Record<LocationAccuracy, Location.LocationAccuracy> = {
-  lowest: Location.LocationAccuracy.Lowest,
-  low: Location.LocationAccuracy.Low,
-  balanced: Location.LocationAccuracy.Balanced,
-  high: Location.LocationAccuracy.High,
-  highest: Location.LocationAccuracy.Highest,
-};
+export const ACCURACY_MAP: Record<LocationAccuracy, Location.LocationAccuracy> =
+  {
+    lowest: Location.LocationAccuracy.Lowest,
+    low: Location.LocationAccuracy.Low,
+    balanced: Location.LocationAccuracy.Balanced,
+    high: Location.LocationAccuracy.High,
+    highest: Location.LocationAccuracy.Highest,
+  };
 
 /**
  * 실시간으로 위치 정보를 추적하는 훅입니다.

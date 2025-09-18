@@ -1,7 +1,7 @@
 import useCoursePathwayQuery from "@hooks/feature/query/query/useCoursePathwayQuery";
 import type { Coordinate } from "@model/map";
 
-interface UseGetCoursePathByCourseIdParams {
+export interface UseGetCoursePathByCourseIdParams {
   courseId: string;
 }
 

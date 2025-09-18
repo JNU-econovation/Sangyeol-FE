@@ -1,6 +1,6 @@
 import WebViewWithInjected from "@components/common/entities/WebViewWithInjected";
 import PATH_ROUTE from "@constants/pathRoute";
-import useGetCurrentPosition from "@hooks/feature/useGetCurrentPosition";
+import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
 import ScreenContainer from "@shared/layout/Screen";
 import Header from "@shared/ui/Header";
 import { useReportPositionStore } from "@store/report/useReportPositionStore";

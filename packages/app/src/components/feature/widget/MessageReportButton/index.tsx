@@ -1,5 +1,5 @@
-import useGetCurrentPosition from "@hooks/feature/useGetCurrentPosition";
-import useReportSMS from "@hooks/feature/useReportSMS";
+import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
+import useReportSMS from "@hooks/feature/sms/useReportSMS";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
 
 const MessageReportButton = () => {

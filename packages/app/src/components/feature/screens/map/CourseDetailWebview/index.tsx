@@ -1,6 +1,6 @@
 import PATH_ROUTE from "@constants/pathRoute";
 import WebViewWithInjected from "@entities/WebViewWithInjected";
-import useGetCurrentPosition from "@hooks/feature/useGetCurrentPosition";
+import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
 // import { router } from "expo-router";
 
 const CourseDetailWebview = () => {

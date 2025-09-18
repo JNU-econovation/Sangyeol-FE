@@ -1,5 +1,5 @@
-import useGetRealtimeHeading from "@hooks/feature/useGetRealtimeHeading";
-import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
+import useGetRealtimeHeading from "@hooks/feature/location/useGetRealtimeHeading";
+import useRealTimeLocation from "@hooks/feature/location/useRealTimeLocation";
 import { NaverMapPolygonOverlay } from "@mj-studio/react-native-naver-map";
 import {
   coordConvertor,
