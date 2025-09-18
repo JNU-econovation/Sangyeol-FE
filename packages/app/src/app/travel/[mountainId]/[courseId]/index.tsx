@@ -1,4 +1,5 @@
 import styled from "@emotion/native";
+import useTravelCourse from "@hooks/feature/travel/useTravelCourse";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 import useTravelStateStore from "@store/travel";
@@ -25,6 +26,15 @@ const TravelScreen = () => {
     courseId: string;
     mountainId: string;
   }>();
+  const { connect } = useTravelCourse({
+    mountainId: mountainId ?? "1",
+    courseId: courseId ?? "1",
+  });
+
+  useEffect(() => {
+    connect();
+    router.prefetch(`/travel/${mountainId}/${courseId}/travel`);
+  }, []);
 
   useEffect(() => {
     if (travelState !== "idle") {

@@ -1,4 +1,4 @@
-import useGetCurrentPosition from "@hooks/feature/useGetCurrentPosition";
+import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
 import FieldLayout from "@shared/layout/FieldLayout";
 import Textarea from "@shared/ui/Textarea";
 import WeakButton from "@shared/ui/WeakButton";

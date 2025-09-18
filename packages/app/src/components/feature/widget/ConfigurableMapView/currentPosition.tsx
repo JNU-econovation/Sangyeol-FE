@@ -1,4 +1,4 @@
-import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
+import useRealTimeLocation from "@hooks/feature/location/useRealTimeLocation";
 import { NaverMapMarkerOverlay } from "@mj-studio/react-native-naver-map";
 import { memo } from "react";
 
