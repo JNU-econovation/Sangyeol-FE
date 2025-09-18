@@ -1,5 +1,6 @@
 import useSetMapPolylineBridge from "@hooks/feature/bridge/useSetMapPolylineBridge";
 import useGetCoursePathByCourseId from "@hooks/feature/useGetCoursePathByCourseId";
+import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
 import SocketManager from "@service/socket/manager";
 import useToast from "@service/toast";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
@@ -10,7 +11,8 @@ import { router } from "expo-router";
 import { useEffect, useState } from "react";
 
 const TRAVEL_SOCKET_URL = process.env.EXPO_PUBLIC_TRAVEL_NAVIGATE_SOCKET_URL;
-const TRAVEL_SOCKET_INTERVAL = 1200;
+const TRAVEL_LOCATION_UPDATE_INTERVAL = 2000;
+const TRAVEL_SOCKET_INTERVAL = 12000;
 
 interface UseTravelCourseProps {
   courseId: string;
@@ -32,7 +34,36 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
   const showToast = useToast();
   const coordinates = useGetCoursePathByCourseId({ courseId });
   const { ref, sendSetMapPolylineMessage } = useSetMapPolylineBridge();
+  const { location } = useRealTimeLocation({
+    accuracy: "highest",
+    timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
+    distanceInterval: 1,
+  });
   const [shouldStartTravel, setShouldStartTravel] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      if (!TRAVEL_SOCKET_URL) {
+        console.warn("[useTravelWithCourse] 소켓 URL이 정의되지 않았습니다.");
+        return;
+      }
+      let socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
+      if (socket) {
+        let { latitude, longitude } = (
+          await Location.getCurrentPositionAsync({})
+        ).coords;
+        pushTraveledPath([longitude, latitude]);
+        console.log("[useTravelWithoutCourse] 위치 변경:");
+        socket.sendMessage({
+          event: "current-position",
+          data: {
+            coordinate: [longitude, latitude],
+            courseId,
+          },
+        });
+      }
+    })();
+  }, [location, socketManager, pushTraveledPath]);
 
   // location이 준비되면 start 메시지 전송
   useEffect(() => {

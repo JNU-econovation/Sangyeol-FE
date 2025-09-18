@@ -1,15 +1,18 @@
-import useSetMapPolylineBridge from "@hooks/feature/bridge/useSetMapPolylineBridge";
+// import useSetMapPolylineBridge from "@hooks/feature/bridge/useSetMapPolylineBridge";
+import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
 import SocketManager from "@service/socket/manager";
 import useToast from "@service/toast";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import useTravelStateStore from "@store/travel";
-import { COLORS } from "@styles/colorPalette";
 import * as Location from "expo-location";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 
 const TRAVEL_SOCKET_URL = process.env.EXPO_PUBLIC_TRAVEL_SOCKET_URL;
+const TRAVEL_LOCATION_UPDATE_INTERVAL = 2000;
 const TRAVEL_SOCKET_INTERVAL = 12000;
+
+// TODO: 최적화 필요. | 잠깐 백그라운드에 있다가 오면 몇 초 이상 멈춰있음. 추가적으로 백그라운드에서 상태를 관리하는 로직이 올바르게 동작하지 않을 수 있음. sqlite 도입 고려 필요
 
 const useTravelWithoutCourse = () => {
   const socketManager = SocketManager.getInstance();
@@ -27,8 +30,36 @@ const useTravelWithoutCourse = () => {
     reset,
   } = useTravelStateStore();
   const showToast = useToast();
-  const { ref, sendSetMapPolylineMessage } = useSetMapPolylineBridge();
+  // const { ref, sendSetMapPolylineMessage } = useSetMapPolylineBridge();
+  const { location } = useRealTimeLocation({
+    accuracy: "highest",
+    timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
+    distanceInterval: 1,
+  });
   const [shouldStartTravel, setShouldStartTravel] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      if (!TRAVEL_SOCKET_URL) {
+        console.warn("[useTravelWithCourse] 소켓 URL이 정의되지 않았습니다.");
+        return;
+      }
+      let socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
+      if (socket) {
+        let { latitude, longitude } = (
+          await Location.getCurrentPositionAsync({})
+        ).coords;
+        pushTraveledPath([longitude, latitude]);
+        console.log("[useTravelWithoutCourse] 위치 변경:");
+        socket.sendMessage({
+          event: "current-position",
+          data: {
+            coordinate: [longitude, latitude],
+          },
+        });
+      }
+    })();
+  }, [location, socketManager, pushTraveledPath]);
 
   // location이 준비되면 start 메시지 전송
   useEffect(() => {
@@ -92,7 +123,7 @@ const useTravelWithoutCourse = () => {
         reset();
       },
       onMessage: ({ event, status, data }) => {
-        console.log("소캣 메시지 수신:", { event, status, data });
+        // console.log("소캣 메시지 수신:", { event, status, data });
         if (event === "current-position" && status === "success" && data) {
           // console.log("[useTravelCourse] 현재 위치:", data);
 
@@ -101,17 +132,16 @@ const useTravelWithoutCourse = () => {
             typeof data.isArrived === "boolean" &&
             typeof data.isDeviation === "boolean"
           ) {
-            const { index, isArrived, isDeviation, travelDistance } = data;
-            // console.log("[useTravelWithCourse] 서버로부터 받은 데이터:", data);
+            const { isArrived, isDeviation, travelDistance } = data;
             setDistance(travelDistance);
 
             // traveledPath를 폴리라인으로 그리기 (웹뷰인 경우에만 동작)
-            sendSetMapPolylineMessage([
-              {
-                path: traveledPath,
-                strokeColor: COLORS.gray900,
-              },
-            ]);
+            // sendSetMapPolylineMessage([
+            //   {
+            //     path: traveledPath,
+            //     strokeColor: COLORS.gray900,
+            //   },
+            // ]);
 
             // 만약 도착 완료 상태라면
             if (isArrived) {
@@ -144,11 +174,11 @@ const useTravelWithoutCourse = () => {
                   // 3초 뒤에 이전 화면으로 이동
                   setTimeout(() => {
                     socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
-                    setTravelState("idle");
+                    setTravelState("completed");
                   }, 1500);
 
                   setTimeout(() => {
-                    router.back();
+                    router.replace("/travel/result");
                   }, 3000);
                 });
             }
@@ -166,10 +196,11 @@ const useTravelWithoutCourse = () => {
         if (event === "start" && status === "success" && data) {
           // console.log("[useTravelCourse] 여행 시작:", data);
           setTravelState("in-progress");
-          addTimelog("start", Date.now());
-          if (intervalId) clearIntervalId();
-
-          // TRAVEL_SOCKET_INTERVAL초마다 현재 위치를 서버로 전송하는 인터벌 설정
+          // addTimelog("start", Date.now());
+          if (intervalId) {
+            clearInterval(intervalId);
+            setIntervalId(null);
+          }
           const newIntervalId = setInterval(async () => {
             if (!TRAVEL_SOCKET_URL) {
               console.warn(
@@ -205,12 +236,18 @@ const useTravelWithoutCourse = () => {
         }
         if (event === "end" && status === "success" && data) {
           console.log("[useTravelCourse] 여행 끝:", data);
-          socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
           if (intervalId) clearIntervalId();
+          setTravelState("completed");
 
-          // setTravelState("completed");
           addTimelog("end", Date.now());
-          router.replace("/");
+
+          // 서버 응답 후 안전하게 소켓 연결 해제
+          setTimeout(() => {
+            socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
+            setTravelState("completed");
+          }, 500);
+
+          router.replace("/travel/result");
         }
       },
     });
@@ -225,7 +262,7 @@ const useTravelWithoutCourse = () => {
   };
 
   return {
-    ref,
+    // ref,
     connect,
     disconnect,
   };
