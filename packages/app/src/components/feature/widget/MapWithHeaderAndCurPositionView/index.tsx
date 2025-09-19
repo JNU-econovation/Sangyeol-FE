@@ -20,6 +20,7 @@ const MapWithHeaderAndCurPositionView = () => {
       <MapHeaderNavbar>
         {({ selectedTags }) => (
           <ConfigurableMapView
+            currentPositionIcon
             showOverlays={selectedTags}
             bases={bases.map(({ coordinate }) => coordinate)}
             toilets={facilities
