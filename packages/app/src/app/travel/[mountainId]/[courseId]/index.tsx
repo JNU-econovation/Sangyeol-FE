@@ -21,7 +21,7 @@ const DEFAULT_COUNT = 3;
 
 const TravelScreen = () => {
   const [count, setCount] = useState(DEFAULT_COUNT);
-  const { travelState } = useTravelStateStore();
+  const { travelState, travelType } = useTravelStateStore();
   const { courseId, mountainId } = useLocalSearchParams<{
     courseId: string;
     mountainId: string;
@@ -32,6 +32,10 @@ const TravelScreen = () => {
   });
 
   useEffect(() => {
+    if (travelState !== "idle") {
+      console.warn("[TravelScreen] 여행이 이미 시작되었습니다.");
+    }
+
     connect();
     router.prefetch(`/travel/${mountainId}/${courseId}/travel`);
   }, []);
@@ -39,6 +43,13 @@ const TravelScreen = () => {
   useEffect(() => {
     if (travelState !== "idle") {
       console.warn("[TravelScreen] 여행이 이미 시작되었습니다.");
+      if (travelType !== "with-course") {
+        console.warn(
+          "[TravelScreen] 현재 여행 타입이 'with-course'가 아닙니다. 코스 없는 산행으로 이동합니다.",
+        );
+        router.replace("/travel/withoutCourse/withoutCourseTravel");
+        return;
+      }
       router.replace(`/travel/${mountainId}/${courseId}/travel`);
       return;
     }

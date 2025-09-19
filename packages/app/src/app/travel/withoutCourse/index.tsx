@@ -21,12 +21,13 @@ const DEFAULT_COUNT = 3;
 
 const TravelScreen = () => {
   const [count, setCount] = useState(DEFAULT_COUNT); // 카운트다운에서 사용하는 수
-  const { travelState } = useTravelStateStore();
+  const { travelState, travelType, travelData } = useTravelStateStore();
 
   const { connect } = useTravelWithoutCourse();
 
   // 여행 시작 시 소켓 연결
   useEffect(() => {
+    router.prefetch("/travel/withoutCourse/withoutCourseTravel");
     connect();
   }, []);
 
@@ -34,6 +35,21 @@ const TravelScreen = () => {
     // 이미 여행이 시작된 상태라면, 경고를 띄우고 기본 코스 ID로 이동 (여행은 여행 시작되지 않은 상태(idle)에서만 시작 가능)
     if (travelState !== "idle") {
       console.warn("[TravelScreen] 여행이 이미 시작되었습니다.");
+
+      if (
+        travelType !== "without-course" &&
+        travelData.courseId &&
+        travelData.mountainId
+      ) {
+        console.warn(
+          "[TravelScreen] 현재 여행 타입이 'without-course'가 아닙니다. 기본 코스 ID로 이동합니다.",
+        );
+
+        const { courseId, mountainId } = travelData;
+
+        router.replace(`/travel/${mountainId}/${courseId}/travel`);
+        return;
+      }
 
       router.replace("/travel/withoutCourse/withoutCourseTravel"); // 기본 코스 ID로 이동
       return;
