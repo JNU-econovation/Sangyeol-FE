@@ -9,9 +9,9 @@ import { COLORS } from "@styles/colorPalette";
 import { msToTimeText } from "@utils/time";
 import { useEffect, useState } from "react";
 
-const INTERVAL_CYCLE = 100; // 100 milliseconds
+const INTERVAL_CYCLE = 500; // 500 milliseconds
 
-const TravelMonitorSection = () => {
+const TravelWithoutMonitorSection = () => {
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간
   const { distance, travelState, getElapsedTime } = useTravelStateStore();
 
@@ -41,36 +41,25 @@ const TravelMonitorSection = () => {
         )}
       </ButtonContainer>
 
-      <TimeDisplay>{msToTimeText(elapsedTime)}</TimeDisplay>
+      <TimeDisplay>
+        {travelState === "idle" ? "--:--" : msToTimeText(elapsedTime)}
+      </TimeDisplay>
       <Text textAlign="center" opacity={0.5}>
         산행 시간
       </Text>
 
       <Spacing size={12} />
 
-      <MetricsContainer>
-        <MetricItem>
-          <MetricIcon>🏃‍♂️‍➡️</MetricIcon>
-          <MetricData>
-            <MetricValue>{distance.toFixed(2)}</MetricValue>
-            <MetricUnit>km</MetricUnit>
-          </MetricData>
-        </MetricItem>
-
-        <Divider />
-
-        <MetricItem>
-          <MetricIcon>🔥</MetricIcon>
-          <MetricValue>03:24</MetricValue>
-        </MetricItem>
-
-        <Divider />
-
-        <MetricItem>
-          <MetricIcon>⛰️</MetricIcon>
-          <MetricValue>01:20</MetricValue>
-        </MetricItem>
-      </MetricsContainer>
+      <TextContainer>
+        <Text
+          fontSize={24}
+          fontWeight="semibold"
+          textAlign="center"
+          style={{ transform: "translateX(-10px)" }}
+        >
+          🏃‍➡️ {distance.toFixed(2)} km
+        </Text>
+      </TextContainer>
 
       <Spacing size={16} />
     </Container>
@@ -102,46 +91,13 @@ const TimeDisplay = styled.Text`
   color: ${COLORS.black};
 `;
 
-const MetricsContainer = styled.View`
+const TextContainer = styled.View`
   background-color: ${COLORS.green500};
   border-radius: 12px;
   padding: 16px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
-const MetricItem = styled.View`
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-`;
-
-const MetricIcon = styled.Text`
-  font-size: 16px;
-`;
-
-const MetricData = styled.View`
-  align-items: flex-start;
-`;
-
-const MetricValue = styled.Text`
-  font-weight: 600;
-  font-size: 16px;
-  color: ${COLORS.black};
-`;
-
-const MetricUnit = styled.Text`
-  font-size: 12px;
-  color: ${COLORS.black};
-  text-align: right;
-`;
-
-const Divider = styled.View`
-  height: 40px;
-  width: 1px;
-  background-color: ${COLORS.gray900};
-  opacity: 0.5;
-`;
-
-export default TravelMonitorSection;
+export default TravelWithoutMonitorSection;
