@@ -8,7 +8,7 @@ import useTravelStateStore from "@store/travel";
 import { COLORS } from "@styles/colorPalette";
 import ConfigurableMapView from "@widget/ConfigurableMapView";
 import { useLocalSearchParams } from "expo-router";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const mountainId = "1";
 
@@ -22,9 +22,12 @@ const TravelWithCourseMap = () => {
     data: { bases },
   } = useBasesQuery({ mountainId });
 
-  const traveledPath = useTravelStateStore().traveledPath.map(
-    ([longitude, latitude]) => ({ latitude, longitude }),
-  );
+  const { timelog, addTimelog, traveledPath } = useTravelStateStore();
+
+  const traveledPaths = traveledPath.map(([longitude, latitude]) => ({
+    latitude,
+    longitude,
+  }));
 
   const {
     data: { pathways },
@@ -40,13 +43,19 @@ const TravelWithCourseMap = () => {
     [pathways],
   );
 
+  useEffect(() => {
+    if (timelog.length === 0) addTimelog("start", Date.now());
+  }, [addTimelog]);
+
   return (
     <Container>
       <MapHeaderNavbar>
         {({ selectedTags }) => (
           <ConfigurableMapView
+            currentPositionIcon
+            zoom={16}
             paths={[
-              { coords: traveledPath, color: COLORS.primary },
+              { coords: traveledPaths, color: COLORS.primary },
               { coords: courses, color: COLORS.gray700 },
             ]}
             showOverlays={selectedTags}

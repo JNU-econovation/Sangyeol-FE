@@ -25,7 +25,7 @@ const useTravelWithoutCourse = () => {
     setIntervalId,
     clearIntervalId,
     pushTraveledPath,
-    traveledPath,
+    setTravelType,
     setConnectedURL,
     reset,
   } = useTravelStateStore();
@@ -133,7 +133,6 @@ const useTravelWithoutCourse = () => {
           ) {
             const { isArrived, isDeviation, travelDistance } = data;
             setDistance(travelDistance);
-
             // traveledPath를 폴리라인으로 그리기 (웹뷰인 경우에만 동작)
             // sendSetMapPolylineMessage([
             //   {
@@ -195,7 +194,7 @@ const useTravelWithoutCourse = () => {
         if (event === "start" && status === "success" && data) {
           // console.log("[useTravelCourse] 여행 시작:", data);
           setTravelState("in-progress");
-          // addTimelog("start", Date.now());
+          addTimelog("start", Date.now());
           if (intervalId) {
             clearInterval(intervalId);
             setIntervalId(null);
@@ -222,6 +221,7 @@ const useTravelWithoutCourse = () => {
             }
           }, TRAVEL_SOCKET_INTERVAL);
           setIntervalId(newIntervalId);
+          setTravelType("without-course");
         }
         if (event === "pause" && status === "success" && data) {
           console.log("[useTravelCourse] 여행 일시 정지:", data);

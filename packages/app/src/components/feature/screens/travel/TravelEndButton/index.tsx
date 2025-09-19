@@ -1,28 +1,33 @@
-import StopButton from "@components/common/shared/ui/buttons/StopButton";
 import SocketManager from "@service/socket/manager";
+import StopButton from "@shared/ui/buttons/StopButton";
 import useTravelStateStore from "@store/travel";
 import { useLocalSearchParams } from "expo-router";
+import * as Location from "expo-location";
 
 const TravelEndButton = () => {
   const { courseId } = useLocalSearchParams();
   const socketManager = SocketManager.getInstance();
-  const { connectedURL } = useTravelStateStore();
+  const { connectedURL, getElapsedTime } = useTravelStateStore();
 
-  const handleEnd = () => {
+  const handleEnd = async () => {
+    let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
+      .coords;
     const message = courseId
       ? {
           event: "end",
           data: {
-            coordinate: [],
+            coordinate: [longitude, latitude],
             courseId,
             time: Date.now(),
+            totalTravelTime: getElapsedTime(),
           },
         }
       : {
           event: "end",
           data: {
-            coordinate: [],
+            coordinate: [longitude, latitude],
             time: Date.now(),
+            totalTravelTime: getElapsedTime(),
           },
         };
 
