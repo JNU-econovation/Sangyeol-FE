@@ -3,8 +3,17 @@ import { getValueFromSecureStore } from "@utils/secureStore";
 import { useFonts } from "expo-font";
 import { Redirect, SplashScreen } from "expo-router";
 import { useCallback, useEffect } from "react";
+import {
+  configureReanimatedLogger,
+  ReanimatedLogLevel,
+} from "react-native-reanimated";
 
 SplashScreen.preventAutoHideAsync();
+
+configureReanimatedLogger({
+  level: ReanimatedLogLevel.warn,
+  strict: false,
+});
 
 export default function Index() {
   const { accessToken, setAccessToken, setRefreshToken } = useTokenStore();
