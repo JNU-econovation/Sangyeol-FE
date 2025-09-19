@@ -184,14 +184,11 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
                     },
                   });
                 })
+                .then(() => {
+                  socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
+                })
                 .finally(() => {
-                  setTimeout(() => {
-                    socketManager.disconnectSocket(TRAVEL_SOCKET_URL);
-                  }, 1500);
-
-                  setTimeout(() => {
-                    router.replace(`/travel/${mountainId}/${courseId}/result`);
-                  }, 3000);
+                  router.replace(`/travel/${mountainId}/${courseId}/result`);
                 });
             }
 
@@ -255,9 +252,9 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
             clearInterval(intervalId);
             setIntervalId(null);
           }
-          // setTravelState("completed");
-          // addTimelog("end", Date.now());
-          // router.replace(`/travel/${mountainId}/${courseId}/result`);
+          setTravelState("completed");
+          addTimelog("end", Date.now());
+          router.replace(`/travel/${mountainId}/${courseId}/result`);
         }
       },
     });
