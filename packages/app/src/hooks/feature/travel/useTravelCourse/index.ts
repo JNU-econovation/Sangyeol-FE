@@ -1,11 +1,11 @@
-import useSetMapPolylineBridge from "@hooks/feature/bridge/useSetMapPolylineBridge";
-import useGetCoursePathByCourseId from "@hooks/feature/useGetCoursePathByCourseId";
-import useRealTimeLocation from "@hooks/feature/useRealTimeLocation";
+// import useSetMapPolylineBridge from "@hooks/feature/bridge/useSetMapPolylineBridge";
+// import useGetCoursePathByCourseId from "@hooks/feature/course/useGetCoursePathByCourseId";
+import useRealTimeLocation from "@hooks/feature/location/useRealTimeLocation";
 import SocketManager from "@service/socket/manager";
 import useToast from "@service/toast";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import useTravelStateStore from "@store/travel";
-import { COLORS } from "@styles/colorPalette";
+// import { COLORS } from "@styles/colorPalette";
 import * as Location from "expo-location";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
@@ -15,13 +15,13 @@ const TRAVEL_LOCATION_UPDATE_INTERVAL = 2000;
 const TRAVEL_SOCKET_INTERVAL = 12000;
 
 interface UseTravelCourseProps {
+  mountainId: string;
   courseId: string;
 }
-const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
+const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   const socketManager = SocketManager.getInstance();
   const { accessToken } = useTokenStore.getState();
   const {
-    travelState,
     intervalId,
     addTimelog,
     setTravelState,
@@ -29,11 +29,15 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
     setDistance,
     pushTraveledPath,
     setConnectedURL,
+    setTravelType,
+    setRemainTimeToStopover,
+    setRemainTimeToEnd,
+    setTravelData,
     reset,
   } = useTravelStateStore();
   const showToast = useToast();
-  const coordinates = useGetCoursePathByCourseId({ courseId });
-  const { ref, sendSetMapPolylineMessage } = useSetMapPolylineBridge();
+  // const coordinates = useGetCoursePathByCourseId({ courseId });
+  // const { ref, sendSetMapPolylineMessage } = useSetMapPolylineBridge();
   const { location } = useRealTimeLocation({
     accuracy: "highest",
     timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
@@ -53,7 +57,6 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
           await Location.getCurrentPositionAsync({})
         ).coords;
         pushTraveledPath([longitude, latitude]);
-        console.log("[useTravelWithoutCourse] 위치 변경:");
         socket.sendMessage({
           event: "current-position",
           data: {
@@ -115,7 +118,6 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
         console.warn("[useTravelCourse] 소켓 연결이 종료되었습니다.");
         setTravelState("idle");
         setConnectedURL(null);
-        reset();
       },
       onError: (error) => {
         console.error("[useTravelCourse] 소켓 연결 오류:", error);
@@ -124,29 +126,37 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
         reset();
       },
       onMessage: ({ event, status, data }) => {
-        console.log("소캣 메시지 수신:", { event, status, data });
         if (event === "current-position" && status === "success" && data) {
-          // console.log("[useTravelCourse] 현재 위치:", data);
-
           if (
             typeof data.index === "number" &&
             typeof data.isArrived === "boolean" &&
-            typeof data.isDeviation === "boolean"
+            typeof data.isDeviation === "boolean" &&
+            typeof data.remainTimeToStopover === "number" &&
+            typeof data.remainTimeToEnd === "number" &&
+            typeof data.travelDistance === "number"
           ) {
-            const { index, isArrived, isDeviation, travelDistance } = data;
-            // console.log("[useTravelWithCourse] 서버로부터 받은 데이터:", data);
+            const {
+              // index,
+              isArrived,
+              isDeviation,
+              travelDistance,
+              remainTimeToStopover,
+              remainTimeToEnd,
+            } = data;
             setDistance(travelDistance);
+            setRemainTimeToStopover(remainTimeToStopover);
+            setRemainTimeToEnd(remainTimeToEnd);
 
-            sendSetMapPolylineMessage([
-              {
-                path: coordinates.slice(0, index + 1),
-                strokeColor: COLORS.gray900,
-              },
-              {
-                path: coordinates.slice(index),
-                strokeColor: COLORS.green800,
-              },
-            ]);
+            // sendSetMapPolylineMessage([
+            //   {
+            //     path: coordinates.slice(0, index + 1),
+            //     strokeColor: COLORS.gray900,
+            //   },
+            //   {
+            //     path: coordinates.slice(index),
+            //     strokeColor: COLORS.green800,
+            //   },
+            // ]);
 
             if (isArrived) {
               setTravelState("completed");
@@ -180,7 +190,7 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
                   }, 1500);
 
                   setTimeout(() => {
-                    router.back();
+                    router.replace(`/travel/${mountainId}/${courseId}/result`);
                   }, 3000);
                 });
             }
@@ -225,6 +235,8 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
             }
           }, TRAVEL_SOCKET_INTERVAL);
           setIntervalId(newIntervalId);
+          setTravelType("with-course");
+          setTravelData({ mountainId, courseId });
         }
         if (event === "pause" && status === "success" && data) {
           console.log("[useTravelCourse] 여행 일시 정지:", data);
@@ -244,8 +256,8 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
             setIntervalId(null);
           }
           // setTravelState("completed");
-          addTimelog("end", Date.now());
-          router.replace("/");
+          // addTimelog("end", Date.now());
+          // router.replace(`/travel/${mountainId}/${courseId}/result`);
         }
       },
     });
@@ -261,7 +273,7 @@ const useTravelCourse = ({ courseId }: UseTravelCourseProps) => {
   };
 
   return {
-    ref,
+    // ref,
     connect,
     disconnect,
   };
