@@ -1,7 +1,7 @@
 import useTravelStateStore from "@store/travel";
 import { COLORS } from "@styles/colorPalette";
 import ConfigurableMapView from "@widget/ConfigurableMapView";
-import { memo, useEffect } from "react";
+import { memo, useEffect, useMemo } from "react";
 
 const ZOOM_LEVEL = 14;
 
@@ -12,10 +12,13 @@ const TravelResultMapView = memo(() => {
     latitude,
     longitude,
   }));
-  const basePoints = [
-    { ...traveledPaths[0] },
-    { ...traveledPaths[traveledPaths.length - 1] },
-  ];
+  const basePoints = useMemo(() => {
+    traveledPaths.length >= 2
+      ? [traveledPaths[0], traveledPaths[traveledPaths.length - 1]]
+      : traveledPaths.length === 1
+        ? [traveledPaths[0]]
+        : [];
+  }, [traveledPaths]);
 
   const midPoint = {
     latitude:
@@ -29,6 +32,12 @@ const TravelResultMapView = memo(() => {
           traveledPath.length
         : 0,
   };
+
+  useEffect(() => {
+    return () => {
+      reset();
+    };
+  }, [reset]);
 
   return (
     <ConfigurableMapView
