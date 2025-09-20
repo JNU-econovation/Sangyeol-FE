@@ -1,6 +1,5 @@
-import useUserProfileStatusQuery from "@hooks/feature/query/query/useUserProfileStatusQuery";
+import useCheckUserLoginAndProfileState from "@hooks/feature/authenticate/useCheckUserLoginAndProfileState";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
-import { getValueFromSecureStore } from "@utils/secureStore";
 import { useFonts } from "expo-font";
 import { Redirect, SplashScreen } from "expo-router";
 import { useCallback, useEffect } from "react";
@@ -17,12 +16,16 @@ configureReanimatedLogger({
 });
 
 export default function Index() {
-  const { accessToken, setAccessToken, setRefreshToken } = useTokenStore();
+  const { setAccessToken, setRefreshToken } = useTokenStore();
   const {
-    data: profileStatus,
-    isLoading: profileStatusLoading,
-    error: profileStatusError,
-  } = useUserProfileStatusQuery();
+    accessToken,
+    error,
+    isLoading,
+    isLoggedIn,
+    isProfileComplete,
+    refreshToken,
+  } = useCheckUserLoginAndProfileState();
+
   const [fontLoaded, fontError] = useFonts({
     "pretendard-black": require("@/assets/fonts/Pretendard-Black.otf"),
     "pretendard-bold": require("@/assets/fonts/Pretendard-Bold.otf"),
@@ -35,11 +38,17 @@ export default function Index() {
     "pretendard-thin": require("@/assets/fonts/Pretendard-Thin.otf"),
   });
 
-  const checkLogin = useCallback(async () => {
-    try {
-      const accessToken = await getValueFromSecureStore("accessToken");
-      const refreshToken = await getValueFromSecureStore("refreshToken");
+  const checkLogin = useCallback(async () => {}, [
+    setAccessToken,
+    setRefreshToken,
+    accessToken,
+    refreshToken,
+  ]);
 
+  // 처음 렌더링 될 때, 로그인 상태 확인
+  useEffect(() => {
+    try {
+      // SecureStore에서 토큰 가져와 전역 상태에 설정 (가져오는 로직은 useCheckUserLoginAndProfileState 훅에서 처리)
       if (accessToken && refreshToken) {
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
@@ -47,25 +56,19 @@ export default function Index() {
     } catch (error) {
       console.error("[global index] Error checking login status:", error);
     }
-  }, []);
+  }, [checkLogin, setAccessToken, setRefreshToken, accessToken, refreshToken]);
 
+  // 폰트 로딩 또는 에러 발생 시 스플래시 스크린 숨기기
   useEffect(() => {
-    checkLogin();
-  }, [checkLogin]);
-
-  useEffect(() => {
-    if (fontLoaded || fontError) SplashScreen.hideAsync();
+    if ((fontLoaded || fontError) && !isLoading) SplashScreen.hideAsync();
   }, [fontLoaded, fontError]);
 
-  if (profileStatusLoading || !profileStatus) return null; //TODO: 로딩 폴백 보여주기
+  if (isLoading) return null; //TODO: 로딩 폴백 보여주기
 
-  const { isComplete } = profileStatus;
-
-  console.log("isComplete", isComplete);
-  if (accessToken && isComplete === false)
+  if (isLoggedIn && !isProfileComplete)
     return <Redirect href="/onboarding/profile" />;
 
-  if (fontError || profileStatusError) return null; //TODO: 에러 페이지로 넘기기
+  if (fontError || error) return null; //TODO: 에러 페이지로 넘기기
   if (accessToken) return <Redirect href="/(tabs)/home" />;
   return <Redirect href={"/starter"} />;
 }
