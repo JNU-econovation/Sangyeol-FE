@@ -53,9 +53,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
       }
       let socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (socket) {
-        let { latitude, longitude } = (
-          await Location.getCurrentPositionAsync({})
-        ).coords;
+        let { latitude, longitude } = location.coords;
         pushTraveledPath([longitude, latitude]);
         socket.sendMessage({
           event: "current-position",
@@ -76,8 +74,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
         return;
       }
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
-      let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
-        .coords;
+      let { latitude, longitude } = location.coords;
 
       pushTraveledPath([longitude, latitude]);
       if (socket && shouldStartTravel) {
@@ -218,9 +215,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
             }
             let socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
             if (socket) {
-              let { latitude, longitude } = (
-                await Location.getCurrentPositionAsync({})
-              ).coords;
+              let { latitude, longitude } = location.coords;
               pushTraveledPath([longitude, latitude]);
               socket.sendMessage({
                 event: "current-position",
