@@ -3,7 +3,7 @@ import authenticatedApi from "@api/_instances/authenticatedApi";
 export type CourseSortType = "length" | "difficulty";
 
 export const RELATED_MOUNTAINS_API_PATH = (keyword: string) =>
-  `/api/v1/mountains/relations/${keyword}`;
+  `/api/v1/mountains/relations/${encodeURIComponent(keyword)}`;
 
 interface GetRelatedMountainsParams {
   keyword: string;
