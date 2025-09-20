@@ -2,13 +2,13 @@ import authenticatedApi from "@api/_instances/authenticatedApi";
 
 export const USER_PROFILE_API_PATH = "/api/v1/users/profile";
 
-interface PostProfileResponse {
+export interface PostProfileResponse {
   nickname: string;
   phoneNumber: string;
   email: string;
 }
 
-interface PostProfileRequest {
+export interface PostProfileRequest {
   nickname: string;
   phoneNumber: string;
   email: string;

@@ -5,7 +5,7 @@
 
 import publicApi from "@api/_instances/publicApi";
 
-interface LoginRequestBody {
+export interface LoginRequestBody {
   identityToken: string;
   email: string;
   fullName: {

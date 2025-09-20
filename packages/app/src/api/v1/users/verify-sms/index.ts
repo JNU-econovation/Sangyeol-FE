@@ -2,11 +2,11 @@ import authenticatedApi from "@api/_instances/authenticatedApi";
 
 export const USER_VERIFY_NUMBER_API_PATH = "/api/v1/users/verify-sms";
 
-interface PostVerifyPhoneNumberResponse {
+export interface PostVerifyPhoneNumberResponse {
   certificationCode: number;
 }
 
-interface PostVerifyPhoneNumberRequest {
+export interface PostVerifyPhoneNumberRequest {
   certificationCode: string;
 }
 

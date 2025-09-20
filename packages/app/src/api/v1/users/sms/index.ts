@@ -3,7 +3,7 @@ import { isValidPhoneNumber } from "@utils/phoneNumber";
 
 export const USER_VERIFY_SMS_API_PATH = "/api/v1/users/sms";
 
-interface PostSMSForVerificationResponse {
+export interface PostSMSForVerificationResponse {
   phoneNumber: string;
 }
 

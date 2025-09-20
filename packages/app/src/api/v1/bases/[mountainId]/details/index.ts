@@ -3,7 +3,7 @@ import authenticatedApi from "@api/_instances/authenticatedApi";
 export const BASES_DETAIL_API_PATH = (mountainId: string) =>
   `api/v1/bases/${mountainId}/details`;
 
-type Weather =
+export type Weather =
   | "Thunderstorm"
   | "Drizzle"
   | "Rain"
@@ -12,7 +12,7 @@ type Weather =
   | "Clear"
   | "Clouds";
 
-interface BaseInfo {
+export interface BaseInfo {
   baseId: string;
   name: string;
   weather: Weather;
