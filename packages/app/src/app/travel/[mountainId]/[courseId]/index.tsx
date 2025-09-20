@@ -27,13 +27,14 @@ const TravelScreen = () => {
     mountainId: string;
   }>();
   const { connect } = useTravelCourse({
-    mountainId: mountainId ?? "1",
-    courseId: courseId ?? "1",
+    mountainId: mountainId,
+    courseId: courseId,
   });
 
   useEffect(() => {
     if (travelState !== "idle") {
       console.warn("[TravelScreen] 여행이 이미 시작되었습니다.");
+      return;
     }
 
     connect();
