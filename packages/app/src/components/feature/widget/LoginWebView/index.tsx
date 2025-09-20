@@ -36,7 +36,7 @@ const LoginWebView = () => {
           setAccessTokenExpiredTime(accessTokenExpiredTime);
 
           router.dismissAll();
-          router.replace("/(tabs)/home");
+          router.replace("/");
         }
       }}
       loadingBar
