@@ -2,7 +2,7 @@ import useCoursesOfMountainQuery from "@hooks/feature/query/query/useCoursesOfMo
 
 interface UseGetCourseDetailsProps {
   mountainId: string;
-  courseId?: string;
+  courseId: string;
 }
 
 /**
@@ -19,7 +19,7 @@ const useGetCourseDetails = ({
   });
 
   const courseIndex = data?.courses.findIndex(
-    (course) => +course.id === +courseId,
+    (course) => course.id == courseId,
   );
 
   if (courseIndex === -1)
