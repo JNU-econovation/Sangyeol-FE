@@ -46,9 +46,7 @@ const useTravelWithoutCourse = () => {
       }
       let socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (socket) {
-        let { latitude, longitude } = (
-          await Location.getCurrentPositionAsync({})
-        ).coords;
+        let { latitude, longitude } = location.coords;
         pushTraveledPath([longitude, latitude]);
         console.log("[useTravelWithoutCourse] 위치 변경:");
         socket.sendMessage({
@@ -72,8 +70,7 @@ const useTravelWithoutCourse = () => {
       }
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       // 현재 위지를 단발성으로 가져와서
-      let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
-        .coords;
+      let { latitude, longitude } = location.coords;
       // traveledPath에 추가 (traveledPath는 사용자의 위치를 배열로 저장하고, 이를 화면에 그린다.)
       pushTraveledPath([longitude, latitude]);
       // 서버로 start 메시지 전송
@@ -133,13 +130,6 @@ const useTravelWithoutCourse = () => {
           ) {
             const { isArrived, isDeviation, travelDistance } = data;
             setDistance(travelDistance);
-            // traveledPath를 폴리라인으로 그리기 (웹뷰인 경우에만 동작)
-            // sendSetMapPolylineMessage([
-            //   {
-            //     path: traveledPath,
-            //     strokeColor: COLORS.gray900,
-            //   },
-            // ]);
 
             // 만약 도착 완료 상태라면
             if (isArrived) {
@@ -207,10 +197,9 @@ const useTravelWithoutCourse = () => {
               return;
             }
             let socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
+            //TODO: 현재는 주기적으로 보내도록 하지만, 추후에는 위치 정보를 n초 이상 보내지 않을 경우에 보내도록 최적화 필요
             if (socket) {
-              let { latitude, longitude } = (
-                await Location.getCurrentPositionAsync({})
-              ).coords;
+              let { latitude, longitude } = location.coords;
               pushTraveledPath([longitude, latitude]);
               socket.sendMessage({
                 event: "current-position",
