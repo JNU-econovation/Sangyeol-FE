@@ -9,7 +9,7 @@ interface GetRelatedMountainsParams {
   keyword: string;
 }
 
-interface Mountain {
+export interface Mountain {
   mountainId: string;
   name: string;
 }

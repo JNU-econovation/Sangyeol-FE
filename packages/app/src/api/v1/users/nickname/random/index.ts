@@ -2,7 +2,7 @@ import authenticatedApi from "@api/_instances/authenticatedApi";
 
 export const RANDOM_NICKNAME_API_PATH = `/api/v1/users/nickname/random`;
 
-interface GetRandomNicknameResponse {
+export interface GetRandomNicknameResponse {
   nickname: string;
 }
 
