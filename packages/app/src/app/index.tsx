@@ -1,3 +1,4 @@
+import useUserProfileStatusQuery from "@hooks/feature/query/query/useUserProfileStatusQuery";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { getValueFromSecureStore } from "@utils/secureStore";
 import { useFonts } from "expo-font";
@@ -17,7 +18,12 @@ configureReanimatedLogger({
 
 export default function Index() {
   const { accessToken, setAccessToken, setRefreshToken } = useTokenStore();
-  const [loaded, error] = useFonts({
+  const {
+    data: profileStatus,
+    isLoading: profileStatusLoading,
+    error: profileStatusError,
+  } = useUserProfileStatusQuery();
+  const [fontLoaded, fontError] = useFonts({
     "pretendard-black": require("@/assets/fonts/Pretendard-Black.otf"),
     "pretendard-bold": require("@/assets/fonts/Pretendard-Bold.otf"),
     "pretendard-extrabold": require("@/assets/fonts/Pretendard-ExtraBold.otf"),
@@ -48,10 +54,18 @@ export default function Index() {
   }, [checkLogin]);
 
   useEffect(() => {
-    if (loaded || error) SplashScreen.hideAsync();
-  }, [loaded, error]);
+    if (fontLoaded || fontError) SplashScreen.hideAsync();
+  }, [fontLoaded, fontError]);
 
-  if (!loaded && !error) return null;
+  if (profileStatusLoading || !profileStatus) return null; //TODO: 로딩 폴백 보여주기
+
+  const { isComplete } = profileStatus;
+
+  console.log("isComplete", isComplete);
+  if (accessToken && isComplete === false)
+    return <Redirect href="/onboarding/profile" />;
+
+  if (fontError || profileStatusError) return null; //TODO: 에러 페이지로 넘기기
   if (accessToken) return <Redirect href="/(tabs)/home" />;
   return <Redirect href={"/starter"} />;
 }
