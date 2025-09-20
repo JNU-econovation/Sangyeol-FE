@@ -51,7 +51,7 @@ const AppleLoginButton = () => {
 
             resetScreenDisable();
             router.dismissAll();
-            router.replace("/(tabs)/home");
+            router.replace("/");
           },
           onError: (error) => {
             // console.error("애플 로그인 요청 에러", error);
