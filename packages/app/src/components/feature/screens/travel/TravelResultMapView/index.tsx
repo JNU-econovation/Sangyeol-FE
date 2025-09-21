@@ -13,7 +13,7 @@ const TravelResultMapView = memo(() => {
     longitude,
   }));
   const basePoints = useMemo(() => {
-    traveledPaths.length >= 2
+    return traveledPaths.length >= 2
       ? [traveledPaths[0], traveledPaths[traveledPaths.length - 1]]
       : traveledPaths.length === 1
         ? [traveledPaths[0]]
