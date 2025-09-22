@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import { memo, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { Dimensions } from "react-native";
 
 const DEFAULT_BOTTOM_SPACE = 50; // 하단 여백
