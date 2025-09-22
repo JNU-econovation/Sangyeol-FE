@@ -24,6 +24,7 @@ const appConfig = {
       },
     },
     android: {
+      softwareKeyboardLayoutMode: "pan",
       adaptiveIcon: {
         foregroundImage: "./assets/images/splash-icon.png",
         backgroundColor: "#ffffff",
