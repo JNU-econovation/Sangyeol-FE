@@ -28,6 +28,12 @@ export default function RootLayout() {
             <Stack.Screen name="index" />
             <Stack.Screen name="login" />
             <Stack.Screen
+              name="starter"
+              options={{
+                animation: "fade",
+              }}
+            />
+            <Stack.Screen
               name="loginModal"
               options={{
                 presentation: "modal",
