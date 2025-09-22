@@ -39,6 +39,7 @@ const EmailField = () => {
           backgroundColor="gray600"
           borderColor="gray600"
           paddingVertical={16}
+          keyboardType="email-address"
           placeholderTextColor={COLORS.gray600}
           helperText={HELPER.PROFILE_FORM.EMAIL[watch("emailFieldHelperState")]}
           onChangeText={(email) => {
