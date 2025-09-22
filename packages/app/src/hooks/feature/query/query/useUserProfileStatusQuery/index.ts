@@ -6,15 +6,17 @@ import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { useQuery } from "@tanstack/react-query";
 
 const useUserProfileStatusQuery = () => {
-  const { accessToken } = useTokenStore();
+  // const { accessToken } = useTokenStore();
 
-  return useQuery({
+  const query = useQuery({
     queryKey: [USER_PROFILE_STATUS_API_PATH],
     queryFn: getProfileStatus,
-    enabled: !!accessToken,
+    // enabled: !!accessToken,
     staleTime: Infinity,
     gcTime: Infinity,
   });
+
+  return query;
 };
 
 export default useUserProfileStatusQuery;

@@ -60,7 +60,7 @@ export default function Index() {
 
   // 폰트 로딩 또는 에러 발생 시 스플래시 스크린 숨기기
   useEffect(() => {
-    if ((fontLoaded || fontError) && !isLoading) SplashScreen.hideAsync();
+    if (fontLoaded || fontError) SplashScreen.hideAsync();
   }, [fontLoaded, fontError]);
 
   if (isLoading) return null; //TODO: 로딩 폴백 보여주기
