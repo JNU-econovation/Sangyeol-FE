@@ -57,14 +57,12 @@ const SubmitButton = () => {
   };
 
   return (
-    <PositionBottom>
-      <DefaultButton
-        title="완료"
-        color="mainWhite"
-        fullWidth
-        onPress={handleSubmit}
-      />
-    </PositionBottom>
+    <DefaultButton
+      title="완료"
+      color="mainWhite"
+      fullWidth
+      onPress={handleSubmit}
+    />
   );
 };
 
