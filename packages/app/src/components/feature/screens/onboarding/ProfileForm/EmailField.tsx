@@ -36,8 +36,8 @@ const EmailField = () => {
           title="이메일"
           titleSpacing={0}
           placeholder="입력하기"
-          backgroundColor="gray600"
-          borderColor="gray600"
+          backgroundColor="gray300"
+          borderColor="gray300"
           paddingVertical={16}
           keyboardType="email-address"
           placeholderTextColor={COLORS.gray600}

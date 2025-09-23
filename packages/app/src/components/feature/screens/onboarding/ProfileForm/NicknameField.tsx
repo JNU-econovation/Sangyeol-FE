@@ -84,8 +84,8 @@ const NicknameField = Suspense.with(
             title="닉네임"
             titleSpacing={0}
             placeholder={randomNickname}
-            backgroundColor="gray600"
-            borderColor="gray600"
+            backgroundColor="gray300"
+            borderColor="gray300"
             paddingVertical={16}
             placeholderTextColor={COLORS.gray600}
             helperText={
@@ -124,6 +124,7 @@ const NicknameField = Suspense.with(
       />
     );
   },
+  // ),
 );
 
 const InputRightSideContainer = styled.View`

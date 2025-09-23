@@ -45,8 +45,8 @@ const PhoneNumberField = () => {
         <TextAreaField
           title="전화번호"
           titleSpacing={0}
-          backgroundColor="gray600"
-          borderColor="gray600"
+          backgroundColor="gray300"
+          borderColor="gray300"
           paddingVertical={16}
           placeholderTextColor={COLORS.gray600}
           helperText={

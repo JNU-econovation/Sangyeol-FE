@@ -74,8 +74,8 @@ const VerificationField = () => {
         <TextAreaField
           title="인증번호"
           titleSpacing={0}
-          backgroundColor="gray600"
-          borderColor="gray600"
+          backgroundColor="gray300"
+          borderColor="gray300"
           paddingVertical={16}
           helperText={
             HELPER.PROFILE_FORM.VERIFICATION[
