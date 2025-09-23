@@ -20,7 +20,8 @@ export default function Index() {
   const {
     accessToken,
     error,
-    isLoading,
+    isCheckingLoginLoading,
+    profileStatusLoading,
     isLoggedIn,
     isProfileComplete,
     refreshToken,
@@ -60,15 +61,16 @@ export default function Index() {
 
   // 폰트 로딩 또는 에러 발생 시 스플래시 스크린 숨기기
   useEffect(() => {
-    if (fontLoaded || fontError) SplashScreen.hideAsync();
-  }, [fontLoaded, fontError]);
+    if (fontLoaded || fontError || error) SplashScreen.hideAsync();
+  }, [fontLoaded, fontError, error]);
 
-  if (isLoading) return null; //TODO: 로딩 폴백 보여주기
+  if (isCheckingLoginLoading || profileStatusLoading) return null; //TODO: 로딩 폴백 보여주기
 
   if (isLoggedIn && !isProfileComplete)
     return <Redirect href="/onboarding/profile" />;
 
-  if (fontError || error) return null; //TODO: 에러 페이지로 넘기기
+  // if (fontError || error) return null; //TODO: 에러 페이지로 넘기기
+  if (fontError || error) return <Redirect href="/onboarding/profile" />;
   if (accessToken) return <Redirect href="/(tabs)/home" />;
   return <Redirect href={"/starter"} />;
 }

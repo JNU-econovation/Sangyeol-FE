@@ -3,8 +3,8 @@ import { getValueFromSecureStore } from "@utils/secureStore";
 import { useCallback, useEffect, useState } from "react";
 
 const useCheckUserLoginAndProfileState = () => {
-  const [accessToken, setAccessToken] = useState("");
-  const [refreshToken, setRefreshToken] = useState("");
+  const [accessToken, setAccessToken] = useState<string | undefined>();
+  const [refreshToken, setRefreshToken] = useState<string | undefined>();
   const [isCheckingLoginLoading, setIsCheckingLoginLoading] = useState(true);
   const {
     data: profileStatus,
@@ -35,9 +35,11 @@ const useCheckUserLoginAndProfileState = () => {
   }, [checkLogin]);
 
   return {
-    isLoggedIn: !!accessToken,
+    isLoggedIn: !profileStatusLoading && !!accessToken,
     isProfileComplete: profileStatus?.isComplete ?? false,
     isLoading: profileStatusLoading || isCheckingLoginLoading,
+    profileStatusLoading,
+    isCheckingLoginLoading,
     error: profileStatusError,
 
     accessToken,
