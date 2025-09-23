@@ -1,6 +1,5 @@
 import { useProfileSetFormContext } from "@hooks/feature/form/useProfileSetForm";
 import useProfileMutate from "@hooks/feature/query/mutate/useProfileMutate";
-import PositionBottom from "@shared/layout/PositionBottom";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import { router } from "expo-router";
 
