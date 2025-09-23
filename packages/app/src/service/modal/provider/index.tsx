@@ -7,15 +7,18 @@ import {
 } from "react";
 import { Modal } from "react-native";
 import ModalContext, { ModalContextType } from "../context";
+import type { Options } from "../models";
 
 const ModalProvider = ({ children }: PropsWithChildren) => {
   // Context State
   const [visible, setVisible] = useState(false);
   const [modalComponent, setModalComponent] = useState<ReactNode>(null);
+  const [modalProps, setModalProps] = useState<Options>({});
 
   // Callback Functions
-  const openModal = useCallback((component: ReactNode) => {
+  const openModal = useCallback((component: ReactNode, options?: Options) => {
     setModalComponent(component);
+    setModalProps(options);
     setVisible(true);
   }, []);
 
@@ -28,6 +31,7 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
     () => ({
       modalState: {
         visible,
+        modalProps,
       },
       openModal,
       closeModal,
@@ -40,9 +44,10 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
       {children && children}
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={visible}
         onRequestClose={closeModal}
+        {...modalProps}
       >
         {modalComponent && modalComponent}
       </Modal>

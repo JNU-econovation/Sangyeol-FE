@@ -1,10 +1,12 @@
 import { createContext, ReactNode } from "react";
 
+import type { Options } from "../models";
+
 export interface ModalContextType {
   modalState: {
     visible: boolean;
   };
-  openModal: (component: ReactNode) => void;
+  openModal: (component: ReactNode, options?: Options) => void;
   closeModal: () => void;
 }
 
