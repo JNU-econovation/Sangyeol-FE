@@ -19,20 +19,25 @@ const TravelResultMapView = memo(() => {
         : [];
   }, [traveledPaths]);
 
-  const midPoint = {
-    latitude:
-      traveledPath.length > 0
-        ? (Math.max(...traveledPath.map(([, latitude]) => latitude)) +
-            Math.min(...traveledPath.map(([, latitude]) => latitude))) /
-          2
-        : 0,
-    longitude:
-      traveledPath.length > 0
-        ? (Math.max(...traveledPath.map(([longitude]) => longitude)) +
-            Math.min(...traveledPath.map(([longitude]) => longitude))) /
-          2
-        : 0,
-  };
+  const midPoint = useMemo(() => {
+    if (traveledPath.length === 0) return { latitude: 0, longitude: 0 };
+
+    const latitudes = traveledPath.map(([, latitude]) => latitude);
+    const longitudes = traveledPath.map(([longitude]) => longitude);
+
+    const centerLat = (Math.max(...latitudes) + Math.min(...latitudes)) / 2;
+    const centerLng = (Math.max(...longitudes) + Math.min(...longitudes)) / 2;
+
+    const latRange = Math.max(...latitudes) - Math.min(...latitudes);
+
+    const offsetFactor = 0.4;
+    const latOffset = latRange * offsetFactor;
+
+    return {
+      latitude: centerLat - latOffset,
+      longitude: centerLng,
+    };
+  }, [traveledPath]);
 
   const zoomLevel = useMemo(() => {
     if (traveledPath.length === 0) return 15;
@@ -43,15 +48,15 @@ const TravelResultMapView = memo(() => {
     const latitudeDiff = Math.max(...latitudes) - Math.min(...latitudes);
     const longitudeDiff = Math.max(...longitudes) - Math.min(...longitudes);
 
-    const paddedLatDiff = latitudeDiff * 1.15;
-    const paddedLngDiff = longitudeDiff * 1.15;
+    const paddedLatDiff = latitudeDiff * 25001; // 세로 패딩
+    const paddedLngDiff = longitudeDiff * 25001; // 가로 패딩
 
-    const maxDiff = Math.max(paddedLatDiff, paddedLngDiff);
+    const latZoom = Math.max(1, 22 - Math.log2(paddedLatDiff));
+    const lngZoom = Math.max(1, 22 - Math.log2(paddedLngDiff));
 
-    return Math.min(
-      20,
-      Math.max(13, Math.max(1, 24 - Math.log2(maxDiff * 111000))),
-    );
+    const zoom = Math.min(latZoom, lngZoom);
+
+    return Math.min(20, Math.max(1, zoom));
   }, [traveledPath]);
 
   useEffect(() => {
