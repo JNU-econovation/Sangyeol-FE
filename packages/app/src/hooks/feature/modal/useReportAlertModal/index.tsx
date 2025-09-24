@@ -3,12 +3,12 @@ import useModal from "@service/modal/hooks";
 import Spacing from "@shared/layout/Spacing";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import Text from "@shared/ui/Text";
+import useSetModalAlertStore from "@store/asyncStorage/useSetModalAlertStore";
 import { COLORS } from "@styles/colorPalette";
+import { Checkbox } from "expo-checkbox";
 import { router } from "expo-router";
 import { useCallback, useState } from "react";
 import { View } from "react-native";
-import { Checkbox } from "expo-checkbox";
-import useSetModalAlertStore from "@store/asyncStorage/useSetModalAlertStore";
 
 const useReportAlertModal = () => {
   const { openModal, closeModal } = useModal();
@@ -31,30 +31,32 @@ const ModalComponent = ({ closeModal }: { closeModal: () => void }) => {
   const onConfirm = useCallback(() => {
     router.push("/report");
     closeModal();
-    setShowReportAlert(!isChecked);
-  }, [closeModal]);
+    if (isChecked) {
+      setShowReportAlert(false);
+    }
+  }, [closeModal, isChecked, setShowReportAlert]);
 
   return (
     <OutsideContainer activeOpacity={1} onPress={closeModal}>
       <ModalContainer>
-        <Text fontSize={14} fontWeight="medium">
+        <Text fontSize={16} fontWeight="medium">
           다음 화면에서 문자를 통해
         </Text>
-        <Text fontSize={14} fontWeight="medium">
+        <Text fontSize={16} fontWeight="medium">
           산학 구조대에 신고할 수 있습니다.
         </Text>
         <Spacing size={20} />
-        <Text fontSize={15} fontWeight="medium">
+        <Text fontSize={16} fontWeight="medium">
           허위 신고 시,
         </Text>
-        <Text fontSize={15} fontWeight="medium">
+        <Text fontSize={16} fontWeight="medium">
           소방 기본법 제56조에 따라
         </Text>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text fontSize={15} fontWeight="bold">
+          <Text fontSize={16} fontWeight="bold">
             최대 200만 원
           </Text>
-          <Text fontSize={15} fontWeight="medium">
+          <Text fontSize={16} fontWeight="medium">
             의 과태료가 부과됩니다.
           </Text>
         </View>

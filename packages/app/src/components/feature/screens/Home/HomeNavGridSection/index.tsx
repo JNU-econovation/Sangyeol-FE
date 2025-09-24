@@ -19,9 +19,12 @@ const HomeNavGridSection = () => {
     router.push("/travel/withoutCourse");
   }, []);
   const goReport = useCallback(() => {
-    if (!isReportAlertVisible) return router.push("/report");
-    showReportAlert();
-  }, [isReportAlertVisible]);
+    if (isReportAlertVisible) {
+      showReportAlert();
+    } else {
+      router.push("/report");
+    }
+  }, [isReportAlertVisible, showReportAlert]);
   const goManual = useCallback(() => {
     router.push("/(tabs)/home/safeManual");
   }, []);
