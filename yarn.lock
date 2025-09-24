@@ -4858,6 +4858,7 @@ __metadata:
     expo-apple-authentication: "npm:~7.2.4"
     expo-blur: "npm:~14.1.4"
     expo-build-properties: "npm:~0.14.8"
+    expo-checkbox: "npm:~4.1.4"
     expo-clipboard: "npm:~7.1.4"
     expo-constants: "npm:~17.1.6"
     expo-dev-client: "npm:~5.2.4"
@@ -7492,6 +7493,20 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 10c0/7c41bd282f0a35ce73da82d5a4bfcfe88ce3a1bf34737bcd06c9f2d4f7100bbf31653ff0171d92c18a13f5322f831b224f9e47bf5b05df8f15d9514d53d0c51b
+  languageName: node
+  linkType: hard
+
+"expo-checkbox@npm:~4.1.4":
+  version: 4.1.4
+  resolution: "expo-checkbox@npm:4.1.4"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-web: "*"
+  peerDependenciesMeta:
+    react-native-web:
+      optional: true
+  checksum: 10c0/cb7a04404c175a685ef6ff5c8e62ef4b9210f3f2479033a2d61a5cd3c940598ee5baec0a639f4c6839fc2f1382e3f0bd7b9fd5636c276b444c39678407db9a46
   languageName: node
   linkType: hard
 
