@@ -1,12 +1,17 @@
-import { COLORS } from "@styles/colorPalette";
-import Spacing from "@components/common/shared/layout/Spacing";
-import Text from "@components/common/shared/ui/Text";
 import styled from "@emotion/native";
+import useReportAlertModal from "@hooks/feature/modal/useReportAlertModal";
+import Spacing from "@shared/layout/Spacing";
+import Text from "@shared/ui/Text";
+import useSetModalAlertStore from "@store/asyncStorage/useSetModalAlertStore";
+import { COLORS } from "@styles/colorPalette";
 import { router } from "expo-router";
 import { useCallback } from "react";
 import { View } from "react-native";
 
 const HomeNavGridSection = () => {
+  const { isReportAlertVisible } = useSetModalAlertStore();
+  const { showReportAlert } = useReportAlertModal();
+
   const goCourse = useCallback(() => {
     router.push("/(tabs)/home/course");
   }, []);
@@ -14,8 +19,9 @@ const HomeNavGridSection = () => {
     router.push("/travel/withoutCourse");
   }, []);
   const goReport = useCallback(() => {
-    router.push("/report");
-  }, []);
+    if (!isReportAlertVisible) return router.push("/report");
+    showReportAlert();
+  }, [isReportAlertVisible]);
   const goManual = useCallback(() => {
     router.push("/(tabs)/home/safeManual");
   }, []);

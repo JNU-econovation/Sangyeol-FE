@@ -31,7 +31,6 @@ const DefaultButton = ({
   startIcon,
   paddingVertical,
   paddingHorizontal,
-
   onPress,
 }: DefaultButtonProps) => {
   return (

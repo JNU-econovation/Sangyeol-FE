@@ -1,7 +1,6 @@
 import styled from "@emotion/native";
 import { ImageBackground } from "react-native";
 import HomeNavGridSection from "@screens/Home/HomeNavGridSection";
-// import ScreenContainer from "@shared/layout/Screen";
 import Spacing from "@shared/layout/Spacing";
 import { router } from "expo-router";
 import { useEffect } from "react";
@@ -18,6 +17,7 @@ const HomeScreen = () => {
     </Container>
   );
 };
+
 const Container = styled(ImageBackground)`
   flex: 1;
   display: flex;
