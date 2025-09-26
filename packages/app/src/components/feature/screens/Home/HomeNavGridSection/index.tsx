@@ -9,22 +9,23 @@ import { useCallback } from "react";
 import { View } from "react-native";
 
 const HomeNavGridSection = () => {
-  const { isReportAlertVisible } = useSetModalAlertStore();
+  const { isReportAlertVisible, hydrated } = useSetModalAlertStore();
   const { showReportAlert } = useReportAlertModal();
 
   const goCourse = useCallback(() => {
     router.push("/(tabs)/home/course");
   }, []);
+
   const goTravel = useCallback(() => {
     router.push("/travel/withoutCourse");
   }, []);
+
   const goReport = useCallback(() => {
-    if (isReportAlertVisible) {
-      showReportAlert();
-    } else {
-      router.push("/report");
-    }
+    if (!hydrated) return;
+    if (isReportAlertVisible) return showReportAlert();
+    router.push("/report");
   }, [isReportAlertVisible, showReportAlert]);
+
   const goManual = useCallback(() => {
     router.push("/(tabs)/home/safeManual");
   }, []);
