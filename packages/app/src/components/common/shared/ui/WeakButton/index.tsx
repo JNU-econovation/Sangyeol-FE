@@ -36,7 +36,7 @@ const WeakButton = ({
     <StyledTouchableOpacity
       onPress={onPress}
       disabled={disabled}
-      style={{ width: fullWidth ? "100%" : undefined }}
+      style={{ width: fullWidth ? "100%" : "auto" }}
       activeOpacity={0.8}
       borderColor={borderColor}
       paddingHorizontal={paddingHorizontal}

@@ -1,7 +1,7 @@
 import { COLORS } from "@styles/colorPalette";
 import styled from "@emotion/native";
 
-interface TextProps {
+export interface TextProps {
   fontSize?: number;
   color?: keyof typeof COLORS;
   /**

@@ -1,10 +1,12 @@
 import styled from "@emotion/native";
 import Spacing from "@shared/layout/Spacing";
-import Text from "@shared/ui/Text";
+import Text, { TextProps } from "@shared/ui/Text";
 
 interface FieldLayoutProps {
   title: string;
   titleSideComponent?: React.ReactNode;
+  titleSize?: number;
+  titleWeight?: TextProps["fontWeight"];
   content: React.ReactNode;
   contentLeftComponent?: React.ReactNode;
   contentRightComponent?: React.ReactNode;
@@ -13,6 +15,8 @@ interface FieldLayoutProps {
 const FieldLayout = ({
   title,
   titleSideComponent,
+  titleSize = 20,
+  titleWeight = "medium",
   content,
   contentLeftComponent,
   contentRightComponent,
@@ -20,7 +24,7 @@ const FieldLayout = ({
   return (
     <>
       <HeaderContainer>
-        <Text fontWeight="medium" fontSize={20}>
+        <Text fontWeight={titleWeight} fontSize={titleSize}>
           {title}
         </Text>
         {titleSideComponent && titleSideComponent}

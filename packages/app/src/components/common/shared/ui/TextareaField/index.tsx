@@ -1,6 +1,6 @@
 import FieldLayout from "@shared/layout/FieldLayout";
 import Spacing from "@shared/layout/Spacing";
-import Text from "@shared/ui/Text";
+import Text, { TextProps } from "@shared/ui/Text";
 import Textarea from "@shared/ui/Textarea";
 
 import TextAreaFieldLoader from "./loader";
@@ -8,6 +8,8 @@ import TextAreaFieldLoader from "./loader";
 interface TextAreaFieldProps extends React.ComponentProps<typeof Textarea> {
   title: string;
   titleSpacing?: number;
+  titleSize?: number;
+  titleWeight?: TextProps["fontWeight"];
   helperText?: string;
   helperTextSpacing?: number;
   helperTextProps?: React.ComponentProps<typeof Text>;
@@ -23,6 +25,8 @@ interface TextAreaFieldProps extends React.ComponentProps<typeof Textarea> {
 const TextAreaField = ({
   title,
   titleSpacing = 14,
+  titleSize,
+  titleWeight,
   helperText,
   helperTextSpacing = 4,
   helperTextProps,
@@ -36,6 +40,8 @@ const TextAreaField = ({
       <FieldLayout
         title={title}
         titleSideComponent={titleSideComponent}
+        titleSize={titleSize}
+        titleWeight={titleWeight}
         content={
           <>
             <Spacing size={titleSpacing} />
