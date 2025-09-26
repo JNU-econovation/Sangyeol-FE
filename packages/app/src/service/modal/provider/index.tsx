@@ -16,11 +16,14 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
   const [modalProps, setModalProps] = useState<Options>({});
 
   // Callback Functions
-  const openModal = useCallback((component: ReactNode, options?: Options) => {
-    setModalComponent(component);
-    setModalProps(options);
-    setVisible(true);
-  }, []);
+  const openModal = useCallback(
+    (component: ReactNode, options: Options = {}) => {
+      setModalComponent(component);
+      setModalProps(options);
+      setVisible(true);
+    },
+    [],
+  );
 
   const closeModal = useCallback(() => {
     setVisible(false);
@@ -36,7 +39,7 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
       openModal,
       closeModal,
     }),
-    [visible, openModal, closeModal],
+    [visible, modalProps, openModal, closeModal],
   );
 
   return (
