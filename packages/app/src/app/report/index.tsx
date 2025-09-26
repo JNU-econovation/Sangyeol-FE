@@ -5,9 +5,14 @@ import Header from "@shared/ui/Header";
 import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 import { router } from "expo-router";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 const ReportScreen = () => {
+  useEffect(() => {
+    router.prefetch("/report/immediatelyReport");
+    router.prefetch("/report/detailReport");
+  }, []);
+
   const handleGoToImmediatelyReport = useCallback(() => {
     router.push("/report/immediatelyReport");
   }, []);
