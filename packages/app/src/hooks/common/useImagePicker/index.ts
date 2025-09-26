@@ -25,9 +25,14 @@ const useImagePicker = ({ onChange }: UseImagePicker) => {
     }
   };
 
+  const removeImage = (index: number) => {
+    setSelectedImagesUri((prev) => prev.filter((_, i) => i !== index));
+  };
+
   return {
     selectedImagesUri,
     pickImage,
+    removeImage,
   };
 };
 
