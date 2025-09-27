@@ -5,8 +5,9 @@ import {
   NaverMapPathOverlay,
   NaverMapPathOverlayProps,
   NaverMapView,
+  NaverMapViewRef,
 } from "@mj-studio/react-native-naver-map";
-import { ComponentProps, memo, useState } from "react";
+import { ComponentProps, memo, Ref, useState } from "react";
 
 import CurrentPosition from "./currentPosition";
 import DomainMarkers from "./domainMarkers";
@@ -20,6 +21,8 @@ const DEFAULT_ZOOM = 14;
 export interface PolylineOptions extends NaverMapPathOverlayProps {}
 
 export interface ConfigurableMapViewProps {
+  ref?: Ref<NaverMapViewRef>;
+
   paths?: PolylineOptions[];
   marker?: { latitude: number; longitude: number };
   currentPositionIcon?: boolean;
@@ -41,6 +44,7 @@ export interface ConfigurableMapViewProps {
 
 const ConfigurableMapView = memo(
   ({
+    ref,
     currentPositionIcon,
     zoom = DEFAULT_ZOOM,
     paths,
@@ -69,6 +73,7 @@ const ConfigurableMapView = memo(
 
     return (
       <NaverMapView
+        ref={ref}
         style={{ flex: 1 }}
         initialRegion={{
           latitude: location.coords.latitude,
