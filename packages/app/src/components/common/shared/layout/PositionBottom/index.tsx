@@ -1,4 +1,5 @@
 import styled from "@emotion/native";
+import { COLORS } from "@styles/colorPalette";
 import { PropsWithChildren } from "react";
 import { Dimensions } from "react-native";
 
@@ -7,6 +8,7 @@ const DEFAULT_BOTTOM_SPACE = 50; // 하단 여백
 interface PositionBottomStyleProps {
   bottom?: number;
   paddingInline?: number;
+  backgroundColor?: keyof typeof COLORS;
 }
 
 interface PositionBottomProps
@@ -17,9 +19,14 @@ const PositionBottom = ({
   children,
   bottom = DEFAULT_BOTTOM_SPACE,
   paddingInline = 20,
+  backgroundColor,
 }: PositionBottomProps) => {
   return (
-    <Container bottom={bottom} paddingInline={paddingInline}>
+    <Container
+      bottom={bottom}
+      paddingInline={paddingInline}
+      backgroundColor={backgroundColor}
+    >
       {children}
     </Container>
   );
@@ -27,6 +34,8 @@ const PositionBottom = ({
 
 const Container = styled.View<PositionBottomStyleProps>`
   position: absolute;
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? COLORS[backgroundColor] : "none"};
   padding-inline: ${({ paddingInline }) => paddingInline || 0}px;
   bottom: ${({ bottom }) => bottom || DEFAULT_BOTTOM_SPACE}px;
   left: 0;
