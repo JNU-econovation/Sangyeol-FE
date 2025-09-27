@@ -2,11 +2,7 @@ import { useForm, useFormContext } from "react-hook-form";
 
 interface DetailReportForm {
   reportContent: string;
-  attachments: Array<{
-    uri: string;
-    mimeType: string;
-    filename: string;
-  }>;
+  attachments: string[];
   reportLocation: {
     latitude: number;
     longitude: number;

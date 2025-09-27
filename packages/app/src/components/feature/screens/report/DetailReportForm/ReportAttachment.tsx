@@ -1,4 +1,4 @@
-import ImageSelectField from "@components/common/entities/ImageSelectField";
+import ImageSelectField from "@entities/ImageSelectField";
 import { Controller } from "react-hook-form";
 
 const ReportAttachment = () => {

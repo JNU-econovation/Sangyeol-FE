@@ -1,7 +1,5 @@
 import useSMS from "@hooks/common/useSMS";
 
-const reportNumber = process.env.EXPO_PUBLIC_REPORT_NUMBER;
-
 const REPORT_MESSAGE = ({
   lng,
   lat,
@@ -26,6 +24,7 @@ interface UseDetailReportSMSProps {
   content: string;
   reporterName: string;
   reporterPhone: string;
+  attachment: string[];
   enable?: boolean;
 }
 
@@ -37,25 +36,30 @@ const useDetailReportSMS = ({
   content,
   reporterName,
   reporterPhone,
+  attachment,
   enable,
 }: UseDetailReportSMSProps) => {
   if (!REPORT_NUMBER) {
     throw new Error("신고하기 번호가 설정되지 않았습니다.");
   }
 
+  const attachments = attachment?.map((uri, index) => ({
+    filename: uri || `attachment_${index}`,
+    mimeType: "image/jpeg",
+    uri,
+  }));
+
+  console.log("attachments", attachments);
+
   return useSMS({
     addresses: REPORT_NUMBER,
     message: REPORT_MESSAGE({ lng, lat, content, reporterName, reporterPhone }),
     enable,
-    options: {
-      attachments: [
-        {
-          filename: "report_detail.txt",
-          mimeType: "text/plain",
-          uri: `data:text/plain;base64,${btoa(`신고 내용: ${content}\n신고자: ${reporterName}\n연락처: ${reporterPhone}\n경도: ${lng}\n위도: ${lat}`)}`,
-        },
-      ],
-    },
+    options: attachments
+      ? {
+          attachments: attachments,
+        }
+      : undefined,
   });
 };
 
