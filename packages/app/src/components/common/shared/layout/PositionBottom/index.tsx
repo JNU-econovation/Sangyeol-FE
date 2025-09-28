@@ -35,7 +35,7 @@ const PositionBottom = ({
 const Container = styled.View<PositionBottomStyleProps>`
   position: absolute;
   background-color: ${({ backgroundColor }) =>
-    backgroundColor ? COLORS[backgroundColor] : "none"};
+    backgroundColor ? COLORS[backgroundColor] : "transparent"};
   padding-inline: ${({ paddingInline }) => paddingInline || 0}px;
   bottom: ${({ bottom }) => bottom || DEFAULT_BOTTOM_SPACE}px;
   left: 0;
