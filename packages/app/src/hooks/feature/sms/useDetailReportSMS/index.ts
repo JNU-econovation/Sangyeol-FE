@@ -49,8 +49,6 @@ const useDetailReportSMS = ({
     uri,
   }));
 
-  console.log("attachments", attachments);
-
   return useSMS({
     addresses: REPORT_NUMBER,
     message: REPORT_MESSAGE({ lng, lat, content, reporterName, reporterPhone }),
