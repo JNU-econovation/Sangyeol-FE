@@ -6,6 +6,7 @@ import Spacing from "@shared/layout/Spacing";
 export default function MyInfoPage() {
   return (
     <div className="px-6 max-h-screen overflow-y-auto">
+      <Spacing size={4} />
       <MyInfoHeaderSection />
       <Spacing size={4} />
       <PersonalInfoSection />
