@@ -5,10 +5,11 @@ const ReportAttachment = () => {
   return (
     <Controller
       name="attachments"
-      render={({ field: { onChange } }) => (
+      render={({ field: { onChange, value } }) => (
         <ImageSelectField
           title="첨부 파일"
           buttonTitle="파일 +"
+          value={value}
           onChange={onChange}
         />
       )}
