@@ -68,7 +68,6 @@ const CheckPositionScreen = () => {
           onPress={() => {
             if (isLoading || !position) return;
             setReportPosition(position);
-            console.log("Set report position:", position);
             router.back();
           }}
         />
