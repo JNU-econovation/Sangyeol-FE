@@ -142,6 +142,7 @@ export default function StackLink({
               width: "100%",
               height: "100%",
               position: "absolute",
+              backgroundColor: "#ffffff",
               top: 0,
               left: 0,
             }}
