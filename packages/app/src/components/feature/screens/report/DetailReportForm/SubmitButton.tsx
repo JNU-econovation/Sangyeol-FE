@@ -4,11 +4,11 @@ import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import { useReportPositionStore } from "@store/report/useReportPositionStore";
 
 const SubmitButton = () => {
-  const { getValues, watch } = useDetailReportFormContext();
+  const { watch } = useDetailReportFormContext();
   const { reportPosition } = useReportPositionStore();
 
   const { goSMS, isLoading, sendStatus } = useDetailReportSMS({
-    content: getValues("reportContent"),
+    content: watch("reportContent"),
     lat: reportPosition?.latitude || 0,
     lng: reportPosition?.longitude || 0,
     reporterName: "익명",
