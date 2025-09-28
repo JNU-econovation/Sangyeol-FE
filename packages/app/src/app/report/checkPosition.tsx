@@ -10,11 +10,11 @@ import { useReportPositionStore } from "@store/report/useReportPositionStore";
 import ConfigurableMapView from "@widget/ConfigurableMapView";
 import { router } from "expo-router";
 import { useEffect, useRef, useState } from "react";
-import { Dimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const CheckPositionScreen = () => {
   const mapRef = useRef<NaverMapViewRef>(null);
+  const [mapLayout, setMapLayout] = useState({ width: 0, height: 0 });
   const { top } = useSafeAreaInsets();
   const { isLoading, location } = useGetCurrentPosition();
   const { setReportPosition } = useReportPositionStore();
@@ -42,17 +42,23 @@ const CheckPositionScreen = () => {
         <ConfigurableMapView
           ref={mapRef}
           options={{
+            onLayout: (event) => {
+              const { width, height } = event.nativeEvent.layout;
+              setMapLayout({ width, height });
+            },
             onTouchEnd: async () => {
-              const { width, height } = Dimensions.get("window");
+              if (!mapLayout.width || !mapLayout.height) return;
               const result = await mapRef.current?.screenToCoordinate({
-                screenX: width / 2,
-                screenY: height / 2,
+                screenX: mapLayout.width / 2,
+                screenY: mapLayout.height / 2,
               });
               if (result) {
                 setPosition({
                   latitude: result.latitude,
                   longitude: result.longitude,
                 });
+
+                console.log(result);
               }
             },
           }}
@@ -106,7 +112,7 @@ const MarkerContainer = styled.View`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-15px, -30px);
+  transform: translate(-25px, -40px);
   width: 30px;
   height: 30px;
 `;
