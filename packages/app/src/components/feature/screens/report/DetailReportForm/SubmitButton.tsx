@@ -14,7 +14,7 @@ const SubmitButton = () => {
     reporterName: "익명",
     reporterPhone: "000-0000-0000",
     attachment: watch("attachments"),
-    enable: true,
+    enable: watch("reportContent").trim().length > 0 && !!reportPosition,
   });
 
   const handleSubmit = () => goSMS();
