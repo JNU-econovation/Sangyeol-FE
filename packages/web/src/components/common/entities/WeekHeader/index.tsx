@@ -1,26 +1,19 @@
-"use client";
-
 import Text from "@shared/ui/Text";
-import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
-import LeftChevronIcon from "@/components/common/shared/ui/icons/LeftChevronIcon";
+import BackButton from "@widgets/route/BackButton";
 
 interface WeekHeaderProps {
   headerText?: string;
 }
 
 export default function WeekHeader({ headerText }: WeekHeaderProps) {
-  const goBack = useRouteBackBridge();
-
   return (
-    <header className="border-gray-30 flex flex-col items-center relative pb-3">
-      <button
-        onClick={goBack}
-        className="absolute left-0"
-        aria-label="뒤로가기"
-      >
-        <LeftChevronIcon />
-      </button>
-      <Text fontSize="text-base">{headerText}</Text>
+    <header className="border-gray-30 flex justify-center relative pb-3">
+      <div className="absolute left-0">
+        <BackButton />
+      </div>
+      <h1 className="text-center justify-center text-black text-base font-medium">
+        {headerText}
+      </h1>
     </header>
   );
 }
