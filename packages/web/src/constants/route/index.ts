@@ -33,7 +33,7 @@ const ROUTE = {
   //my page
   MY_PAGE: "/my-page",
   MY_INFO: "/my-page/my-info",
-  HIKING_LOG: "/my-page/hiking-log",
+  HIKING_LOG: "/my-page/travel-log",
   COURSE_BOOKMARK: "/my-page/course-bookmark",
   FAQ: "/my-page/faq",
   INQUIRY: "/my-page/inquiry",

@@ -1,54 +1,43 @@
 "use client";
 
-import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
+import ROUTE from "@/constants/route";
 import Spacing from "@shared/layout/Spacing";
 import BlackRightArrowIcon from "@shared/ui/BlackRightArrowIcon";
 import Text from "@shared/ui/Text";
 import MyProfileImage from "@widgets/etc/MyProfileImage";
+import { StackLink } from "stack-link";
 
 export default function MyInfoSection() {
-  const goToMyInfo = useRouteBridge({
-    path: "my-info",
-    routeType: "push",
-  });
-
-  const goToHikingLog = useRouteBridge({
-    path: "travel-log",
-    routeType: "push",
-  });
-
-  const goToCourseBookmark = useRouteBridge({
-    path: "course-bookmark",
-    routeType: "push",
-  });
-
   return (
     <section>
+      {/* header */}
       <div className="px-6">
-        <Text fontSize="text-xl" align="text-center">
+        <h1 className="text-center justify-center text-black text-xl font-medium">
           마이 페이지
-        </Text>
-        <hr className="w-full mx-auto text-gray-30" />
+        </h1>
+        <Spacing size={2} />
+        <hr className="w-full mx-auto text-gray-300" />
       </div>
-      <Spacing size={5} />
+      <Spacing size={7} />
+
+      {/* content */}
       <div className="flex flex-col items-center">
-        <MyProfileImage src={""} width={89} height={89} />
-        <Spacing size={4} />
-        <button
-          onClick={goToMyInfo}
-          className="flex flex-row items-center gap-2"
+        <MyProfileImage />
+        <Spacing size={5} />
+        <span className="text-green-700 border-b text-sm">프로필 변경</span>
+        <Spacing size={5} />
+        <StackLink
+          href={ROUTE.MY_INFO} //TODO: 하드코딩 피하기
+          preLoad
         >
-          <Text fontSize="text-2xl" fontWeight="font-bold">
-            {"홍길동"}
-          </Text>
-          <BlackRightArrowIcon width={10} height={10} />
-        </button>
-        <Text fontSize="text-base" color="text-primary">
-          {"test@naver.com"}
-        </Text>
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold">{"홍길동"}</span>
+            <BlackRightArrowIcon width={10} height={10} />
+          </div>
+        </StackLink>
         <Spacing size={4} />
         <div className="flex flex-row items-center gap-22">
-          <button onClick={goToHikingLog}>
+          <StackLink href={ROUTE.HIKING_LOG}>
             <Text
               fontSize="text-base"
               fontWeight="font-semibold"
@@ -56,8 +45,8 @@ export default function MyInfoSection() {
             >
               산행 기록
             </Text>
-          </button>
-          <button onClick={goToCourseBookmark}>
+          </StackLink>
+          <StackLink href={ROUTE.COURSE_BOOKMARK} preLoad>
             <Text
               fontSize="text-base"
               fontWeight="font-semibold"
@@ -65,7 +54,7 @@ export default function MyInfoSection() {
             >
               코스 북마크
             </Text>
-          </button>
+          </StackLink>
         </div>
       </div>
     </section>
