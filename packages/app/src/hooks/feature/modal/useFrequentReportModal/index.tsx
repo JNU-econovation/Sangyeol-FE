@@ -69,21 +69,23 @@ const ModalComponent = ({
   const handleCheckBoxChange = (
     option: (typeof FREQUENT_REPORT_OPTIONS)[number],
   ) => {
-    setSelectedOptions(prev =>
+    setSelectedOptions((prev) =>
       prev.includes(option)
-        ? prev.filter(opt => opt !== option)
-        : [...prev, option]
+        ? prev.filter((opt) => opt !== option)
+        : [...prev, option],
     );
   };
 
   const applySelectedOptions = () => {
+    if (selectedOptions.length === 0) return;
     const currentContent = watch("reportContent") || "";
     const selectedText = selectedOptions.join(", ");
-    const newContent = currentContent 
+    const newContent = currentContent
       ? `${currentContent} ${selectedText}`
       : selectedText;
     setValue("reportContent", newContent);
   };
+
   return (
     <OutsideContainer
       activeOpacity={1}
