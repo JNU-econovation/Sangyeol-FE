@@ -19,6 +19,11 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-center">지도</h2>
         </Link>
       </div>
+      <div className="border border-gray-300 rounded-lg p-4 hover:bg-gray-100 transition-colors w-full">
+        <Link href="/my-page">
+          <h2 className="text-2xl font-bold text-center">마이페이지</h2>
+        </Link>
+      </div>
     </div>
   );
 }
