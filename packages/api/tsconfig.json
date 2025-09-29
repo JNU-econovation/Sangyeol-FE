@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.json",
+  "tsconfigRootDir": "../../.",
+  "compilerOptions": {
+    "composite": false,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "incremental": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@model/*": [
+        "./src/model/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
