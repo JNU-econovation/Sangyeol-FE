@@ -7,7 +7,7 @@ interface WeekHeaderProps {
 
 export default function WeekHeader({ headerText }: WeekHeaderProps) {
   return (
-    <header className="border-gray-30 flex justify-center relative pb-3">
+    <header className="border-gray-30 flex justify-center relative pb-3 bg-main-white">
       <div className="absolute left-0">
         <BackButton />
       </div>

@@ -13,7 +13,6 @@ export const getBookmarksApi = async () => {
     method: "get",
     url: BOOKMARK_API_PATH,
   });
-
   return response.data;
 };
 
