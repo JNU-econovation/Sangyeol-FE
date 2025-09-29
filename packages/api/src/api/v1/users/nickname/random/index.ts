@@ -1,0 +1,16 @@
+import { AxiosInstance } from "axios";
+
+export const RANDOM_NICKNAME_API_PATH = `/api/v1/users/nickname/random`;
+
+export interface GetRandomNicknameResponse {
+  nickname: string;
+}
+
+export const getRandomNickname = async (instance: AxiosInstance) => {
+  const response = await instance<GetRandomNicknameResponse>({
+    method: "get",
+    url: RANDOM_NICKNAME_API_PATH,
+  });
+
+  return response.data;
+};
