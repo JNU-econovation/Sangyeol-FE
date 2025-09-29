@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "packageManager": "yarn@4.9.4",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "rm -rf dist && tsup"
+  },
+  "devDependencies": {
+    "@tanstack/react-query": "^5.90.2",
+    "axios": "^1.12.2",
+    "tsup": "^8.5.0"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.90.2",
+    "axios": "^1.12.2"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  }
+}
