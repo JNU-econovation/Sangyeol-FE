@@ -1,4 +1,8 @@
 import { AxiosInstance } from "axios";
+import type { CourseSortType } from "./v1/mountains/[mountainId]/courses";
+import type { LoginRequestBody } from "./v1/oauth/apple/login";
+import type { PostProfileRequest } from "./v1/users/profile";
+import type { PostVerifyPhoneNumberRequest } from "./v1/users/verify-sms";
 
 import { BASES_API_PATH, getBasesApi } from "./v1/bases";
 import {
@@ -26,6 +30,7 @@ import {
 import { LOGIN_API_PATH, postLogin } from "./v1/oauth/apple/login";
 import { KAKAO_LOGIN_URI, getKakaoLoginApi } from "./v1/oauth/kakao";
 import { PATHWAY_API_PATH, getPathwayOfCourse } from "./v1/pathways";
+// import { postProfile } from '@api/v1/users/profile';
 import {
   CHECK_NICKNAME_API_PATH,
   getCheckNicknameDuplicated,
@@ -34,7 +39,11 @@ import {
   RANDOM_NICKNAME_API_PATH,
   getRandomNickname,
 } from "./v1/users/nickname/random";
-import { USER_PROFILE_API_PATH, postProfile } from "./v1/users/profile";
+import {
+  USER_PROFILE_API_PATH,
+  getProfile,
+  postProfile,
+} from "./v1/users/profile";
 import {
   USER_PROFILE_STATUS_API_PATH,
   getProfileStatus,
@@ -47,89 +56,117 @@ import {
   USER_VERIFY_NUMBER_API_PATH,
   postVerifyPhoneNumber,
 } from "./v1/users/verify-sms";
+import {
+  postUserBasicInformation,
+  USER_BASIC_INFORMATION_API_PATH,
+} from "./v1/users/profile/basic-information";
+import {
+  postUserPersonalInformation,
+  PostUserPersonalInformationRequest,
+  USER_PERSONAL_INFORMATION_API_PATH,
+} from "./v1/users/profile/personal-information";
 
 export const instanceWith = (Instance: AxiosInstance) => {
   return {
     // Bases APIs
     getBasesApi: {
       path: BASES_API_PATH,
-      api: getBasesApi.bind(null, Instance),
+      api: (mountainId: string) => getBasesApi(Instance, mountainId),
     },
     getBasesDetailApi: {
       path: BASES_DETAIL_API_PATH,
-      api: getBasesDetailApi.bind(null, Instance),
+      api: (mountainId: string) => getBasesDetailApi(Instance, mountainId),
     },
 
     // Bookmarks APIs
     getBookmarksApi: {
       path: BOOKMARK_API_PATH,
-      api: getBookmarksApi.bind(null, Instance),
+      api: () => getBookmarksApi(Instance),
     },
     postBookmarkApi: {
       path: BOOKMARK_API_PATH,
-      api: postBookmarkApi.bind(null, Instance),
+      api: (courseId: string) => postBookmarkApi(Instance, courseId),
     },
     deleteBookmarkApi: {
       path: DELETE_BOOKMARK_API_PATH,
-      api: deleteBookmarkApi.bind(null, Instance),
+      api: (courseId: string) => deleteBookmarkApi(Instance, courseId),
     },
 
     // Facilities API
     getFacilitiesApi: {
       path: FACILITY_API_PATH,
-      api: getFacilitiesApi.bind(null, Instance),
+      api: (mountainId: string) => getFacilitiesApi(Instance, mountainId),
     },
 
     // Mountains APIs
     getCoursesOfMountainApi: {
       path: COURSES_OF_MOUNTAIN_API_PATH,
-      api: getCoursesOfMountainApi.bind(null, Instance),
+      api: (params: { mountainId: string; sortBy?: CourseSortType }) =>
+        getCoursesOfMountainApi(Instance, params),
     },
     getRelatedMountains: {
       path: RELATED_MOUNTAINS_API_PATH,
-      api: getRelatedMountains.bind(null, Instance),
+      api: (params: { keyword: string }) =>
+        getRelatedMountains(Instance, params),
     },
 
     // OAuth APIs
     postLogin: {
       path: LOGIN_API_PATH,
-      api: postLogin.bind(null, Instance),
+      api: (body: LoginRequestBody) => postLogin(Instance, body),
     },
     getKakaoLoginApi: {
       path: KAKAO_LOGIN_URI,
-      api: getKakaoLoginApi.bind(null, Instance),
+      api: () => getKakaoLoginApi(Instance),
     },
 
     // Pathways API
     getPathwayOfCourse: {
       path: PATHWAY_API_PATH,
-      api: getPathwayOfCourse.bind(null, Instance),
+      api: (courseId: string) => getPathwayOfCourse(Instance, courseId),
     },
 
     // Users APIs
     getCheckNicknameDuplicated: {
       path: CHECK_NICKNAME_API_PATH,
-      api: getCheckNicknameDuplicated.bind(null, Instance),
+      api: (nickname: string) => getCheckNicknameDuplicated(Instance, nickname),
     },
     getRandomNickname: {
       path: RANDOM_NICKNAME_API_PATH,
-      api: getRandomNickname.bind(null, Instance),
+      api: () => getRandomNickname(Instance),
+    },
+    getProfile: {
+      path: USER_PROFILE_API_PATH,
+      api: () => getProfile(Instance),
     },
     postProfile: {
       path: USER_PROFILE_API_PATH,
-      api: postProfile.bind(null, Instance),
+      api: (profileData: PostProfileRequest) =>
+        postProfile(Instance, profileData),
     },
     getProfileStatus: {
       path: USER_PROFILE_STATUS_API_PATH,
-      api: getProfileStatus.bind(null, Instance),
+      api: () => getProfileStatus(Instance),
     },
     postSMSForVerification: {
       path: USER_VERIFY_SMS_API_PATH,
-      api: postSMSForVerification.bind(null, Instance),
+      api: (phoneNumber: string) =>
+        postSMSForVerification(Instance, phoneNumber),
     },
     postVerifyPhoneNumber: {
       path: USER_VERIFY_NUMBER_API_PATH,
-      api: postVerifyPhoneNumber.bind(null, Instance),
+      api: (params: PostVerifyPhoneNumberRequest) =>
+        postVerifyPhoneNumber(Instance, params),
+    },
+    postUserBasicInformation: {
+      path: USER_BASIC_INFORMATION_API_PATH,
+      api: (params: { nickname: string; phoneNumber: string; email: string }) =>
+        postUserBasicInformation(Instance, params),
+    },
+    postUserPersonalInformation: {
+      path: USER_PERSONAL_INFORMATION_API_PATH,
+      api: (params: PostUserPersonalInformationRequest) =>
+        postUserPersonalInformation(Instance, params),
     },
   };
 };

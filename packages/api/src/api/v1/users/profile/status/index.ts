@@ -3,7 +3,8 @@ import { AxiosInstance } from "axios";
 export const USER_PROFILE_STATUS_API_PATH = "/api/v1/users/profile/status";
 
 export interface GetProfileStatusResponse {
-  isComplete: boolean;
+  basicInformation: boolean;
+  personalInformation: boolean;
 }
 
 export const getProfileStatus = async (instance: AxiosInstance) => {
