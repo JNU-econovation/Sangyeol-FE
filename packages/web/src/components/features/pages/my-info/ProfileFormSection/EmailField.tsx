@@ -1,8 +1,24 @@
-import { useMyProfileFormContext } from "@/hooks/feature/form/useMyProfileForm";
+import { useMyProfileFormContext } from "@hooks/feature/form/useMyProfileForm";
 import TextField from "@shared/ui/TextField";
+import * as z from "zod";
+
+export type EmailHelperState = "FIT" | "INVALID" | "DUPLICATED";
+
+const emailSchema = z.string().email("올바른 이메일 주소를 입력해 주세요.");
 
 const EmailField = () => {
   const { watch, setValue } = useMyProfileFormContext();
+
+  const checkEmail = (email: string) => {
+    const result = emailSchema.safeParse(email);
+
+    if (result.success) {
+      setValue("emailFieldHelperState", "FIT");
+      return;
+    }
+
+    setValue("emailFieldHelperState", "INVALID");
+  };
 
   return (
     <TextField
@@ -11,7 +27,17 @@ const EmailField = () => {
       placeholder="test@naver.com"
       color="white"
       value={watch("email")}
-      onChange={(e) => setValue("email", e.target.value)}
+      helperText={
+        watch("emailFieldHelperState") === "INVALID"
+          ? "올바른 이메일 주소를 입력해 주세요."
+          : watch("emailFieldHelperState") === "DUPLICATED"
+            ? "이미 가입된 이메일입니다."
+            : ""
+      }
+      onChange={(e) => {
+        setValue("email", e.target.value);
+        checkEmail(e.target.value);
+      }}
     />
   );
 };
