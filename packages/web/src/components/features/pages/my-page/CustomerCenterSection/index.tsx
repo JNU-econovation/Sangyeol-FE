@@ -24,36 +24,28 @@ export default function CustomerCenterSection() {
   });
 
   return (
-    <section className="border-b border-gray-30">
-      <Text fontSize="text-sm" color="text-primary" fontWeight="font-medium">
-        고객 센터
-      </Text>
+    <section className="border-b border-green-600">
+      <span className="text-green-900/50 text-sm font-medium">고객 센터</span>
       <Spacing size={2} />
-      <button
+      {/* <button
         onClick={goToFaq}
         className="flex items-center justify-between h-10 w-full"
       >
-        <Text fontSize="text-base" fontWeight="font-medium">
-          자주 묻는 질문
-        </Text>
+        <span className="text-base font-medium">자주 묻는 질문</span>
         <GrayRightArrowIcon width={6} height={10} />
-      </button>
+      </button> */}
       <button
         onClick={goToInquiry}
         className="flex items-center justify-between h-10 w-full"
       >
-        <Text fontSize="text-base" fontWeight="font-medium">
-          문의하기
-        </Text>
+        <span className="text-black text-base font-medium">문의하기</span>
         <GrayRightArrowIcon width={6} height={10} />
       </button>
       <button
         onClick={goToCheckTerms}
         className="flex items-center justify-between h-10 w-full"
       >
-        <Text fontSize="text-base" fontWeight="font-medium">
-          약관 확인
-        </Text>
+        <span className="text-black text-base font-medium">약관 확인</span>
         <GrayRightArrowIcon width={6} height={10} />
       </button>
       <Spacing size={2} />
