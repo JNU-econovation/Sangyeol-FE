@@ -40,7 +40,7 @@ const ROUTE = {
   INQUIRY_HISTORY: "/my-page/inquiry-history",
   CHECK_TERMS: "/my-page/check-terms",
   NOTIFICATION_SETTINGS: "/my-page/notification-settings",
-  CHANGE_PASSWORD: "/my-page/change-password",
+  CHANGE_PHONE_NUMBER: "/my-page/change-phone-number",
 };
 
 export default ROUTE;

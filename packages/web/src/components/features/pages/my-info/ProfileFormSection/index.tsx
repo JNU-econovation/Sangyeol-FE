@@ -7,10 +7,11 @@ import { Button } from "@shared/ui/Button";
 import TextField from "@shared/ui/TextField";
 import { Suspense } from "@suspensive/react";
 import { useEffect } from "react";
-import { SubmitHandler } from "react-hook-form";
 
-import ProfileFormSectionLoader from "./loader";
+import ROUTE from "@/constants/route";
 import useMyProfileMutation from "@/hooks/feature/query/mutate/useMyProfileMutation";
+import { useStackLinkRouter } from "stack-link";
+import ProfileFormSectionLoader from "./loader";
 
 const ProfileFormSection = Suspense.with(
   {
@@ -31,8 +32,10 @@ const ProfileFormSection = Suspense.with(
       },
     } = useProfileQuery();
     const { mutate: updateProfile } = useMyProfileMutation();
-
     const { setValue, watch, handleSubmit } = useMyProfileForm();
+    const { navigate } = useStackLinkRouter({
+      prefetchHref: ROUTE.CHANGE_PHONE_NUMBER,
+    });
 
     useEffect(() => {
       setValue("nickname", nickname);
@@ -44,14 +47,7 @@ const ProfileFormSection = Suspense.with(
     }, [bloodType, email, etc, height, nickname, setValue, weight]);
 
     return (
-      <form
-      // onSubmit={(e) => {
-      //   e.preventDefault();
-      //   handleSubmit((data) => {
-      //     updateProfile(data);
-      //   });
-      // }}
-      >
+      <form>
         <TextField label="이름" value={name} disabled />
         <Spacing size={8} />
         <TextField
@@ -67,7 +63,16 @@ const ProfileFormSection = Suspense.with(
           value={phoneNumber}
           disabled
           right={
-            <Button size={"sm"} onClick={() => alert("인증하기")}>
+            <Button
+              size={"sm"}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navigate({
+                  href: ROUTE.CHANGE_PHONE_NUMBER,
+                });
+              }}
+            >
               인증하기
             </Button>
           }
