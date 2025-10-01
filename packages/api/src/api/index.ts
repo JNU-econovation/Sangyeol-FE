@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
-import type { CourseSortType } from "./v1/mountains/[mountainId]/courses";
+import type { CourseSortType } from "@model/course";
 import type { LoginRequestBody } from "./v1/oauth/apple/login";
-import type { PostProfileRequest } from "./v1/users/profile";
+import type { PutProfileRequest } from "./v1/users/profile";
 import type { PostVerifyPhoneNumberRequest } from "./v1/users/verify-sms";
 
 import { BASES_API_PATH, getBasesApi } from "./v1/bases";
@@ -30,7 +30,6 @@ import {
 import { LOGIN_API_PATH, postLogin } from "./v1/oauth/apple/login";
 import { KAKAO_LOGIN_URI, getKakaoLoginApi } from "./v1/oauth/kakao";
 import { PATHWAY_API_PATH, getPathwayOfCourse } from "./v1/pathways";
-// import { postProfile } from '@api/v1/users/profile';
 import {
   CHECK_NICKNAME_API_PATH,
   getCheckNicknameDuplicated,
@@ -42,7 +41,7 @@ import {
 import {
   USER_PROFILE_API_PATH,
   getProfile,
-  postProfile,
+  putProfile,
 } from "./v1/users/profile";
 import {
   USER_PROFILE_STATUS_API_PATH,
@@ -139,10 +138,10 @@ export const instanceWith = (Instance: AxiosInstance) => {
       path: USER_PROFILE_API_PATH,
       api: () => getProfile(Instance),
     },
-    postProfile: {
+    putProfile: {
       path: USER_PROFILE_API_PATH,
-      api: (profileData: PostProfileRequest) =>
-        postProfile(Instance, profileData),
+      api: (profileData: PutProfileRequest) =>
+        putProfile(Instance, profileData),
     },
     getProfileStatus: {
       path: USER_PROFILE_STATUS_API_PATH,

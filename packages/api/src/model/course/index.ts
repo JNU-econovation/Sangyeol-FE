@@ -1,5 +1,7 @@
 export type CourseDifficulty = "EASY" | "NORMAL" | "HARD";
 
+export type CourseSortType = "length" | "difficulty";
+
 export interface Course {
   id: string;
   name: string;
