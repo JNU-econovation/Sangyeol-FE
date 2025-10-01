@@ -16,5 +16,5 @@ export const useMyProfileForm = () => {
 };
 
 export const useMyProfileFormContext = () => {
-  return useFormContext();
+  return useFormContext<PutProfileRequest>();
 };
