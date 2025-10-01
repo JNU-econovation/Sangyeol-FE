@@ -6,7 +6,7 @@ import Button from "@shared/ui/Button";
 import CancelIcon from "@shared/ui/icons/CancelIcon";
 import TextField from "@shared/ui/TextField";
 
-export default function PasswordInfoSection() {
+export default function ChangeNumberFormSection() {
   const { onChangePasswordInfo, onClearPasswordInfo, passwordInfo } =
     usePasswordInfo();
 
@@ -14,9 +14,9 @@ export default function PasswordInfoSection() {
     <section>
       <form>
         <TextField
-          label="현재 비밀번호"
-          type="password"
-          placeholder="****"
+          label="전화번호"
+          type="tel"
+          placeholder="010-1234-5678"
           color="white"
           value={passwordInfo.password}
           onChange={(e) => onChangePasswordInfo("password", e.target.value)}
@@ -28,9 +28,8 @@ export default function PasswordInfoSection() {
         />
         <Spacing size={8} />
         <TextField
-          label="새 비밀번호"
-          type="password"
-          placeholder="****"
+          label="인증번호"
+          type="tel"
           color="white"
           value={passwordInfo.newPassword}
           onChange={(e) => onChangePasswordInfo("newPassword", e.target.value)}

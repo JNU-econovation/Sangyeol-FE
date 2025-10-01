@@ -1,13 +1,13 @@
-import ChangePasswordHeaderSection from "@pages/change-password/ChangePasswordHeaderSection";
-import PasswordInfoSection from "@pages/change-password/PasswordInfoSection";
+import ChangePhoneNumberHeaderSection from "@pages/change-phone-number/ChangePhoneNumberHeaderSection";
+import ChangeNumberFormSection from "@/components/features/pages/change-phone-number/ChangeNumberFormSection";
 import Spacing from "@shared/layout/Spacing";
 
-export default function ChangePasswordPage() {
+export default function ChangePhoneNumberPage() {
   return (
     <div className="p-6">
-      <ChangePasswordHeaderSection />
+      <ChangePhoneNumberHeaderSection />
       <Spacing size={12} />
-      <PasswordInfoSection />
+      <ChangeNumberFormSection />
     </div>
   );
 }
