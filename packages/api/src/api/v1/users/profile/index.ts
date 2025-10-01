@@ -15,7 +15,7 @@ export interface GetProfileResponse {
   etc: string;
 }
 
-export interface PostProfileRequest {
+export interface PutProfileRequest {
   nickname: string;
   phoneNumber: string;
   email: string;
@@ -38,7 +38,7 @@ export const getProfile = async (instance: AxiosInstance) => {
 //put
 export const putProfile = async (
   instance: AxiosInstance,
-  profileData: PostProfileRequest,
+  profileData: PutProfileRequest,
 ) => {
   const response = await instance({
     method: "PUT",

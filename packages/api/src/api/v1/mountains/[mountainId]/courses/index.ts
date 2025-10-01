@@ -1,7 +1,5 @@
 import { AxiosInstance } from "axios";
-import { Course } from "@model/course";
-
-export type CourseSortType = "length" | "difficulty";
+import { Course, CourseSortType } from "@model/course";
 
 export const COURSES_OF_MOUNTAIN_API_PATH = (
   mountainId: string,

@@ -1,7 +1,5 @@
 import { AxiosInstance } from "axios";
 
-export type CourseSortType = "length" | "difficulty";
-
 export const RELATED_MOUNTAINS_API_PATH = (keyword: string) =>
   `/api/v1/mountains/relations/${encodeURIComponent(keyword)}`;
 
