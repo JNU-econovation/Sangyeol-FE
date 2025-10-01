@@ -23,6 +23,10 @@ export const ButtonVariants = cva(
         true: "w-full p-3 text-center grow",
         false: "",
       },
+      disabled: {
+        true: "opacity-50 cursor-not-allowed",
+        false: "",
+      },
     },
     defaultVariants: {
       color: "green",
@@ -45,12 +49,16 @@ export function Button({
   color,
   size,
   fullWidth,
+  disabled,
   ...props
 }: ButtonProps) {
   return (
     <button
       {...props}
-      className={cn(ButtonVariants({ color, size, className, fullWidth }))}
+      disabled={disabled}
+      className={cn(
+        ButtonVariants({ color, size, className, fullWidth, disabled }),
+      )}
     >
       {children}
     </button>
