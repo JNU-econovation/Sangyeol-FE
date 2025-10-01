@@ -1,16 +1,13 @@
 "use client";
 
 import useLogoutModal from "@hooks/feature/modal/useLogoutModal";
-import Text from "@shared/ui/Text";
 
 export default function LogoutButton() {
   const { openLogoutModal } = useLogoutModal();
 
   return (
-    <button onClick={openLogoutModal} className="w-full">
-      <Text fontSize="text-sm" color="text-primary">
-        로그아웃
-      </Text>
+    <button onClick={openLogoutModal}>
+      <span className="text-green-900/50 text-sm font-medium">로그아웃</span>
     </button>
   );
 }
