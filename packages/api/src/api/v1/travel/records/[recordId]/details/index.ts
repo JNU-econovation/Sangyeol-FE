@@ -41,11 +41,11 @@ interface Record {
 /**
  * @public
  * @category Types
- * @interface GetTravelRecordsResponse
+ * @interface GetTravelRecordsDetailsResponse
  * @description 산행 기록 상세 조회 응답 타입
  * @property {Record[]} records - 산행 기록 상세 목록
  */
-export interface GetTravelRecordsResponse {
+export interface GetTravelRecordsDetailsResponse {
   records: Record[];
 }
 
@@ -67,7 +67,7 @@ export const getTravelRecordDetails = async (
   instance: AxiosInstance,
   { recordId }: { recordId: string },
 ) => {
-  const response = await instance<GetTravelRecordsResponse>({
+  const response = await instance<GetTravelRecordsDetailsResponse>({
     method: "GET",
     url: TRAVEL_RECORDS_API_PATH({ recordId }),
   });
