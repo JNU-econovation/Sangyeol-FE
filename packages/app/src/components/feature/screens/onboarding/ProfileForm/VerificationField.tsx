@@ -26,7 +26,7 @@ const VerificationField = () => {
       if (getValues("verificationFieldHelperState") !== "NONE") return;
 
       checkVerificationCode(
-        { certificationCode: verificationCode },
+        { certificationCode: +verificationCode }, // TODO: 타입 안정성 해결
         {
           onSuccess: () => {
             setValue("verificationFieldHelperState", "SUCCESS");
