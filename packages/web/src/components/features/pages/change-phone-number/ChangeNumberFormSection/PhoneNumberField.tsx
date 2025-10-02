@@ -1,21 +1,73 @@
 "use client";
 
-import Button from "@/components/common/shared/ui/Button";
-import { useChangeNumberFormContext } from "@/hooks/feature/form/useChangeNumberForm";
+import useSMSForVerificationMutate from "@hooks/feature/query/mutate/useSMSForVerificationMutate";
+import { useChangeNumberFormContext } from "@hooks/feature/form/useChangeNumberForm";
+import Button from "@shared/ui/Button";
 import TextField from "@shared/ui/TextField";
+import {
+  isValidPhoneNumber,
+  validateAndFormatPhoneWithoutPrefix,
+} from "@sangyeol/utils";
+import { cn } from "@/utils/cn";
+import { useState } from "react";
 
 const PhoneNumberField = () => {
-  const { watch, setValue } = useChangeNumberFormContext();
+  const [isFocused, setIsFocused] = useState(false);
+  const { setValue, watch } = useChangeNumberFormContext();
+  const { mutate: sendSMSVerification } = useSMSForVerificationMutate();
+
+  const handlePhoneNumberVerification = (
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const phoneNumber = `010-${watch("phoneNumber")}`;
+    console.log(phoneNumber);
+    if (isValidPhoneNumber(phoneNumber)) {
+      sendSMSVerification(phoneNumber, {
+        onSuccess: () => {
+          setValue("verificationDeadline", Date.now() + 1000 * 60 * 5); //5 min
+          setValue(
+            "phoneNumberVerificationCount",
+            watch("phoneNumberVerificationCount") + 1,
+          );
+        },
+      });
+    }
+  };
 
   return (
     <TextField
       label="전화번호"
       type="tel"
-      placeholder="010-0000-0000"
+      placeholder="0000-0000"
       color="white"
-      // value={passwordInfo.password}
-      onChange={(e) => setValue("phoneNumber", e.target.value)}
-      right={<Button size="sm">재요청</Button>}
+      value={watch("phoneNumber")}
+      onChange={(e) =>
+        setValue(
+          "phoneNumber",
+          validateAndFormatPhoneWithoutPrefix(e.target.value),
+        )
+      }
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      maxLength={9}
+      paddingInline={12}
+      left={
+        <span
+          className={cn("transition-colors", {
+            "!text-black": isFocused || watch("phoneNumber") !== "",
+            "text-gray-400": watch("phoneNumber") === "",
+          })}
+        >
+          010 -
+        </span>
+      }
+      right={
+        <Button size="sm" onClick={handlePhoneNumberVerification}>
+          재요청
+        </Button>
+      }
     />
   );
 };
