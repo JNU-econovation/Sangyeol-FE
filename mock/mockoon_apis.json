@@ -66,6 +66,10 @@
         {
           "type": "folder",
           "uuid": "890b30e5-5f25-4759-8296-6b4183634ce4"
+        },
+        {
+          "type": "route",
+          "uuid": "40d0a16a-4a5a-4dd0-82e7-4376ba52b088"
         }
       ]
     },
@@ -78,11 +82,6 @@
           "uuid": "ebf8f2fb-f057-4970-90b2-34136d95a96d"
         }
       ]
-    },
-    {
-      "uuid": "8414f29d-ee3c-4c83-9ac8-d30732d1c720",
-      "name": "🏷️ Tags & Categories",
-      "children": []
     },
     {
       "uuid": "bb9f730a-336c-4088-ab03-d192028b7bc0",
@@ -681,6 +680,64 @@
         }
       ],
       "responseMode": null
+    },
+    {
+      "uuid": "fb8fb906-f0e3-4ce0-a7f5-710efe553a40",
+      "type": "http",
+      "documentation": "프로필 조회",
+      "method": "get",
+      "endpoint": "api/v1/users/profile",
+      "responses": [
+        {
+          "uuid": "e07c9d16-9c0c-4a05-83b5-2005bc309594",
+          "body": "{\n  \t\"data\" : {\n\t  \t  \"name\" : \"유정빈\",\n\t\t  \t\"nickname\" : \"별헤는피글렛\",\n\t\t  \t\"phoneNumber\" : \"010-1234-5678\",\n\t\t  \t\"email\" : \"ljh0923245@naver.com\",\n\t\t  \t\"weight\" : 60.9,\n\t\t  \t\"height\" : 171.3,\n\t\t  \t\"bloodType\" : \"B\"\n  \t},\n\t\t\"status\" : \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "e69b27d3-d2ef-4dc5-8537-5285368eb950",
+      "type": "http",
+      "documentation": "프로필 전체 업데이트",
+      "method": "put",
+      "endpoint": "api/v1/users/profile",
+      "responses": [
+        {
+          "uuid": "198f79b8-1373-4289-993b-91a458446dd8",
+          "body": "{\n\t\"data\" : null\n\t\"status\" : \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -698,10 +755,6 @@
     },
     {
       "type": "folder",
-      "uuid": "8414f29d-ee3c-4c83-9ac8-d30732d1c720"
-    },
-    {
-      "type": "folder",
       "uuid": "72efabc1-ae8d-47b9-a9f5-7b4cf9c90f46"
     },
     {
@@ -710,7 +763,11 @@
     },
     {
       "type": "route",
-      "uuid": "40d0a16a-4a5a-4dd0-82e7-4376ba52b088"
+      "uuid": "fb8fb906-f0e3-4ce0-a7f5-710efe553a40"
+    },
+    {
+      "type": "route",
+      "uuid": "e69b27d3-d2ef-4dc5-8537-5285368eb950"
     }
   ],
   "proxyMode": false,
