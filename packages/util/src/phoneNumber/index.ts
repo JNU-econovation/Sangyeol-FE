@@ -28,8 +28,6 @@ export const formatPhoneNumber = (phoneNumber: number | string): string => {
     ) {
       return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
     }
-    // 기타 11자리 (예외적인 경우)
-    return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
   } else if (digits.length === 8) {
     // 8자리인 경우 (서울 지역번호 02 + 8자리)
     // 예: 12345678 → 02-1234-5678
@@ -81,7 +79,7 @@ export const isValidPhoneNumber = (phoneNumber: number | string): boolean => {
   const digits = phoneNumber.toString().replace(/\D/g, "");
 
   // 한국 휴대폰 번호 패턴 (010, 011, 016, 017, 018, 019로 시작하는 11자리)
-  const mobilePattern = /^01[0-9]\d{8}$/;
+  const mobilePattern = /^01[01678-9]\d{8}$/;
 
   return mobilePattern.test(digits);
 };
@@ -114,9 +112,9 @@ export const validateAndFormatPhoneWithoutPrefix = (phoneNumber: number | string
  */
 export const isValidPhoneWithoutPrefix = (phoneNumber: number | string): boolean => {
   const numStr = phoneNumber.toString().replace(/\D/g, "");
-  
-  // 8자리 숫자인지 확인
-  return /^\d{8}$/.test(numStr);
+
+  // 7자리 또는 8자리 숫자인지 확인
+  return /^\d{7,8}$/.test(numStr);
 };
 
 // 사용 예시
