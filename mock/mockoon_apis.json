@@ -690,7 +690,7 @@
       "responses": [
         {
           "uuid": "e07c9d16-9c0c-4a05-83b5-2005bc309594",
-          "body": "{\n  \t\"data\" : {\n\t  \t  \"name\" : \"유정빈\",\n\t\t  \t\"nickname\" : \"별헤는피글렛\",\n\t\t  \t\"phoneNumber\" : \"010-1234-5678\",\n\t\t  \t\"email\" : \"ljh0923245@naver.com\",\n\t\t  \t\"weight\" : 60.9,\n\t\t  \t\"height\" : 171.3,\n\t\t  \t\"bloodType\" : \"B\"\n  \t},\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \t\"data\" : {\n\t  \t  \"name\" : \"스티븐 유\",\n\t\t  \t\"nickname\" : \"별헤는피글렛\",\n\t\t  \t\"phoneNumber\" : \"010-1234-5678\",\n\t\t  \t\"email\" : \"stevenu@something.com\",\n\t\t  \t\"weight\" : 60,\n\t\t  \t\"height\" : 175,\n\t\t  \t\"bloodType\" : \"O\"\n  \t},\n\t\t\"status\" : \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
