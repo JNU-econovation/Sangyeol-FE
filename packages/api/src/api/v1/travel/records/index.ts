@@ -24,8 +24,8 @@ export interface GetTravelRecordsResponse {
 
 // TODO: api 변경 반영 필요
 
-// [get] 알림 조회
-export const getAlert = async (
+// [get] 산행 기록 조회
+export const getTravelRecord = async (
   instance: AxiosInstance,
   { year, month }: { year: number; month: number },
 ) => {

@@ -21,7 +21,7 @@ export const getAlert = async (instance: AxiosInstance) => {
   return response.data;
 };
 
-// [put] 알림 생성
+// [put] 알림 설정 수정
 export const putAlert = async (
   instance: AxiosInstance,
   body: GetAlertResponse,
