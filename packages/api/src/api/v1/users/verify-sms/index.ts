@@ -7,7 +7,7 @@ export interface PostVerifyPhoneNumberResponse {
 }
 
 export interface PostVerifyPhoneNumberRequest {
-  certificationCode: string;
+  certificationCode: number;
 }
 
 export const postVerifyPhoneNumber = async (
