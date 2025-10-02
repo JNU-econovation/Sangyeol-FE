@@ -8,6 +8,7 @@
   "devDependencies": {
     "@tanstack/react-query": "^5.90.2",
     "axios": "^1.12.2",
+    "docflow": "^0.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3"
   },
