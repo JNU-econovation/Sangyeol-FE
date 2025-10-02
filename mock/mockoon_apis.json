@@ -541,7 +541,7 @@
       "type": "http",
       "documentation": "전화번호 인증번호 확인",
       "method": "post",
-      "endpoint": "api/v1/users/verify-sms",
+      "endpoint": "api/v1/auth/sms/verify",
       "responses": [
         {
           "uuid": "e1874d95-dcbf-4e29-8c89-6966f239249d",
@@ -570,7 +570,7 @@
       "type": "http",
       "documentation": "전화번호 인증번호 전송",
       "method": "post",
-      "endpoint": "api/v1/users/sms",
+      "endpoint": "api/v1/auth/sms",
       "responses": [
         {
           "uuid": "e2c1c96f-b30e-47a9-8607-5c6ec885307e",
