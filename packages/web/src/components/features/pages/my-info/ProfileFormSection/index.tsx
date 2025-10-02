@@ -62,7 +62,6 @@ const ProfileFormSection = Suspense.with(
           <Spacing size={8} />
           <HeightField />
           <Spacing size={8} />
-          <Spacing size={8} />
           <BloodTypeField />
           <Spacing size={8} />
           <EtcField />
