@@ -8,7 +8,8 @@
   "devDependencies": {
     "@tanstack/react-query": "^5.90.2",
     "axios": "^1.12.2",
-    "tsup": "^8.5.0"
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5.90.2",
