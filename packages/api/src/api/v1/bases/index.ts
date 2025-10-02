@@ -2,7 +2,7 @@ import { AxiosInstance } from "axios";
 import type { BaseMarker } from "@model/map";
 
 export const BASES_API_PATH = (mountainId: string) =>
-  `/api/v1/bases?mountainId=${mountainId}`;
+  `/api/v1/bases?mountainId=${encodeURIComponent(mountainId)}`;
 
 export interface GetBasesApiResponse {
   mountainId: string;
