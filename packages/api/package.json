@@ -3,7 +3,9 @@
   "packageManager": "yarn@4.9.4",
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup --clean"
+    "build": "tsup --clean",
+    "build:docs": "docflow build",
+    "check:docs": "docflow check"
   },
   "devDependencies": {
     "@tanstack/react-query": "^5.90.2",
