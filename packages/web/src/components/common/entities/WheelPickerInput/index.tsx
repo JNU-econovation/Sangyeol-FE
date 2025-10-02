@@ -7,10 +7,10 @@ export interface WheelPickerOption<T = string> {
   value: T;
 }
 
-interface WheelPickerProps<T> {
+interface WheelPickerProps<T extends string> {
   options: WheelPickerOption<T>[];
-  value: string;
-  onChange: (value: string) => void;
+  value: T | null;
+  onChange: (value: T) => void;
   placeholder?: string;
 }
 
@@ -21,7 +21,7 @@ const WheelPickerInput = <T extends string>({
   placeholder = "선택하세요",
 }: WheelPickerProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [tempValue, setTempValue] = useState(value);
+  const [tempValue, setTempValue] = useState<T | null>(value);
   const pickerRef = useRef<HTMLDivElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -76,7 +76,7 @@ const WheelPickerInput = <T extends string>({
       if (closestItem) {
         const selectedValue = closestItem.getAttribute("data-value");
         if (selectedValue) {
-          setTempValue(selectedValue);
+          setTempValue(selectedValue as T);
         }
       }
     }, 100);
@@ -84,7 +84,9 @@ const WheelPickerInput = <T extends string>({
 
   const handleConfirm = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onChange(tempValue);
+    if (tempValue != null) {
+      onChange(tempValue);
+    }
     setIsOpen(false);
   };
 
