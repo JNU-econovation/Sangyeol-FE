@@ -12,7 +12,10 @@ const WeightField = () => {
       value={watch("weight")}
       type="tel"
       maxLength={3}
-      onChange={(e) => setValue("weight", +e.target.value)} //TODO: 타입 안정성 챙기기 string -> number
+      onChange={(e) => {
+        const value = parseInt(e.target.value, 10);
+        setValue("weight", isNaN(value) ? 0 : value);
+      }}
       right={<span className="text-gray-900 text-lg">kg</span>}
     />
   );
