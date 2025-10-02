@@ -17,6 +17,7 @@ import NicknameField from "./NicknameField";
 import PhoneNumberField from "./PhoneNumberField";
 import SubmitButton from "./SubmitButton";
 import WeightField from "./WeightField";
+import EtcField from "./EtcField";
 
 const ProfileFormSection = Suspense.with(
   {
@@ -63,6 +64,8 @@ const ProfileFormSection = Suspense.with(
           <Spacing size={8} />
           <Spacing size={8} />
           <BloodTypeField />
+          <Spacing size={8} />
+          <EtcField />
           <Spacing size={8} />
           <SubmitButton />
         </form>

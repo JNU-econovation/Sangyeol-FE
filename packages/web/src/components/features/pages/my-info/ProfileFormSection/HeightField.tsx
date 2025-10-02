@@ -10,8 +10,10 @@ const HeightField = () => {
       placeholder="100"
       color="white"
       value={watch("height")}
-      type="number"
+      type="tel"
+      maxLength={3}
       onChange={(e) => setValue("height", +e.target.value)} //TODO: 타입 안정성 챙기기 string -> number
+      right={<span className="text-gray-900 text-lg">cm</span>}
     />
   );
 };

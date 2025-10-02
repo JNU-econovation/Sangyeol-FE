@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export interface WheelPickerOption<T = string> {
   label: string;
-  value: string;
+  value: T;
 }
 
 interface WheelPickerProps<T> {
