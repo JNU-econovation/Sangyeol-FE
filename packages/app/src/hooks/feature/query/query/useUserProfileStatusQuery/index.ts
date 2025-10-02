@@ -1,17 +1,11 @@
-import {
-  getProfileStatus,
-  USER_PROFILE_STATUS_API_PATH,
-} from "@api/v1/users/profile/status";
-import { useTokenStore } from "@store/secureStorage/useTokenStore";
+import authenticatedApi from "@api/_instances/authenticatedApi";
 import { useQuery } from "@tanstack/react-query";
+import { getProfileStatus, USER_PROFILE_STATUS_API_PATH } from "api";
 
 const useUserProfileStatusQuery = () => {
-  // const { accessToken } = useTokenStore();
-
   const query = useQuery({
     queryKey: [USER_PROFILE_STATUS_API_PATH],
-    queryFn: getProfileStatus,
-    // enabled: !!accessToken,
+    queryFn: () => getProfileStatus(authenticatedApi),
     staleTime: Infinity,
     gcTime: Infinity,
   });

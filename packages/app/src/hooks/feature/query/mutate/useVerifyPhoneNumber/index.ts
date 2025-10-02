@@ -1,13 +1,15 @@
 import {
   postVerifyPhoneNumber,
+  PostVerifyPhoneNumberRequest,
   USER_VERIFY_NUMBER_API_PATH,
-} from "@api/v1/users/verify-sms";
+} from "api";
 import { useMutation } from "@tanstack/react-query";
+import authenticatedApi from "@api/_instances/authenticatedApi";
 
 const useVerifyPhoneNumber = () => {
   return useMutation({
     mutationKey: [USER_VERIFY_NUMBER_API_PATH],
-    mutationFn: postVerifyPhoneNumber,
+    mutationFn: (data: PostVerifyPhoneNumberRequest) => postVerifyPhoneNumber(authenticatedApi, data),
   });
 };
 

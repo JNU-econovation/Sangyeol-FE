@@ -1,13 +1,14 @@
 import {
   getRandomNickname,
   RANDOM_NICKNAME_API_PATH,
-} from "@api/v1/users/nickname/random";
+} from "api";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import authenticatedApi from "@api/_instances/authenticatedApi";
 
 const useRandomNicknameQuery = () => {
   return useSuspenseQuery({
     queryKey: [RANDOM_NICKNAME_API_PATH],
-    queryFn: getRandomNickname,
+    queryFn: () => getRandomNickname(authenticatedApi),
   });
 };
 

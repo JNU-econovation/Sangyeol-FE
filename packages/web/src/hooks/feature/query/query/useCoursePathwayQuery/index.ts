@@ -1,5 +1,6 @@
-import { getPathwayOfCourse, PATHWAY_API_PATH } from "@/api/v1/pathways";
+import { getPathwayOfCourse, PATHWAY_API_PATH } from "api";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import authenticatedApi from "@/api/_instances/authenticatedApi";
 
 interface UseCoursePathwayQueryParams {
   courseId: string;
@@ -8,7 +9,7 @@ interface UseCoursePathwayQueryParams {
 const useCoursePathwayQuery = ({ courseId }: UseCoursePathwayQueryParams) => {
   return useSuspenseQuery({
     queryKey: [PATHWAY_API_PATH(courseId)],
-    queryFn: () => getPathwayOfCourse(courseId),
+    queryFn: () => getPathwayOfCourse(authenticatedApi, courseId),
     staleTime: 1000 * 60 * 60,
     gcTime: 1000 * 60 * 60 * 24,
   });

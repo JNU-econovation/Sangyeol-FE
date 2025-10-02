@@ -1,5 +1,6 @@
-import { BASES_API_PATH, getBasesApi } from "@api/v1/bases";
+import { BASES_API_PATH, getBasesApi } from "api";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import authenticatedApi from "@api/_instances/authenticatedApi";
 
 interface UseBaseQueryProps {
   mountainId: string;
@@ -8,7 +9,7 @@ interface UseBaseQueryProps {
 const useBasesQuery = ({ mountainId }: UseBaseQueryProps) => {
   return useSuspenseQuery({
     queryKey: [BASES_API_PATH(mountainId)],
-    queryFn: () => getBasesApi(mountainId),
+    queryFn: () => getBasesApi(authenticatedApi, mountainId),
     staleTime: 1000 * 60 * 5, // 5m
     gcTime: 1000 * 60 * 60, // 1h
   });

@@ -5,7 +5,7 @@ import { AxiosInstance } from "axios";
  * @path - /api/v1/oauth/apple/login
  */
 
-export interface LoginRequestBody {
+export interface PostLoginRequest {
   identityToken: string;
   email: string;
   fullName: {
@@ -21,7 +21,7 @@ export const LOGIN_API_PATH = "/api/v1/oauth/apple/login";
  */
 export const postLogin = async (
   instance: AxiosInstance,
-  body: LoginRequestBody,
+  body: PostLoginRequest,
 ) => {
   const response = await instance.post(LOGIN_API_PATH, body);
   return response.data;
