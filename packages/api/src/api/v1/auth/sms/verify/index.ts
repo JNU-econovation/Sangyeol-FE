@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 
-export const USER_VERIFY_NUMBER_API_PATH = "/api/v1/users/verify-sms";
+export const USER_VERIFY_NUMBER_API_PATH = "/api/v1/auth/sms/verify";
 
 export interface PostVerifyPhoneNumberResponse {
   certificationCode: number;

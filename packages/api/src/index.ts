@@ -1,6 +1,3 @@
-// API
-export { instanceWith as default } from "./api";
-
 // 모든 API 타입들을 자동으로 re-export
 export * from "./api/v1/bases";
 export * from "./api/v1/bases/[mountainId]/details";
@@ -16,8 +13,8 @@ export * from "./api/v1/users/nickname/check";
 export * from "./api/v1/users/nickname/random";
 export * from "./api/v1/users/profile";
 export * from "./api/v1/users/profile/status";
-export * from "./api/v1/users/sms";
-export * from "./api/v1/users/verify-sms";
+export * from "./api/v1/auth/sms";
+export * from "./api/v1/auth/sms/verify";
 export * from "./api/v1/users/profile/basic-information";
 export * from "./api/v1/users/profile/personal-information";
 
