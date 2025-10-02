@@ -1,8 +1,9 @@
 import {
   BASES_DETAIL_API_PATH,
   getBasesDetailApi,
-} from "@/api/v1/bases/[mountainId]/details";
+} from "api";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import authenticatedApi from "@/api/_instances/authenticatedApi";
 
 interface BasesDetailQueryProps {
   mountainId: string;
@@ -11,7 +12,7 @@ interface BasesDetailQueryProps {
 const useBasesDetailQuery = ({ mountainId }: BasesDetailQueryProps) => {
   return useSuspenseQuery({
     queryKey: [BASES_DETAIL_API_PATH(mountainId)],
-    queryFn: () => getBasesDetailApi(mountainId),
+    queryFn: () => getBasesDetailApi(authenticatedApi, mountainId),
   });
 };
 

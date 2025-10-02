@@ -1,10 +1,11 @@
-import { LOGIN_API_PATH, postLogin } from "@api/v1/oauth/apple/login";
+import { LOGIN_API_PATH, postLogin, PostLoginRequest } from "api";
 import { useMutation } from "@tanstack/react-query";
+import publicApi from "@api/_instances/publicApi";
 
 const useAppleLoginMutate = () => {
   return useMutation({
     mutationKey: [LOGIN_API_PATH],
-    mutationFn: postLogin,
+    mutationFn: (data: PostLoginRequest) => postLogin(publicApi, data),
   });
 };
 

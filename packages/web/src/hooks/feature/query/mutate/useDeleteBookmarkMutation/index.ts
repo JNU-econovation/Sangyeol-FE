@@ -1,14 +1,15 @@
-import { BOOKMARK_API_PATH } from "@/api/v1/bookmarks";
+import { BOOKMARK_API_PATH } from "api";
 import {
   DELETE_BOOKMARK_API_PATH,
   deleteBookmarkApi,
-} from "@/api/v1/bookmarks/[courseId]";
+} from "api";
 import {
   COURSES_OF_MOUNTAIN_API_PATH,
   CourseSortType,
   type GetCoursesOfMountainResponse,
-} from "@/api/v1/mountains/[mountainId]/courses";
+} from "api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import authenticatedApi from "@/api/_instances/authenticatedApi";
 
 interface UseDeleteBookmarkMutationProps {
   mountainId: string;
@@ -23,7 +24,7 @@ const useDeleteBookmarkMutation = ({
 
   return useMutation({
     mutationKey: [DELETE_BOOKMARK_API_PATH],
-    mutationFn: deleteBookmarkApi,
+    mutationFn: (courseId: string) => deleteBookmarkApi(authenticatedApi, courseId),
 
     onMutate: (selectedCourseId) => {
       // const prev = queryClient.getQueryData([BOOKMARK_API_PATH]);

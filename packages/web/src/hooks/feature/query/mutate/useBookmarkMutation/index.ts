@@ -1,10 +1,11 @@
-import { BOOKMARK_API_PATH, postBookmarkApi } from "@/api/v1/bookmarks";
+import { BOOKMARK_API_PATH, postBookmarkApi } from "api";
 import {
   COURSES_OF_MOUNTAIN_API_PATH,
   CourseSortType,
   GetCoursesOfMountainResponse,
-} from "@/api/v1/mountains/[mountainId]/courses";
+} from "api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import authenticatedApi from "@/api/_instances/authenticatedApi";
 
 interface UseBookmarkMutationProps {
   mountainId: string;
@@ -24,7 +25,7 @@ const useBookmarkMutation = ({
 
   return useMutation({
     mutationKey: [BOOKMARK_API_PATH],
-    mutationFn: postBookmarkApi,
+    mutationFn: (courseId: string) => postBookmarkApi(authenticatedApi, courseId),
     onMutate: (selectedCourseId) => {
       // const prev = queryClient.getQueryData([BOOKMARK_API_PATH]);
 
