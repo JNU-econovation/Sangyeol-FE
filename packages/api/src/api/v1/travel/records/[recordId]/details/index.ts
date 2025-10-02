@@ -1,8 +1,31 @@
 import { AxiosInstance } from "axios";
 
+/**
+ * @public
+ * @category Constants
+ * @description 산행 기록 상세 조회 API 경로를 생성하는 함수
+ * @param params - 조회 파라미터
+ * @param params.recordId - 기록 ID
+ * @returns API 경로 문자열
+ */
 export const TRAVEL_RECORDS_API_PATH = ({ recordId }: { recordId: string }) =>
   `/api/v1/travel/records/${recordId}/details`;
 
+/**
+ * @public
+ * @category Types
+ * @interface Record
+ * @description 산행 기록 상세 정보 타입
+ * @property {string} recordId - 기록 ID
+ * @property {string} displayName - 코스 표시 이름
+ * @property {number} startedAt - 등산 시작 시간 (timestamp)
+ * @property {number} endAt - 등산 종료 시간 (timestamp)
+ * @property {number} duration - 소요 시간 (초)
+ * @property {number} length - 거리 (m)
+ * @property {[number, number][]} coordinates - GPS 좌표 배열
+ * @property {string} courseId - 코스 ID
+ * @property {string} mountainId - 산 ID
+ */
 interface Record {
   recordId: string;
   displayName: string;
@@ -15,13 +38,31 @@ interface Record {
   mountainId: string;
 }
 
+/**
+ * @public
+ * @category Types
+ * @interface GetTravelRecordsResponse
+ * @description 산행 기록 상세 조회 응답 타입
+ * @property {Record[]} records - 산행 기록 상세 목록
+ */
 export interface GetTravelRecordsResponse {
   records: Record[];
 }
 
 // TODO: api 변경 반영 필요
 
-// [get] 산행 기록 상세 조회
+/**
+ * @public
+ * @category Travel
+ * @description 산행 기록의 상세 정보를 조회합니다 (GPS 좌표 포함)
+ * @param instance - Axios 인스턴스
+ * @param params - 조회 파라미터
+ * @param params.recordId - 기록 ID
+ * @returns 산행 기록 상세 정보
+ * @example
+ * const result = await getTravelRecordDetails(axiosInstance, { recordId: "record123" });
+ * console.log(result.records[0].coordinates); // GPS 경로
+ */
 export const getTravelRecordDetails = async (
   instance: AxiosInstance,
   { recordId }: { recordId: string },
