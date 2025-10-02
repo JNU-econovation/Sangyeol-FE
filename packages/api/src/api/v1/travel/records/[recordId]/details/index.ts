@@ -8,7 +8,7 @@ import { AxiosInstance } from "axios";
  * @param params.recordId - 기록 ID
  * @returns API 경로 문자열
  */
-export const TRAVEL_RECORDS_API_PATH = ({ recordId }: { recordId: string }) =>
+export const TRAVEL_RECORD_DETAILS_API_PATH = ({ recordId }: { recordId: string }) =>
   `/api/v1/travel/records/${recordId}/details`;
 
 /**
@@ -41,11 +41,11 @@ interface Record {
 /**
  * @public
  * @category Types
- * @interface GetTravelRecordsDetailsResponse
+ * @interface GetTravelRecordDetailsResponse
  * @description 산행 기록 상세 조회 응답 타입
  * @property {Record[]} records - 산행 기록 상세 목록
  */
-export interface GetTravelRecordsDetailsResponse {
+export interface GetTravelRecordDetailsResponse {
   records: Record[];
 }
 
@@ -67,9 +67,9 @@ export const getTravelRecordDetails = async (
   instance: AxiosInstance,
   { recordId }: { recordId: string },
 ) => {
-  const response = await instance<GetTravelRecordsDetailsResponse>({
+  const response = await instance<GetTravelRecordDetailsResponse>({
     method: "GET",
-    url: TRAVEL_RECORDS_API_PATH({ recordId }),
+    url: TRAVEL_RECORD_DETAILS_API_PATH({ recordId }),
   });
 
   return response.data;
