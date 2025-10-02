@@ -30,12 +30,14 @@ const useBookmarkMutation = ({
       // const prev = queryClient.getQueryData([BOOKMARK_API_PATH]);
 
       // 코스 리스트 데이터가 들어있다.
-      const prevCourseListData =
+      const prevCoursesResponse =
         queryClient.getQueryData<GetCoursesOfMountainResponse>([
           COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
             searchParams: { sortBy },
           }),
-        ]).courses;
+        ]);
+      if (prevCoursesResponse == null) return null;
+      const prevCourseListData = prevCoursesResponse.courses;
       const newCourseListData = prevCourseListData.map((course) => {
         if (course.id === selectedCourseId) {
           return {
@@ -65,6 +67,7 @@ const useBookmarkMutation = ({
       queryClient.invalidateQueries({ queryKey: [BOOKMARK_API_PATH] });
     },
     onError: (_, __, context) => {
+      if (context == null) return;
       queryClient.setQueryData(
         [
           COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
