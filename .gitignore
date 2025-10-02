@@ -69,3 +69,5 @@ Thumbs.db
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+./packages/api/docs/

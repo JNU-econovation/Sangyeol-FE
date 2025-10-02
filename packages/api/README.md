@@ -44,6 +44,27 @@ yarn build:docs
 
 생성된 문서는 `docs/references/` 디렉토리에 마크다운 형식으로 저장됩니다.
 
+### 웹에서 문서 보기 (추천!)
+
+문서를 웹 브라우저에서 보기 좋게 확인할 수 있습니다:
+
+```bash
+# 개발 서버 실행 (핫 리로드 지원)
+yarn docs:dev
+
+# 브라우저에서 http://localhost:5173 접속
+```
+
+또는 빌드된 정적 사이트로 미리보기:
+
+```bash
+# 문서 빌드
+yarn docs:build
+
+# 빌드된 문서 미리보기
+yarn docs:preview
+```
+
 ### 문서 확인
 
 ```bash
@@ -297,12 +318,18 @@ export const postSMSForVerification = async (
 ## 명령어 요약
 
 ```bash
-# 문서 생성
+# API 문서 생성
 yarn build:docs
 
-# 문서 검증
+# 문서 검증 (누락된 주석 확인)
 yarn check:docs
 
-# 개발 모드 (변경 감지)
-yarn dev
+# 웹에서 문서 보기
+yarn docs:dev          # 개발 서버 (http://localhost:5173)
+yarn docs:build        # 정적 사이트 빌드
+yarn docs:preview      # 빌드된 사이트 미리보기
+
+# 코드 개발
+yarn dev               # 코드 변경 감지 빌드
+yarn build             # 프로덕션 빌드
 ```
