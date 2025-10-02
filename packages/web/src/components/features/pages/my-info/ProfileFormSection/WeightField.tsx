@@ -10,8 +10,10 @@ const WeightField = () => {
       placeholder="100"
       color="white"
       value={watch("weight")}
-      type="number"
+      type="tel"
+      maxLength={3}
       onChange={(e) => setValue("weight", +e.target.value)} //TODO: 타입 안정성 챙기기 string -> number
+      right={<span className="text-gray-900 text-lg">kg</span>}
     />
   );
 };
