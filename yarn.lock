@@ -4169,6 +4169,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sangyeol/utils@workspace:^, @sangyeol/utils@workspace:packages/util":
+  version: 0.0.0-use.local
+  resolution: "@sangyeol/utils@workspace:packages/util"
+  dependencies:
+    tsup: "npm:^8.5.0"
+    typescript: "npm:^5.9.3"
+  languageName: unknown
+  linkType: soft
+
 "@shikijs/core@npm:2.5.0, @shikijs/core@npm:^2.1.0":
   version: 2.5.0
   resolution: "@shikijs/core@npm:2.5.0"
@@ -16469,15 +16478,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"util@workspace:packages/util":
-  version: 0.0.0-use.local
-  resolution: "util@workspace:packages/util"
-  dependencies:
-    tsup: "npm:^8.5.0"
-    typescript: "npm:^5.9.3"
-  languageName: unknown
-  linkType: soft
-
 "utils-merge@npm:1.0.1":
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
@@ -16683,6 +16683,7 @@ __metadata:
   dependencies:
     "@eslint/eslintrc": "npm:^3.3.1"
     "@eslint/js": "npm:^9.23.0"
+    "@sangyeol/utils": "workspace:^"
     "@suspensive/react": "npm:^3.3.0"
     "@tailwindcss/postcss": "npm:^4"
     "@tanstack/react-query": "npm:^5.87.4"

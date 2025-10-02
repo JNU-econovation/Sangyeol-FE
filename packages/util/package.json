@@ -1,5 +1,5 @@
 {
-  "name": "util",
+  "name": "@sangyeol/utils",
   "packageManager": "yarn@4.9.4",
   "scripts": {
     "dev": "tsup --watch",
