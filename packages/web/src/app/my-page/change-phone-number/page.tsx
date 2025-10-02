@@ -1,5 +1,5 @@
+import ChangeNumberFormSection from "@pages/change-phone-number/ChangeNumberFormSection";
 import ChangePhoneNumberHeaderSection from "@pages/change-phone-number/ChangePhoneNumberHeaderSection";
-import ChangeNumberFormSection from "@/components/features/pages/change-phone-number/ChangeNumberFormSection";
 import Spacing from "@shared/layout/Spacing";
 
 export default function ChangePhoneNumberPage() {
