@@ -1,8 +1,8 @@
 "use client";
 
-import useCheckNicknameDuplicatedMutate from "@/hooks/feature/query/mutate/useCheckNicknameDuplicatedMutate";
-import useProfileQuery from "@/hooks/feature/query/query/useProfileQuery";
 import { useMyProfileFormContext } from "@hooks/feature/form/useMyProfileForm";
+import useCheckNicknameDuplicatedMutate from "@hooks/feature/query/mutate/useCheckNicknameDuplicatedMutate";
+import useProfileQuery from "@hooks/feature/query/query/useProfileQuery";
 import Button from "@shared/ui/Button";
 import TextField from "@shared/ui/TextField";
 import { Suspense } from "@suspensive/react";
