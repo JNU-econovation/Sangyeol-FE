@@ -1,3 +1,5 @@
+// TODO: @util로 옮기기
+
 export const convertToDMS = (lat: number, lon: number) => {
   // 위도를 도분초로 변환
   function toDMS(coordinate: number, isLatitude: boolean) {

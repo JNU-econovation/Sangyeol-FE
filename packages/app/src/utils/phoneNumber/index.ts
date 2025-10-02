@@ -1,3 +1,5 @@
+// TODO: @util로 옮기기
+
 /**
  * 숫자형 번호를 핸드폰 포맷 형태의 문자열로 변환
  * @param phoneNumber - 숫자형 핸드폰 번호 (예: 1012345678, 01012345678)
@@ -91,9 +93,11 @@ export const isValidPhoneNumber = (phoneNumber: number | string): boolean => {
  * @param phoneNumber - 핸드폰 번호 (앞 3자리 제외)
  * @returns 포맷된 핸드폰 번호 문자열 (예: "1234-5678")
  */
-export const validateAndFormatPhoneWithoutPrefix = (phoneNumber: number | string): string => {
+export const validateAndFormatPhoneWithoutPrefix = (
+  phoneNumber: number | string,
+): string => {
   const numStr = phoneNumber.toString().replace(/\D/g, "");
-  
+
   // 길이별 포맷팅
   if (numStr.length === 7) {
     // 7자리인 경우 3-4 포맷 (예: "123-4567")
@@ -102,7 +106,7 @@ export const validateAndFormatPhoneWithoutPrefix = (phoneNumber: number | string
     // 8자리인 경우 4-4 포맷 (예: "1234-5678")
     return `${numStr.slice(0, 4)}-${numStr.slice(4)}`;
   }
-  
+
   // 7자리나 8자리가 아닌 경우 원본 반환
   return numStr;
 };
@@ -112,9 +116,11 @@ export const validateAndFormatPhoneWithoutPrefix = (phoneNumber: number | string
  * @param phoneNumber - 핸드폰 번호 (앞 3자리 제외)
  * @returns 유효한 번호인지 여부
  */
-export const isValidPhoneWithoutPrefix = (phoneNumber: number | string): boolean => {
+export const isValidPhoneWithoutPrefix = (
+  phoneNumber: number | string,
+): boolean => {
   const numStr = phoneNumber.toString().replace(/\D/g, "");
-  
+
   // 8자리 숫자인지 확인
   return /^\d{8}$/.test(numStr);
 };
