@@ -63,7 +63,7 @@ export interface GetTravelRecordsListResponse {
  * @param params.month - 월 (1-12)
  * @returns 산행 기록 목록
  * @example
- * const result = await getTravelRecord(axiosInstance, { year: 2024, month: 10 });
+ * const result = await getTravelRecordList(axiosInstance, { year: 2024, month: 10 });
  * console.log(result.records);
  */
 export const getTravelRecordList = async (
