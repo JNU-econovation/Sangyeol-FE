@@ -5,6 +5,7 @@ import useProfileQuery from "@/hooks/feature/query/query/useProfileQuery";
 import { useMyProfileFormContext } from "@hooks/feature/form/useMyProfileForm";
 import Button from "@shared/ui/Button";
 import TextField from "@shared/ui/TextField";
+import { Suspense } from "@suspensive/react";
 import * as z from "zod";
 
 export type NicknameHelperState =
@@ -22,80 +23,85 @@ const nicknameSchema = z
     "공백 없이 12자 이내 한글, 영문, 숫자만 입력 가능",
   );
 
-const NicknameField = () => {
-  const { watch, setValue } = useMyProfileFormContext();
-  const {
-    data: { nickname: prevNickname },
-  } = useProfileQuery();
-  const { mutate: checkNicknameDuplicated } =
-    useCheckNicknameDuplicatedMutate();
+const NicknameField = Suspense.with(
+  {
+    fallback: null,
+  },
+  () => {
+    const { watch, setValue } = useMyProfileFormContext();
+    const {
+      data: { nickname: prevNickname },
+    } = useProfileQuery();
+    const { mutate: checkNicknameDuplicated } =
+      useCheckNicknameDuplicatedMutate();
 
-  const handleChange = (nickname: string) => {
-    setValue("nickname", nickname);
-    if (prevNickname !== nickname) setValue("isValidNickname", false);
-    else setValue("isValidNickname", true);
+    const handleChange = (nickname: string) => {
+      setValue("nickname", nickname);
+      if (prevNickname !== nickname) setValue("isValidNickname", false);
+      else setValue("isValidNickname", true);
 
-    const result = nicknameSchema.safeParse(nickname);
+      const result = nicknameSchema.safeParse(nickname);
 
-    if (result.success) {
-      setValue("nicknameHelperState", "FIT");
-      return;
-    }
-
-    setValue("nicknameHelperState", "INVALID");
-  };
-
-  return (
-    <TextField
-      label="닉네임"
-      value={watch("nickname")}
-      onChange={(e) => handleChange(e.target.value)}
-      helperText={
-        watch("nicknameHelperState") === "INVALID"
-          ? "공백 없이 12자 이내 한글, 영문, 숫자만 입력 가능"
-          : watch("nicknameHelperState") === "DUPLICATED"
-            ? "이미 사용 중인 닉네임입니다"
-            : watch("nicknameHelperState") === "NEEDS_CHECK"
-              ? "닉네임 확인 버튼을 눌러주세요. "
-              : undefined
+      if (result.success) {
+        setValue("nicknameHelperState", "FIT");
+        return;
       }
-      max={12}
-      onBlur={() => {
-        if (watch("isValidNickname") === false)
-          setValue("nicknameHelperState", "NEEDS_CHECK");
-      }}
-      right={
-        <Button
-          size={"sm"}
-          disabled={
-            watch("nicknameHelperState") !== "FIT" ||
-            watch("isValidNickname") === true
-          }
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (watch("nicknameHelperState") !== "FIT") return;
 
-            checkNicknameDuplicated(
-              { nickname: watch("nickname") },
-              {
-                onSuccess: () => {
-                  setValue("isValidNickname", true);
-                  setValue("nicknameHelperState", "FIT");
+      setValue("nicknameHelperState", "INVALID");
+    };
+
+    return (
+      <TextField
+        label="닉네임"
+        value={watch("nickname")}
+        onChange={(e) => handleChange(e.target.value)}
+        helperText={
+          watch("nicknameHelperState") === "INVALID"
+            ? "공백 없이 12자 이내 한글, 영문, 숫자만 입력 가능"
+            : watch("nicknameHelperState") === "DUPLICATED"
+              ? "이미 사용 중인 닉네임입니다"
+              : watch("nicknameHelperState") === "NEEDS_CHECK"
+                ? "닉네임 확인 버튼을 눌러주세요. "
+                : undefined
+        }
+        max={12}
+        onBlur={() => {
+          if (watch("isValidNickname") === false)
+            setValue("nicknameHelperState", "NEEDS_CHECK");
+        }}
+        right={
+          <Button
+            size={"sm"}
+            disabled={
+              watch("nicknameHelperState") !== "FIT" ||
+              watch("isValidNickname") === true
+            }
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (watch("nicknameHelperState") !== "FIT") return;
+
+              checkNicknameDuplicated(
+                { nickname: watch("nickname") },
+                {
+                  onSuccess: () => {
+                    setValue("isValidNickname", true);
+                    setValue("nicknameHelperState", "FIT");
+                  },
+                  onError: () => {
+                    setValue("isValidNickname", false);
+                    setValue("nicknameHelperState", "DUPLICATED");
+                  },
                 },
-                onError: () => {
-                  setValue("isValidNickname", false);
-                  setValue("nicknameHelperState", "DUPLICATED");
-                },
-              },
-            );
-          }}
-        >
-          확인
-        </Button>
-      }
-    />
-  );
-};
+              );
+            }}
+          >
+            확인
+          </Button>
+        }
+      />
+    );
+  },
+);
 
 export default NicknameField;
