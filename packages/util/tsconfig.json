@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.json",
+  "tsconfigRootDir": "../../.",
+  "compilerOptions": {
+    "composite": false,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "incremental": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@coords/*": [
+        "./src/coords/*"
+      ],
+      "@phoneNumber/*": [
+        "./src/phoneNumber/*"
+      ],
+      "@time/*": [
+        "./src/time/*"
+      ],
+      "@url/*": [
+        "./src/url/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
