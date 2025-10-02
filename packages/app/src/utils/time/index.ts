@@ -1,3 +1,5 @@
+// TODO: @util로 옮기기
+
 export const msToTimeText = (milliseconds: number) => {
   const totalSeconds = Math.floor(milliseconds / 1000);
   const hours = Math.floor(totalSeconds / 3600);

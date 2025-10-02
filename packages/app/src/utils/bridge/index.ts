@@ -1,3 +1,5 @@
+// TODO: @util로 옮기기
+
 import PATH_TO_ROUTE from "@constants/bridge";
 import { Href } from "expo-router";
 import { RefObject } from "react";
