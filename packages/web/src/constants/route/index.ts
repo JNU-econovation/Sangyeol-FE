@@ -33,7 +33,15 @@ const ROUTE = {
   //my page
   MY_PAGE: "/my-page",
   MY_INFO: "/my-page/my-info",
-  HIKING_LOG: "/my-page/travel-log",
+  TRAVEL_LOG: ({
+    year,
+    month,
+    date,
+  }: {
+    year: number;
+    month: number;
+    date: number;
+  }) => `/my-page/travel-log?year=${year}&month=${month}&date=${date}`,
   COURSE_BOOKMARK: "/my-page/course-bookmark",
   FAQ: "/my-page/faq",
   INQUIRY: "/my-page/inquiry",
