@@ -17,6 +17,11 @@ export * from "./api/v1/auth/sms";
 export * from "./api/v1/auth/sms/verify";
 export * from "./api/v1/users/profile/basic-information";
 export * from "./api/v1/users/profile/personal-information";
+export * from "./api/v1/users/profile/image";
+export * from "./api/v1/users/alert";
+export * from "./api/v1/travel/records";
+export * from "./api/v1/travel/records/[recordId]";
+export * from "./api/v1/travel/records/[recordId]/details";
 
 // Model 타입들도 re-export
 export * from "./model/course";
