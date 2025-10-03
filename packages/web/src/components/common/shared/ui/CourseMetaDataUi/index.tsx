@@ -6,7 +6,7 @@ import DifficultyTag from "@shared/ui/DifficultyTag";
 interface CourseMetaDataUiProps {
   distance: number;
   time: number;
-  difficulty: CourseDifficulty;
+  difficulty?: CourseDifficulty;
 }
 
 export default function CourseMetaDataUi({
@@ -18,13 +18,19 @@ export default function CourseMetaDataUi({
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-1">
         <PositionPointerIcon />
-        <span className="text-gray-20 text-sm">{distance}km</span>
+        <span className="text-gray-900 text-sm font-semibold">
+          {distance}km
+        </span>
       </div>
       <div className="flex items-center gap-1">
         <ClockIcon />
-        <span className="text-gray-20 text-sm">{time}시간</span>
+        <span className="text-gray-900 text-sm font-semibold">{time}시간</span>
       </div>
-      <DifficultyTag difficulty={difficulty} />
+      {difficulty ? (
+        <DifficultyTag difficulty={difficulty} />
+      ) : (
+        <div className="w-10" />
+      )}
     </div>
   );
 }
