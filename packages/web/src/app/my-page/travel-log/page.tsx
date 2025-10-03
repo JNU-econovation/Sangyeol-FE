@@ -1,13 +1,22 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
 import TravelLogCalendarSection from "@pages/my-info/TravelLogCalendarSection";
 import TravelLogHeaderSection from "@pages/my-info/TravelLogHeaderSection";
+import TravelLogListSection from "@pages/my-info/TravelLogListSection";
+import Spacing from "@shared/layout/Spacing";
 
 export default function TravelLogPage() {
   return (
-    <div className="px-7 max-h-screen overflow-y-auto">
+    <>
       <TravelLogHeaderSection />
-      <Spacing size={2} />
-      <TravelLogCalendarSection />
-    </div>
+      <Spacing size={16} />
+      <div className="bg-gray-300">
+        <div className="px-5 max-h-screen overflow-y-auto bg-white">
+          <TravelLogCalendarSection />
+        </div>
+        <Spacing size={2} />
+        <div className="px-5 max-h-screen overflow-y-auto bg-white">
+          <TravelLogListSection />
+        </div>
+      </div>
+    </>
   );
 }
