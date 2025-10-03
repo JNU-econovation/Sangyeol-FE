@@ -7,16 +7,20 @@ import PolygonIcon from "@icons/PolygonIcon";
 import WeekPolygonIcon from "@icons/WeekPolygonIcon";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const TravelLogCalendarSection = Suspense.with(
   {
     fallback: <CalendarLayout content={() => <WeekPolygonIcon />} />,
   },
   () => {
+    const searchParams = useSearchParams();
+    const year = +searchParams.get("year");
+    const month = +searchParams.get("month");
+
     const {
       data: { records },
-    } = useTravelRecordListQuery({ year: 2024, month: 6 });
+    } = useTravelRecordListQuery({ year, month });
 
     const router = useRouter();
 
