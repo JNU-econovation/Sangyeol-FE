@@ -26,10 +26,7 @@ export default function MyInfoSection() {
         <Spacing size={5} />
         <span className="text-green-700 border-b text-sm">프로필 변경</span>
         <Spacing size={5} />
-        <StackLink
-          href={ROUTE.MY_INFO} //TODO: 하드코딩 피하기
-          preLoad
-        >
+        <StackLink href={ROUTE.MY_INFO} preLoad>
           <div className="flex items-center gap-2">
             <span className="text-2xl font-bold">{"홍길동"}</span>
             <BlackRightArrowIcon width={10} height={10} />
@@ -37,7 +34,14 @@ export default function MyInfoSection() {
         </StackLink>
         <Spacing size={4} />
         <div className="flex flex-row items-center gap-22">
-          <StackLink href={ROUTE.HIKING_LOG}>
+          <StackLink
+            href={ROUTE.TRAVEL_LOG({
+              year: new Date().getFullYear(),
+              month: new Date().getMonth() + 1,
+              date: new Date().getDate(),
+            })}
+            preLoad
+          >
             <Text
               fontSize="text-base"
               fontWeight="font-semibold"
