@@ -8,25 +8,20 @@ import { AxiosInstance } from "axios";
  * @param params.recordId - 기록 ID
  * @returns API 경로 문자열
  */
-export const TRAVEL_RECORD_DETAILS_API_PATH = ({ recordId }: { recordId: string }) =>
-  `/api/v1/travel/records/${recordId}/details`;
+export const TRAVEL_RECORD_DETAILS_API_PATH = ({
+  recordId,
+}: {
+  recordId: string;
+}) => `/api/v1/travel/records/${recordId}/details`;
 
 /**
  * @public
  * @category Types
- * @interface Record
- * @description 산행 기록 상세 정보 타입
- * @property {string} recordId - 기록 ID
- * @property {string} displayName - 코스 표시 이름
- * @property {number} startedAt - 등산 시작 시간 (timestamp)
- * @property {number} endAt - 등산 종료 시간 (timestamp)
- * @property {number} duration - 소요 시간 (초)
- * @property {number} length - 거리 (m)
- * @property {[number, number][]} coordinates - GPS 좌표 배열
- * @property {string} courseId - 코스 ID
- * @property {string} mountainId - 산 ID
+ * @interface GetTravelRecordDetailsResponse
+ * @description 산행 기록 상세 조회 응답 타입
+ * @property {Record[]} records - 산행 기록 상세 목록
  */
-interface Record {
+export interface GetTravelRecordDetailsResponse {
   recordId: string;
   displayName: string;
   startedAt: number;
@@ -37,19 +32,6 @@ interface Record {
   courseId: string;
   mountainId: string;
 }
-
-/**
- * @public
- * @category Types
- * @interface GetTravelRecordDetailsResponse
- * @description 산행 기록 상세 조회 응답 타입
- * @property {Record[]} records - 산행 기록 상세 목록
- */
-export interface GetTravelRecordDetailsResponse {
-  records: Record[];
-}
-
-// TODO: api 변경 반영 필요
 
 /**
  * @public
