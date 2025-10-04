@@ -97,7 +97,7 @@ const CalendarLayout = memo(function Calendar({
               <button
                 key={dayIndex}
                 className="w-full flex flex-col items-center justify-center"
-                // disabled={day === null}
+                disabled={day === null}
                 aria-label={
                   day !== null
                     ? `${currentYear}년 ${currentMonth + 1}월 ${day}일`
