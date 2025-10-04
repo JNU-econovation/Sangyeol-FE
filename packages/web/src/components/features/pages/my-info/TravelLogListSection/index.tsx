@@ -1,15 +1,18 @@
 "use client";
 
+import ROUTE from "@/constants/route";
 import useTravelRecordListQuery from "@hooks/feature/query/query/useTravelRecordListQuery";
 import TravelLogList from "@shared/ui/TravelLogList";
 import { Suspense } from "@suspensive/react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useStackLinkRouter } from "stack-link";
 
 const TravelLogListSection = Suspense.with(
   {
     fallback: null,
   },
   () => {
+    const { navigate } = useStackLinkRouter({});
     const searchParams = useSearchParams();
 
     const year = +searchParams.get("year");
@@ -42,10 +45,15 @@ const TravelLogListSection = Suspense.with(
       <div className="flex flex-col gap-3 py-4">
         {filteredRecords.map((record) => (
           <TravelLogList
-            key={record.id}
             {...record}
+            key={record.id}
             name={record.displayName}
             imageSrc={record.image}
+            onButtonClick={() => {
+              navigate({
+                href: ROUTE.TRAVEL_LOG_DETAIL(record.id),
+              });
+            }}
           />
         ))}
       </div>
