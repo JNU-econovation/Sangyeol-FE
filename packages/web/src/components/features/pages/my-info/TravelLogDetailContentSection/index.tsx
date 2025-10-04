@@ -13,6 +13,11 @@ const TravelLogDetailContentSection = Suspense.with(
   },
   () => {
     const { recordId } = useParams<{ recordId: string }>();
+
+    if (!recordId) {
+      throw new Error("recordId is required");
+    }
+
     const {
       data: { coordinates, displayName, duration, endAt, length, startedAt },
     } = useTravelRecordDetailQuery(recordId);
