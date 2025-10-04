@@ -25,7 +25,7 @@ const TravelLogList = ({
         <Spacing size={1} />
         <CourseMetaDataUi time={duration} distance={length} />
         <Spacing size={1} />
-        <Button size="sm" onClick={() => onButtonClick()}>
+        <Button size="sm" onClick={() => onButtonClick?.()}>
           나의 기록
         </Button>
       </div>
