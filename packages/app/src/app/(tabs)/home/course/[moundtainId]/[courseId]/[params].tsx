@@ -2,8 +2,7 @@ import Text from "@components/common/shared/ui/Text";
 import PATH_ROUTE from "@constants/pathRoute";
 import WebViewWithInjected from "@entities/WebViewWithInjected";
 import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
-import { useLocalSearchParams } from "expo-router";
-// import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 const CourseDetailWebview = () => {
   const { location } = useGetCurrentPosition();
@@ -33,13 +32,29 @@ const CourseDetailWebview = () => {
               data: location,
             };
           }
-          // if (name === "start-travel" && method === "POST") {
-          //   router.push("/travel");
-          //   return {
-          //     name: "start-travel",
-          //     status: "success",
-          //   };
-          // }
+          if (name === "start-travel" && method === "POST") {
+            if (
+              !body ||
+              typeof body !== "object" ||
+              !("courseId" in body) ||
+              !("mountainId" in body) ||
+              typeof body.courseId !== "string" ||
+              typeof body.mountainId !== "string"
+            ) {
+              return {
+                name: "start-travel",
+                status: "error",
+                error: "courseId and mountainId are required",
+              };
+            }
+
+            const { courseId, mountainId } = body;
+            router.push(`/travel/${mountainId}/${courseId}`);
+            return {
+              name: "start-travel",
+              status: "success",
+            };
+          }
           return {
             name: "unknown-message",
             status: "error",
