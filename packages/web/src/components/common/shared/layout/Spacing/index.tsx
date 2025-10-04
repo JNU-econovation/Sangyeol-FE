@@ -3,14 +3,16 @@ import { memo } from "react";
 
 interface SpacingProps {
   size: SizeNumberType;
+  className?: string;
 }
 
-export default memo(function Spacing({ size }: SpacingProps) {
+export default memo(function Spacing({ size, className }: SpacingProps) {
   return (
     <div
       style={{
         height: `${size * 0.25}rem`,
       }}
+      className={className}
     />
   );
 });
