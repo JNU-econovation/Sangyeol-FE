@@ -3,8 +3,9 @@ import { Href } from "expo-router";
 type PathToRoute = { [key: string]: Href };
 
 const PATH_TO_ROUTE: PathToRoute = {
-  "course-detail": "/(tabs)/home/course/courseDetail",
-  "start-travel": "/travel",
+  // "course-detail": "/(tabs)/home/course/courseDetail",
+  "course-detail": "/(tabs)/home/course/[mountainId]/[courseId]/[params]",
+  // "start-travel": "/travel",
   "manual-detail": "/(tabs)/home/safeManual/[manual]",
   "course-search": "/(tabs)/home/course/search",
   "my-info": "/(tabs)/mypage/myInfo",
