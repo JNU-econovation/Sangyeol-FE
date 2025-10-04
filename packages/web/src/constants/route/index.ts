@@ -49,6 +49,7 @@ const ROUTE = {
   CHECK_TERMS: "/my-page/check-terms",
   NOTIFICATION_SETTINGS: "/my-page/notification-settings",
   CHANGE_PHONE_NUMBER: "/my-page/change-phone-number",
+  TRAVEL_LOG_DETAIL: (recordId: string) => `/my-page/travel-log/${recordId}`,
 };
 
 export default ROUTE;

@@ -15,7 +15,15 @@ const WEBVIEW = {
   COURSE_DETAIL: "",
   MAP: `${webviewBaseUri}/map?tag=BASE`,
   MAP_COURSE_SEARCH: `${webviewBaseUri}/map/course-search`,
-  MAP_COURSE_DETAIL: `${webviewBaseUri}/map/course-detail`,
+  MAP_COURSE_DETAIL: ({
+    mountainId,
+    courseId,
+    params,
+  }: {
+    mountainId: string;
+    courseId: string;
+    params: string;
+  }) => `${webviewBaseUri}/mountain/${mountainId}/course/${courseId}?${params}`,
   MYPAGE: `${webviewBaseUri}/my-page`,
   SAFE_MANUAL: `${webviewBaseUri}/safe-manual`,
   SAFE_MANUAL_DETAIL: ({ manual }: { manual: string }) =>
