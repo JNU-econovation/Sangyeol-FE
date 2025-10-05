@@ -47,14 +47,14 @@ const ModalComponent = ({
       onConfirm();
     }
     closeModal();
-  }, [closeModal]);
+  }, [closeModal, onConfirm]);
 
   const handleCancel = useCallback(() => {
     if (onCancel) {
       onCancel();
     }
     closeModal();
-  }, [closeModal]);
+  }, [closeModal, onCancel]);
 
   return (
     <OutsideContainer activeOpacity={1} onPress={closeModal}>
