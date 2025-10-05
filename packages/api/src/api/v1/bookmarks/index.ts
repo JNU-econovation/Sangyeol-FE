@@ -1,5 +1,5 @@
+import { CourseDifficulty } from "@model/course";
 import { AxiosInstance } from "axios";
-import { Course } from "@model/course";
 
 /**
  * @public
@@ -11,12 +11,36 @@ export const BOOKMARK_API_PATH = "/api/v1/bookmarks";
 /**
  * @public
  * @category Types
+ * @description 북마크 정보 타입
+ * @property {string} id - 코스 ID
+ * @property {string} name - 코스 이름
+ * @property {number} length - 코스 길이 (km)
+ * @property {number} duration - 소요 시간 (분)
+ * @property {CourseDifficulty} difficulty - 코스 난이도
+ * @property {true} bookmark - 북마크 상태 (항상 true)
+ * @property {string} image - 코스 이미지 URL
+ * @property {string} mountainId - 산 ID
+ */
+export type Bookmark = {
+  id: string;
+  name: string;
+  length: 10.4;
+  duration: 350;
+  difficulty: CourseDifficulty;
+  bookmark: true;
+  image: string;
+  mountainId: string;
+};
+
+/**
+ * @public
+ * @category Types
  * @interface GetBookmarksResponse
  * @description 북마크 목록 조회 응답 타입
  * @property {Course[]} bookmarkList - 북마크된 코스 목록
  */
 export interface GetBookmarksResponse {
-  bookmarkList: Course[];
+  bookmarkList: Bookmark[];
 }
 
 /**
