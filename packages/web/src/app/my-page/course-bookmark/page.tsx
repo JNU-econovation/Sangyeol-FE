@@ -4,11 +4,13 @@ import Spacing from "@shared/layout/Spacing";
 
 const CourseBookmarkPage = () => {
   return (
-    <div className="h-screen flex flex-col">
-      <Spacing size={4} />
+    <>
       <CourseBookmarkHeaderSection />
-      <CourseBookmarkContentSection />
-    </div>
+      <div className="h-screen flex flex-col bg-gray-600">
+        <Spacing size={14} />
+        <CourseBookmarkContentSection />
+      </div>
+    </>
   );
 };
 
