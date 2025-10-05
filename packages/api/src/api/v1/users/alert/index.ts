@@ -18,13 +18,13 @@ export const USER_ALERT_API_PATH = "/api/v1/users/alert";
  * @property {boolean} accidentProneAreaAlert - 사고 다발 지역 알림
  */
 export interface GetAlertResponse {
-  eventAlert: boolean;
-  travelRecordCountAlert: boolean;
-  travelDeviationAlert: boolean;
-  accidentProneAreaAlert: boolean;
+  userAlertSetting: {
+    eventAlert: boolean;
+    travelRecordCountAlert: boolean;
+    travelDeviationAlert: boolean;
+    accidentProneAreaAlert: boolean;
+  };
 }
-
-// TODO: api 변경 반영 필요
 
 /**
  * @public
@@ -37,13 +37,28 @@ export interface GetAlertResponse {
  * console.log(result.eventAlert); // true/false
  */
 export const getAlert = async (instance: AxiosInstance) => {
-  const response = await instance({
+  const response = await instance<GetAlertResponse>({
     method: "GET",
     url: USER_ALERT_API_PATH,
   });
 
   return response.data;
 };
+
+/**
+ * @public
+ * @category Types
+ * @interface PutAlertRequest
+ * @description 알림 설정 수정 요청 타입
+ * @property {boolean} eventAlert - 이벤트 알림
+ * @property {boolean} travelDeviationAlert - 등산로 이탈 알림
+ * @property {boolean} accidentProneAreaAlert - 사고 다발 지역 알림
+ */
+export interface PutAlertRequest {
+  eventAlert: boolean;
+  travelDeviationAlert: boolean;
+  accidentProneAreaAlert: boolean;
+}
 
 /**
  * @public
@@ -62,7 +77,7 @@ export const getAlert = async (instance: AxiosInstance) => {
  */
 export const putAlert = async (
   instance: AxiosInstance,
-  body: GetAlertResponse,
+  body: PutAlertRequest,
 ) => {
   const response = await instance({
     method: "PUT",

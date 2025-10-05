@@ -28,7 +28,7 @@ export interface GetBasesApiResponse {
  * @public
  * @category Bases
  * @description 특정 산의 베이스 목록을 조회합니다
- * @param Instance - Axios 인스턴스
+ * @param instance - Axios 인스턴스
  * @param mountainId - 산 ID
  * @returns 베이스 목록 정보
  * @example
