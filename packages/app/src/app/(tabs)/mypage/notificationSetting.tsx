@@ -1,10 +1,12 @@
-import MypageNotificationSettingWebview from "@screens/mypage/MypageNotificationSettingWebview";
+import NotificationHeader from "@screens/notification/NotificationHeader";
+import NotificationList from "@screens/notification/NotificationList";
 import ScreenContainer from "@shared/layout/Screen";
 
 const NotificationSettingScreen = () => {
   return (
     <ScreenContainer>
-      <MypageNotificationSettingWebview />
+      <NotificationHeader />
+      <NotificationList />
     </ScreenContainer>
   );
 };
