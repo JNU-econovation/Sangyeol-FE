@@ -56,6 +56,14 @@
         {
           "type": "route",
           "uuid": "e69b27d3-d2ef-4dc5-8537-5285368eb950"
+        },
+        {
+          "type": "route",
+          "uuid": "594fa34e-0b9c-48e0-a720-248b5e4c8dbd"
+        },
+        {
+          "type": "route",
+          "uuid": "db9a64bc-8fc3-4861-b4e6-bd02afe62e99"
         }
       ]
     },
@@ -786,6 +794,64 @@
         {
           "uuid": "09ead24d-543b-4e53-8eeb-36828d6a560e",
           "body": "{\n  \"data\": { \n    \"recordId\": 12,\n    \"displayName\": \"새인봉 - 서석대\",\n    \"startedAt\": 1759152556,\n    \"endAt\": 1759152556,\n    \"duration\": 210,\n    \"length\": 6.2,\n    \"coordinates\": [\n      [127.12345678901234, 37.12345678901234],\n      [127.12345978901233, 37.12345678901234]\n    ],\n    \"courseId\": 6,\n    \"mountainId\": 1\n  },\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "594fa34e-0b9c-48e0-a720-248b5e4c8dbd",
+      "type": "http",
+      "documentation": "사용자 알림 설정값 조회",
+      "method": "get",
+      "endpoint": "api/v1/users/alert",
+      "responses": [
+        {
+          "uuid": "1acdca19-2253-4606-bf69-e3d669febbb4",
+          "body": "{\n  \"data\": {\n    \"userAlertSetting\": {\n      \"eventAlert\": true,\n      \"travelDeviationAlert\": true,\n      \"accidentProneAreaAlert\": true\n    }\n  },\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "db9a64bc-8fc3-4861-b4e6-bd02afe62e99",
+      "type": "http",
+      "documentation": "사용자 알림 설정값 등록",
+      "method": "put",
+      "endpoint": "api/v1/users/alert",
+      "responses": [
+        {
+          "uuid": "bcdf68b1-58c4-4856-a1c8-c78615e90bef",
+          "body": "{\n  \t\"data\" : null\n\t\t\"status\" : \"sucess\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
