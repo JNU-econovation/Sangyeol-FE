@@ -1,9 +1,12 @@
 "use client";
 
+import useRouteBridge from "@hooks/feature/bridge/useRouteBridge";
+import useGetCourseDetails from "@hooks/feature/course/useGetCourseDetails";
 import useBookmarkQuery from "@hooks/feature/query/query/useBookmarkQuery";
 import Spacing from "@shared/layout/Spacing";
 import CourseList from "@shared/ui/CourseList";
 import { Suspense } from "@suspensive/react";
+import { Bookmark } from "api";
 
 import CourseBookmarkContentSectionLoader from "./loader";
 
@@ -22,12 +25,7 @@ const CourseBookmarkContentSection = Suspense.with(
         <ul className="flex flex-col bg-gray-600 grow overflow-y-auto px-6 gap-4">
           <Spacing size={4} />
           {bookmarkList.map((props) => (
-            <CourseList
-              key={props.id}
-              stared
-              imageSrc={props.image}
-              {...props}
-            />
+            <CourseBookmarkContentList key={props.id} {...props} />
           ))}
         </ul>
       </section>
@@ -35,3 +33,46 @@ const CourseBookmarkContentSection = Suspense.with(
   },
 );
 export default CourseBookmarkContentSection;
+
+// TODO: 따로 뺴기
+const CourseBookmarkContentList = ({
+  id,
+  name,
+  image,
+  length,
+  bookmark,
+  duration,
+  difficulty,
+  mountainId,
+}: Bookmark) => {
+  console.log(id, mountainId);
+  const { peakBaseId } = useGetCourseDetails({
+    courseId: id,
+    mountainId: mountainId,
+  });
+  const routeToCourseDetail = useRouteBridge({
+    routeType: "replace",
+    path: "course-detail",
+    params: [
+      {
+        courseId: id,
+        mountainId: mountainId,
+        params: `tag=BASE&baseId=${peakBaseId}`,
+      },
+    ],
+  });
+
+  return (
+    <button onClick={routeToCourseDetail}>
+      <CourseList
+        key={id}
+        name={name}
+        length={length}
+        imageSrc={image}
+        stared={bookmark}
+        duration={duration}
+        difficulty={difficulty}
+      />
+    </button>
+  );
+};
