@@ -7,7 +7,7 @@ const useNotificationMutation = () => {
   return useMutation({
     mutationKey: [USER_ALERT_API_PATH],
     mutationFn: (body: PutAlertRequest) => putAlert(authenticatedApi, body),
-    onMutate: () => {
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: [USER_ALERT_API_PATH] });
     },
   });
