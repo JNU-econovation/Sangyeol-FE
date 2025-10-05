@@ -19,7 +19,15 @@ export const TRAVEL_RECORD_DETAILS_API_PATH = ({
  * @category Types
  * @interface GetTravelRecordDetailsResponse
  * @description 산행 기록 상세 조회 응답 타입
- * @property {Record[]} records - 산행 기록 상세 목록
+ * @property {string} recordId - 기록 ID
+ * @property {string} displayName - 코스 표시 이름
+ * @property {number} startedAt - 시작 시간 (timestamp)
+ * @property {number} endAt - 종료 시간 (timestamp)
+ * @property {number} duration - 소요 시간 (초)
+ * @property {number} length - 거리 (m)
+ * @property {[number, number][]} coordinates - GPS 좌표 배열 ([위도, 경도])
+ * @property {string} courseId - 코스 ID
+ * @property {string} mountainId - 산 ID
  */
 export interface GetTravelRecordDetailsResponse {
   recordId: string;

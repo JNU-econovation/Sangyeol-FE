@@ -11,6 +11,7 @@ export const BOOKMARK_API_PATH = "/api/v1/bookmarks";
 /**
  * @public
  * @category Types
+ * @interface Bookmark
  * @description 북마크 정보 타입
  * @property {string} id - 코스 ID
  * @property {string} name - 코스 이름
