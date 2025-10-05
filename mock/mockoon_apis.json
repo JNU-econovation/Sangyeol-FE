@@ -27,6 +27,10 @@
       "children": [
         {
           "type": "route",
+          "uuid": "cc30b6e7-6f72-443f-8455-6333d44ccf42"
+        },
+        {
+          "type": "route",
           "uuid": "8aeaf47c-dd06-4ce9-9cd2-eaa11048f852"
         },
         {
@@ -44,10 +48,6 @@
         {
           "type": "route",
           "uuid": "f78eb179-ecd4-457b-8ae6-957a7014a21a"
-        },
-        {
-          "type": "route",
-          "uuid": "cc30b6e7-6f72-443f-8455-6333d44ccf42"
         },
         {
           "type": "route",
@@ -648,7 +648,7 @@
       "responses": [
         {
           "uuid": "9f680107-d110-41bb-8109-7445bb1ec125",
-          "body": "{\n  \t\"data\" : {\n\t  \t  \"isComplete\" : true \n  \t},\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"userStatusInfoDTO\": {\n      \"isBasicInfoSet\": true,\n      \"isPersonalInfoSet\": false\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -822,8 +822,8 @@
       "responses": [
         {
           "uuid": "1acdca19-2253-4606-bf69-e3d669febbb4",
-          "body": "{\n  \"data\": {\n    \"userAlertSetting\": {\n      \"eventAlert\": true,\n      \"travelRecordCountAlert\": true,\n      \"travelDeviationAlert\": true,\n      \"accidentProneAreaAlert\": true\n    }\n  },\n  \"status\": \"success\"\n}",
-          "latency": 0,
+          "body": "{\n  \"data\": {\n    \"userAlertSetting\": {\n      \"eventAlert\": true,\n      \"travelDeviationAlert\": true,\n      \"accidentProneAreaAlert\": true\n    }\n  },\n  \"status\": \"success\"\n}",
+          "latency": 2000,
           "statusCode": 200,
           "label": "",
           "headers": [],
@@ -851,7 +851,7 @@
       "responses": [
         {
           "uuid": "bcdf68b1-58c4-4856-a1c8-c78615e90bef",
-          "body": "{\n  \t\"data\" : null,\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \t\"data\" : null\n\t\t\"status\" : \"sucess\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
