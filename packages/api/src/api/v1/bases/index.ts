@@ -36,10 +36,10 @@ export interface GetBasesApiResponse {
  * console.log(result.bases); // BaseMarker[]
  */
 export const getBasesApi = async (
-  Instance: AxiosInstance,
+  instance: AxiosInstance,
   mountainId: string,
 ) => {
-  const response = await Instance<GetBasesApiResponse>({
+  const response = await instance<GetBasesApiResponse>({
     method: "get",
     url: BASES_API_PATH(mountainId),
   });
