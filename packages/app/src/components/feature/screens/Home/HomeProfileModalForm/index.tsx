@@ -12,7 +12,6 @@ import HeightField from "./HeightField";
 import NameField from "./NameField";
 import SubmitButton from "./SubmitButton";
 import WeightField from "./WeightField";
-import { useEffect } from "react";
 
 interface HomeProfileModalFormProps {
   closeModal: () => void;
@@ -21,10 +20,6 @@ interface HomeProfileModalFormProps {
 //TODO: section 컴포넌트가 props를 받아서 사용중임. 이는 컨벤션 위반
 const HomeProfileModalForm = ({ closeModal }: HomeProfileModalFormProps) => {
   const form = useProfileModalForm();
-
-  useEffect(() => {
-    form.setValue("closeModal", closeModal);
-  }, [closeModal, form]);
 
   return (
     <OutsideContainer activeOpacity={1}>
@@ -54,7 +49,7 @@ const HomeProfileModalForm = ({ closeModal }: HomeProfileModalFormProps) => {
               <BloodTypeField />
               <Spacing size={18} />
               <ButtonContainer>
-                <SubmitButton />
+                <SubmitButton closeModal={closeModal} />
               </ButtonContainer>
             </FormProvider>
           </ScrollView>
