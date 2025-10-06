@@ -1,7 +1,8 @@
+import FieldLayout from "@components/common/shared/layout/FieldLayout";
 import styled from "@emotion/native";
 import WheelPicker from "@quidone/react-native-wheel-picker";
 import { COLORS } from "@styles/colorPalette";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { Modal, Platform } from "react-native";
 
 export interface WheelPickerOption<T = string> {
@@ -9,7 +10,8 @@ export interface WheelPickerOption<T = string> {
   value: T;
 }
 
-interface WheelPickerProps<T extends string> {
+interface WheelPickerProps<T extends string>
+  extends Omit<ComponentProps<typeof FieldLayout>, "content"> {
   options: WheelPickerOption<T>[];
   value: T | null;
   onChange: (value: T) => void;
@@ -21,6 +23,8 @@ const WheelPickerTextareaField = <T extends string>({
   value,
   onChange,
   placeholder = "선택하세요",
+
+  ...props
 }: WheelPickerProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tempValue, setTempValue] = useState(value);
@@ -43,50 +47,56 @@ const WheelPickerTextareaField = <T extends string>({
   };
 
   return (
-    <>
+    <FieldLayout
+      {...props}
+      content={
+        <>
+          <InputButton
+            onPress={() => {
+              setIsOpen(true);
+              setTempValue(value);
+            }}
+          >
+            <InputText hasValue={value != null}>{getSelectedLabel()}</InputText>
+          </InputButton>
+
+          {/* Modal */}
+          <Modal
+            visible={isOpen}
+            transparent
+            animationType="slide"
+            onRequestClose={handleCancel}
+          >
+            <ModalOverlay onPress={handleCancel}>
+              {/* Picker Container */}
+              <PickerContainer onPress={(e) => e.stopPropagation()}>
+                {/* Toolbar */}
+                <Toolbar>
+                  <ToolbarButton onPress={handleCancel}>
+                    <ToolbarText>취소</ToolbarText>
+                  </ToolbarButton>
+                  <ToolbarButton onPress={handleConfirm}>
+                    <ToolbarTextBold>완료</ToolbarTextBold>
+                  </ToolbarButton>
+                </Toolbar>
+
+                {/* Picker Wheel */}
+                <WheelPicker
+                  data={options}
+                  value={tempValue}
+                  onValueChanged={({ item: { value } }) => {
+                    setTempValue(value);
+                  }}
+                  enableScrollByTapOnItem={true}
+                />
+              </PickerContainer>
+            </ModalOverlay>
+          </Modal>
+        </>
+      }
+    >
       {/* Input Field */}
-      <InputButton
-        onPress={() => {
-          setIsOpen(true);
-          setTempValue(value);
-        }}
-      >
-        <InputText hasValue={value != null}>{getSelectedLabel()}</InputText>
-      </InputButton>
-
-      {/* Modal */}
-      <Modal
-        visible={isOpen}
-        transparent
-        animationType="slide"
-        onRequestClose={handleCancel}
-      >
-        <ModalOverlay onPress={handleCancel}>
-          {/* Picker Container */}
-          <PickerContainer onPress={(e) => e.stopPropagation()}>
-            {/* Toolbar */}
-            <Toolbar>
-              <ToolbarButton onPress={handleCancel}>
-                <ToolbarText>취소</ToolbarText>
-              </ToolbarButton>
-              <ToolbarButton onPress={handleConfirm}>
-                <ToolbarTextBold>완료</ToolbarTextBold>
-              </ToolbarButton>
-            </Toolbar>
-
-            {/* Picker Wheel */}
-            <WheelPicker
-              data={options}
-              value={tempValue}
-              onValueChanged={({ item: { value } }) => {
-                setTempValue(value);
-              }}
-              enableScrollByTapOnItem={true}
-            />
-          </PickerContainer>
-        </ModalOverlay>
-      </Modal>
-    </>
+    </FieldLayout>
   );
 };
 
