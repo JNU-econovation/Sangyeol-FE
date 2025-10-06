@@ -7,7 +7,7 @@ const useCheckUserLoginAndProfileState = () => {
   const [refreshToken, setRefreshToken] = useState<string | undefined>();
   const [isCheckingLoginLoading, setIsCheckingLoginLoading] = useState(true);
   const {
-    data: profileStatus,
+    data,
     isLoading: profileStatusLoading,
     error: profileStatusError,
   } = useUserProfileStatusQuery();
@@ -36,7 +36,8 @@ const useCheckUserLoginAndProfileState = () => {
 
   return {
     isLoggedIn: !profileStatusLoading && !!accessToken,
-    isProfileComplete: profileStatus?.isComplete ?? false,
+    isBasicInfoSet: data?.userStatusInfoDTO.isBasicInfoSet,
+    isPersonalInfoSet: data?.userStatusInfoDTO.isPersonalInfoSet,
     isLoading: profileStatusLoading || isCheckingLoginLoading,
     profileStatusLoading,
     isCheckingLoginLoading,
