@@ -3480,6 +3480,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@quidone/react-native-wheel-picker@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "@quidone/react-native-wheel-picker@npm:1.6.1"
+  dependencies:
+    "@rozhkov/react-useful-hooks": "npm:^1.0.10"
+    date-fns: "npm:^4.1.0"
+  peerDependencies:
+    react: ">=16.8"
+    react-native: ">=0.71.6"
+  checksum: 10c0/8bb8d11fb685195576a6f337ab06ae75b52ceb0ab362bc4247aa74c00748be9ec5b9ebd0e87dc185aad0ed4dc88e77dd01703b1c2e56e55c9fb716df8116deca
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-compose-refs@npm:1.1.2":
   version: 1.1.2
   resolution: "@radix-ui/react-compose-refs@npm:1.1.2"
@@ -4152,6 +4165,17 @@ __metadata:
   version: 4.52.3
   resolution: "@rollup/rollup-win32-x64-msvc@npm:4.52.3"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@rozhkov/react-useful-hooks@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@rozhkov/react-useful-hooks@npm:1.0.10"
+  dependencies:
+    default-values: "npm:^1.0.2"
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18 || ^19
+  checksum: 10c0/943022d5b900cd400ca42a0ff7a828b1ef91ca76d86bcd5c078ea4b0e43cd7b827706b2caa5513d4656598144a50479db0c88d332c01cb39a67208f6686c45c5
   languageName: node
   linkType: hard
 
@@ -5880,6 +5904,7 @@ __metadata:
     "@expo/cli": "npm:0.24.20"
     "@expo/vector-icons": "npm:^14.1.0"
     "@mj-studio/react-native-naver-map": "npm:^2.6.1"
+    "@quidone/react-native-wheel-picker": "npm:^1.6.1"
     "@react-native-async-storage/async-storage": "npm:2.1.2"
     "@react-native-voice/voice": "npm:^3.2.4"
     "@react-navigation/bottom-tabs": "npm:^7.2.0"
@@ -7387,6 +7412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: 10c0/b79ff32830e6b7faa009590af6ae0fb8c3fd9ffad46d930548fbb5acf473773b4712ae887e156ba91a7b3dc30591ce0f517d69fd83bd9c38650fdc03b4e0bac8
+  languageName: node
+  linkType: hard
+
 "debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -7468,6 +7500,13 @@ __metadata:
   version: 4.3.1
   resolution: "deepmerge@npm:4.3.1"
   checksum: 10c0/e53481aaf1aa2c4082b5342be6b6d8ad9dfe387bc92ce197a66dea08bd4265904a087e75e464f14d1347cf2ac8afe1e4c16b266e0561cc5df29382d3c5f80044
+  languageName: node
+  linkType: hard
+
+"default-values@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "default-values@npm:1.0.2"
+  checksum: 10c0/f785452cdbb9ef81fd8660e0001f0bd22a6692a63b8b8fb515d5757fe59bfe9af26910c3239d7693d5bc992afcb2431f55da5cc4c8b78651ed179d81125edc08
   languageName: node
   linkType: hard
 
