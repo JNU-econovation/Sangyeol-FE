@@ -3,7 +3,11 @@ import useUserPersonalInformationMutation from "@hooks/feature/query/mutate/useU
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import { useCallback } from "react";
 
-const SubmitButton = () => {
+interface SubmitButtonProps {
+  closeModal: () => void;
+}
+
+const SubmitButton = ({ closeModal }: SubmitButtonProps) => {
   const { watch, setValue } = useProfileModalFormContext();
   const { mutate: postUserPersonalInfo } = useUserPersonalInformationMutation();
 
@@ -40,8 +44,6 @@ const SubmitButton = () => {
       return;
     }
 
-    const closeModal = watch("closeModal");
-
     postUserPersonalInfo(
       { name, weight, height, bloodType },
       {
@@ -56,7 +58,7 @@ const SubmitButton = () => {
     );
 
     // Submit the form
-  }, [watch]);
+  }, [watch, closeModal, postUserPersonalInfo, setValue]);
   return <DefaultButton title="확인" onPress={handleConfirm} fullWidth />;
 };
 
