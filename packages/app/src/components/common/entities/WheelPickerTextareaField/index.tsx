@@ -23,15 +23,18 @@ const WheelPickerTextareaField = <T extends string>({
   placeholder = "선택하세요",
 }: WheelPickerProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [defaultValue, setDefaultValue] = useState(value);
+  const [tempValue, setTempValue] = useState(value);
 
   const handleConfirm = () => {
     setIsOpen(false);
+    if (tempValue !== null) {
+      onChange(tempValue);
+    }
   };
 
   const handleCancel = () => {
     setIsOpen(false);
-    onChange(defaultValue!);
+    setTempValue(value);
   };
 
   const getSelectedLabel = () => {
@@ -45,7 +48,7 @@ const WheelPickerTextareaField = <T extends string>({
       <InputButton
         onPress={() => {
           setIsOpen(true);
-          setDefaultValue(value);
+          setTempValue(value);
         }}
       >
         <InputText hasValue={value != null}>{getSelectedLabel()}</InputText>
@@ -74,9 +77,9 @@ const WheelPickerTextareaField = <T extends string>({
             {/* Picker Wheel */}
             <WheelPicker
               data={options}
-              value={value}
+              value={tempValue}
               onValueChanged={({ item: { value } }) => {
-                onChange(value);
+                setTempValue(value);
               }}
               enableScrollByTapOnItem={true}
             />
