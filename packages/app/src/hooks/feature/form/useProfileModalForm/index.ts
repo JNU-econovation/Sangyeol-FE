@@ -10,6 +10,8 @@ interface ProfileModalFormValues {
   weightHelperState: "none" | "necessary";
   heightHelperState: "none" | "necessary";
   bloodTypeHelperState: "none" | "necessary";
+
+  closeModal: () => void;
 }
 
 export const useProfileModalForm = () => {
