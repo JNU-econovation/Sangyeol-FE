@@ -880,7 +880,7 @@
       "responses": [
         {
           "uuid": "7591bf8d-997f-4474-8f28-9a7fca903949",
-          "body": "{\n\t\t\"data\" : null\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n\t\t\"data\" : null,\n\t\t\"status\" : \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
