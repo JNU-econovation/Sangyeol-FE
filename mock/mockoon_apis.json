@@ -870,6 +870,35 @@
         }
       ],
       "responseMode": null
+    },
+    {
+      "uuid": "a112a50e-7641-4d54-a63d-f31447773ca1",
+      "type": "http",
+      "documentation": "개인정보 등록",
+      "method": "post",
+      "endpoint": "api/v1/users/profile/personal-information",
+      "responses": [
+        {
+          "uuid": "7591bf8d-997f-4474-8f28-9a7fca903949",
+          "body": "{\n\t\t\"data\" : null\n\t\t\"status\" : \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -900,6 +929,10 @@
     {
       "type": "route",
       "uuid": "048d55f5-4513-4b7a-89ee-b84b144a4e4b"
+    },
+    {
+      "type": "route",
+      "uuid": "a112a50e-7641-4d54-a63d-f31447773ca1"
     }
   ],
   "proxyMode": false,
