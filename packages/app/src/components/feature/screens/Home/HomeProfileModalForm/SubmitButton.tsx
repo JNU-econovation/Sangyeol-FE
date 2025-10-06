@@ -1,9 +1,12 @@
-import DefaultButton from "@components/common/shared/ui/buttons/DefaultButton";
 import { useProfileModalFormContext } from "@hooks/feature/form/useProfileModalForm";
+import useUserPersonalInformationMutation from "@hooks/feature/query/mutate/useUserPersonalInformationMutation";
+import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import { useCallback } from "react";
 
 const SubmitButton = () => {
   const { watch, setValue } = useProfileModalFormContext();
+  const { mutate: postUserPersonalInfo } = useUserPersonalInformationMutation();
+
   const handleConfirm = useCallback(() => {
     const name = watch("name");
     const weight = watch("weight");
@@ -36,6 +39,21 @@ const SubmitButton = () => {
     if (!name || !weight || !height || !bloodType) {
       return;
     }
+
+    const closeModal = watch("closeModal");
+
+    postUserPersonalInfo(
+      { name, weight, height, bloodType },
+      {
+        onSuccess: () => {
+          closeModal();
+        },
+        onError: (error) => {
+          //TODO: error handling
+          console.log(error);
+        },
+      },
+    );
 
     // Submit the form
   }, [watch]);
