@@ -1,8 +1,13 @@
 import WheelPickerTextareaField from "@entities/WheelPickerTextareaField";
+import { ComponentProps } from "react";
 
 const BLOOD_TYPES = ["A", "B", "AB", "O"] as const;
 
-interface BloodPickerProps {
+interface BloodPickerProps
+  extends Omit<
+    ComponentProps<typeof WheelPickerTextareaField>,
+    "title" | "options"
+  > {
   value: (typeof BLOOD_TYPES)[number];
   onChange: (value: (typeof BLOOD_TYPES)[number]) => void;
 }
@@ -10,6 +15,7 @@ interface BloodPickerProps {
 const BloodPicker = ({ value, onChange }: BloodPickerProps) => {
   return (
     <WheelPickerTextareaField
+      title="혈액형"
       options={[
         { label: "A", value: "A" },
         { label: "B", value: "B" },
