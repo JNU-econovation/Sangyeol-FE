@@ -851,7 +851,7 @@
       "responses": [
         {
           "uuid": "bcdf68b1-58c4-4856-a1c8-c78615e90bef",
-          "body": "{\n  \t\"data\" : null\n\t\t\"status\" : \"sucess\"\n}",
+          "body": "{\n  \t\"data\" : null,\n\t\t\"status\" : \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
