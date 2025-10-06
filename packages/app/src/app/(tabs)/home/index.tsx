@@ -4,11 +4,32 @@ import HomeNavGridSection from "@screens/Home/HomeNavGridSection";
 import Spacing from "@shared/layout/Spacing";
 import { router } from "expo-router";
 import { useEffect } from "react";
+import useUserProfileStatusQuery from "@hooks/feature/query/query/useUserProfileStatusQuery";
+import usePersonalInfoModal from "@hooks/feature/modal/usePersonalInfoModal";
 
 const HomeScreen = () => {
+  const {
+    data: profileStatusData,
+    // isLoading: profileStatusLoading,
+    // error: profileStatusError,
+  } = useUserProfileStatusQuery();
+  const { showNotificationModal } = usePersonalInfoModal();
+
   useEffect(() => {
     router.prefetch("/(tabs)/home/course");
   }, []);
+
+  useEffect(() => {
+    const isPersonalInfoSet =
+      profileStatusData?.userStatusInfoDTO.isPersonalInfoSet;
+    if (profileStatusData && !isPersonalInfoSet) {
+      showNotificationModal({
+        onConfirm: () => {
+          console.log("확인 클릭됨");
+        },
+      });
+    }
+  }, [profileStatusData]);
 
   return (
     <Container source={require("@assets/images/Home_Background.png")}>

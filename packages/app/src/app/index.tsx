@@ -23,7 +23,7 @@ export default function Index() {
     isCheckingLoginLoading,
     profileStatusLoading,
     isLoggedIn,
-    isProfileComplete,
+    isBasicInfoSet,
     refreshToken,
   } = useCheckUserLoginAndProfileState();
 
@@ -66,8 +66,11 @@ export default function Index() {
 
   if (isCheckingLoginLoading || profileStatusLoading) return null; //TODO: 로딩 폴백 보여주기
 
-  if (isLoggedIn && !isProfileComplete)
+  if (isLoggedIn && !isBasicInfoSet)
     return <Redirect href="/onboarding/profile" />;
+
+  // if (isLoggedIn && !isPersonalInfoSet)
+  //   return <Redirect href="/onboarding/profile" />;
 
   // if (fontError || error) return null; //TODO: 에러 페이지로 넘기기
   if (fontError || error) return <Redirect href="/onboarding/profile" />;
