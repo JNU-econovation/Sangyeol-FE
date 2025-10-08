@@ -1,10 +1,24 @@
 import styled from "@emotion/native";
+import useReportAlertModal from "@hooks/feature/modal/useReportAlertModal";
+import useSetModalAlertStore from "@store/asyncStorage/useSetModalAlertStore";
 import { COLORS } from "@styles/colorPalette";
+import { router } from "expo-router";
+import { useCallback } from "react";
 import { TouchableOpacity } from "react-native";
 
 const TravelNavIcon = () => {
-  const routeToReport = () => {};
-  const routeToManual = () => {};
+  const { isReportAlertVisible, hydrated } = useSetModalAlertStore();
+  const { showReportAlert } = useReportAlertModal();
+
+  const routeToReport = useCallback(() => {
+    if (!hydrated) return;
+    if (isReportAlertVisible) return showReportAlert();
+    router.push("/report");
+  }, [isReportAlertVisible, showReportAlert]);
+
+  const routeToManual = useCallback(() => {
+    router.push("/(tabs)/home/safeManual");
+  }, []);
 
   return (
     <Container>
