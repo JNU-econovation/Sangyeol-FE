@@ -5,7 +5,7 @@ export * from "./api/v1/bookmarks";
 export * from "./api/v1/bookmarks/[courseId]";
 export * from "./api/v1/facilities";
 export * from "./api/v1/mountains/[mountainId]/courses";
-export * from "./api/v1/mountains/relations/[keyword]";
+export * from "./api/v1/mountains/searches/suggestions";
 export * from "./api/v1/oauth/apple/login";
 export * from "./api/v1/oauth/kakao";
 export * from "./api/v1/pathways";

@@ -8,7 +8,7 @@ import { AxiosInstance } from "axios";
  * @returns API 경로 문자열
  */
 export const RELATED_MOUNTAINS_API_PATH = (keyword: string) =>
-  `/api/v1/mountains/relations/${encodeURIComponent(keyword)}`;
+  `api/v1/mountains/searches/suggestions?keyword=${encodeURIComponent(keyword)}`;
 
 /**
  * @public
@@ -30,8 +30,9 @@ interface GetRelatedMountainsParams {
  * @property {string} name - 산 이름
  */
 export interface Mountain {
-  mountainId: string;
+  id: string;
   name: string;
+  coordinate: [number, number];
 }
 
 /**
@@ -42,7 +43,7 @@ export interface Mountain {
  * @property {Mountain[]} relatedMountainList - 연관 산 목록
  */
 export interface GetRelatedMountainsResponse {
-  relatedMountainList: Mountain[];
+  suggestedMountainDTOs: Mountain[];
 }
 
 /**
