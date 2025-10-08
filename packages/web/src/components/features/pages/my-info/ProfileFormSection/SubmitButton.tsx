@@ -1,17 +1,37 @@
 "use client";
 
+import useUserInfoMutateModal from "@/hooks/feature/modal/useUserInfoMutateModal";
 import { useMyProfileFormContext } from "@hooks/feature/form/useMyProfileForm";
 import useMyProfileMutation from "@hooks/feature/query/mutate/useMyProfileMutation";
 import Button from "@shared/ui/Button";
 
 const SubmitButton = () => {
-  const { mutate: updateProfile } = useMyProfileMutation();
+  const { mutate: updateProfile, isSuccess } = useMyProfileMutation();
   const {
     handleSubmit,
     setValue,
     watch,
     formState: { isDirty },
   } = useMyProfileFormContext();
+
+  const { openUserInfoMutateModal } = useUserInfoMutateModal(() => {
+    updateProfile(
+      {
+        nickname: watch("nickname"),
+        email: watch("email"),
+        height: watch("height"),
+        weight: watch("weight"),
+        bloodType: watch("bloodType"),
+        phoneNumber: watch("phoneNumber"),
+        etc: watch("etc"),
+      },
+      {
+        onError() {
+          setValue("emailFieldHelperState", "DUPLICATED");
+        },
+      },
+    );
+  });
 
   const checkIsValid = () => {
     if (
@@ -37,14 +57,10 @@ const SubmitButton = () => {
     <Button
       size="lg"
       fullWidth
-      disabled={!checkIsValid() || !isDirty}
+      disabled={!checkIsValid() || !isDirty || isSuccess}
       onClick={handleSubmit((data) => {
         if (!checkIsValid()) return;
-        updateProfile(data, {
-          onError() {
-            setValue("emailFieldHelperState", "DUPLICATED");
-          },
-        });
+        openUserInfoMutateModal();
       })}
     >
       저장하기

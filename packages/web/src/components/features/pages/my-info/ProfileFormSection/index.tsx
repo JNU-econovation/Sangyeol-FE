@@ -5,19 +5,19 @@ import useProfileQuery from "@hooks/feature/query/query/useProfileQuery";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import { useLayoutEffect } from "react";
+import { FormProvider } from "react-hook-form";
 
 import ProfileFormSectionLoader from "./loader";
 
-import { FormProvider } from "react-hook-form";
 import BloodTypeField from "./BloodTypeField";
 import EmailField from "./EmailField";
+import EtcField from "./EtcField";
 import HeightField from "./HeightField";
 import NameField from "./NameField";
 import NicknameField from "./NicknameField";
 import PhoneNumberField from "./PhoneNumberField";
 import SubmitButton from "./SubmitButton";
 import WeightField from "./WeightField";
-import EtcField from "./EtcField";
 
 const ProfileFormSection = Suspense.with(
   {
