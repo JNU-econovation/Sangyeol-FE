@@ -71,10 +71,10 @@ const PlayTriangle = styled.View`
   height: 0px;
   background-color: transparent;
   border-style: solid;
-  border-left-width: 12px;
+  border-left-width: 20px;
   border-right-width: 0px;
-  border-bottom-width: 8px;
-  border-top-width: 8px;
+  border-bottom-width: 16px;
+  border-top-width: 16px;
   border-left-color: ${COLORS.mainWhite};
   border-right-color: transparent;
   border-bottom-color: transparent;
