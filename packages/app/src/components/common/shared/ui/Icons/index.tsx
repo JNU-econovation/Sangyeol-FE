@@ -14,6 +14,7 @@ export { default as AppleSVG } from "@assets/icons/Apple.svg";
 // Tab_Block
 export { default as HomeBlockSVG } from "@assets/icons/Home_Block.svg";
 export { default as MapBlockSVG } from "@assets/icons/Map_Block.svg";
+export { default as HeroBlockSVG } from "@assets/icons/Hero_Block.svg";
 
 // Tab_Week
 export { default as HomeSVG } from "@assets/icons/Home.svg";
