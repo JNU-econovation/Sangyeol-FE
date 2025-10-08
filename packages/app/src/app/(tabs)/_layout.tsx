@@ -1,3 +1,5 @@
+// import { mypageWebviewRef } from "@components/feature/screens/mypage/MypageHomeWebview";
+import useRouteToBridge from "@hooks/feature/bridge/useRouteToBridge";
 import QueryProvider from "@service/query/provider";
 import {
   HeroBlockSVG,
@@ -12,9 +14,17 @@ import {
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { COLORS } from "@styles/colorPalette";
 import { Redirect, Tabs } from "expo-router";
+import { TouchableOpacity } from "react-native";
+import { WebView } from "react-native-webview";
+
+export let mypageWebviewRef: React.RefObject<WebView<{}>> = null;
 
 export default function TabLayout() {
   const { accessToken } = useTokenStore();
+  const { ref, routeTo } = useRouteToBridge();
+
+  mypageWebviewRef = ref;
+
   if (!accessToken) return <Redirect href="/starter" />;
 
   return (
@@ -70,7 +80,23 @@ export default function TabLayout() {
           options={{
             tabBarLabel: "마이",
             tabBarIcon: ({ focused }) =>
-              focused ? <HeroBlockSVG /> : <HeroSVG />,
+              focused ? (
+                <TouchableOpacity
+                  onPress={() => {
+                    if (mypageWebviewRef?.current) {
+                      routeTo({
+                        routeType: "dismiss",
+                        url: "/my-page",
+                      });
+                    }
+                  }}
+                >
+                  <HeroBlockSVG />
+                </TouchableOpacity>
+              ) : (
+                <HeroSVG />
+              ),
+            animation: "fade",
           }}
         />
       </Tabs>

@@ -1,3 +1,4 @@
+import { mypageWebviewRef } from "@/src/app/(tabs)/_layout";
 import PATH_ROUTE from "@constants/pathRoute";
 import WebViewWithInjected from "@entities/WebViewWithInjected";
 import useLogout from "@hooks/feature/authenticate/useLogout";
@@ -7,6 +8,7 @@ const MypageHomeWebview = () => {
 
   return (
     <WebViewWithInjected
+      ref={mypageWebviewRef}
       source={{
         uri: PATH_ROUTE.WEBVIEW.MYPAGE,
       }}
