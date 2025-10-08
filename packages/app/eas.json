@@ -9,6 +9,7 @@
       "distribution": "internal",
       "node": "22.0.0",
       "env": {
+        "APP_ENV": "development",
         "YARN_ENABLE_IMMUTABLE_INSTALLS": "false"
       }
     },
@@ -16,6 +17,7 @@
       "distribution": "internal",
       "node": "22.0.0",
       "env": {
+        "APP_ENV": "development",
         "YARN_ENABLE_IMMUTABLE_INSTALLS": "false"
       }
     },
@@ -23,6 +25,7 @@
       "autoIncrement": true,
       "node": "22.0.0",
       "env": {
+        "APP_ENV": "production",
         "YARN_ENABLE_IMMUTABLE_INSTALLS": "false"
       }
     }
