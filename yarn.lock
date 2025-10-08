@@ -5950,6 +5950,7 @@ __metadata:
     expo-status-bar: "npm:~2.2.3"
     expo-symbols: "npm:~0.4.4"
     expo-system-ui: "npm:~5.0.11"
+    expo-task-manager: "npm:~13.1.6"
     expo-web-browser: "npm:~14.2.0"
     jest: "npm:^29.2.1"
     jest-expo: "npm:~53.0.10"
@@ -9187,6 +9188,18 @@ __metadata:
     react-native-web:
       optional: true
   checksum: 10c0/e172066d8abbd72146dab115b10670e6aa1b82e95d221050fe33de8229b8c3ff5da0cd0964d1ec0c5886301a6c135d946aaa6e1d83274d566792bcc7428eb2f8
+  languageName: node
+  linkType: hard
+
+"expo-task-manager@npm:~13.1.6":
+  version: 13.1.6
+  resolution: "expo-task-manager@npm:13.1.6"
+  dependencies:
+    unimodules-app-loader: "npm:~5.1.3"
+  peerDependencies:
+    expo: "*"
+    react-native: "*"
+  checksum: 10c0/5758afed893cae7e626339d5e048771f1f0fcb3a42e5588024896d7a3d8eba28d99f0b0571d76f8cca000e4e6f37ad250f631193d279f7cbd39d31585d7fbad1
   languageName: node
   linkType: hard
 
@@ -16293,6 +16306,13 @@ __metadata:
   version: 2.1.0
   resolution: "unicode-property-aliases-ecmascript@npm:2.1.0"
   checksum: 10c0/50ded3f8c963c7785e48c510a3b7c6bc4e08a579551489aa0349680a35b1ceceec122e33b2b6c1b579d0be2250f34bb163ac35f5f8695fe10bbc67fb757f0af8
+  languageName: node
+  linkType: hard
+
+"unimodules-app-loader@npm:~5.1.3":
+  version: 5.1.3
+  resolution: "unimodules-app-loader@npm:5.1.3"
+  checksum: 10c0/c0756e69ed81514d70a66cb252c79c697d0698e14249a0bfaff0ee91a0499826bf61c20f57163918514f71a037c36204371f303753dd1efb11f3cd5217cfcaed
   languageName: node
   linkType: hard
 
