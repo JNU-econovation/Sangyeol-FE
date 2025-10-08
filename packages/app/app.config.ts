@@ -48,6 +48,21 @@ const appConfig = {
           speechRecognitionPermission: "음성 인식 권한이 필요합니다.",
         },
       ],
+      // naver map
+      [
+        "@mj-studio/react-native-naver-map",
+        {
+          client_id: process.env.EXPO_PUBLIC_NAVER_KEY,
+        },
+      ],
+      [
+        "expo-build-properties",
+        {
+          android: {
+            extraMavenRepos: ["https://repository.map.naver.com/archive/maven"],
+          },
+        },
+      ],
       [
         "expo-font",
         {

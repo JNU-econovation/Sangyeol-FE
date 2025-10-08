@@ -3252,15 +3252,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mj-studio/react-native-naver-map@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "@mj-studio/react-native-naver-map@npm:2.6.1"
+"@mj-studio/react-native-naver-map@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "@mj-studio/react-native-naver-map@npm:2.6.2"
   dependencies:
     object-hash: "npm:^3.0.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10c0/23eface9544ae4288530e0d67a3e890d6df5be10191e13990d1c99c383fd65daeaeec33c40f79aa12755e27b1085730afd0b4bd333d09fef24f2d32e5c29dc27
+  checksum: 10c0/e9f064cb2b6aae503525b38da3de76f2ead5b8a86884fc5e01b6feb6f0942d49e7a44ab521ddceee439a3baf786b86b075d63b0beacd11a67d1913e25e0ce65a
   languageName: node
   linkType: hard
 
@@ -5903,7 +5903,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@expo/cli": "npm:0.24.20"
     "@expo/vector-icons": "npm:^14.1.0"
-    "@mj-studio/react-native-naver-map": "npm:^2.6.1"
+    "@mj-studio/react-native-naver-map": "npm:^2.6.2"
     "@quidone/react-native-wheel-picker": "npm:^1.6.1"
     "@react-native-async-storage/async-storage": "npm:2.1.2"
     "@react-native-voice/voice": "npm:^3.2.4"
