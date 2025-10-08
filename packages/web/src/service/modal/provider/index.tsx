@@ -36,7 +36,6 @@ export default function ModalProvider({ children }: PropsWithChildren) {
   return (
     <ModalContext.Provider value={value}>
       {children}
-      <div id="modal-root" />
       <CreatePortal />
     </ModalContext.Provider>
   );
