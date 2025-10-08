@@ -23,7 +23,7 @@ export default function ModalProvider({ children }: PropsWithChildren) {
       Queue.enqueue(modalComponent);
       flush();
     },
-    [Queue, flush]
+    [Queue, flush],
   );
 
   const closeModalAsync = useCallback(() => {

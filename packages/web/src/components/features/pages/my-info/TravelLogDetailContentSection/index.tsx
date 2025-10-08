@@ -1,5 +1,6 @@
 "use client";
 
+import useTravelLogDeleteModal from "@hooks/feature/modal/useTravelLogDeleteModal";
 import useTravelRecordDetailQuery from "@hooks/feature/query/query/useTravelRecordDetailQuery";
 import TrashIcon from "@icons/TrashIcon";
 import { timestampToDateValues } from "@sangyeol/utils";
@@ -7,6 +8,7 @@ import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
+
 import TravelLogDetailContentSectionLoader from "./loader";
 
 const TravelLogDetailContentSection = Suspense.with(
@@ -16,23 +18,16 @@ const TravelLogDetailContentSection = Suspense.with(
   () => {
     const { recordId } = useParams<{ recordId: string }>();
 
-    if (!recordId) {
-      throw new Error("recordId is required");
-    }
-
     const {
       data: { coordinates, displayName, duration, endAt, length, startedAt },
     } = useTravelRecordDetailQuery(recordId);
+    const { openTravelLogDeleteModal } = useTravelLogDeleteModal();
 
     const dateString = useMemo(() => {
-      const { year, month, day, hour, minute, second } =
+      const { year, month, day, hour, minute } =
         timestampToDateValues(startedAt);
-      const {
-        hour: endHour,
-        minute: endMinute,
-        second: endSecond,
-      } = timestampToDateValues(endAt);
-      return `${year}.${month}.${day} ${hour}:${minute}:${second} ~ ${endHour}:${endMinute}:${endSecond}`;
+      const { hour: endHour, minute: endMinute } = timestampToDateValues(endAt);
+      return `${year}.${month}.${day} ${hour}:${minute} ~ ${endHour}:${endMinute}`;
     }, []);
 
     return (
@@ -40,7 +35,9 @@ const TravelLogDetailContentSection = Suspense.with(
         <div className="px-6">
           <div className="flex items-center justify-between">
             <p className="text-lg font-semibold">{displayName}</p>
-            <TrashIcon />
+            <button onClick={openTravelLogDeleteModal} className="pl-4 pr-2">
+              <TrashIcon />
+            </button>
           </div>
           <span className="text-gray-900 text-sm font-medium">
             {dateString}
