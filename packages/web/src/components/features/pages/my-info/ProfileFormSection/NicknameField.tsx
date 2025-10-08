@@ -32,8 +32,11 @@ const NicknameField = Suspense.with(
     const {
       data: { nickname: prevNickname },
     } = useProfileQuery();
-    const { mutate: checkNicknameDuplicated } =
-      useCheckNicknameDuplicatedMutate();
+    const {
+      mutate: checkNicknameDuplicated,
+      isIdle,
+      isPending,
+    } = useCheckNicknameDuplicatedMutate();
 
     const handleChange = (nickname: string) => {
       setValue("nickname", nickname);
@@ -67,8 +70,8 @@ const NicknameField = Suspense.with(
         max={12}
         onBlur={() => {
           if (
-            watch("isValidNickname") === false &&
-            watch("nicknameHelperState") !== "FIT"
+            watch("isValidNickname") === false
+            // && watch("nicknameHelperState") !== "FIT"
           )
             setValue("nicknameHelperState", "NEEDS_CHECK");
         }}
@@ -76,8 +79,8 @@ const NicknameField = Suspense.with(
           <Button
             size={"sm"}
             disabled={
-              watch("nicknameHelperState") !== "FIT" ||
-              watch("isValidNickname") === true
+              watch("isValidNickname") === true ||
+              watch("nicknameHelperState") === "INVALID"
             }
             onClick={(e) => {
               e.preventDefault();
