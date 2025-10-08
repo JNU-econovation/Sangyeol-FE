@@ -1,14 +1,14 @@
 "use client";
 
-import useSMSForVerificationMutate from "@hooks/feature/query/mutate/useSMSForVerificationMutate";
+import { cn } from "@/utils/cn";
 import { useChangeNumberFormContext } from "@hooks/feature/form/useChangeNumberForm";
-import Button from "@shared/ui/Button";
-import TextField from "@shared/ui/TextField";
+import useSMSForVerificationMutate from "@hooks/feature/query/mutate/useSMSForVerificationMutate";
 import {
   isValidPhoneNumber,
   validateAndFormatPhoneWithoutPrefix,
 } from "@sangyeol/utils";
-import { cn } from "@/utils/cn";
+import Button from "@shared/ui/Button";
+import TextField from "@shared/ui/TextField";
 import { useState } from "react";
 
 const PhoneNumberField = () => {
@@ -22,7 +22,6 @@ const PhoneNumberField = () => {
     e.stopPropagation();
     e.preventDefault();
     const phoneNumber = `010-${watch("phoneNumber")}`;
-    console.log(phoneNumber);
     if (isValidPhoneNumber(phoneNumber)) {
       sendSMSVerification(phoneNumber, {
         onSuccess: () => {

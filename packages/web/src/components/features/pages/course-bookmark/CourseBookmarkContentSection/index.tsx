@@ -13,6 +13,7 @@ import CourseBookmarkContentSectionLoader from "./loader";
 const CourseBookmarkContentSection = Suspense.with(
   {
     fallback: <CourseBookmarkContentSectionLoader />,
+    clientOnly: true,
   },
 
   () => {

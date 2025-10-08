@@ -18,7 +18,7 @@ authenticatedApi.interceptors.request.use(
     // 헤더에서 accessToken 추가
     const accessToken = await getValueFromSecureStore("accessToken");
     if (accessToken) {
-      config.headers.Authorization = accessToken;
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -50,7 +50,9 @@ authenticatedApi.interceptors.response.use(
     }
 
     const err = Object.assign(
-      new Error(error.response?.data?.message || "알 수 없는 오류가 발생했습니다."),
+      new Error(
+        error.response?.data?.message || "알 수 없는 오류가 발생했습니다.",
+      ),
       {
         name: "ApiError",
         status: "error" as const,
@@ -59,7 +61,8 @@ authenticatedApi.interceptors.response.use(
         url: error.config?.url,
         cause: error,
       },
-    ) as Error & ErrorResponse & { httpStatus?: number; url?: string; cause?: unknown };
+    ) as Error &
+      ErrorResponse & { httpStatus?: number; url?: string; cause?: unknown };
 
     return Promise.reject(err);
   },
