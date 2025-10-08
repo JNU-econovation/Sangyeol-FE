@@ -69,14 +69,14 @@ export default function RootLayout({
   return (
     <html lang="ko" className={font.className}>
       <body className="select-none">
-        <ModalProvider>
-          <TanstackQueryProvider>
-            <StackLinkProvider>
+        <TanstackQueryProvider>
+          <StackLinkProvider>
+            <ModalProvider>
               {children}
               <GlobalBridgeListener />
-            </StackLinkProvider>
-          </TanstackQueryProvider>
-        </ModalProvider>
+            </ModalProvider>
+          </StackLinkProvider>
+        </TanstackQueryProvider>
       </body>
     </html>
   );
