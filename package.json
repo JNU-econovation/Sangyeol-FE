@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "yarn workspace bridge build && yarn workspace @sangyeol/utils build && yarn workspace api build && yarn workspace stack-link build",
     "dev:app": "yarn workspace app start",
     "dev:web": "yarn workspace web dev",
     "build:web": "yarn workspace bridge build && yarn workspace stack-link build && yarn workspace @sangyeol/utils build && yarn workspace web build",
@@ -16,6 +17,7 @@
     "build:bridge": "yarn workspace bridge build",
     "build:stack-link": "yarn workspace stack-link build",
     "build:utils": "yarn workspace @sangyeol/utils build",
+    "build:api": "yarn workspace api build",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
