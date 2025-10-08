@@ -4,6 +4,7 @@ import TanstackQueryProvider from "@entities/TanstackQueryProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import GlobalBridgeListener from "@/components/features/widgets/bridgeListener/GlobalBridgeListener";
 
 export const metadata: Metadata = {
   title: "산악구조",
@@ -70,7 +71,10 @@ export default function RootLayout({
       <body className="select-none">
         <ModalProvider>
           <TanstackQueryProvider>
-            <StackLinkProvider>{children}</StackLinkProvider>
+            <StackLinkProvider>
+              {children}
+              <GlobalBridgeListener />
+            </StackLinkProvider>
           </TanstackQueryProvider>
         </ModalProvider>
       </body>
