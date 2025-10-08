@@ -10,6 +10,7 @@ const TravelLogDetailContentSectionLoader = () => {
         </div>
         <div className="bg-gray-200 h-4 w-1/3 rounded mt-2" />
       </div>
+      <Spacing size={3.5} />
       <div className="h-80 bg-gray-100"></div>
       <div className="flex">
         <div className="grow p-3.5">
