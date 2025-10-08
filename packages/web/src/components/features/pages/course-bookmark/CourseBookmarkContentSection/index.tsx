@@ -46,7 +46,6 @@ const CourseBookmarkContentList = ({
   difficulty,
   mountainId,
 }: Bookmark) => {
-  console.log(id, mountainId);
   const { peakBaseId } = useGetCourseDetails({
     courseId: id,
     mountainId: mountainId,
@@ -64,7 +63,7 @@ const CourseBookmarkContentList = ({
   });
 
   return (
-    <button onClick={routeToCourseDetail}>
+    <div onClick={routeToCourseDetail} className="w-full" role="button">
       <CourseList
         key={id}
         name={name}
@@ -74,6 +73,6 @@ const CourseBookmarkContentList = ({
         duration={duration}
         difficulty={difficulty}
       />
-    </button>
+    </div>
   );
 };
