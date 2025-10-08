@@ -64,6 +64,10 @@
         {
           "type": "route",
           "uuid": "db9a64bc-8fc3-4861-b4e6-bd02afe62e99"
+        },
+        {
+          "type": "route",
+          "uuid": "a112a50e-7641-4d54-a63d-f31447773ca1"
         }
       ]
     },
@@ -524,7 +528,7 @@
       "responses": [
         {
           "uuid": "9e07873d-b9eb-403c-aeb9-b86bbb18513b",
-          "body": "{\n  \t\"data\" : {\n\t\t  \t\"isDuplicated\" : false \n  \t},\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \t\"data\" : {\n\t\t  \t\"isAvailable\" : true \n  \t},\n\t\t\"status\" : \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -648,7 +652,7 @@
       "responses": [
         {
           "uuid": "9f680107-d110-41bb-8109-7445bb1ec125",
-          "body": "{\n  \"data\": {\n    \"userStatusInfoDTO\": {\n      \"isBasicInfoSet\": true,\n      \"isPersonalInfoSet\": false\n    }\n  },\n  \"status\": \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"userStatusInfoDTO\": {\n      \"isBasicInfoSet\": true,\n      \"isPersonalInfoSet\": true\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -851,7 +855,7 @@
       "responses": [
         {
           "uuid": "bcdf68b1-58c4-4856-a1c8-c78615e90bef",
-          "body": "{\n  \t\"data\" : null,\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \t\"data\" : null\n\t\t\"status\" : \"sucess\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -880,6 +884,35 @@
       "responses": [
         {
           "uuid": "7591bf8d-997f-4474-8f28-9a7fca903949",
+          "body": "{\n\t\t\"data\" : null\n\t\t\"status\" : \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "a5f1c1c5-b263-4aa2-a8ad-8a6cd04eb2d1",
+      "type": "http",
+      "documentation": "산행 기록 삭제",
+      "method": "delete",
+      "endpoint": "api/v1/travel/records/:recordId",
+      "responses": [
+        {
+          "uuid": "7165194b-16ba-4014-8164-c60956634e82",
           "body": "{\n\t\t\"data\" : null,\n\t\t\"status\" : \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -932,7 +965,7 @@
     },
     {
       "type": "route",
-      "uuid": "a112a50e-7641-4d54-a63d-f31447773ca1"
+      "uuid": "a5f1c1c5-b263-4aa2-a8ad-8a6cd04eb2d1"
     }
   ],
   "proxyMode": false,
