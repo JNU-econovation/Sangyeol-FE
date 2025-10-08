@@ -1,5 +1,6 @@
 import QueryProvider from "@service/query/provider";
 import {
+  HeroBlockSVG,
   HeroSVG,
   HomeBlockSVG,
   HomeSVG,
@@ -68,7 +69,8 @@ export default function TabLayout() {
           name="mypage"
           options={{
             tabBarLabel: "마이",
-            tabBarIcon: ({ focused }) => (focused ? <HeroSVG /> : <HeroSVG />),
+            tabBarIcon: ({ focused }) =>
+              focused ? <HeroBlockSVG /> : <HeroSVG />,
           }}
         />
       </Tabs>
