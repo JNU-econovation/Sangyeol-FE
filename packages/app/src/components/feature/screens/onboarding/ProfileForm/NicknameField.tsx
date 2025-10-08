@@ -57,8 +57,8 @@ const NicknameField = Suspense.with(
       checkNicknameDuplicated(
         { nickname: getValues("nickname") },
         {
-          onSuccess: ({ isDuplicated }) => {
-            if (isDuplicated) {
+          onSuccess: ({ isAvailable }) => {
+            if (!isAvailable) {
               setValue("nicknameFieldHelperState", "DUPLICATED");
               return;
             }
