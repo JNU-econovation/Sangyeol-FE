@@ -21,7 +21,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     const isPersonalInfoSet =
-      profileStatusData?.userStatusInfoDTO.isPersonalInfoSet;
+      profileStatusData?.profileStatusInfoDTO?.isPersonalInfoSet;
     if (profileStatusData && !isPersonalInfoSet) {
       showNotificationModal();
     }

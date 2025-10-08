@@ -5,7 +5,7 @@ import useVerifyPhoneNumber from "@hooks/feature/query/mutate/useVerifyPhoneNumb
 import { timestampToMinutesSeconds } from "@sangyeol/utils";
 import { Button } from "@shared/ui/Button";
 import TextField from "@shared/ui/TextField";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const VerificationField = () => {
   const [verificationTimer, setVerificationTimer] = useState<number | null>(
@@ -21,11 +21,11 @@ const VerificationField = () => {
     e.preventDefault();
     e.stopPropagation();
     const verificationCode = getValues("verificationCode");
-    // Keyboard.dismiss();
-    // if (verificationCode.length !== 6) return;
-    // if (getValues("verificationFieldHelperState") !== "NONE") return;
     checkVerificationCode(
-      { certificationCode: +verificationCode }, // TODO: 타입 안정성 해결
+      {
+        verificationCode,
+        phoneNumber: `010-${watch("phoneNumber")}`,
+      }, // TODO: 타입 안정성 해결
       {
         onSuccess: () => {
           setValue("verificationFieldHelperState", "SUCCESS");

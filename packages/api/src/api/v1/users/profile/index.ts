@@ -24,15 +24,17 @@ export const USER_PROFILE_API_PATH = "/api/v1/users/profile";
  */
 //TODO: api 변경 반영 필요
 export interface GetProfileResponse {
-  name: string;
-  nickname: string;
-  phoneNumber: string;
-  imageUrl: string;
-  email: string;
-  height: number;
-  weight: number;
-  bloodType: "A" | "B" | "AB" | "O";
-  etc: string;
+  userProfileDTO: {
+    name: string;
+    nickname: string;
+    phoneNumber: string;
+    imageUrl: string;
+    email: string;
+    height: number;
+    weight: number;
+    bloodType: "A" | "B" | "AB" | "O";
+    etc: string;
+  };
 }
 
 /**
@@ -48,7 +50,8 @@ export interface GetProfileResponse {
  * @property {"A" | "B" | "AB" | "O"} [bloodType] - 혈액형 (선택)
  * @property {string} etc - 기타 정보
  */
-export interface PutProfileRequest {
+export interface PostProfileRequest {
+  name: string;
   nickname: string;
   phoneNumber: string;
   email: string;
@@ -95,12 +98,12 @@ export const getProfile = async (instance: AxiosInstance) => {
  *   etc: "기타 정보"
  * });
  */
-export const putProfile = async (
+export const postProfile = async (
   instance: AxiosInstance,
-  profileData: PutProfileRequest,
+  profileData: PostProfileRequest,
 ) => {
   const response = await instance({
-    method: "PUT",
+    method: "POST",
     url: USER_PROFILE_API_PATH,
     data: profileData,
   });

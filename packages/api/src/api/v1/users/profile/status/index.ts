@@ -16,7 +16,7 @@ export const USER_PROFILE_STATUS_API_PATH = "/api/v1/users/profile/status";
  * @property {boolean} personalInformation - 개인 정보 작성 여부
  */
 export interface GetProfileStatusResponse {
-  userStatusInfoDTO: {
+  profileStatusInfoDTO: {
     isBasicInfoSet: boolean;
     isPersonalInfoSet: boolean;
   };

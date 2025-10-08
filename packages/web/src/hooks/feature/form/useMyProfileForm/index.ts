@@ -1,9 +1,9 @@
 import { EmailHelperState } from "@pages/my-info/ProfileFormSection/EmailField";
 import { NicknameHelperState } from "@pages/my-info/ProfileFormSection/NicknameField";
-import { PutProfileRequest } from "api";
+import { PostProfileRequest } from "api";
 import { useForm, useFormContext } from "react-hook-form";
 
-interface MyProfileForm extends PutProfileRequest {
+interface MyProfileForm extends PostProfileRequest {
   isValidNickname: boolean;
   nicknameHelperState: NicknameHelperState;
   isValidPhoneNumber: boolean;
@@ -13,6 +13,7 @@ interface MyProfileForm extends PutProfileRequest {
 export const useMyProfileForm = () => {
   return useForm<MyProfileForm>({
     defaultValues: {
+      name: "",
       nickname: "",
       phoneNumber: "",
       email: "",

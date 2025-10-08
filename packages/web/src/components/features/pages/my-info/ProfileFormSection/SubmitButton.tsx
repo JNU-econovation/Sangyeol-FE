@@ -17,6 +17,7 @@ const SubmitButton = () => {
   const { openUserInfoMutateModal } = useUserInfoMutateModal(() => {
     updateProfile(
       {
+        name: watch("name"),
         nickname: watch("nickname"),
         email: watch("email"),
         height: watch("height"),

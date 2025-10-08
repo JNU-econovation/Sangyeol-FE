@@ -10,7 +10,10 @@ export type RouteType = "push" | "replace" | "dismiss";
 /**
  * 해당 훅은 웹뷰의 url을 변경하는 브리지입니다.
  */
-const useRouteToBridge = () => {
+const useRouteToBridge = (): {
+  ref: ReturnType<typeof usePostMessageBridge>["ref"];
+  routeTo: (params: { routeType: RouteType; url: string }) => void;
+} => {
   const { ref, postMessage } = usePostMessageBridge<
     MessageEventRequestData<{
       routeType: RouteType;
