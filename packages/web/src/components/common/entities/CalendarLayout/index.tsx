@@ -134,6 +134,7 @@ const CalendarLayout = memo(function Calendar({
           </div>
         ))}
       </div>
+      <Spacing size={4} />
     </div>
   );
 });
