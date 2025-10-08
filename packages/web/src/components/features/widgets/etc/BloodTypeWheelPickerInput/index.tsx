@@ -10,13 +10,14 @@ type BloodType = "A" | "B" | "AB" | "O";
 interface BloodTypeWheelPickerInputProps
   extends Omit<
     ComponentProps<typeof WheelPickerInput>,
-    "options" | "onChange"
+    "options" | "onChange" | "value"
   > {
+  value: BloodType;
   onChange: (value: BloodType) => void;
 }
 
 const BloodTypeWheelPickerInput = (props: BloodTypeWheelPickerInputProps) => {
-  const bloodTypeOptions: WheelPickerOption[] = useMemo(
+  const bloodTypeOptions: WheelPickerOption<BloodType>[] = useMemo(
     () => [
       { label: "A", value: "A" },
       { label: "B", value: "B" },

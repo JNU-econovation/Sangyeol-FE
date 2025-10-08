@@ -29,7 +29,9 @@ export default function CourseMetaDataUi({
       {difficulty ? (
         <DifficultyTag difficulty={difficulty} />
       ) : (
-        <DifficultyTag difficulty="NORMAL" style={{ visibility: "hidden" }} />
+        <div style={{ visibility: "hidden" }}>
+          <DifficultyTag difficulty="NORMAL" />
+        </div>
       )}
     </div>
   );

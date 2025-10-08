@@ -1,9 +1,10 @@
-import { CourseSortType } from "@/api/v1/mountains/[mountainId]/courses";
+// import { CourseSortType } from "@/api/v1/mountains/[mountainId]/courses";
 import type { CourseDifficulty } from "@/types/course";
 import useBookmarkMutation from "@hooks/feature/query/mutate/useBookmarkMutation";
 import useDeleteBookmarkMutation from "@hooks/feature/query/mutate/useDeleteBookmarkMutation";
 import CoursePathwayPrefetcher from "@pages/course/CoursePathwayPrefetcher";
 import CourseList from "@shared/ui/CourseList";
+import { CourseSortType } from "api";
 import { useParams, useSearchParams } from "next/navigation";
 
 interface CourseListWithBookmarkMutateProps {
