@@ -66,7 +66,10 @@ const NicknameField = Suspense.with(
         }
         max={12}
         onBlur={() => {
-          if (watch("isValidNickname") === false)
+          if (
+            watch("isValidNickname") === false &&
+            watch("nicknameHelperState") !== "FIT"
+          )
             setValue("nicknameHelperState", "NEEDS_CHECK");
         }}
         right={
@@ -79,7 +82,10 @@ const NicknameField = Suspense.with(
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              if (watch("nicknameHelperState") !== "FIT") return;
+
+              const currentState = watch("nicknameHelperState");
+              if (currentState !== "FIT" && currentState !== "NEEDS_CHECK")
+                return;
 
               checkNicknameDuplicated(
                 { nickname: watch("nickname") },
