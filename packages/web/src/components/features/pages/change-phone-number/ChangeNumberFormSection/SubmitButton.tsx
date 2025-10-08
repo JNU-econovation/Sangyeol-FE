@@ -22,21 +22,23 @@ const SubmitButton = Suspense.with(
     const { data: prevProfileData } = useProfileQuery();
     const { mutate: updateProfile } = useMyProfileMutation();
 
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleClick = () => {
-      setIsLoading(true);
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      e.preventDefault();
+      if (!prevProfileData) return;
       updateProfile(
         {
           ...prevProfileData,
-          phoneNumber: watch("phoneNumber"),
+          phoneNumber: `010-${watch("phoneNumber")}`,
         },
         {
           onSuccess: () => {
             goBack({});
           },
           //TODO: 에러 처리 추가하기
-          onError: () => {},
+          onError: (e) => {
+            console.error(e);
+          },
         },
       );
     };
@@ -45,9 +47,7 @@ const SubmitButton = Suspense.with(
       <Button
         fullWidth
         onClick={handleClick}
-        disabled={
-          watch("verificationFieldHelperState") !== "SUCCESS" || isLoading
-        }
+        disabled={watch("verificationFieldHelperState") !== "SUCCESS"}
       >
         변경하기
       </Button>

@@ -26,7 +26,16 @@ const ProfileFormSection = Suspense.with(
   },
   () => {
     const {
-      data: { bloodType, email, height, nickname, weight, etc },
+      data: {
+        bloodType,
+        email,
+        height,
+        nickname,
+        weight,
+        etc,
+        phoneNumber,
+        name,
+      },
     } = useProfileQuery();
 
     const methods = useMyProfileForm();
@@ -35,12 +44,14 @@ const ProfileFormSection = Suspense.with(
 
     // 초기값 세팅
     useLayoutEffect(() => {
+      setValue("name", name);
       setValue("nickname", nickname);
       setValue("email", email);
       setValue("height", height);
       setValue("weight", weight);
       setValue("bloodType", bloodType);
       setValue("etc", etc);
+      setValue("phoneNumber", phoneNumber);
     }, [bloodType, email, etc, height, nickname, setValue, weight]);
 
     return (

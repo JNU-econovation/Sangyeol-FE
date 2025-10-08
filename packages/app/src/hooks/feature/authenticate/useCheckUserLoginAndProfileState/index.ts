@@ -36,8 +36,8 @@ const useCheckUserLoginAndProfileState = () => {
 
   return {
     isLoggedIn: !profileStatusLoading && !!accessToken,
-    isBasicInfoSet: data?.userStatusInfoDTO.isBasicInfoSet,
-    isPersonalInfoSet: data?.userStatusInfoDTO.isPersonalInfoSet,
+    isBasicInfoSet: data?.profileStatusInfoDTO?.isBasicInfoSet,
+    isPersonalInfoSet: data?.profileStatusInfoDTO?.isPersonalInfoSet,
     isLoading: profileStatusLoading || isCheckingLoginLoading,
     profileStatusLoading,
     isCheckingLoginLoading,

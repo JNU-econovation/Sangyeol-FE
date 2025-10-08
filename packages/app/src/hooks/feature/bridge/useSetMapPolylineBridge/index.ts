@@ -27,7 +27,10 @@ export interface Path {
   strokeLineJoin?: "round" | "miter" | "bevel"; // 도형에 사용되는 선들이 맞닿는 부분의 마감 스타일입니다.
 }
 
-const useSetMapPolylineBridge = () => {
+const useSetMapPolylineBridge = (): {
+  ref: ReturnType<typeof usePostMessageBridge>["ref"];
+  sendSetMapPolylineMessage: (paths: Path[]) => void;
+} => {
   const { ref, postMessage } = usePostMessageBridge<
     MessageEventRequestData<{ paths: Path[] }>,
     MessageEventResponseData

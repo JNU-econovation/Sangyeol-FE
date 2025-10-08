@@ -20,13 +20,16 @@ const VerificationField = () => {
   const { mutate: checkVerificationCode } = useVerifyPhoneNumber();
 
   const handlePhoneNumberVerification = () => {
-    const verificationCode = getValues("verificationCode");
+    const verificationCode = watch("verificationCode");
     if (verificationCode.length === 6) {
       Keyboard.dismiss();
-      if (getValues("verificationFieldHelperState") !== "NONE") return;
+      if (watch("verificationFieldHelperState") !== "NONE") return;
 
       checkVerificationCode(
-        { certificationCode: +verificationCode }, // TODO: 타입 안정성 해결
+        {
+          verificationCode: +verificationCode,
+          phoneNumber: `010-${watch("phoneNumber")}`,
+        }, // TODO: 타입 안정성 해결
         {
           onSuccess: () => {
             setValue("verificationFieldHelperState", "SUCCESS");

@@ -13,7 +13,6 @@ const PhoneNumberField = () => {
   return (
     <TextField
       label="전화번호"
-      placeholder="010-0000-0000"
       color="white"
       value={watch("phoneNumber")}
       disabled

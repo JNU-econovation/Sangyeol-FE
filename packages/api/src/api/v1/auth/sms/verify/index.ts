@@ -12,10 +12,10 @@ export const USER_VERIFY_NUMBER_API_PATH = "/api/v1/auth/sms/verify";
  * @category Types
  * @interface PostVerifyPhoneNumberResponse
  * @description 휴대폰 번호 인증 확인 응답 타입
- * @property {number} certificationCode - 인증 코드
+ * @property {number} verificationCode - 인증 코드
  */
 export interface PostVerifyPhoneNumberResponse {
-  certificationCode: number;
+  verificationCode: string;
 }
 
 /**
@@ -23,10 +23,11 @@ export interface PostVerifyPhoneNumberResponse {
  * @category Types
  * @interface PostVerifyPhoneNumberRequest
  * @description 휴대폰 번호 인증 확인 요청 타입
- * @property {number} certificationCode - 사용자가 입력한 인증 코드
+ * @property {number} verificationCode - 사용자가 입력한 인증 코드
  */
 export interface PostVerifyPhoneNumberRequest {
-  certificationCode: number;
+  phoneNumber: string;
+  verificationCode: string;
 }
 
 /**
@@ -37,17 +38,17 @@ export interface PostVerifyPhoneNumberRequest {
  * @param {PostVerifyPhoneNumberRequest} request - 인증 코드가 포함된 요청 객체
  * @returns {Promise<PostVerifyPhoneNumberResponse>} 인증 확인 결과
  * @example
- * const result = await postVerifyPhoneNumber(axiosInstance, { certificationCode: 123456 });
- * console.log(result.certificationCode);
+ * const result = await postVerifyPhoneNumber(axiosInstance, { verificationCode: 123456 });
+ * console.log(result.verificationCode);
  */
 export const postVerifyPhoneNumber = async (
   instance: AxiosInstance,
-  { certificationCode }: PostVerifyPhoneNumberRequest,
+  { verificationCode, phoneNumber }: PostVerifyPhoneNumberRequest,
 ) => {
   const response = await instance<PostVerifyPhoneNumberResponse>({
     method: "POST",
     url: USER_VERIFY_NUMBER_API_PATH,
-    data: { certificationCode },
+    data: { verificationCode, phoneNumber },
   });
 
   return response.data;

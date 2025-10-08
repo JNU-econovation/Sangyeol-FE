@@ -1,11 +1,11 @@
 import { useProfileSetFormContext } from "@hooks/feature/form/useProfileSetForm";
-import useProfileMutate from "@hooks/feature/query/mutate/useProfileMutate";
+import postBasicInformation from "@hooks/feature/query/mutate/useBasicInformationMutation";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import { router } from "expo-router";
 
 const SubmitButton = () => {
   const { getValues, setValue } = useProfileSetFormContext();
-  const { mutate: postProfile } = useProfileMutate();
+  const { mutate: postProfile } = postBasicInformation();
 
   const handleSubmit = () => {
     const {
