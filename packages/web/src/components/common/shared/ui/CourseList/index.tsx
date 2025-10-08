@@ -36,7 +36,16 @@ export default function CourseList({
         />
       </div>
       <div className="w-24 h-24 bg-slate-100 rounded-xl relative overflow-hidden">
-        <Image src={imageSrc} alt="코스 경로" width={96} height={96} />
+        {/* <Image src={imageSrc} alt="코스 경로" width={96} height={96} /> */}
+        <div
+          style={{
+            backgroundImage: `url(${imageSrc})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            width: "96px",
+            height: "96px",
+          }}
+        />
         <div className="absolute top-2 right-2">
           {stared ? (
             <button
