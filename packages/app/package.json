@@ -9,7 +9,8 @@
     "ios-list": "xcrun simctl list devices | grep iPhone",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "eas-build-pre-install": "corepack enable && corepack prepare yarn@4.9.3 --activate"
   },
   "jest": {
     "preset": "jest-expo"
