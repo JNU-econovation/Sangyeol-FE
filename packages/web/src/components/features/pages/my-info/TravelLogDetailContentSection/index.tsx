@@ -2,10 +2,12 @@
 
 import useTravelRecordDetailQuery from "@hooks/feature/query/query/useTravelRecordDetailQuery";
 import TrashIcon from "@icons/TrashIcon";
+import { timestampToDateValues } from "@sangyeol/utils";
+import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import { useParams } from "next/navigation";
+import { useMemo } from "react";
 import TravelLogDetailContentSectionLoader from "./loader";
-import Spacing from "@shared/layout/Spacing";
 
 const TravelLogDetailContentSection = Suspense.with(
   {
@@ -22,6 +24,17 @@ const TravelLogDetailContentSection = Suspense.with(
       data: { coordinates, displayName, duration, endAt, length, startedAt },
     } = useTravelRecordDetailQuery(recordId);
 
+    const dateString = useMemo(() => {
+      const { year, month, day, hour, minute, second } =
+        timestampToDateValues(startedAt);
+      const {
+        hour: endHour,
+        minute: endMinute,
+        second: endSecond,
+      } = timestampToDateValues(endAt);
+      return `${year}.${month}.${day} ${hour}:${minute}:${second} ~ ${endHour}:${endMinute}:${endSecond}`;
+    }, []);
+
     return (
       <section>
         <div className="px-6">
@@ -30,7 +43,7 @@ const TravelLogDetailContentSection = Suspense.with(
             <TrashIcon />
           </div>
           <span className="text-gray-900 text-sm font-medium">
-            {startedAt} ~ {endAt}
+            {dateString}
           </span>
         </div>
         <Spacing size={3.5} />
