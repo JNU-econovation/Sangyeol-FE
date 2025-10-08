@@ -23,11 +23,7 @@ const HomeScreen = () => {
     const isPersonalInfoSet =
       profileStatusData?.userStatusInfoDTO.isPersonalInfoSet;
     if (profileStatusData && !isPersonalInfoSet) {
-      showNotificationModal({
-        onConfirm: () => {
-          console.log("확인 클릭됨");
-        },
-      });
+      showNotificationModal();
     }
   }, [profileStatusData]);
 

@@ -12,52 +12,65 @@ import HeightField from "./HeightField";
 import NameField from "./NameField";
 import SubmitButton from "./SubmitButton";
 import WeightField from "./WeightField";
+import useProfileQuery from "@hooks/feature/query/query/useProfileQuery";
+import { Suspense } from "@suspensive/react";
 
 interface HomeProfileModalFormProps {
   closeModal: () => void;
 }
 
 //TODO: section 컴포넌트가 props를 받아서 사용중임. 이는 컨벤션 위반
-const HomeProfileModalForm = ({ closeModal }: HomeProfileModalFormProps) => {
-  const form = useProfileModalForm();
+const HomeProfileModalForm = Suspense.with(
+  {
+    fallback: null,
+  },
+  ({ closeModal }: HomeProfileModalFormProps) => {
+    const {
+      data: { phoneNumber },
+    } = useProfileQuery();
+    const form = useProfileModalForm();
 
-  return (
-    <OutsideContainer activeOpacity={1}>
-      <ModalContainer>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-        >
-          <ScrollView>
-            <FormProvider {...form}>
-              <Text color="primary" fontWeight="bold" fontSize={24}>
-                위급 시 개인 정보
-              </Text>
-              <Spacing size={18} />
-              <NameField />
-              <Spacing size={18} />
-              <TextAreaField
-                title="전화번호"
-                titleSize={16}
-                titleSpacing={4}
-                titleWeight="semibold"
-              />
-              <Spacing size={18} />
-              <WeightField />
-              <Spacing size={18} />
-              <HeightField />
-              <Spacing size={18} />
-              <BloodTypeField />
-              <Spacing size={18} />
-              <ButtonContainer>
-                <SubmitButton closeModal={closeModal} />
-              </ButtonContainer>
-            </FormProvider>
-          </ScrollView>
-        </KeyboardAvoidingView>
-      </ModalContainer>
-    </OutsideContainer>
-  );
-};
+    return (
+      <OutsideContainer activeOpacity={1}>
+        <ModalContainer>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : undefined}
+          >
+            <ScrollView>
+              <FormProvider {...form}>
+                <Text color="primary" fontWeight="bold" fontSize={24}>
+                  위급 시 개인 정보
+                </Text>
+                <Spacing size={18} />
+                <NameField />
+                <Spacing size={18} />
+                <TextAreaField
+                  title="전화번호"
+                  titleSize={16}
+                  titleSpacing={4}
+                  titleWeight="semibold"
+                  value={phoneNumber}
+                  editable={false}
+                  color="gray600"
+                />
+                <Spacing size={18} />
+                <WeightField />
+                <Spacing size={18} />
+                <HeightField />
+                <Spacing size={18} />
+                <BloodTypeField />
+                <Spacing size={18} />
+                <ButtonContainer>
+                  <SubmitButton closeModal={closeModal} />
+                </ButtonContainer>
+              </FormProvider>
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </ModalContainer>
+      </OutsideContainer>
+    );
+  },
+);
 
 const OutsideContainer = styled.TouchableOpacity`
   flex: 1;
