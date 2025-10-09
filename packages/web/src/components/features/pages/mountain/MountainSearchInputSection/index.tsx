@@ -61,7 +61,7 @@ const MountainSearchInputSection = () => {
       />
       {relatedMountains && (
         <ul className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.10)] w-full min-h-10 -translate-y-7 -z-10 rounded-b-3xl px-5 pt-10 pb-4 flex flex-col gap-3 bg-white absolute">
-          {relatedMountains.suggestedMountainDTOs.map(({ id, name }) => (
+          {relatedMountains?.suggestedMountainDTOs.map(({ id, name }) => (
             <button
               key={id}
               onClick={() => handleRelatedResultClick({ mountainId: id, name })}
