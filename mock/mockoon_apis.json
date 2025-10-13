@@ -68,6 +68,18 @@
         {
           "type": "route",
           "uuid": "a112a50e-7641-4d54-a63d-f31447773ca1"
+        },
+        {
+          "type": "route",
+          "uuid": "c69a513c-22ca-463d-bfc9-28682af65112"
+        },
+        {
+          "type": "route",
+          "uuid": "434e6fb8-8875-4eb8-9576-57c950efd6f0"
+        },
+        {
+          "type": "route",
+          "uuid": "0b501b53-d140-45f5-b3e9-488322bff5be"
         }
       ]
     },
@@ -499,7 +511,7 @@
       "responses": [
         {
           "uuid": "4cf7df44-f505-40f7-a465-2b085070a9de",
-          "body": "{\n  \"data\" :{ \n   \"nickname\" : \"무등산탐험가11111\",\n   \"phoneNumber\" :  \"010-8998-6388\",\n   \"email\" : \"abc@naver.com\"},\n   \"status\" : \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"name\": \"홍길동\",\n    \"nickname\": \"무등산탐험가11111\",\n    \"phoneNumber\": \"010-8998-6388\",\n    \"email\": \"abc@naver.com\",\n    \"height\": 175,\n    \"weight\": 70,\n    \"bloodType\": \"A\",\n    \"etc\": \"등산을 좋아합니다\"\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -619,11 +631,11 @@
       "type": "http",
       "documentation": "산 연관 검색",
       "method": "get",
-      "endpoint": "api/v1/mountains/relations/:keyword",
+      "endpoint": "api/v1/mountains/searches/suggestions",
       "responses": [
         {
           "uuid": "65b457d7-4f79-49e9-8280-ee0de43b8fcd",
-          "body": "{\n  \"data\": {\n    \"relatedMountainList\": [\n      {\n        \"mountainId\": 1,\n        \"name\": \"무등산\"\n      },\n      {\n        \"mountainId\": 2,\n        \"name\": \"지리산\"\n      },\n      {\n        \"mountainId\": 3,\n        \"name\": \"한라산\"\n      },\n      {\n        \"mountainId\": 4,\n        \"name\": \"설악산\"\n      },\n      {\n        \"mountainId\": 5,\n        \"name\": \"북한산\"\n      },\n      {\n        \"mountainId\": 6,\n        \"name\": \"내장산\"\n      },\n      {\n        \"mountainId\": 7,\n        \"name\": \"속리산\"\n      },\n      {\n        \"mountainId\": 8,\n        \"name\": \"무당산\"\n      }\n    ]\n  },\n  \"status\": \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"suggestedMountainDTOs\": [\n      {\n        \"id\": \"1\",\n        \"name\": \"무등산\",\n        \"coordinate\": [35.135, 126.988]\n      },\n      {\n        \"id\": \"2\",\n        \"name\": \"지리산\",\n        \"coordinate\": [35.3384, 127.7308]\n      },\n      {\n        \"id\": \"3\",\n        \"name\": \"한라산\",\n        \"coordinate\": [33.3617, 126.5292]\n      },\n      {\n        \"id\": \"4\",\n        \"name\": \"설악산\",\n        \"coordinate\": [38.1197, 128.4655]\n      },\n      {\n        \"id\": \"5\",\n        \"name\": \"북한산\",\n        \"coordinate\": [37.6586, 126.9778]\n      }\n    ]\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -652,7 +664,7 @@
       "responses": [
         {
           "uuid": "9f680107-d110-41bb-8109-7445bb1ec125",
-          "body": "{\n  \"data\": {\n    \"userStatusInfoDTO\": {\n      \"isBasicInfoSet\": true,\n      \"isPersonalInfoSet\": true\n    }\n  },\n  \"status\": \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"profileStatusInfoDTO\": {\n      \"isBasicInfoSet\": true,\n      \"isPersonalInfoSet\": true\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -710,7 +722,7 @@
       "responses": [
         {
           "uuid": "e07c9d16-9c0c-4a05-83b5-2005bc309594",
-          "body": "{\n  \t\"data\" : {\n\t  \t  \"name\" : \"스티븐 유\",\n\t\t  \t\"nickname\" : \"별헤는피글렛\",\n\t\t  \t\"phoneNumber\" : \"010-1234-5678\",\n\t\t  \t\"email\" : \"stevenu@something.com\",\n\t\t  \t\"weight\" : 60,\n\t\t  \t\"height\" : 175,\n\t\t  \t\"bloodType\" : \"O\"\n  \t},\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"userProfileDTO\": {\n      \"name\": \"타이론 유\",\n      \"nickname\": \"별헤는피글렛\",\n      \"phoneNumber\": \"010-1234-5678\",\n      \"imageUrl\": \"https://example.com/profile.jpg\",\n      \"email\": \"stevenu@something.com\",\n      \"height\": 175,\n      \"weight\": 60,\n      \"bloodType\": \"O\",\n      \"etc\": \"등산을 좋아합니다\"\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -826,7 +838,7 @@
       "responses": [
         {
           "uuid": "1acdca19-2253-4606-bf69-e3d669febbb4",
-          "body": "{\n  \"data\": {\n    \"userAlertSetting\": {\n      \"eventAlert\": true,\n      \"travelDeviationAlert\": true,\n      \"accidentProneAreaAlert\": true\n    }\n  },\n  \"status\": \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"userAlertSetting\": {\n      \"eventAlert\": true,\n      \"travelRecordCountAlert\": true,\n      \"travelDeviationAlert\": true,\n      \"accidentProneAreaAlert\": true\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 2000,
           "statusCode": 200,
           "label": "",
@@ -884,7 +896,7 @@
       "responses": [
         {
           "uuid": "7591bf8d-997f-4474-8f28-9a7fca903949",
-          "body": "{\n\t\t\"data\" : null\n\t\t\"status\" : \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"name\": \"홍길동\",\n    \"weight\": 70,\n    \"height\": 175,\n    \"bloodType\": \"A\"\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -914,6 +926,93 @@
         {
           "uuid": "7165194b-16ba-4014-8164-c60956634e82",
           "body": "{\n\t\t\"data\" : null,\n\t\t\"status\" : \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c69a513c-22ca-463d-bfc9-28682af65112",
+      "type": "http",
+      "documentation": "기본정보 등록",
+      "method": "post",
+      "endpoint": "api/v1/users/profile/basic-information",
+      "responses": [
+        {
+          "uuid": "8e7628a4-03bb-4583-9394-2928f829ac10",
+          "body": "{\n  \"data\": {\n    \"nickname\": \"테스트유저\",\n    \"phoneNumber\": \"01012345678\",\n    \"email\": \"test@example.com\"\n  },\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "434e6fb8-8875-4eb8-9576-57c950efd6f0",
+      "type": "http",
+      "documentation": "프로필 이미지 수정",
+      "method": "patch",
+      "endpoint": "api/v1/users/profile/image",
+      "responses": [
+        {
+          "uuid": "0083fcd1-3a57-44b8-8d83-d836a74126f7",
+          "body": "{\n  \"data\": {},\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "0b501b53-d140-45f5-b3e9-488322bff5be",
+      "type": "http",
+      "documentation": "프로필 이미지 삭제",
+      "method": "delete",
+      "endpoint": "api/v1/users/profile/image",
+      "responses": [
+        {
+          "uuid": "ce81c7ed-bf3a-4197-90cd-3b0897f065cd",
+          "body": "{\n  \"data\": {},\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
