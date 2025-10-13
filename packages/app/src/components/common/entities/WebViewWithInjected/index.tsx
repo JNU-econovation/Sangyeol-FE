@@ -205,7 +205,7 @@ const WebViewWithInjected = ({
         webviewDebuggingEnabled={__DEV__}
         bounces={false}
         scrollEnabled={true}
-        decelerationRate="normal"
+        decelerationRate={0.998}
         contentInsetAdjustmentBehavior="never"
       />
     </View>
