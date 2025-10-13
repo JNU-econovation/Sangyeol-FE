@@ -26,6 +26,6 @@ export default ErrorBoundary.with(
       }
 
       return null;
-    }
-  )
+    },
+  ),
 );
