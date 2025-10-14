@@ -79,9 +79,15 @@ const useStackLinkBack = () => {
 
       previous.style.transform = "translateX(-20%)";
 
+      if (animationState.type === "slide") {
+        main.style.transform = "";
+        main.style.transition = "";
+        previous.style.transition = "";
+      }
       if (animationState.type === "fade") {
         main.style.opacity = "";
         main.style.transition = "";
+        previous.style.transition = "";
       }
       timeoutRef.current = null;
     }, DEFAULT_DURATION);
@@ -91,8 +97,10 @@ const useStackLinkBack = () => {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
       }
+      // 비정상 종료 대비
+      setIsAnimating(false);
     };
-  }, [animationState, history.length, pop, router]);
+  }, [animationState, history.length, pop, router, isAnimating, setIsAnimating]);
 
   const goBack = useCallback(
     ({ animation = "slide" }: { animation?: AnimationType }) => {
