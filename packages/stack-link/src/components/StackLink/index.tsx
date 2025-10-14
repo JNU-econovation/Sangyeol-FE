@@ -4,18 +4,18 @@ import { useRouter } from "next/navigation";
 import {
   PropsWithChildren,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
 import { createPortal } from "react-dom";
 
+import { isInStackFrame } from "@/utils";
+import Iframe from "@components/Iframe";
 import useStackContext from "@hooks/useStackContext";
 import type { StackLinkParams } from "@models/index";
-import Iframe from "@components/Iframe";
-import { isInStackFrame } from "@/utils";
 
-const DEFAULT_DURATION = 240;
+const DEFAULT_DURATION = 280;
 
 export interface StackLinkedProps extends PropsWithChildren, StackLinkParams {}
 
@@ -23,9 +23,11 @@ export default function StackLink({
   href,
   children,
   preLoad = false,
-  // duration = DEFAULT_DURATION,
+  duration = DEFAULT_DURATION,
   animation = "slide",
 }: StackLinkedProps) {
+  const shouldRender = !(typeof window === "undefined" || isInStackFrame());
+
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
   const preloadFrameRef = useRef<HTMLIFrameElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -42,10 +44,14 @@ export default function StackLink({
   const router = useRouter();
   const { push } = useStackContext();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!shouldRender) return;
+
     router.prefetch(href);
 
-    const element = document.getElementById("stack-root") || document.body;
+    const element = document.getElementById("stack-root");
+    if (!element) return;
+
     element.style.position = "fixed";
     element.style.top = "0";
     element.style.width = "100vw";
@@ -76,7 +82,7 @@ export default function StackLink({
         currentIframe.remove();
       }
     };
-  }, [href, router]);
+  }, [shouldRender, href, router]);
 
   const slideScreen = useCallback(() => {
     if (typeof window === "undefined") return;
@@ -89,7 +95,11 @@ export default function StackLink({
       return;
     }
 
-    const animDuration = animation === "slide" ? DEFAULT_DURATION : 0; //ms
+    const animDuration = duration
+      ? duration
+      : animation === "slide" || animation === "fade"
+        ? DEFAULT_DURATION
+        : 0; //ms
 
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -117,19 +127,34 @@ export default function StackLink({
       }, animDuration);
     }
 
-    if (animation === "none") {
-      preloadFrameRef.current.style.transform = "translateX(0)";
-      preloadFrameRef.current.style.transition = "none";
-      main.style.zIndex = "-999";
-      // 스택에 현재 경로와 이동한 경로 추가
+    if (animation === "fade" || animation === "none") {
+      // opacity 0.2초동안 100 -> 0 되도록
+      main.style.transition = `opacity ${animDuration}ms ease-in-out`;
+      main.style.opacity = "0.1";
+
+      if (!preloadFrameRef.current) {
+        console.error("Iframe reference is not set.");
+        return;
+      }
+
+      // opacity 0.2초동안 0 -> 100 되도록
+      preloadFrameRef.current.style.transform = "translateX(-100%)";
+      preloadFrameRef.current.style.transition = `opacity ${animDuration}ms ease-in-out`;
+      preloadFrameRef.current.style.opacity = "1";
+
+      // 스택에 현재 경로 추가
       push([window.location.href, href]);
-      router.push(href);
 
-      // timerRef.current = setTimeout(() => {}, animDuration);
+      timerRef.current = setTimeout(() => {
+        main.style.transition = "";
+        main.style.opacity = "1";
+        main.style.zIndex = "-999";
+        router.push(href);
+      }, animDuration);
     }
-  }, [animation, href, push, router]);
+  }, [animation, href, push, router, duration]);
 
-  if (typeof window === "undefined" || isInStackFrame()) return null;
+  if (!shouldRender) return null;
 
   return (
     <div onClick={slideScreen}>
@@ -145,6 +170,7 @@ export default function StackLink({
               backgroundColor: "#ffffff",
               top: 0,
               left: 0,
+              opacity: animation === "fade" ? 0 : 1,
             }}
           >
             {preLoad && <Iframe src={href} />}
