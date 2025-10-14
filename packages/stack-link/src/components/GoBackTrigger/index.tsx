@@ -1,27 +1,29 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { memo, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import useStackContext from "@hooks/useStackContext";
 
 import { useRouter } from "next/navigation";
 
-export default function GoBackTrigger() {
+const DEFAULT_DURATION = 280;
+
+export default memo(function GoBackTrigger() {
   const [isTouching, setIsTouching] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
-  const [isNavigating, setIsNavigating] = useState(false);
+  const startXRef = useRef(0);
+  const currentXRef = useRef(0);
 
   const goBackTriggerElementId = useId();
 
-  const { portalElement, history, pop } = useStackContext();
+  const { history, pop, isAnimating, setIsAnimating } = useStackContext();
 
   const router = useRouter();
 
-  useEffect(() => {
-    if (!isTouching) return;
+  const handleMove = (clientX: number) => {
+    if (isAnimating) return;
 
+    const previousScreenPreview = document.getElementById("stack-previous");
     const main = document.getElementById("stack-main");
     if (!main) {
       console.error(
@@ -30,103 +32,139 @@ export default function GoBackTrigger() {
       return;
     }
 
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      const newX = e.touches[0].clientX;
-      setCurrentX(newX);
+    currentXRef.current = clientX;
 
-      const deltaX = newX - startX;
-      if (deltaX > 0) {
-        main.style.transform = `translateX(${deltaX}px)`;
+    const deltaX = clientX - startXRef.current;
+    if (deltaX > 0) {
+      main.style.transform = `translateX(${deltaX}px)`;
+    }
+
+    if (previousScreenPreview) {
+      const percentage = (deltaX / window.innerWidth) * 100;
+      previousScreenPreview.style.transform = `translateX(${-20 + percentage * 0.2}%)`;
+    }
+  };
+
+  const handleEnd = () => {
+    if (isAnimating) return;
+
+    const previousScreenPreview = document.getElementById("stack-previous");
+    const main = document.getElementById("stack-main");
+    if (!previousScreenPreview) return;
+    if (!main) return;
+
+    const deltaX = currentXRef.current - startXRef.current;
+
+    console.log(`[GoBackTrigger] deltaX: ${deltaX}px`);
+
+    if (deltaX > 50) {
+      setIsAnimating(true);
+      main.style.transform = "translateX(100%)";
+      main.style.transition = `transform ${DEFAULT_DURATION}ms ease-in-out`;
+
+      if (previousScreenPreview) {
+        previousScreenPreview.style.transform = "translateX(0%)";
+        previousScreenPreview.style.transition = `transform ${DEFAULT_DURATION}ms ease-in-out`;
       }
-    };
 
-    const handleTouchEnd = () => {
-      const deltaX = currentX - startX;
+      setTimeout(() => {
+        setIsAnimating(false);
 
-      if (deltaX > 50) {
-        setIsNavigating(true);
-        main.style.transform = "translateX(100%)";
-        main.style.transition = "transform 0.23s ease";
+        main.style.transition = "none";
+        main.style.transform = "translateX(0px)";
+        main.style.height = "0";
 
+        if (previousScreenPreview) {
+          previousScreenPreview.style.transform = "translateX(-20%)";
+          previousScreenPreview.style.zIndex = "-1";
+        }
+
+        startXRef.current = 0;
+        currentXRef.current = 0;
+        setIsTouching(false);
+        router.back();
         pop();
+      }, DEFAULT_DURATION);
 
-        setTimeout(() => {
-          setIsNavigating(false);
-          main.style.transition = "none";
-          main.style.transform = "translateX(0px)";
-          setStartX(0);
-          setCurrentX(0);
-          setIsTouching(false);
-          router.back();
-        }, 200);
-
-        return;
-      }
-
-      // 원래 위치로 복귀
+      return;
+    } else {
       main.style.transform = "translateX(0px)";
+      main.style.transition = `transform ${DEFAULT_DURATION}ms ease`;
+      if (previousScreenPreview) {
+        previousScreenPreview.style.transform = "translateX(-20%)";
+      }
       setIsTouching(false);
-      setStartX(0);
-      setCurrentX(0);
-    };
-
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd);
-
-    return () => {
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [isTouching, startX, currentX, history, router, pop]);
+      startXRef.current = 0;
+      currentXRef.current = 0;
+      setTimeout(() => {
+        main.style.transition = "none";
+      }, DEFAULT_DURATION);
+    }
+  };
 
   if (history.length <= 0) return null;
 
   return (
     <>
-      {portalElement &&
-        !isNavigating &&
-        createPortal(
-          <div
-            // className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50 select-none"
-            style={{
-              position: "fixed",
-              width: "100%",
-              height: "100%",
-              top: 0,
-              left: 0,
-              transform: "translateZ(0)",
-              zIndex: -50,
-              pointerEvents: "none",
-            }}
-          />,
-          portalElement,
-        )}
-
       {createPortal(
         <div
           id={goBackTriggerElementId}
           style={{
             position: "fixed",
-            width: "2.5rem",
+            width: "2rem",
             height: "100vh",
             top: 0,
             left: 0,
-            transform: "translateX(-10%)",
-            zIndex: 9999,
+            transform: "translateX(-20%)",
+            zIndex: 9998,
+            touchAction: "none",
           }}
           role="button"
           onTouchStart={(e) => {
             e.stopPropagation();
-            e.preventDefault();
             const touchX = e.touches[0].clientX;
-            setStartX(touchX);
-            setCurrentX(touchX);
+            startXRef.current = touchX;
+            currentXRef.current = touchX;
             setIsTouching(true);
+
+            if (history.length > 2) {
+              router.prefetch(history[history.length - 2][1]);
+            }
+          }}
+          onTouchMove={(e) => {
+            if (!isTouching) return;
+            e.stopPropagation();
+            handleMove(e.touches[0].clientX);
+          }}
+          onTouchEnd={(e) => {
+            if (!isTouching) return;
+            e.stopPropagation();
+            handleEnd();
+          }}
+          onMouseDown={(e) => {
+            e.stopPropagation();
+            const mouseX = e.clientX;
+            startXRef.current = mouseX;
+            currentXRef.current = mouseX;
+            setIsTouching(true);
+
+            if (history.length > 2) {
+              router.prefetch(history[history.length - 2][1]);
+            }
+          }}
+          onMouseMove={(e) => {
+            if (!isTouching) return;
+            e.stopPropagation();
+            handleMove(e.clientX);
+          }}
+          onMouseUp={(e) => {
+            if (!isTouching) return;
+            e.stopPropagation();
+            handleEnd();
           }}
         />,
         document.body,
       )}
     </>
   );
-}
+});
