@@ -14,7 +14,17 @@ const useSendToken = () => {
   const accessTokenExpiredTime = searchParams.get("accessTokenExpiredTime");
 
   useEffect(() => {
-    if (!accessToken && !refreshToken) return;
+    if (!accessToken || !refreshToken || !accessTokenExpiredTime) return;
+
+    // parse and validate the expiration time
+    const expiredTime = accessTokenExpiredTime
+      ? Number(accessTokenExpiredTime)
+      : undefined;
+
+    if (expiredTime === undefined || isNaN(expiredTime)) {
+      console.error('Invalid accessTokenExpiredTime');
+      return;
+    }
 
     request({
       requestMessage: {
@@ -23,7 +33,7 @@ const useSendToken = () => {
         body: {
           accessToken,
           refreshToken,
-          accessTokenExpiredTime: +accessTokenExpiredTime,
+          accessTokenExpiredTime: expiredTime,
         },
       },
     });
