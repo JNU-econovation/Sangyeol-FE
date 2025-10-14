@@ -55,8 +55,6 @@ export default memo(function GoBackTrigger() {
 
     const deltaX = currentXRef.current - startXRef.current;
 
-    console.log(`[GoBackTrigger] deltaX: ${deltaX}px`);
-
     if (deltaX > 50) {
       setIsAnimating(true);
       main.style.transform = "translateX(100%)";
@@ -72,7 +70,6 @@ export default memo(function GoBackTrigger() {
 
         main.style.transition = "none";
         main.style.transform = "translateX(0px)";
-        main.style.height = "0";
 
         if (previousScreenPreview) {
           previousScreenPreview.style.transform = "translateX(-20%)";
