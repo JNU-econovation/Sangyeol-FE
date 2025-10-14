@@ -1,46 +1,82 @@
 "use client";
 
-import { PropsWithChildren, useCallback, useEffect, useState } from "react";
+import {
+  PropsWithChildren,
+  useCallback,
+  useState,
+} from "react";
 
 import GoBackTrigger from "@components/GoBackTrigger";
 import StackContext from "@context/stackContext";
 import type { PathTuple } from "@models/index";
+import Iframe from "@/components/Iframe";
 
 export default function StackLinkProvider({ children }: PropsWithChildren) {
   const [history, setHistory] = useState<PathTuple[]>([]);
-  const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const push = useCallback((pathTuple: PathTuple) => {
-    setHistory((prev) => [...prev, pathTuple]);
+  const push = useCallback((path: PathTuple) => {
+    setHistory((prev) => [...prev, path]);
   }, []);
 
   const pop = useCallback(() => {
-    setHistory((prev) => prev.slice(0, -1));
-  }, []);
-
-  useEffect(() => {
-    const element = document.getElementById("stack-root");
-    if (!element) {
-      console.error("[StackLinkProvider] stack-root element not found");
-    }
-
-    setPortalElement(element);
+    setHistory((prev) => [...prev.filter((_, i) => i !== prev.length - 1)]);
   }, []);
 
   return (
-    <StackContext.Provider value={{ portalElement, history, push, pop }}>
+    <StackContext.Provider value={{ history, push, pop, isAnimating, setIsAnimating }}>
       <div
         id="stack-main"
         style={{
           position: "relative",
           backgroundColor: "white",
           transform: "gpu",
+          minHeight: "100vh",
+          minWidth: "100vw",
+          willChange: "transform",
         }}
       >
         {children}
       </div>
-      <div id="stack-root" />
-      {portalElement && history.length > 0 && <GoBackTrigger />}
+      <div
+        id="stack-root"
+        style={{
+          position: "relative",
+          transform: "gpu",
+        }}
+      />
+      {history.length > 0 && <GoBackTrigger />}
+
+      <div
+        id="stack-previous"
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          top: 0,
+          left: 0,
+          transform: "translateX(-20%)",
+          backgroundColor: "#ffffff",
+          zIndex: -1,
+          pointerEvents: "none",
+          willChange: "transform",
+        }}
+      >
+        {history.length > 0 && history[history.length - 1][0] && (
+          <Iframe
+            key={history.map((h) => h[0]).join(",")}
+            src={history[history.length - 1][0]}
+            style={{
+              width: "100%",
+              height: "100%",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              userSelect: "none",
+              pointerEvents: "none",
+            }}
+          />
+        )}
+      </div>
     </StackContext.Provider>
   );
 }
