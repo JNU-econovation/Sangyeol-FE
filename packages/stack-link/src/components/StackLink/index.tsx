@@ -29,7 +29,7 @@ export default function StackLink({
   const shouldRender = !(typeof window === "undefined" || isInStackFrame());
 
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
-  const preloadFrameRef = useRef<HTMLIFrameElement>(null);
+  const preloadFrameRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const originalStylesRef = useRef<{
     transition: string;
@@ -95,11 +95,8 @@ export default function StackLink({
       return;
     }
 
-    const animDuration = duration
-      ? duration
-      : animation === "slide" || animation === "fade"
-        ? DEFAULT_DURATION
-        : 0; //ms
+    const animDuration =
+      duration ?? (animation === "slide" || animation === "fade" ? DEFAULT_DURATION : 0); // ms
 
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -127,7 +124,13 @@ export default function StackLink({
       }, animDuration);
     }
 
-    if (animation === "fade" || animation === "none") {
+    if (animation === "none") {
+      push([window.location.href, href]);
+      router.push(href);
+      return;
+    }
+
+    if (animation === "fade") {
       // opacity 0.2초동안 100 -> 0 되도록
       main.style.transition = `opacity ${animDuration}ms ease-in-out`;
       main.style.opacity = "0.1";
