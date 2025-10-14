@@ -50,8 +50,12 @@ export default memo(function GoBackTrigger() {
 
     const previousScreenPreview = document.getElementById("stack-previous");
     const main = document.getElementById("stack-main");
-    if (!previousScreenPreview) return;
-    if (!main) return;
+    if (!main) {
+      setIsTouching(false);
+      startXRef.current = 0;
+      currentXRef.current = 0;
+      return;
+    }
 
     const deltaX = currentXRef.current - startXRef.current;
 
