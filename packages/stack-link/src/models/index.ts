@@ -1,15 +1,16 @@
-export type PathTuple = [string, string];
+export type PathTuple = [string, string]; // [현재 풀 경로, 이동할 경로]
 
 export interface StackContextType {
-  portalElement: HTMLElement | null;
   history: PathTuple[];
   push: (path: PathTuple) => void;
   pop: () => void;
+  isAnimating: boolean;
+  setIsAnimating: (value: boolean) => void;
 }
 
 export interface StackLinkParams {
   href: string;
-  // duration?: number;
+  duration?: number;
   preLoad?: boolean;
-  animation?: "slide" | "none";
+  animation?: "slide" | "none" | "fade";
 }
