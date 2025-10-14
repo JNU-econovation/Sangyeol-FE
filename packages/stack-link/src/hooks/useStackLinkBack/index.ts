@@ -83,6 +83,7 @@ const useStackLinkBack = () => {
         main.style.transform = "";
         main.style.transition = "";
         previous.style.transition = "";
+        previous.style.zIndex = "-1";
       }
       if (animationState.type === "fade") {
         main.style.opacity = "";
@@ -96,11 +97,11 @@ const useStackLinkBack = () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
+        // 진행 중이던 애니메이션 정리
+        setIsAnimating(false);
       }
-      // 비정상 종료 대비
-      setIsAnimating(false);
     };
-  }, [animationState, history.length, pop, router, isAnimating, setIsAnimating]);
+  }, [animationState, history.length, pop, router]);
 
   const goBack = useCallback(
     ({ animation = "slide" }: { animation?: AnimationType }) => {
