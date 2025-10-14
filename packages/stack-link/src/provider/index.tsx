@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  PropsWithChildren,
-  useCallback,
-  useState,
-} from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 
 import GoBackTrigger from "@components/GoBackTrigger";
 import StackContext from "@context/stackContext";
@@ -24,13 +20,15 @@ export default function StackLinkProvider({ children }: PropsWithChildren) {
   }, []);
 
   return (
-    <StackContext.Provider value={{ history, push, pop, isAnimating, setIsAnimating }}>
+    <StackContext.Provider
+      value={{ history, push, pop, isAnimating, setIsAnimating }}
+    >
       <div
         id="stack-main"
         style={{
           position: "relative",
           backgroundColor: "white",
-          transform: "gpu",
+          transform: "translateZ(0)",
           minHeight: "100vh",
           minWidth: "100vw",
           willChange: "transform",
@@ -42,7 +40,7 @@ export default function StackLinkProvider({ children }: PropsWithChildren) {
         id="stack-root"
         style={{
           position: "relative",
-          transform: "gpu",
+          transform: "translateZ(0)",
         }}
       />
       {history.length > 0 && <GoBackTrigger />}
