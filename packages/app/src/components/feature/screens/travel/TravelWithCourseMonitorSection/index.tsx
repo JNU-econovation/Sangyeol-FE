@@ -7,13 +7,14 @@ import Text from "@shared/ui/Text";
 import useTravelStateStore from "@store/travel";
 import { COLORS } from "@styles/colorPalette";
 import { msToTimeText } from "@utils/time";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AppState } from "react-native";
 
-const INTERVAL_CYCLE = 1000;
+const INTERVAL_CYCLE = 250; // 500 milliseconds
 
 const TravelWithCourseMonitorSection = () => {
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간
+  const appState = useRef(AppState.currentState);
   const {
     distance,
     travelState,
@@ -21,40 +22,39 @@ const TravelWithCourseMonitorSection = () => {
     remainTimeToEnd,
     remainTimeToStopover,
   } = useTravelStateStore();
+  const intervalRef = useRef<number>(null);
 
   useEffect(() => {
-    let intervalId = null;
-
     const subscription = AppState.addEventListener("change", (nextAppState) => {
-      if (nextAppState === "active") {
-        setElapsedTime(getElapsedTime());
+      appState.current = nextAppState;
+      if (nextAppState.match(/inactive/)) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
+        return;
+      }
 
-        if (!intervalId) {
-          intervalId = setInterval(() => {
-            setElapsedTime(getElapsedTime());
-          }, INTERVAL_CYCLE);
-        }
-      } else if (nextAppState === "background") {
-        if (intervalId) {
-          clearInterval(intervalId);
-          intervalId = null;
-        }
+      if (!intervalRef.current) {
+        intervalRef.current = setInterval(() => {
+          setElapsedTime(getElapsedTime());
+        }, INTERVAL_CYCLE);
       }
     });
 
-    // 초기 interval 설정
-    intervalId = setInterval(() => {
-      setElapsedTime(getElapsedTime());
-    }, INTERVAL_CYCLE);
+    if (!intervalRef.current && appState.current === "active")
+      intervalRef.current = setInterval(() => {
+        setElapsedTime(getElapsedTime());
+      }, INTERVAL_CYCLE);
 
-    // Cleanup
     return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
       subscription.remove();
     };
-  }, [getElapsedTime]);
+  }, []);
 
   return (
     <Container>
