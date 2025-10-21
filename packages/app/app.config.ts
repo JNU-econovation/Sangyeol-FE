@@ -37,6 +37,8 @@ const appConfig = {
       favicon: "./assets/images/favicon.png",
     },
     plugins: [
+      "expo-maps",
+      "expo-secure-store",
       "expo-splash-screen",
       "expo-apple-authentication",
       "expo-router",
