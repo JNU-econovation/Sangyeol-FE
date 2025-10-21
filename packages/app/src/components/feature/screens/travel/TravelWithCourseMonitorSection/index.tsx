@@ -99,7 +99,12 @@ const TravelWithCourseMonitorSection = () => {
           <MetricIcon>🔥</MetricIcon>
           <MetricData disabled={!remainTimeToStopover}>
             <MetricValue>
-              {remainTimeToStopover === null ? "--:--" : remainTimeToStopover}
+              {remainTimeToStopover === null
+                ? "--:--"
+                : msToTimeText(remainTimeToStopover)
+                    .split(":")
+                    .slice(1)
+                    .join(":")}
             </MetricValue>
             <MetricUnit>경유지까지</MetricUnit>
           </MetricData>
@@ -110,7 +115,9 @@ const TravelWithCourseMonitorSection = () => {
           <MetricIcon>⛰️</MetricIcon>
           <MetricData>
             <MetricValue disabled={!remainTimeToEnd}>
-              {remainTimeToEnd === null ? "--:--" : remainTimeToEnd}
+              {remainTimeToEnd === null
+                ? "--:--"
+                : msToTimeText(remainTimeToEnd).split(":").slice(1).join(":")}
             </MetricValue>
             <MetricUnit>도착지까지</MetricUnit>
           </MetricData>
