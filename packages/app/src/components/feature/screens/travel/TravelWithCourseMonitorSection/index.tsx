@@ -8,8 +8,9 @@ import useTravelStateStore from "@store/travel";
 import { COLORS } from "@styles/colorPalette";
 import { msToTimeText } from "@utils/time";
 import { useEffect, useState } from "react";
+import { AppState } from "react-native";
 
-const INTERVAL_CYCLE = 500; // 500 milliseconds
+const INTERVAL_CYCLE = 1000;
 
 const TravelWithCourseMonitorSection = () => {
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간
@@ -22,11 +23,38 @@ const TravelWithCourseMonitorSection = () => {
   } = useTravelStateStore();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setElapsedTime(getElapsedTime()); //TODO: 상태를 상태로 넣고 있음. 수정 필요
+    let intervalId = null;
+
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (nextAppState === "active") {
+        setElapsedTime(getElapsedTime());
+
+        if (!intervalId) {
+          intervalId = setInterval(() => {
+            setElapsedTime(getElapsedTime());
+          }, INTERVAL_CYCLE);
+        }
+      } else if (nextAppState === "background") {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+    });
+
+    // 초기 interval 설정
+    intervalId = setInterval(() => {
+      setElapsedTime(getElapsedTime());
     }, INTERVAL_CYCLE);
-    return () => clearInterval(interval);
-  }, [getElapsedTime, travelState]);
+
+    // Cleanup
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+      subscription.remove();
+    };
+  }, [getElapsedTime]);
 
   return (
     <Container>
