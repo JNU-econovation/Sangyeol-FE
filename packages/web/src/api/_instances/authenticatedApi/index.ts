@@ -2,8 +2,12 @@ import { isInStackFrame } from "stack-link";
 import { ErrorResponse } from "@/types/api";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+if (!baseURL) throw new Error("NEXT_PUBLIC_BASE_URL env값이 없습니다");
+
 const authenticatedApi = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, ""),
+  baseURL: baseURL?.replace(/\/$/, ""),
   timeout: 5000,
   headers:
     process.env.NODE_ENV === "development"
