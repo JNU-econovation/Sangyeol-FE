@@ -85,6 +85,11 @@ const appConfig = {
         {
           locationAlwaysAndWhenInUsePermission:
             "$(PRODUCT_NAME)이 위치 정보를 항상 사용하도록 허용합니다.",
+          locationAlwaysPermission:
+            "$(PRODUCT_NAME)이 위치 정보를 항상 사용하도록 허용합니다.",
+          isAndroidForegroundServiceEnabled: true,
+          isAndroidBackgroundLocationEnabled: true,
+          isIosBackgroundLocationEnabled: true,
         },
       ],
       "expo-web-browser",
