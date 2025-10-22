@@ -55,8 +55,18 @@ const TravelWithCourseMap = () => {
             currentPositionIcon
             zoom={16}
             paths={[
-              { coords: traveledPaths, color: COLORS.primary },
-              { coords: courses, color: COLORS.gray700 },
+              {
+                coords: traveledPaths,
+                color: COLORS.primary,
+                outlineColor: COLORS.primary,
+                outlineWidth: 2,
+              },
+              {
+                coords: courses,
+                color: COLORS.gray700,
+                outlineColor: COLORS.gray700,
+                outlineWidth: 2,
+              },
             ]}
             showOverlays={selectedTags}
             bases={bases.map(({ coordinate }) => coordinate)}
