@@ -2,7 +2,7 @@ import useCheckUserLoginAndProfileState from "@hooks/feature/authenticate/useChe
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { useFonts } from "expo-font";
 import { Redirect, SplashScreen } from "expo-router";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import {
   configureReanimatedLogger,
   ReanimatedLogLevel,
@@ -39,13 +39,6 @@ export default function Index() {
     "pretendard-thin": require("@/assets/fonts/Pretendard-Thin.otf"),
   });
 
-  const checkLogin = useCallback(async () => {}, [
-    setAccessToken,
-    setRefreshToken,
-    accessToken,
-    refreshToken,
-  ]);
-
   // 처음 렌더링 될 때, 로그인 상태 확인
   useEffect(() => {
     try {
@@ -57,7 +50,7 @@ export default function Index() {
     } catch (error) {
       console.error("[global index] Error checking login status:", error);
     }
-  }, [checkLogin, setAccessToken, setRefreshToken, accessToken, refreshToken]);
+  }, [setAccessToken, setRefreshToken, accessToken, refreshToken]);
 
   // 폰트 로딩 또는 에러 발생 시 스플래시 스크린 숨기기
   useEffect(() => {
