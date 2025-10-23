@@ -10,12 +10,12 @@ const useSaveAuthToken = () => {
   const expiredTime = searchParams.get("expiredTime");
 
   useEffect(() => {
-    if (accessToken && refreshToken) {
+    if (accessToken && refreshToken && expiredTime) {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("expiredTime", expiredTime);
     }
-  }, [accessToken, refreshToken, router]);
+  }, [accessToken, refreshToken, router, expiredTime]);
 };
 
 export default useSaveAuthToken;
