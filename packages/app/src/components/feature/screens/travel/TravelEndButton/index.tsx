@@ -10,7 +10,7 @@ const TravelEndButton = () => {
   const { connectedURL, getElapsedTime } = useTravelStateStore();
 
   const handleEnd = async () => {
-    let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
+    const { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
       .coords;
     const message = courseId
       ? {
