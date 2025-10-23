@@ -21,7 +21,7 @@ publicApi.interceptors.request.use(
       console.log("[method:]", config.method?.toUpperCase());
       console.log("[url:]", config.url);
       console.log("[data:]", config.data);
-      console.log("[params:]", config.params);
+      console.log("[params:]", config.params, "\n");
     }
     return config;
   },
@@ -34,7 +34,7 @@ publicApi.interceptors.request.use(
       if (error.config) {
         console.error("[url:]", error.config.url);
         console.error("[data:]", error.config.data);
-        console.error("[params:]", error.config.params);
+        console.error("[params:]", error.config.params, "\n");
       }
     }
     console.error("[error:]", error);
@@ -50,7 +50,9 @@ publicApi.interceptors.response.use(
       );
       console.log("[status:]", response.status);
       console.log("[url:]", response.config.url);
-      console.log("[data:]", response.data);
+      console.log("[data:]", response.data, "\n");
+      console.log("=========================================================");
+      console.log("");
     }
     return response.data;
   },
@@ -62,11 +64,15 @@ publicApi.interceptors.response.use(
       console.error("[error :]", error);
       console.error("[url:]", error.config?.url);
       console.error("[data:]", error.response?.data);
-      console.error("[status:]", error.response?.status);
+      console.error("[status:]", error.response?.status, "\n");
+      console.log("=========================================================");
+      console.log("");
     }
-    
+
     const err = Object.assign(
-      new Error(error.response?.data?.message || "알 수 없는 오류가 발생했습니다."),
+      new Error(
+        error.response?.data?.message || "알 수 없는 오류가 발생했습니다.",
+      ),
       {
         name: "ApiError",
         status: "error" as const,
@@ -75,7 +81,8 @@ publicApi.interceptors.response.use(
         url: error.config?.url,
         cause: error,
       },
-    ) as Error & ErrorResponse & { httpStatus?: number; url?: string; cause?: unknown };
+    ) as Error &
+      ErrorResponse & { httpStatus?: number; url?: string; cause?: unknown };
 
     return Promise.reject(err);
   },

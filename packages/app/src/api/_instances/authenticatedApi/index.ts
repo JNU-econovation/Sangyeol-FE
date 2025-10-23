@@ -35,7 +35,9 @@ authenticatedApi.interceptors.response.use(
       );
       console.log("[status:]", response.status);
       console.log("[url:]", response.config.url);
-      console.log("[data:]", response.data);
+      console.log("[data:]", response.data, "\n");
+      console.log("=========================================================");
+      console.log("");
     }
 
     return response.data;
@@ -46,7 +48,9 @@ authenticatedApi.interceptors.response.use(
       console.warn("[error :]", error);
       console.warn("[url:]", error.config?.url);
       console.warn("[data:]", error.response?.data);
-      console.warn("[status:]", error.response?.status);
+      console.warn("[status:]", error.response?.status, "\n");
+      console.log("=========================================================");
+      console.log("");
     }
 
     const err = Object.assign(
