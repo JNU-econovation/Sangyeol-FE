@@ -203,6 +203,7 @@ const useTravelWithoutCourse = () => {
     intervalRef.current = setInterval(() => {
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (!socket) return;
+      if (!location) return;
       const {
         coords: { longitude, latitude },
       } = location;
