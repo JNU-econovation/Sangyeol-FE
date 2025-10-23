@@ -19,9 +19,10 @@ const useCoursesOfMountainQuery = ({
     queryKey: [
       COURSES_OF_MOUNTAIN_API_PATH(mountainId, { searchParams: { sortBy } }),
     ],
-    queryFn: () => getCoursesOfMountainApi(authenticatedApi, { mountainId, sortBy }),
-    staleTime: 1000 * 60 * 5, // 5m
-    gcTime: 1000 * 60 * 60, // 1h
+    queryFn: () =>
+      getCoursesOfMountainApi(authenticatedApi, { mountainId, sortBy }),
+    // staleTime: 1000 * 60 * 5, // 5m
+    // gcTime: 1000 * 60 * 60, // 1h
   });
 };
 

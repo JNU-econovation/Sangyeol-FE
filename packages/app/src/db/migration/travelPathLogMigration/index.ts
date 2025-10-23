@@ -1,9 +1,8 @@
 import { sql } from "drizzle-orm";
 
 import { db } from "../../client/travelPathLogClient";
-import { useEffect, useState } from "react";
 
-async function migrateDb() {
+export async function travelPathLogMigrateDb() {
   try {
     await db.run(sql`
       CREATE TABLE IF NOT EXISTS location_logs (
@@ -23,15 +22,3 @@ async function migrateDb() {
     throw error;
   }
 }
-
-export const useTravelPathLogMigration = () => {
-  const [dbReady, setDbReady] = useState(false);
-
-  useEffect(() => {
-    migrateDb()
-      .then(() => setDbReady(true))
-      .catch(console.error);
-  }, []);
-
-  return { dbReady };
-};
