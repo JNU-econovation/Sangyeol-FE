@@ -10,7 +10,7 @@ const TravelContinueButton = () => {
   const { connectedURL } = useTravelStateStore();
 
   const handleContinue = async () => {
-    let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
+    const { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
       .coords;
 
     const coordinate = [longitude, latitude];

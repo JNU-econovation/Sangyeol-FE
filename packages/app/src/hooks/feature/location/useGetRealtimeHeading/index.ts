@@ -14,8 +14,22 @@ const useGetRealtimeHeading = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== "granted") return;
+        const { status: foregroundPermissionStatus } =
+          await Location.requestForegroundPermissionsAsync();
+        const { status: backgroundPermissionStatus } =
+          await Location.requestBackgroundPermissionsAsync();
+
+        if (foregroundPermissionStatus !== "granted") {
+          console.warn(
+            "[useGetRealtimeHeading] 위치 서비스 접근 권한이 필요합니다.",
+          );
+          return;
+        }
+        if (backgroundPermissionStatus !== "granted") {
+          console.warn(
+            "[useGetRealtimeHeading] 백그라운드 위치 권한이 허용되지 않았습니다.",
+          );
+        }
         const sub = await Location.watchHeadingAsync((headingData) => {
           setIsLoading(false);
           const currentHeading =

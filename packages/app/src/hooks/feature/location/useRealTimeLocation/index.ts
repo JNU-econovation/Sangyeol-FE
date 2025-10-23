@@ -111,11 +111,19 @@ const useRealTimeLocation = (options: UseRealTimeLocationOptions = {}) => {
    */
   const startWatching = async () => {
     try {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
+      const { status: foregroundPermissionStatus } =
+        await Location.requestForegroundPermissionsAsync();
+      const { status: backgroundPermissionStatus } =
+        await Location.requestBackgroundPermissionsAsync();
+
+      if (foregroundPermissionStatus !== "granted") {
         setIsLoading(false);
         setErrorMsg("위치 서비스 접근 권한이 필요합니다.");
         return;
+      }
+
+      if (backgroundPermissionStatus !== "granted") {
+        console.warn("백그라운드 위치 권한이 허용되지 않았습니다.");
       }
 
       const subscription = await Location.watchPositionAsync(
@@ -180,7 +188,7 @@ const useRealTimeLocation = (options: UseRealTimeLocationOptions = {}) => {
    * @property {boolean} isLoading - 위치 권한 확인 및 초기 위치 로드 중 여부
    * @property {string|null} errorMsg - 에러 메시지
    * @property {boolean} isWatching - 현재 위치 추적 중 여부
-   * @property {Function} startWatching - 위치 추적을 시작하는 비동기 함수
+   * @property {Function} startWatching - 위치 추적을 재시작하는 비동기 함수
    * @property {Function} stopWatching - 위치 추적을 중지하는 동기 함수
    */
   return {
