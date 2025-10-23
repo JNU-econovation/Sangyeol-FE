@@ -1,11 +1,11 @@
 import styled from "@emotion/native";
-import { ImageBackground } from "react-native";
+import useRouterPrefetcher from "@hooks/common/useRouterPrefetcher";
+import usePersonalInfoModal from "@hooks/feature/modal/usePersonalInfoModal";
+import useUserProfileStatusQuery from "@hooks/feature/query/query/useUserProfileStatusQuery";
 import HomeNavGridSection from "@screens/Home/HomeNavGridSection";
 import Spacing from "@shared/layout/Spacing";
-import { router } from "expo-router";
 import { useEffect } from "react";
-import useUserProfileStatusQuery from "@hooks/feature/query/query/useUserProfileStatusQuery";
-import usePersonalInfoModal from "@hooks/feature/modal/usePersonalInfoModal";
+import { ImageBackground } from "react-native";
 
 const HomeScreen = () => {
   const {
@@ -15,9 +15,9 @@ const HomeScreen = () => {
   } = useUserProfileStatusQuery();
   const { showNotificationModal } = usePersonalInfoModal();
 
-  useEffect(() => {
-    router.prefetch("/(tabs)/home/course");
-  }, []);
+  useRouterPrefetcher({
+    routes: ["/(tabs)/home/course"],
+  });
 
   useEffect(() => {
     const isPersonalInfoSet =
