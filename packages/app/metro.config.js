@@ -17,8 +17,8 @@ config.resolver = {
   ...resolver,
   assetExts: resolver.assetExts.filter((ext) => ext !== "svg"),
   sourceExts: [...resolver.sourceExts, "svg"],
-  platforms: ['ios', 'android', 'native', 'web'],
-  resolverMainFields: ['react-native', 'browser', 'main'],
+  platforms: ["ios", "android", "native", "web"],
+  resolverMainFields: ["react-native", "browser", "main"],
   nodeModulesPaths: [
     path.resolve(projectRoot, "node_modules"),
     path.resolve(workspaceRoot, "node_modules"),

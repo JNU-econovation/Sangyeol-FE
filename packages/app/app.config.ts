@@ -42,14 +42,6 @@ const appConfig = {
       "expo-splash-screen",
       "expo-apple-authentication",
       "expo-router",
-      // "@react-native-voice/voice",
-      [
-        "@react-native-voice/voice",
-        {
-          microphonePermission: "마이크 접근 권한이 필요합니다.",
-          speechRecognitionPermission: "음성 인식 권한이 필요합니다.",
-        },
-      ],
       // naver map
       [
         "@mj-studio/react-native-naver-map",
