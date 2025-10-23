@@ -14,15 +14,17 @@ const useSendToken = () => {
   const accessTokenExpiredTime = searchParams.get("accessTokenExpiredTime");
 
   useEffect(() => {
-    if (!accessToken || !refreshToken || !accessTokenExpiredTime) return;
+    if (!accessToken || !refreshToken || !accessTokenExpiredTime) {
+      console.error("Missing token parameters");
+      return;
+    }
 
-    // parse and validate the expiration time
     const expiredTime = accessTokenExpiredTime
       ? Number(accessTokenExpiredTime)
       : undefined;
 
     if (expiredTime === undefined || isNaN(expiredTime)) {
-      console.error('Invalid accessTokenExpiredTime');
+      console.error("Invalid accessTokenExpiredTime");
       return;
     }
 

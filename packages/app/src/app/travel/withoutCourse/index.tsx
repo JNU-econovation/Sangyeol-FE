@@ -125,7 +125,6 @@ const CounterContainer = styled.View<{ count: number }>`
   z-index: ${({ count }) => (count !== 0 ? "10" : "-10")};
   transition: all 3s ease-in-out;
   width: 100%;
-  /* opacity: ${({ count }) => (count === 0 ? "0" : "1")}; */
 `;
 
 export default TravelScreen;
