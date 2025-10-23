@@ -1,6 +1,7 @@
 import SocketManager from "@service/socket/manager";
 import PauseButton from "@shared/ui/buttons/PauseButton";
 import useTravelStateStore from "@store/travel";
+import * as Location from "expo-location";
 import { useLocalSearchParams } from "expo-router";
 
 const TravelPauseButton = () => {
@@ -8,12 +9,16 @@ const TravelPauseButton = () => {
   const socketManager = SocketManager.getInstance();
   const { connectedURL } = useTravelStateStore();
 
-  const handlePause = () => {
+  const handlePause = async () => {
+    let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
+      .coords;
+
+    const coordinate = [longitude, latitude];
     const message = courseId
       ? {
           event: "pause",
           data: {
-            coordinate: [],
+            coordinate,
             courseId,
             time: Date.now(),
           },
@@ -21,7 +26,7 @@ const TravelPauseButton = () => {
       : {
           event: "pause",
           data: {
-            coordinate: [],
+            coordinate,
             time: Date.now(),
           },
         };

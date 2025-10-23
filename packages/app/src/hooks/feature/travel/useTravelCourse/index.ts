@@ -14,12 +14,16 @@ import { SocketMessageResponse } from "./types";
 
 const TRAVEL_SOCKET_URL = process.env.EXPO_PUBLIC_TRAVEL_NAVIGATE_SOCKET_URL;
 const TRAVEL_LOCATION_UPDATE_INTERVAL = 2000;
-const KEEP_ALIVE_INTERVAL = 15000;
+const KEEP_ALIVE_INTERVAL = 10000;
 
 interface UseTravelCourseProps {
   mountainId: string;
   courseId: string;
 }
+
+/**
+ * TODO: 정지한 상태에서 값이 업데이트 되지 않도록 수정 필요
+ */
 
 const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   "use memo";
@@ -56,7 +60,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   }, [setTravelType]);
 
   const onMessage = async ({ event, status, data }: SocketMessageResponse) => {
-    console.log("소캣 메시지 수신:", { event, status, data });
+    // console.log("소캣 메시지 수신:", { event, status, data });
 
     if (status === "error") return console.error("에러 발생");
 
@@ -219,7 +223,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
       clearInterval(intervalRef.current);
     }
 
-    if (travelState !== "in-progress") {
+    if (travelState === "idle" || travelState === "completed") {
       return;
     }
 
