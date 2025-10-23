@@ -6,7 +6,7 @@ type TravelTimelogType = "start" | "pause" | "restart" | "end";
 
 interface TravelStateStore {
   travelState: TravelState;
-  intervalId: number | null;
+  // intervalId: number | null;
   distance: number;
   traveledPath: Coordinate[];
   connectedURL: string | null;
@@ -20,8 +20,8 @@ interface TravelStateStore {
   };
 
   setTravelState: (state: TravelState) => void;
-  setIntervalId: (id: number | null) => void; // 인터벌 ID 설정 함수. 이는 지속적으로 소캣 서버로 위치를 전송하는 데 사용된다.
-  clearIntervalId: () => void;
+  // setIntervalId: (id: number | null) => void; // 인터벌 ID 설정 함수. 이는 지속적으로 소캣 서버로 위치를 전송하는 데 사용된다.
+  // clearIntervalId: () => void;
   setDistance: (distance: number) => void;
   pushTraveledPath: (path: Coordinate) => void;
   setConnectedURL: (url: string | null) => void;
@@ -36,7 +36,7 @@ interface TravelStateStore {
 
 export const useTravelStateStore = create<TravelStateStore>((set, get) => ({
   travelState: "idle",
-  intervalId: null,
+  // intervalId: null,
   distance: 0,
   traveledPath: [],
   connectedURL: null,
@@ -47,15 +47,15 @@ export const useTravelStateStore = create<TravelStateStore>((set, get) => ({
   travelData: {},
 
   setTravelState: (state) => set({ travelState: state }),
-  setIntervalId: (id) => set({ intervalId: id }),
+  // setIntervalId: (id) => set({ intervalId: id }),
   setDistance: (distance) => set({ distance }),
-  clearIntervalId: () => {
-    const { intervalId } = get();
-    if (intervalId) {
-      clearInterval(intervalId);
-      set({ intervalId: null });
-    }
-  },
+  // clearIntervalId: () => {
+  //   const { intervalId } = get();
+  //   if (intervalId) {
+  //     clearInterval(intervalId);
+  //     set({ intervalId: null });
+  //   }
+  // },
   pushTraveledPath: (path) =>
     set((state) => ({
       traveledPath: [...state.traveledPath, path],
@@ -109,7 +109,7 @@ export const useTravelStateStore = create<TravelStateStore>((set, get) => ({
   reset: () => {
     set({
       travelState: "idle",
-      intervalId: null,
+      // intervalId: null,
       distance: 0,
       traveledPath: [],
       connectedURL: null,
