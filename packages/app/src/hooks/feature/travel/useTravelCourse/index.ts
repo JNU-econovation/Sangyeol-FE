@@ -31,9 +31,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
     travelState,
     setTravelState,
     setDistance,
-    intervalId,
     addTimelog, // (type: 'start' | 'pause' | 'restart' | 'end', time: number) => void. 여행 타임로그 추가 함수. 이는 올바른 시간 계산을 위하여 로그를 스택으로 남기는 함수이다.
-    clearIntervalId,
     pushTraveledPath,
     getElapsedTime,
     setTravelType,
@@ -132,7 +130,6 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
 
     if (event === "end") {
       console.log("[useTravelCourse] 여행 끝:", data);
-      if (intervalId) clearIntervalId();
       setTravelState("completed");
 
       addTimelog("end", Date.now());

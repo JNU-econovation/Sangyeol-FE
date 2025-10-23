@@ -21,14 +21,12 @@ const useTravelWithoutCourse = () => {
   const appState = useRef(AppState.currentState);
   const socketManager = SocketManager.getInstance();
   const { accessToken } = useTokenStore.getState();
-  const intervalRef = useRef<number>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const {
     travelState,
     setTravelState,
     setDistance,
-    intervalId,
     addTimelog, // (type: 'start' | 'pause' | 'restart' | 'end', time: number) => void. 여행 타임로그 추가 함수. 이는 올바른 시간 계산을 위하여 로그를 스택으로 남기는 함수이다.
-    clearIntervalId,
     pushTraveledPath,
     getElapsedTime,
     setTravelType,
@@ -112,7 +110,6 @@ const useTravelWithoutCourse = () => {
 
     if (event === "end") {
       console.log("[useTravelCourse] 여행 끝:", data);
-      if (intervalId) clearIntervalId();
       setTravelState("completed");
 
       addTimelog("end", Date.now());
