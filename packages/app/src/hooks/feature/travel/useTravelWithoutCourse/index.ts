@@ -243,7 +243,7 @@ const useTravelWithoutCourse = () => {
         intervalRef.current = null;
       }
     };
-  }, [travelState, location]);
+  }, [travelState]);
 
   // 위치가 변경될 때마다 위치 전송
   useEffect(() => {
