@@ -1,4 +1,4 @@
-import { useTravelPathLogMigration } from "@db/migration/travelPathLogMigration";
+import useTravelPathLogMigration from "@db/hooks/migration/travelPathLogMigration";
 import useCheckUserLoginAndProfileState from "@hooks/feature/authenticate/useCheckUserLoginAndProfileState";
 import useLogout from "@hooks/feature/authenticate/useLogout";
 import useSetTokenToStoreState from "@hooks/feature/authenticate/useSetTokenToStoreState";
