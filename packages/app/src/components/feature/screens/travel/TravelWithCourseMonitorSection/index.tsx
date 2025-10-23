@@ -26,7 +26,7 @@ const TravelWithCourseMonitorSection = () => {
 
   useEffect(() => {
     const startTimer = () => {
-      if (!intervalRef.current) {
+      if (!intervalRef.current && travelState === "in-progress") {
         intervalRef.current = setInterval(() => {
           setElapsedTime(getElapsedTime());
         }, INTERVAL_CYCLE);
@@ -56,7 +56,7 @@ const TravelWithCourseMonitorSection = () => {
       stopTimer();
       subscription.remove();
     };
-  }, []);
+  }, [travelState]);
 
   return (
     <Container>
