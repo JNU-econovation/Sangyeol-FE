@@ -23,7 +23,7 @@ const BloodPicker = ({ value, onChange }: BloodPickerProps) => {
         { label: "O", value: "O" },
       ]}
       placeholder="혈액형 선택"
-      onChange={(value) => onChange(value)}
+      onChange={onChange}
       value={value}
     />
   );
