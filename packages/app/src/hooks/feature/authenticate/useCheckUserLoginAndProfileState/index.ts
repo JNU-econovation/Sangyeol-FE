@@ -42,7 +42,6 @@ const useCheckUserLoginAndProfileState = () => {
     profileStatusLoading,
     isCheckingLoginLoading,
     error: profileStatusError,
-
     accessToken,
     refreshToken,
   };
