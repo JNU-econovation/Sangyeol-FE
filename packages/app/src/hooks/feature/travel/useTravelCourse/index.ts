@@ -223,6 +223,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
     intervalRef.current = setInterval(() => {
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (!socket) return;
+      if (!location) return;
       const {
         coords: { longitude, latitude },
       } = location;
