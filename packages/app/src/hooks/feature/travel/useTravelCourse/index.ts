@@ -21,10 +21,6 @@ interface UseTravelCourseProps {
   courseId: string;
 }
 
-/**
- * TODO: 정지한 상태에서 값이 업데이트 되지 않도록 수정 필요
- */
-
 const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   "use memo";
   const appState = useRef(AppState.currentState);
@@ -236,7 +232,8 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
       socket.sendMessage(
         SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude], courseId),
       );
-      pushTraveledPath([longitude, latitude]);
+      if (travelState === "in-progress")
+        pushTraveledPath([longitude, latitude]);
     }, KEEP_ALIVE_INTERVAL);
   };
 
@@ -283,7 +280,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
     socket.sendMessage(
       SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude], courseId),
     );
-    pushTraveledPath([longitude, latitude]);
+    if (travelState === "in-progress") pushTraveledPath([longitude, latitude]);
   }, [location, travelState]);
 
   return { connect, start };
