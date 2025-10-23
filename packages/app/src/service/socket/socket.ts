@@ -1,5 +1,3 @@
-import { Alert } from "react-native";
-
 export interface SocketServiceOptions {
   url: string;
   token: string;
@@ -55,15 +53,15 @@ export default class Socket {
 
     this.socket?.addEventListener("message", (event) => {
       const response = JSON.parse(event.data);
+      console.log("[SocketService] 메시지 수신:", response);
 
-      // console.log("[SocketService] 메시지 수신:", response);
       if (
         socketMessageTypeGuard(response) &&
         response.status === "success" &&
         !response.data &&
         !this.isAuthenticated
       ) {
-        console.log("[SocketService] Socket authentication successful");
+        console.log("[SocketService] 소캣 인증 성공");
         this.isAuthenticated = true;
       }
       if (
@@ -96,7 +94,7 @@ export default class Socket {
     this.socket = null;
   }
 
-  //
+  // TODO: 개발 모드에서만 로그 되도록 변경
 
   sendMessage(message: any) {
     if (!this.socket || this.socket.readyState !== WebSocket.OPEN) {
@@ -104,6 +102,8 @@ export default class Socket {
       return;
     }
     this.socket.send(JSON.stringify(message));
+
+    console.log("[소오오캣] 메시지 갑니다~~~ : \n", JSON.stringify(message));
   }
 
   public addEventListener(
