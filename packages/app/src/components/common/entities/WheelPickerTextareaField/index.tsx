@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import WheelPicker from "@quidone/react-native-wheel-picker";
 import { COLORS } from "@styles/colorPalette";
 import { ComponentProps, useState } from "react";
-import { Modal, Platform } from "react-native";
+import { GestureResponderEvent, Modal, Platform } from "react-native";
 
 export interface WheelPickerOption<T = string> {
   label: string;
@@ -23,13 +23,13 @@ const WheelPickerTextareaField = <T extends string>({
   value,
   onChange,
   placeholder = "선택하세요",
-
   ...props
 }: WheelPickerProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tempValue, setTempValue] = useState(value);
 
-  const handleConfirm = () => {
+  const handleConfirm = (e: GestureResponderEvent) => {
+    e.stopPropagation();
     setIsOpen(false);
     if (tempValue !== null) {
       onChange(tempValue);
@@ -125,6 +125,7 @@ const PickerContainer = styled.Pressable`
   background-color: #ffffff;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
+  /* z-index: 10; */
   ${Platform.OS === "ios" &&
   `
     shadow-color: #000;
@@ -143,6 +144,7 @@ const Toolbar = styled.View`
   border-bottom-width: 1px;
   border-bottom-color: #e5e7eb;
   background-color: ${COLORS.primary};
+  z-index: 11;
 `;
 
 const ToolbarButton = styled.TouchableOpacity``;

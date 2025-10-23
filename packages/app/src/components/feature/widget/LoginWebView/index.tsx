@@ -20,7 +20,7 @@ const LoginWebView = () => {
             !("expiredTime" in body) ||
             typeof body.accessToken !== "string" ||
             typeof body.refreshToken !== "string" ||
-            typeof body.expiredTime !== "number"
+            typeof body.expiredTime !== "string"
           ) {
             console.error("Invalid token data received");
             return {
@@ -33,7 +33,7 @@ const LoginWebView = () => {
 
           setAccessToken(accessToken);
           setRefreshToken(refreshToken);
-          setAccessTokenExpiredTime(expiredTime);
+          setAccessTokenExpiredTime(+expiredTime);
 
           router.dismissAll();
           router.replace("/");
