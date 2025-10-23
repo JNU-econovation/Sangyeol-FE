@@ -10,8 +10,8 @@ const useCoursePathwayQuery = ({ courseId }: UseCoursePathwayQueryParams) => {
   return useSuspenseQuery({
     queryKey: [PATHWAY_API_PATH(courseId)],
     queryFn: () => getPathwayOfCourse(authenticatedApi, courseId),
-    staleTime: 1000 * 60 * 60,
-    gcTime: 1000 * 60 * 60 * 24,
+    // staleTime: 1000 * 60 * 60,
+    // gcTime: 1000 * 60 * 60 * 24,
   });
 };
 
