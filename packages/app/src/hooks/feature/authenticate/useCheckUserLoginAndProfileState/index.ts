@@ -23,7 +23,7 @@ const useCheckUserLoginAndProfileState = () => {
         setRefreshToken(existentRefreshToken);
       }
     } catch (error) {
-      console.error("[global index] Error checking login status:", error);
+      console.warn("[global index] Error checking login status:", error);
     } finally {
       setIsCheckingLoginLoading(false);
     }

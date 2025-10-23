@@ -94,6 +94,24 @@ const appConfig = {
             "$(PRODUCT_NAME)이 카메라에 접근할 수 있도록 허용합니다.",
         },
       ],
+      [
+        "expo-sqlite",
+        {
+          enableFTS: true,
+          useSQLCipher: true,
+          android: {
+            // Override the shared configuration for Android
+            enableFTS: false,
+            useSQLCipher: false,
+          },
+          ios: {
+            // You can also override the shared configurations for iOS
+            customBuildFlags: [
+              "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1",
+            ],
+          },
+        },
+      ],
     ],
     experiments: {
       typedRoutes: true,
