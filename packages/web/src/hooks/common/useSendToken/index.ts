@@ -1,4 +1,5 @@
 import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
+import useShowToastBridge from "@/hooks/feature/bridge/useShowToastBridge";
 import { useBridge } from "bridge/web";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -8,23 +9,34 @@ const useSendToken = () => {
   const { request } = useBridge();
 
   const goBack = useRouteBackBridge();
+  const showToast = useShowToastBridge();
 
   const accessToken = searchParams.get("accessToken");
   const refreshToken = searchParams.get("refreshToken");
-  const accessTokenExpiredTime = searchParams.get("accessTokenExpiredTime");
+  const expiredTime = searchParams.get("expiredTime");
 
   useEffect(() => {
-    if (!accessToken || !refreshToken || !accessTokenExpiredTime) {
+    if (!accessToken || !refreshToken || !expiredTime) {
       console.error("Missing token parameters");
+      showToast({
+        type: "error",
+        text1: "카카오 로그인 실패",
+        text2: "시스템상 문제가 발생했습니다. 다시 시도해주세요.",
+      });
+      goBack();
       return;
     }
 
-    const expiredTime = accessTokenExpiredTime
-      ? Number(accessTokenExpiredTime)
-      : undefined;
+    const expiredTimeNumber = Number(searchParams.get("expiredTime"));
 
-    if (expiredTime === undefined || isNaN(expiredTime)) {
+    if (expiredTimeNumber === undefined || isNaN(expiredTimeNumber)) {
       console.error("Invalid accessTokenExpiredTime");
+      showToast({
+        type: "error",
+        text1: "카카오 로그인 실패",
+        text2: "시스템상 문제가 발생했습니다. 다시 시도해주세요.",
+      });
+      goBack();
       return;
     }
 
@@ -35,12 +47,12 @@ const useSendToken = () => {
         body: {
           accessToken,
           refreshToken,
-          accessTokenExpiredTime: expiredTime,
+          expiredTime,
         },
       },
     });
     goBack();
-  }, [accessToken, accessTokenExpiredTime, goBack, refreshToken, request]);
+  }, [accessToken, expiredTime, goBack, refreshToken, request]);
 };
 
 export default useSendToken;

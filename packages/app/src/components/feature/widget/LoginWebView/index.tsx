@@ -17,10 +17,10 @@ const LoginWebView = () => {
             typeof body !== "object" ||
             !("accessToken" in body) ||
             !("refreshToken" in body) ||
-            !("accessTokenExpiredTime" in body) ||
+            !("expiredTime" in body) ||
             typeof body.accessToken !== "string" ||
             typeof body.refreshToken !== "string" ||
-            typeof body.accessTokenExpiredTime !== "number"
+            typeof body.expiredTime !== "number"
           ) {
             console.error("Invalid token data received");
             return {
@@ -29,11 +29,11 @@ const LoginWebView = () => {
               message: "Invalid token data received",
             };
           }
-          const { accessToken, refreshToken, accessTokenExpiredTime } = body;
+          const { accessToken, refreshToken, expiredTime } = body;
 
           setAccessToken(accessToken);
           setRefreshToken(refreshToken);
-          setAccessTokenExpiredTime(accessTokenExpiredTime);
+          setAccessTokenExpiredTime(expiredTime);
 
           router.dismissAll();
           router.replace("/");
