@@ -1,4 +1,5 @@
 import useCheckUserLoginAndProfileState from "@hooks/feature/authenticate/useCheckUserLoginAndProfileState";
+import useLogout from "@hooks/feature/authenticate/useLogout";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { useFonts } from "expo-font";
 import { Redirect, SplashScreen } from "expo-router";
@@ -26,6 +27,7 @@ export default function Index() {
     isBasicInfoSet,
     refreshToken,
   } = useCheckUserLoginAndProfileState();
+  const { logout } = useLogout();
 
   const [fontLoaded, fontError] = useFonts({
     "pretendard-black": require("@/assets/fonts/Pretendard-Black.otf"),
@@ -59,14 +61,21 @@ export default function Index() {
 
   if (isCheckingLoginLoading || profileStatusLoading) return null; //TODO: 로딩 폴백 보여주기
 
+  if (fontError || error) {
+    (async () => {
+      console.error(
+        "[global index] Font loading error or profile status api error:",
+      );
+      await SplashScreen.hideAsync();
+
+      logout();
+    })();
+    return <Redirect href={"/starter"} />;
+  }
   if (isLoggedIn && !isBasicInfoSet)
     return <Redirect href="/onboarding/profile" />;
 
-  // if (isLoggedIn && !isPersonalInfoSet)
-  //   return <Redirect href="/onboarding/profile" />;
-
-  // if (fontError || error) return null; //TODO: 에러 페이지로 넘기기
-  if (fontError || error) return <Redirect href="/onboarding/profile" />;
+  // if (fontError || error) return <Redirect href="/starter" />;
   if (accessToken) return <Redirect href="/(tabs)/home" />;
   return <Redirect href={"/starter"} />;
 }
