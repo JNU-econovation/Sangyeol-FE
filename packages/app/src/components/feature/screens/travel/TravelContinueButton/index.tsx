@@ -2,18 +2,23 @@ import SocketManager from "@service/socket/manager";
 import StartButton from "@shared/ui/buttons/StartButton";
 import useTravelStateStore from "@store/travel";
 import { useLocalSearchParams } from "expo-router";
+import * as Location from "expo-location";
 
 const TravelContinueButton = () => {
   const { courseId } = useLocalSearchParams();
   const socketManager = SocketManager.getInstance();
   const { connectedURL } = useTravelStateStore();
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
+    let { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
+      .coords;
+
+    const coordinate = [longitude, latitude];
     const message = courseId
       ? {
           event: "restart",
           data: {
-            coordinate: [],
+            coordinate,
             courseId,
             time: Date.now(),
           },
@@ -21,7 +26,7 @@ const TravelContinueButton = () => {
       : {
           event: "restart",
           data: {
-            coordinate: [],
+            coordinate,
             time: Date.now(),
           },
         };
