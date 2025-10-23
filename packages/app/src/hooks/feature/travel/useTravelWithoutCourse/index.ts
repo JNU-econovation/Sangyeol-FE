@@ -212,7 +212,8 @@ const useTravelWithoutCourse = () => {
       socket.sendMessage(
         SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude]),
       );
-      pushTraveledPath([longitude, latitude]);
+      if (travelState === "in-progress")
+        pushTraveledPath([longitude, latitude]);
     }, KEEP_ALIVE_INTERVAL);
   };
 
@@ -257,7 +258,7 @@ const useTravelWithoutCourse = () => {
       coords: { longitude, latitude },
     } = location;
     socket.sendMessage(SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude]));
-    pushTraveledPath([longitude, latitude]);
+    if (travelState === "in-progress") pushTraveledPath([longitude, latitude]);
   }, [location, travelState]);
 
   return { connect, start };
