@@ -27,9 +27,7 @@ const useSendToken = () => {
       return;
     }
 
-    const expiredTimeNumber = Number(searchParams.get("expiredTime"));
-
-    if (expiredTimeNumber === undefined || isNaN(expiredTimeNumber)) {
+    if (expiredTime === undefined || isNaN(+expiredTime)) {
       console.error("Invalid accessTokenExpiredTime");
       showToast({
         type: "error",
