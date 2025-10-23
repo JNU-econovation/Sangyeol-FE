@@ -143,7 +143,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
         setTravelState("completed");
       }, 500);
 
-      router.replace("/travel/withoutCourse/result");
+      router.replace(`/travel/${mountainId}/${courseId}/result`);
     }
   };
 
