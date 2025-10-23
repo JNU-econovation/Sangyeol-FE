@@ -26,7 +26,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   const appState = useRef(AppState.currentState);
   const socketManager = SocketManager.getInstance();
   const { accessToken } = useTokenStore.getState();
-  const intervalRef = useRef<number>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const {
     travelState,
     setTravelState,
