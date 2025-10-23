@@ -1,3 +1,4 @@
+import { useTravelPathLogMigration } from "@db/migration/travelPathLogMigration";
 import useCheckUserLoginAndProfileState from "@hooks/feature/authenticate/useCheckUserLoginAndProfileState";
 import useLogout from "@hooks/feature/authenticate/useLogout";
 import useSetTokenToStoreState from "@hooks/feature/authenticate/useSetTokenToStoreState";
@@ -29,21 +30,28 @@ export default function Index() {
   const { logout } = useLogout();
   const { isLoading: isSetTokenToStoreLoading } = useSetTokenToStoreState();
   const [fontLoaded, fontError] = usePretendardFont();
+  const { dbReady } = useTravelPathLogMigration();
 
   useEffect(() => {
     if (
-      fontLoaded ||
-      !isLoginAndProfileStateLoading ||
-      !isSetTokenToStoreLoading
+      fontLoaded &&
+      !isLoginAndProfileStateLoading &&
+      !isSetTokenToStoreLoading &&
+      dbReady
     )
-      SplashScreen.hideAsync();
+      console.log(
+        fontLoaded,
+        isLoginAndProfileStateLoading,
+        isSetTokenToStoreLoading,
+      );
+    SplashScreen.hideAsync();
   }, [fontLoaded, isLoginAndProfileStateLoading, isSetTokenToStoreLoading]);
 
   if (isCheckingLoginLoading || profileStatusLoading) return null; //TODO: 로딩 폴백 보여주기
 
   if (fontError || profileStatusError) {
     (async () => {
-      console.error(
+      console.warn(
         "[global index] Font loading error or profile status api error:",
       );
       await SplashScreen.hideAsync();
@@ -52,6 +60,7 @@ export default function Index() {
     })();
     return <Redirect href={"/starter"} />;
   }
+
   if (isLoggedIn && !isBasicInfoSet)
     return <Redirect href="/onboarding/profile" />;
 
