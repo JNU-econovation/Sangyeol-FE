@@ -10,7 +10,7 @@ import { msToTimeText } from "@utils/time";
 import { useEffect, useRef, useState } from "react";
 import { AppState } from "react-native";
 
-const INTERVAL_CYCLE = 250; // 500 milliseconds
+const INTERVAL_CYCLE = 250; // milliseconds
 
 const TravelWithCourseMonitorSection = () => {
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간
@@ -22,36 +22,38 @@ const TravelWithCourseMonitorSection = () => {
     remainTimeToEnd,
     remainTimeToStopover,
   } = useTravelStateStore();
-  const intervalRef = useRef<number>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    const subscription = AppState.addEventListener("change", (nextAppState) => {
-      appState.current = nextAppState;
-      if (nextAppState.match(/inactive/)) {
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
-        }
-        return;
-      }
-
+    const startTimer = () => {
       if (!intervalRef.current) {
         intervalRef.current = setInterval(() => {
           setElapsedTime(getElapsedTime());
         }, INTERVAL_CYCLE);
       }
-    });
-
-    if (!intervalRef.current && appState.current === "active")
-      intervalRef.current = setInterval(() => {
-        setElapsedTime(getElapsedTime());
-      }, INTERVAL_CYCLE);
-
-    return () => {
+    };
+    const stopTimer = () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
+    };
+
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      appState.current = nextAppState;
+      if (nextAppState === "active") {
+        startTimer();
+      } else {
+        stopTimer();
+      }
+    });
+
+    if (appState.current === "active") {
+      startTimer();
+    }
+
+    return () => {
+      stopTimer();
       subscription.remove();
     };
   }, []);
