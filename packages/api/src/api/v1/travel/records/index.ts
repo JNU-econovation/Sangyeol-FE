@@ -51,8 +51,6 @@ export interface GetTravelRecordsListResponse {
   records: Record[];
 }
 
-// TODO: api 변경 반영 필요
-
 /**
  * @public
  * @category Travel

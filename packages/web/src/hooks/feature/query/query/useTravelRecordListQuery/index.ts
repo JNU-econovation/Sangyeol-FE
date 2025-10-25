@@ -5,7 +5,13 @@ import { TRAVEL_RECORDS_API_PATH } from "api";
 
 const useTravelRecordListQuery = (params: { year: number; month: number }) => {
   return useSuspenseQuery({
-    queryKey: [TRAVEL_RECORDS_API_PATH, params],
+    queryKey: [
+      TRAVEL_RECORDS_API_PATH({
+        year: params.year,
+        month: params.month,
+      }),
+      params,
+    ],
     queryFn: () => getTravelRecordList(authenticatedApi, params),
     // staleTime: 1000 * 60 * 5,
     // gcTime: 1000 * 60 * 10,

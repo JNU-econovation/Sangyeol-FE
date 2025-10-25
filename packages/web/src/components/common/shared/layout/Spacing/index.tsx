@@ -2,7 +2,7 @@ import { SizeNumberType } from "@/types/css/height";
 import { memo } from "react";
 
 interface SpacingProps {
-  size: SizeNumberType;
+  size: number;
   className?: string;
 }
 

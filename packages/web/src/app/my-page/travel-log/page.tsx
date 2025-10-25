@@ -8,7 +8,7 @@ export default function TravelLogPage() {
     <>
       <TravelLogHeaderSection />
       <Spacing size={16} />
-      <div className="bg-gray-300">
+      <div className="bg-gray-300 max-h-screen overflow-y-scroll">
         <div className="px-5 max-h-screen bg-white">
           <TravelLogCalendarSection />
         </div>
@@ -16,6 +16,7 @@ export default function TravelLogPage() {
         <div className="px-5 max-h-screen bg-white">
           <TravelLogListSection />
         </div>
+        <Spacing size={16} />
       </div>
     </>
   );
