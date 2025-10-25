@@ -135,6 +135,8 @@ const ConfigurableMapView = memo(
                   longitude={longitude}
                   image={require("@assets/images/Mountain.png")}
                   isHidden={zoomLevel >= 9 && showOverlays.length !== 0}
+                  width={32}
+                  height={32}
                 />
               );
             })}
