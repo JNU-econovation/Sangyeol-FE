@@ -7,7 +7,14 @@ import StackContext from "@context/stackContext";
 import type { PathTuple } from "@models/index";
 import Iframe from "@/components/Iframe";
 
-export default function StackLinkProvider({ children }: PropsWithChildren) {
+interface StackLinkProviderProps extends PropsWithChildren {
+  onGoBack?: (history: PathTuple[]) => void;
+}
+
+export default function StackLinkProvider({
+  onGoBack,
+  children,
+}: StackLinkProviderProps) {
   const [history, setHistory] = useState<PathTuple[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -19,9 +26,15 @@ export default function StackLinkProvider({ children }: PropsWithChildren) {
     setHistory((prev) => [...prev.filter((_, i) => i !== prev.length - 1)]);
   }, []);
 
+  const handleGoBack = useCallback(() => {
+    if (onGoBack) {
+      onGoBack(history);
+    }
+  }, [onGoBack, history]);
+
   return (
     <StackContext.Provider
-      value={{ history, push, pop, isAnimating, setIsAnimating }}
+      value={{ history, push, pop, isAnimating, setIsAnimating, handleGoBack }}
     >
       <div
         id="stack-main"

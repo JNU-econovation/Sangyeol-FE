@@ -16,7 +16,8 @@ export default memo(function GoBackTrigger() {
 
   const goBackTriggerElementId = useId();
 
-  const { history, pop, isAnimating, setIsAnimating } = useStackContext();
+  const { history, pop, isAnimating, setIsAnimating, handleGoBack } =
+    useStackContext();
 
   const router = useRouter();
 
@@ -83,6 +84,7 @@ export default memo(function GoBackTrigger() {
         startXRef.current = 0;
         currentXRef.current = 0;
         setIsTouching(false);
+        handleGoBack();
         router.back();
         pop();
       }, DEFAULT_DURATION);
@@ -112,7 +114,7 @@ export default memo(function GoBackTrigger() {
           id={goBackTriggerElementId}
           style={{
             position: "fixed",
-            width: "2rem",
+            width: "2.5rem",
             height: "100vh",
             top: 0,
             left: 0,
