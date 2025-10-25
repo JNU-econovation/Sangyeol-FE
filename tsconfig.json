@@ -41,5 +41,6 @@
     {
       "path": "./packages/stack-link"
     }
-  ]
+  ],
+  "extends": "expo/tsconfig.base"
 }
