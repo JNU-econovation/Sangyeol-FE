@@ -1,14 +1,18 @@
 import PATH_ROUTE from "@constants/pathRoute";
 import WebViewWithInjected from "@entities/WebViewWithInjected";
 import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
+import { useCourseWebviewStore } from "@store/webviewRef/courseWebviewStore";
 import { router } from "expo-router";
 
 const CourseWebview = () => {
   const { location } = useGetCurrentPosition();
+  const setCanGoBack = useCourseWebviewStore().setCanGoBack;
+
   return (
     <WebViewWithInjected
       source={{ uri: PATH_ROUTE.WEBVIEW.MOUNTAIN }}
       loadingBar
+      onNavigate={({ canGoBack }) => setCanGoBack(canGoBack)}
       onMessage={({ method, name, body }) => {
         if (name === "start-travel" && method === "POST") {
           if (
