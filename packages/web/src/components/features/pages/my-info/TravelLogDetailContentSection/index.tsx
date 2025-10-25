@@ -3,7 +3,7 @@
 import useTravelLogDeleteModal from "@hooks/feature/modal/useTravelLogDeleteModal";
 import useTravelRecordDetailQuery from "@hooks/feature/query/query/useTravelRecordDetailQuery";
 import TrashIcon from "@icons/TrashIcon";
-import { timestampToDateValues } from "@sangyeol/utils";
+import { msToTimeText, timestampToDateValues } from "@sangyeol/utils";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import { useParams } from "next/navigation";
@@ -47,7 +47,9 @@ const TravelLogDetailContentSection = Suspense.with(
         <div className="h-80 bg-gray-100"></div>
         <div className="flex">
           <div className="grow p-3.5">
-            <p className="text-2xl font-bold text-center">{duration}</p>
+            <p className="text-2xl font-bold text-center">
+              {msToTimeText(duration).split(":").slice(1).join(":")}
+            </p>
             <p className="text-gray-900 text-base font-medium text-center">
               산행시간
             </p>
