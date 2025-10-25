@@ -19,7 +19,10 @@ import { router } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Animated, BackHandler, View } from "react-native";
 import WebView from "react-native-webview";
-import type { WebViewSource } from "react-native-webview/lib/WebViewTypes";
+import type {
+  WebViewNavigation,
+  WebViewSource,
+} from "react-native-webview/lib/WebViewTypes";
 
 type OnMessage = (
   reqMessage: MessageEventRequestData,
@@ -36,6 +39,7 @@ interface WebViewWithInjectedProps {
   onMessage?: OnMessage | PromiseOnMessage;
   onReadyToMessage?: () => void;
   loadingBar?: boolean;
+  onNavigate?: (arg: WebViewNavigation) => void;
 }
 
 const WebViewWithInjected = ({
@@ -44,6 +48,7 @@ const WebViewWithInjected = ({
   onMessage,
   onReadyToMessage,
   loadingBar = false,
+  onNavigate,
 }: WebViewWithInjectedProps) => {
   const webViewRef = useRef<WebView>(null);
   const progressAnim = useRef(new Animated.Value(0)).current;
@@ -85,6 +90,10 @@ const WebViewWithInjected = ({
       backHandler.remove();
     };
   }, [webViewRef, canGoBack]);
+
+  // useEffect(() => {
+  //   onNavigate && onNavigate();
+  // }, [canGoBack, canGoForward]);
 
   const middleware = useCallback((reqMessage: MessageEventRequestData) => {
     logMessageWithTime(`WebView received: \n${JSON.stringify(reqMessage)}`);
@@ -201,6 +210,7 @@ const WebViewWithInjected = ({
         onNavigationStateChange={(navState) => {
           setCanGoBack(navState.canGoBack);
           setCanGoForward(navState.canGoForward);
+          onNavigate && onNavigate(navState);
         }}
         webviewDebuggingEnabled={__DEV__}
         bounces={false}
