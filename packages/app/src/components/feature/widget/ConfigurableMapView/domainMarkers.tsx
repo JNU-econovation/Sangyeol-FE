@@ -29,6 +29,8 @@ const DomainMarkers = ({
           longitude={longitude}
           image={require("@assets/images/Base.png")}
           isIconPerspectiveEnabled={true}
+          width={32}
+          height={32}
           isHidden={
             zoomLevel < 9 ||
             showOverlays.length === 0 ||
@@ -44,6 +46,8 @@ const DomainMarkers = ({
           latitude={latitude}
           longitude={longitude}
           image={require("@assets/images/Toilet.png")}
+          width={32}
+          height={32}
           isHidden={
             zoomLevel < 9 ||
             showOverlays.length === 0 ||
@@ -58,6 +62,8 @@ const DomainMarkers = ({
           latitude={latitude}
           longitude={longitude}
           image={require("@assets/images/Market.png")}
+          width={32}
+          height={32}
           isHidden={
             zoomLevel < 9 ||
             showOverlays.length === 0 ||
@@ -72,6 +78,8 @@ const DomainMarkers = ({
           latitude={latitude}
           longitude={longitude}
           image={require("@assets/images/Emergency_Kit.png")}
+          width={32}
+          height={32}
           isHidden={
             zoomLevel < 9 ||
             showOverlays.length === 0 ||
@@ -86,6 +94,8 @@ const DomainMarkers = ({
           latitude={latitude}
           longitude={longitude}
           image={require("@assets/images/Rental.png")}
+          width={32}
+          height={32}
           isHidden={
             zoomLevel < 9 ||
             showOverlays.length === 0 ||
