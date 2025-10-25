@@ -6,6 +6,7 @@ export interface StackContextType {
   pop: () => void;
   isAnimating: boolean;
   setIsAnimating: (value: boolean) => void;
+  handleGoBack: () => void;
 }
 
 export interface StackLinkParams {

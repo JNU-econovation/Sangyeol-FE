@@ -13,7 +13,8 @@ const useStackLinkBack = () => {
     type: AnimationType;
     active: boolean;
   }>({ type: "slide", active: false });
-  const { pop, history, isAnimating, setIsAnimating } = useStackContext();
+  const { pop, history, isAnimating, setIsAnimating, handleGoBack } =
+    useStackContext();
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const router = useRouter();
@@ -35,6 +36,7 @@ const useStackLinkBack = () => {
       // 애니메이션 없이 바로 뒤로가기
       setAnimationState({ type: "slide", active: false });
       setIsAnimating(false);
+      handleGoBack();
       router.back();
       pop();
       return;
