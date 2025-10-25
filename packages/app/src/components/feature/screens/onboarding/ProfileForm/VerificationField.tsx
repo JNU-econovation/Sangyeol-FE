@@ -27,7 +27,7 @@ const VerificationField = () => {
 
       checkVerificationCode(
         {
-          verificationCode: +verificationCode,
+          verificationCode,
           phoneNumber: `010-${watch("phoneNumber")}`,
         }, // TODO: 타입 안정성 해결
         {
