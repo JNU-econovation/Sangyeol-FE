@@ -1,6 +1,7 @@
 import useRealTimeLocation from "@hooks/feature/location/useRealTimeLocation";
 import useDeviationToast from "@hooks/feature/toast/travel/useDeviationToast";
 import useTravelEndToast from "@hooks/feature/toast/travel/useTravelEndToast";
+import useTravelErrorToast from "@hooks/feature/toast/travel/useTravelErrorToast";
 import SocketManager from "@service/socket/manager";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import useTravelStateStore from "@store/travel";
@@ -13,8 +14,8 @@ import SOCKET from "./constants";
 import { SocketMessageResponse } from "./types";
 
 const TRAVEL_SOCKET_URL = process.env.EXPO_PUBLIC_TRAVEL_SOCKET_URL;
-const TRAVEL_LOCATION_UPDATE_INTERVAL = 2000;
-const KEEP_ALIVE_INTERVAL = 5000;
+const TRAVEL_LOCATION_UPDATE_INTERVAL = 5000;
+const KEEP_ALIVE_INTERVAL = 10000;
 
 const useTravelWithoutCourse = () => {
   "use memo";
@@ -36,10 +37,11 @@ const useTravelWithoutCourse = () => {
   const { location } = useRealTimeLocation({
     accuracy: "highest",
     timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
-    distanceInterval: 1,
+    distanceInterval: 5,
   });
   const { showDeviationToast } = useDeviationToast();
   const { showTravelEndToast } = useTravelEndToast();
+  const { showTravelErrorToast } = useTravelErrorToast();
 
   // init
   useEffect(() => {
@@ -152,6 +154,9 @@ const useTravelWithoutCourse = () => {
         setTravelState("idle");
         setConnectedURL(null);
         reset();
+        showTravelErrorToast();
+        router.dismissAll();
+        router.replace("/(tabs)/home");
       },
       onMessage,
     });
@@ -200,13 +205,14 @@ const useTravelWithoutCourse = () => {
       return;
     }
 
-    intervalRef.current = setInterval(() => {
+    intervalRef.current = setInterval(async () => {
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (!socket) return;
       if (!location) return;
       const {
         coords: { longitude, latitude },
-      } = location;
+        // } = location;
+      } = await Location.getCurrentPositionAsync();
       socket.sendMessage(
         SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude]),
       );
