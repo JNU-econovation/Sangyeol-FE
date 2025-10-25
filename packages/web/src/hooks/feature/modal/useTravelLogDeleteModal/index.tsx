@@ -1,8 +1,16 @@
 import { useModalContext } from "@/service/modal";
 import TravelLogDeleteModal from "@pages/my-info/TravelLogDeleteModal";
+import { useEffect } from "react";
 
 const useTravelLogDeleteModal = () => {
   const { addModalAsync } = useModalContext();
+  const { closeModalAsync } = useModalContext();
+
+  useEffect(() => {
+    return () => {
+      closeModalAsync();
+    };
+  }, []);
 
   const openTravelLogDeleteModal = () => {
     addModalAsync(<TravelLogDeleteModal />);

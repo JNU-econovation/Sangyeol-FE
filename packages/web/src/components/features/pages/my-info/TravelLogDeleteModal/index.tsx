@@ -11,7 +11,8 @@ import { useStackLinkBack } from "stack-link";
 
 const TravelLogDeleteModal = () => {
   const { recordId } = useParams<{ recordId: string }>();
-  const { mutate: deleteTravelRecord } = useDeleteTravelRecordMutation();
+  const { mutate: deleteTravelRecord, isPending } =
+    useDeleteTravelRecordMutation();
   const { closeModalAsync } = useModalContext();
   const { goBack } = useStackLinkBack();
 
@@ -19,14 +20,9 @@ const TravelLogDeleteModal = () => {
 
   useEffect(() => {
     if (trigger) {
-      setTimeout(() => {
-        goBack({});
-      }, 0);
-      setTimeout(() => {
-        closeModalAsync();
-      }, 200);
+      goBack({ animation: "fade" });
     }
-  }, [goBack, trigger]);
+  }, [goBack, closeModalAsync, trigger]);
 
   return (
     <Dimmed
@@ -66,12 +62,14 @@ const TravelLogDeleteModal = () => {
               <Button
                 size={"md"}
                 className="grow"
+                disabled={isPending}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   if (recordId)
                     deleteTravelRecord(recordId, {
                       onSuccess: () => {
+                        alert("삭제되었습니다.");
                         // closeModalAsync();
                         setTrigger(true);
                       },
@@ -81,7 +79,7 @@ const TravelLogDeleteModal = () => {
                     });
                 }}
               >
-                확인
+                {isPending ? "삭제중" : "확인"}
               </Button>
             </div>
           </div>
