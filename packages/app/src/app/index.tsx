@@ -39,12 +39,7 @@ export default function Index() {
       !isSetTokenToStoreLoading &&
       dbReady
     )
-      console.log(
-        fontLoaded,
-        isLoginAndProfileStateLoading,
-        isSetTokenToStoreLoading,
-      );
-    SplashScreen.hideAsync();
+      SplashScreen.hideAsync();
   }, [fontLoaded, isLoginAndProfileStateLoading, isSetTokenToStoreLoading]);
 
   if (isCheckingLoginLoading || profileStatusLoading) return null; //TODO: 로딩 폴백 보여주기

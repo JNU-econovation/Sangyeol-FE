@@ -116,6 +116,12 @@ const appConfig = {
     experiments: {
       typedRoutes: true,
     },
+    updates: {
+      url: "https://u.expo.dev/771bd71e-9bd9-42bc-809c-d0207f8329d3",
+    },
+    runtimeVersion: {
+      policy: "appVersion",
+    },
     extra: {
       router: {
         origin: false,
