@@ -7,13 +7,16 @@ const TravelLogDetailPage = () => {
   return (
     <>
       <TravelLogDetailHeaderSection />
-      <Spacing size={20} />
-      <hr className="border-gray-300" />
-      <Spacing size={8} />
-      <TravelLogDetailContentSection />
-      <Spacing size={2} className="bg-gray-300" />
-      <div className="px-6">
-        <TravelLogDetailCoursesSection />
+      <div className="max-h-screen overflow-y-scroll">
+        <Spacing size={20} />
+        <hr className="border-gray-300" />
+        <Spacing size={8} />
+        <TravelLogDetailContentSection />
+        <Spacing size={2} className="bg-gray-300" />
+        <div className="px-6">
+          <TravelLogDetailCoursesSection />
+        </div>
+        <Spacing size={16} />
       </div>
     </>
   );
