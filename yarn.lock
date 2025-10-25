@@ -6895,6 +6895,7 @@ __metadata:
     expo-haptics: "npm:~15.0.7"
     expo-image: "npm:~3.0.10"
     expo-image-picker: "npm:~17.0.8"
+    expo-keep-awake: "npm:~15.0.7"
     expo-linking: "npm:~8.0.8"
     expo-local-authentication: "npm:~17.0.7"
     expo-location: "npm:~19.0.7"
