@@ -1,5 +1,5 @@
 import * as Updates from "expo-updates";
-import { Button } from "react-native";
+import { Alert, Button } from "react-native";
 import styled from "@emotion/native";
 import useRouterPrefetcher from "@hooks/common/useRouterPrefetcher";
 import usePersonalInfoModal from "@hooks/feature/modal/usePersonalInfoModal";
@@ -8,6 +8,7 @@ import HomeNavGridSection from "@screens/Home/HomeNavGridSection";
 import Spacing from "@shared/layout/Spacing";
 import { useEffect } from "react";
 import { ImageBackground } from "react-native";
+import useCheckEnvironment from "@hooks/feature/env/useCheckEnvironment";
 
 const HomeScreen = () => {
   const {
@@ -16,6 +17,7 @@ const HomeScreen = () => {
     // error: profileStatusError,
   } = useUserProfileStatusQuery();
   const { showNotificationModal } = usePersonalInfoModal();
+  const { isDevelopment } = useCheckEnvironment();
 
   useRouterPrefetcher({
     routes: ["/(tabs)/home/course"],
@@ -31,23 +33,29 @@ const HomeScreen = () => {
 
   const checkForUpdates = async () => {
     try {
+      Alert.alert("업데이트 확인 중...");
       const update = await Updates.checkForUpdateAsync();
 
       if (update.isAvailable) {
+        Alert.alert("업데이트가 있습니다! 다운로드를 시작합니다.");
         await Updates.fetchUpdateAsync();
         // 업데이트 다운로드 완료, 앱 재시작
+        Alert.alert("업데이트가 완료되었습니다! 앱을 재시작합니다.");
         await Updates.reloadAsync();
       } else {
-        alert("최신 버전입니다!");
+        Alert.alert("최신 버전입니다!");
       }
     } catch (error) {
+      Alert.alert("업데이트 확인 중 오류가 발생했습니다.");
       console.error(error);
     }
   };
 
   return (
     <Container source={require("@assets/images/Home_Background.png")}>
-      <Button title="업데이트 확인" onPress={checkForUpdates} />;
+      {isDevelopment && (
+        <Button title="업데이트 확인" onPress={checkForUpdates} />
+      )}
       <HomeNavGridSection />
       <Spacing size={20} />
     </Container>

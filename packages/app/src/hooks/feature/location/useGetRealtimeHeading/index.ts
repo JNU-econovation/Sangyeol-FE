@@ -2,7 +2,7 @@ import * as Location from "expo-location";
 import { useEffect, useRef, useState } from "react";
 import { useSharedValue } from "react-native-reanimated";
 
-const ANIMATION_INTERVAL = 16; // ~60fps for smooth animation
+const ANIMATION_INTERVAL = 250;
 
 const useGetRealtimeHeading = () => {
   const animationRef = useRef(null);
@@ -43,7 +43,6 @@ const useGetRealtimeHeading = () => {
     })();
   }, []);
 
-  // 부드러운 애니메이션 (60fps)
   useEffect(() => {
     animationRef.current = setInterval(() => {
       setHeading(() => {

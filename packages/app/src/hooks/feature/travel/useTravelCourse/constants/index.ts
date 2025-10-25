@@ -52,6 +52,10 @@ const SOCKET = {
         courseId,
       },
     }),
+    KEEP_ALIVE: () => ({
+      event: "keep-alive",
+      data: {},
+    }),
   },
 } as const;
 

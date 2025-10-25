@@ -17,8 +17,8 @@ const HeadPolygon = memo(({ zoomLevel }: HeadPolygonProps) => {
   const { heading, isLoading: isHeadingLoading } = useGetRealtimeHeading();
   const { location, isLoading: isLocationLoading } = useRealTimeLocation({
     accuracy: "highest",
-    timeInterval: 2000,
-    distanceInterval: 2,
+    timeInterval: 5000,
+    distanceInterval: 5,
   });
 
   if (isHeadingLoading || isLocationLoading || !location) return null;

@@ -14,7 +14,6 @@ import {
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { COLORS } from "@styles/colorPalette";
 import { Redirect, Tabs } from "expo-router";
-import { TouchableOpacity } from "react-native";
 import { WebView } from "react-native-webview";
 
 export let mypageWebviewRef: React.RefObject<WebView<{}>> = null;
@@ -48,7 +47,18 @@ export default function TabLayout() {
             title: "홈",
             tabBarLabel: "홈",
             tabBarIcon: ({ focused }) =>
-              focused ? <HomeBlockSVG /> : <HomeSVG />,
+              focused ? (
+                // <TouchableOpacity
+                //   onPress={() => {
+                //     router.dismissAll();
+                //     router.replace("/(tabs)/home");
+                //   }}
+                // >
+                <HomeBlockSVG />
+              ) : (
+                // </TouchableOpacity>
+                <HomeSVG />
+              ),
           }}
         />
         <Tabs.Screen
@@ -81,19 +91,19 @@ export default function TabLayout() {
             tabBarLabel: "마이",
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    if (mypageWebviewRef?.current) {
-                      routeTo({
-                        routeType: "dismiss",
-                        url: "/my-page",
-                      });
-                    }
-                  }}
-                >
-                  <HeroBlockSVG />
-                </TouchableOpacity>
+                // <TouchableOpacity
+                //   onPress={() => {
+                //     if (mypageWebviewRef?.current) {
+                //       routeTo({
+                //         routeType: "dismiss",
+                //         url: "/my-page",
+                //       });
+                //     }
+                //   }}
+                // >
+                <HeroBlockSVG />
               ) : (
+                // </TouchableOpacity>
                 <HeroSVG />
               ),
             animation: "fade",
