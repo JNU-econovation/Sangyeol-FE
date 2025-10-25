@@ -10,7 +10,7 @@ import { msToTimeText } from "@utils/time";
 import { useEffect, useRef, useState } from "react";
 import { AppState } from "react-native";
 
-const INTERVAL_CYCLE = 250; // milliseconds
+const INTERVAL_CYCLE = 1000; // milliseconds
 
 const TravelWithCourseMonitorSection = () => {
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds. 산행 시간

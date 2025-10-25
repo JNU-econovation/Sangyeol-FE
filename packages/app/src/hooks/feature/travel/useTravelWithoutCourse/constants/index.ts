@@ -43,6 +43,10 @@ const SOCKET = {
         totalTravelTime,
       },
     }),
+    KEEP_ALIVE: () => ({
+      event: "keep-alive",
+      data: {},
+    }),
   },
 } as const;
 

@@ -66,6 +66,7 @@ const ConfigurableMapView = memo(
     });
 
     const [zoomLevel, setZoomLevel] = useState(zoom);
+    const [isHandling, setIsHandling] = useState(false);
 
     if (isLocationLoading || !location) {
       return null;
@@ -91,8 +92,17 @@ const ConfigurableMapView = memo(
         // isTiltGesturesEnabled={false} // 기울이기 제스처 비활성화
         isShowZoomControls={false}
         isShowCompass={false}
-        onCameraChanged={({ zoom }) => setZoomLevel(zoom)}
+        onCameraChanged={() => {
+          // setZoomLevel(zoom);
+          setIsHandling(true);
+        }}
+        onCameraIdle={({ zoom }) => {
+          setZoomLevel(zoom);
+          setIsHandling(false);
+        }}
         minZoom={6}
+        maxZoom={20}
+        isExtentBoundedInKorea
         {...options}
       >
         {currentPositionIcon && (
@@ -102,30 +112,34 @@ const ConfigurableMapView = memo(
           </>
         )}
 
-        <DomainMarkers
-          zoomLevel={zoomLevel}
-          showOverlays={showOverlays}
-          bases={bases}
-          toilets={toilets}
-          markets={markets}
-          rentals={rentals}
-          emergencyKits={emergencyKits}
-        />
-
-        {/* markers */}
-        {Object.keys(MOUNTAIN).map((key) => {
-          const [longitude, latitude] =
-            MOUNTAIN[key as keyof typeof MOUNTAIN].coordinate;
-          return (
-            <NaverMapMarkerOverlay
-              key={key}
-              latitude={latitude}
-              longitude={longitude}
-              image={require("@assets/images/Mountain.png")}
-              isHidden={zoomLevel >= 9 && showOverlays.length !== 0}
+        {!isHandling && (
+          <>
+            <DomainMarkers
+              zoomLevel={zoomLevel}
+              showOverlays={showOverlays}
+              bases={bases}
+              toilets={toilets}
+              markets={markets}
+              rentals={rentals}
+              emergencyKits={emergencyKits}
             />
-          );
-        })}
+
+            {/* markers */}
+            {Object.keys(MOUNTAIN).map((key) => {
+              const [longitude, latitude] =
+                MOUNTAIN[key as keyof typeof MOUNTAIN].coordinate;
+              return (
+                <NaverMapMarkerOverlay
+                  key={key}
+                  latitude={latitude}
+                  longitude={longitude}
+                  image={require("@assets/images/Mountain.png")}
+                  isHidden={zoomLevel >= 9 && showOverlays.length !== 0}
+                />
+              );
+            })}
+          </>
+        )}
 
         {paths &&
           paths.map(

@@ -189,7 +189,6 @@ const useTravelWithoutCourse = () => {
         coords: { longitude, latitude },
       } = await Location.getCurrentPositionAsync();
       socket.sendMessage(SOCKET.MESSAGE.START([longitude, latitude]));
-      console.log("start 메시지 보냄");
     } catch (error) {
       console.error("[useTravelCourse_start] 위치 가져오기 실패:", error);
     }
@@ -208,16 +207,8 @@ const useTravelWithoutCourse = () => {
     intervalRef.current = setInterval(async () => {
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (!socket) return;
-      if (!location) return;
-      const {
-        coords: { longitude, latitude },
-        // } = location;
-      } = await Location.getCurrentPositionAsync();
-      socket.sendMessage(
-        SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude]),
-      );
-      if (travelState === "in-progress")
-        pushTraveledPath([longitude, latitude]);
+
+      socket.sendMessage(SOCKET.MESSAGE.KEEP_ALIVE());
     }, KEEP_ALIVE_INTERVAL);
   };
 

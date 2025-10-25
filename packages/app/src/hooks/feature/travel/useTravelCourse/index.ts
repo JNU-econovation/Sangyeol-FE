@@ -1,7 +1,8 @@
 import useRealTimeLocation from "@hooks/feature/location/useRealTimeLocation";
-import useDeviationToast from "@hooks/feature/toast/travel/useDeviationToast";
+// import useDeviationToast from "@hooks/feature/toast/travel/useDeviationToast";
 import useTravelEndToast from "@hooks/feature/toast/travel/useTravelEndToast";
 import useTravelErrorToast from "@hooks/feature/toast/travel/useTravelErrorToast";
+import { useNoticeBar } from "@service/notice-bar";
 import SocketManager from "@service/socket/manager";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import useTravelStateStore from "@store/travel";
@@ -46,9 +47,10 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
     timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
     distanceInterval: 5,
   });
-  const { showDeviationToast } = useDeviationToast();
+  // const { showDeviationToast } = useDeviationToast();
   const { showTravelEndToast } = useTravelEndToast();
   const { showTravelErrorToast } = useTravelErrorToast();
+  const { showNotice } = useNoticeBar();
 
   // init
   useEffect(() => {
@@ -80,7 +82,12 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
       setRemainTimeToStopover(remainTimeToStopover);
 
       // 경로 이탈한 경우
-      if (isDeviation) showDeviationToast();
+      // if (isDeviation) showDeviationToast();
+      if (isDeviation)
+        showNotice({
+          message: "⚠️ 경로를 이탈했습니다!",
+          duration: 2500,
+        });
 
       // 도착한 경우
       if (isArrived) {
@@ -209,7 +216,6 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
         coords: { longitude, latitude },
       } = await Location.getCurrentPositionAsync();
       socket.sendMessage(SOCKET.MESSAGE.START([longitude, latitude], courseId));
-      console.log("start 메시지 보냄");
     } catch (error) {
       console.error("[useTravelCourse_start] 위치 가져오기 실패:", error);
     }
@@ -228,15 +234,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
     intervalRef.current = setInterval(async () => {
       const socket = socketManager.getSocket(TRAVEL_SOCKET_URL);
       if (!socket) return;
-      if (!location) return;
-      const {
-        coords: { longitude, latitude },
-      } = await Location.getCurrentPositionAsync();
-      socket.sendMessage(
-        SOCKET.MESSAGE.CURRENT_POSITION([longitude, latitude], courseId),
-      );
-      if (travelState === "in-progress")
-        pushTraveledPath([longitude, latitude]);
+      socket.sendMessage(SOCKET.MESSAGE.KEEP_ALIVE());
     }, KEEP_ALIVE_INTERVAL);
   };
 

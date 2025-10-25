@@ -5,8 +5,8 @@ import { memo } from "react";
 const CurrentPosition = memo(() => {
   const { location, isLoading: isLocationLoading } = useRealTimeLocation({
     accuracy: "highest",
-    timeInterval: 2000,
-    distanceInterval: 2,
+    timeInterval: 5000,
+    distanceInterval: 5,
   });
 
   if (isLocationLoading || !location) return null;
@@ -17,6 +17,8 @@ const CurrentPosition = memo(() => {
       longitude={location.coords.longitude}
       image={require("@assets/images/Current_Position.png")}
       anchor={{ x: 0.5, y: 0.5 }}
+      width={32}
+      height={32}
     />
   );
 });
