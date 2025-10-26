@@ -90,22 +90,7 @@ export default function TabLayout() {
           options={{
             tabBarLabel: "마이",
             tabBarIcon: ({ focused }) =>
-              focused ? (
-                // <TouchableOpacity
-                //   onPress={() => {
-                //     if (mypageWebviewRef?.current) {
-                //       routeTo({
-                //         routeType: "dismiss",
-                //         url: "/my-page",
-                //       });
-                //     }
-                //   }}
-                // >
-                <HeroBlockSVG />
-              ) : (
-                // </TouchableOpacity>
-                <HeroSVG />
-              ),
+              focused ? <HeroBlockSVG /> : <HeroSVG />,
             animation: "fade",
           }}
         />
