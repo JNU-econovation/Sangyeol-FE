@@ -8,6 +8,17 @@ import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
+
+const TravelResultPathMapView = dynamic(
+  () =>
+    import(
+      "@/components/features/widgets/map/TravelResultPathMapView/index"
+    ).then((mod) => mod.default),
+  {
+    ssr: false,
+  },
+);
 
 import TravelLogDetailContentSectionLoader from "./loader";
 
@@ -44,7 +55,9 @@ const TravelLogDetailContentSection = Suspense.with(
           </span>
         </div>
         <Spacing size={3.5} />
-        <div className="h-80 bg-gray-100"></div>
+        <div className="h-80 bg-gray-100 select-none">
+          <TravelResultPathMapView traveledPath={coordinates} />
+        </div>
         <div className="flex">
           <div className="grow p-3.5">
             <p className="text-2xl font-bold text-center">
