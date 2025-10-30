@@ -2,11 +2,11 @@ import { TrashSVG } from "@components/common/shared/ui/Icons";
 import Text from "@components/common/shared/ui/Text";
 import styled from "@emotion/native";
 import useImagePicker from "@hooks/common/useImagePicker";
-import FieldLayout from "@shared/layout/FieldLayout";
+import FieldLayout, { FieldLayoutProps } from "@shared/layout/FieldLayout";
 import WeakButton from "@shared/ui/WeakButton";
 import { COLORS } from "@styles/colorPalette";
 
-interface ImageSelectFieldProps {
+interface ImageSelectFieldProps extends Omit<FieldLayoutProps, "content"> {
   title: string;
   titleButton?: boolean;
   buttonTitle: string;
@@ -19,6 +19,7 @@ const ImageSelectField = ({
   titleButton = false,
   buttonTitle,
   onChange,
+  ...props
 }: ImageSelectFieldProps) => {
   const { selectedImagesUri, pickImage, removeImage } = useImagePicker({
     onChange,
@@ -54,6 +55,7 @@ const ImageSelectField = ({
           )}
         </ImageContainer>
       }
+      {...props}
     />
   );
 };

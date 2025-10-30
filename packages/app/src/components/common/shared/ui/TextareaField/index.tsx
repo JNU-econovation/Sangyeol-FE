@@ -54,7 +54,9 @@ const TextAreaField = ({
       {helperText && (
         <>
           <Spacing size={helperTextSpacing} />
-          <Text {...helperTextProps}>{helperText}</Text>
+          <Text fontSize={14} {...helperTextProps}>
+            {helperText}
+          </Text>
         </>
       )}
     </>
