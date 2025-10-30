@@ -35,7 +35,7 @@ const EmailField = () => {
         <TextAreaField
           title="이메일"
           titleSpacing={0}
-          placeholder="입력하기"
+          titleSize={18}
           backgroundColor="gray300"
           borderColor="gray300"
           paddingVertical={16}

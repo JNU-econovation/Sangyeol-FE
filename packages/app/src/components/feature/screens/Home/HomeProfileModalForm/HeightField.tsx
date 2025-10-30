@@ -1,4 +1,6 @@
+import styled from "@emotion/native";
 import { useProfileModalFormContext } from "@hooks/feature/form/useProfileModalForm";
+import Text from "@shared/ui/Text";
 import TextAreaField from "@shared/ui/TextareaField";
 import { Controller } from "react-hook-form";
 
@@ -23,10 +25,24 @@ const HeightField = () => {
           }
           helperTextProps={{ color: "error" }}
           keyboardType="numeric"
+          contentRightComponent={
+            <RightContainer>
+              <Text fontWeight="semibold" fontSize={16}>
+                cm
+              </Text>
+            </RightContainer>
+          }
         />
       )}
     />
   );
 };
+
+const RightContainer = styled.View`
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-right: 14px;
+`;
 
 export default HeightField;

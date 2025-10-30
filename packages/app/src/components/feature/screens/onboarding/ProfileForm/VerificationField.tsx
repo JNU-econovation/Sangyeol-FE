@@ -76,6 +76,7 @@ const VerificationField = () => {
       render={({ field: { onChange, value } }) => (
         <TextAreaField
           title="인증번호"
+          titleSize={18}
           titleSpacing={0}
           backgroundColor="gray300"
           borderColor="gray300"
@@ -120,6 +121,7 @@ const VerificationField = () => {
               <DefaultButton
                 title="확인"
                 color="mainWhite"
+                fullWidth
                 fontSize={14}
                 paddingHorizontal={12}
                 paddingVertical={8}
@@ -139,7 +141,8 @@ const VerificationField = () => {
 };
 
 const InputRightSideContainer = styled.View`
-  width: 100%;
+  /* width: 100%; */
+  width: 90px;
   height: 100%;
   display: flex;
   justify-content: center;

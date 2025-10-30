@@ -23,6 +23,7 @@ const PhoneNumberField = () => {
 
   const handlePhoneNumberVerification = () => {
     const phoneNumber = `010-${getValues("phoneNumber")}`;
+    console.log(phoneNumber);
     Keyboard.dismiss();
     if (isValidPhoneNumber(phoneNumber)) {
       sendSMSVerification(phoneNumber, {
@@ -44,6 +45,7 @@ const PhoneNumberField = () => {
       render={({ field: { onChange, value } }) => (
         <TextAreaField
           title="전화번호"
+          titleSize={18}
           titleSpacing={0}
           backgroundColor="gray300"
           borderColor="gray300"
@@ -83,7 +85,7 @@ const PhoneNumberField = () => {
                     : "black"
                 }
               >
-                010 -
+                010-
               </Text>
             </InputLeftSideContainer>
           }
@@ -96,6 +98,7 @@ const PhoneNumberField = () => {
                     : "재전송"
                 }
                 color="mainWhite"
+                fullWidth
                 fontSize={14}
                 paddingHorizontal={12}
                 paddingVertical={8}
@@ -122,7 +125,8 @@ const InputLeftSideContainer = styled.View`
 `;
 
 const InputRightSideContainer = styled.View`
-  width: 100%;
+  /* width: 100%; */
+  width: 90px;
   height: 100%;
   display: flex;
   justify-content: center;

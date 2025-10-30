@@ -18,7 +18,7 @@ const nicknameSchema = z
   .max(12)
   .regex(
     /^[가-힣a-zA-Z0-9]{1,12}$/,
-    "공백 없이 12자 이내 한글, 영문, 숫자만 입력 가능",
+    "공백 없이 2~12자 이내 한글, 영문, 숫자만 입력 가능",
   );
 
 const NicknameField = Suspense.with(
@@ -83,6 +83,7 @@ const NicknameField = Suspense.with(
           <TextAreaField
             title="닉네임"
             titleSpacing={0}
+            titleSize={18}
             placeholder={randomNickname}
             backgroundColor="gray300"
             borderColor="gray300"
@@ -128,7 +129,7 @@ const NicknameField = Suspense.with(
 );
 
 const InputRightSideContainer = styled.View`
-  width: 80px;
+  width: 90px;
   height: 100%;
   display: flex;
   justify-content: center;

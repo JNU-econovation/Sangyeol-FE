@@ -16,6 +16,8 @@ const BloodPicker = ({ value, onChange }: BloodPickerProps) => {
   return (
     <WheelPickerTextareaField
       title="혈액형"
+      titleSize={16}
+      titleWeight="semibold"
       options={[
         { label: "A", value: "A" },
         { label: "B", value: "B" },
