@@ -12,7 +12,7 @@ const ExplainItem1 = () => {
     <ScreenView>
       <Container>
         <Text fontSize={30} fontWeight="bold" color="primary">
-          안전한 모험의 시작
+          안전한 산행의 시작
         </Text>
         <Guide1Image />
         <View>
