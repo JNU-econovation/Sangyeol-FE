@@ -2,7 +2,7 @@ import styled from "@emotion/native";
 import Spacing from "@shared/layout/Spacing";
 import Text, { TextProps } from "@shared/ui/Text";
 
-interface FieldLayoutProps {
+export interface FieldLayoutProps {
   title: string;
   titleSideComponent?: React.ReactNode;
   titleSize?: number;

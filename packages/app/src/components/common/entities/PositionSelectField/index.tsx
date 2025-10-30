@@ -1,12 +1,12 @@
 import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
-import FieldLayout from "@shared/layout/FieldLayout";
+import FieldLayout, { FieldLayoutProps } from "@shared/layout/FieldLayout";
 import Textarea from "@shared/ui/Textarea";
 import WeakButton from "@shared/ui/WeakButton";
 import { useReportPositionStore } from "@store/report/useReportPositionStore";
 import { convertToDMS } from "@utils/coords";
 import { router } from "expo-router";
 
-interface PositionSelectFieldProps {
+interface PositionSelectFieldProps extends Omit<FieldLayoutProps, "content"> {
   title: string;
   titleSideButtonTitle: string;
 }
@@ -14,6 +14,7 @@ interface PositionSelectFieldProps {
 const PositionSelectField = ({
   title,
   titleSideButtonTitle,
+  ...props
 }: PositionSelectFieldProps) => {
   const { reportPosition, setReportPosition } = useReportPositionStore();
   const { location, isLoading } = useGetCurrentPosition();
@@ -52,6 +53,7 @@ const PositionSelectField = ({
           borderColor="gray300"
         />
       }
+      {...props}
     />
   );
 };
