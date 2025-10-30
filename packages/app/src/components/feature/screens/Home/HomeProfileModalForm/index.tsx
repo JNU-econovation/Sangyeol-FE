@@ -51,12 +51,12 @@ const HomeProfileModalForm = Suspense.with(
                   titleWeight="semibold"
                   value={phoneNumber}
                   editable={false}
-                  color="gray600"
+                  color="gray900"
                 />
                 <Spacing size={18} />
-                <WeightField />
-                <Spacing size={18} />
                 <HeightField />
+                <Spacing size={18} />
+                <WeightField />
                 <Spacing size={18} />
                 <BloodTypeField />
                 <Spacing size={18} />
