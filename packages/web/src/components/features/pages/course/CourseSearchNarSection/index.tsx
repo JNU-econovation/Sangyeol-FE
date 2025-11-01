@@ -27,7 +27,11 @@ export default function CourseSearchBarSection() {
         preLoad
         animation="none"
       >
-        <SearchInput placeholder="코스 지점 직접 검색" onFocus={onFocus} />
+        <SearchInput
+          placeholder="추후 기능이 활성화 될 예정입니다"
+          onFocus={onFocus}
+          disabled
+        />
       </StackLink>
     </section>
   );

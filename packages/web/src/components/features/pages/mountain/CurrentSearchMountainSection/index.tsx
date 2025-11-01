@@ -64,7 +64,7 @@ const CurrentSearchMountainSection = () => {
   ) as { mountainId: string; name: string }[];
 
   return (
-    <section>
+    <section className="min-h-24">
       <div className="flex justify-between">
         <span className="text-md font-semibold text-gray-900">최근 검색어</span>
         <button onClick={handleDeleteAll}>
