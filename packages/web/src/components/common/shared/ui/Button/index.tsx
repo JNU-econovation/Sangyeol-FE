@@ -12,7 +12,7 @@ export const ButtonVariants = cva(
         kakaoYellow: "bg-kakao-yellow text-black",
         black: "bg-black text-white",
         white: "bg-white text-black",
-        gray: "bg-gray-600 text-white",
+        gray: "bg-gray-800 text-white",
       },
       size: {
         lg: "px-4 py-2 font-bold text-lg",

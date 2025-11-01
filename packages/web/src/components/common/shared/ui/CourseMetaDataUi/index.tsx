@@ -14,7 +14,7 @@ export default function CourseMetaDataUi({
   distance,
   time,
 }: CourseMetaDataUiProps) {
-  const durationText = `${Math.floor(time / 60)}시간 ${time % 60}분`;
+  const durationText = `${Math.floor(time / 60)}h ${time % 60}m`;
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-1">

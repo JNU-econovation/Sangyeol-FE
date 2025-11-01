@@ -26,8 +26,8 @@ export default function CourseList({
   onResetStared,
 }: CourseListProps) {
   return (
-    <li className="flex gap-4 justify-between bg-white rounded-lg p-3">
-      <div className="flex flex-col justify-between grow">
+    <li className="flex gap-4 justify-between bg-white rounded-lg p-3 shadow-xl">
+      <div className="flex flex-col justify-center gap-2 grow">
         <span className="text-lg font-semibold">{name}</span>
         <CourseMetaDataUi
           time={duration}

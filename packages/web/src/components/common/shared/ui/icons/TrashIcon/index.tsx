@@ -5,10 +5,7 @@ import { ComponentProps } from "react";
 const DEFAULT_ALT = "휴지통";
 
 interface TrashIconProps
-  extends Omit<
-    ComponentProps<typeof Image>,
-    "src" | "width" | "height" | "alt"
-  > {
+  extends Omit<ComponentProps<typeof Image>, "src" | "alt"> {
   alt?: string;
 }
 
