@@ -1,7 +1,6 @@
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
-import Image from "next/image";
 
 interface TravelLogListProps {
   name: string;
@@ -29,9 +28,14 @@ const TravelLogList = ({
           나의 기록
         </Button>
       </div>
-      <div className="w-24 h-24 bg-slate-100 rounded-xl relative overflow-hidden">
-        <Image src={imageSrc} alt="코스 경로" width={96} height={96} />
-      </div>
+      <div
+        className="w-24 h-24 bg-slate-100 rounded-xl relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${imageSrc})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
     </li>
   );
 };

@@ -140,7 +140,7 @@ const Toolbar = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 18px 16px;
   border-bottom-width: 1px;
   border-bottom-color: #e5e7eb;
   background-color: ${COLORS.primary};
@@ -156,7 +156,6 @@ const ToolbarText = styled.Text`
 
 const ToolbarTextBold = styled.Text`
   font-size: 16px;
-  font-weight: 600;
   color: #ffffff;
 `;
 

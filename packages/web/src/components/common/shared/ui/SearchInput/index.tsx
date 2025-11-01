@@ -13,7 +13,7 @@ export default function SearchInput({
   return (
     <div className="relative z-10">
       <input
-        className="rounded-full text-lg p-4 shadow w-full relative bg-white"
+        className="rounded-full text-lg py-4 px-6 shadow w-full relative bg-white"
         ref={inputRef}
         type="text"
         {...props}
