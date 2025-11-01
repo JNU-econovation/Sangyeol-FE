@@ -80,17 +80,20 @@ const VerificationField = () => {
       }
       onChange={(e) => setValue("verificationCode", e.target.value)}
       right={
-        <Button
-          size="sm"
-          onClick={handlePhoneNumberVerification}
-          disabled={
-            watch("phoneNumberVerificationCount") === 0 ||
-            watch("verificationCode").length !== 6
-            // ||watch("verificationFieldHelperState") !== "NONE"
-          }
-        >
-          확인
-        </Button>
+        <div className="w-18">
+          <Button
+            size="sm"
+            onClick={handlePhoneNumberVerification}
+            disabled={
+              watch("phoneNumberVerificationCount") === 0 ||
+              watch("verificationCode").length !== 6
+              // ||watch("verificationFieldHelperState") !== "NONE"
+            }
+            className="w-full"
+          >
+            확인
+          </Button>
+        </div>
       }
     />
   );

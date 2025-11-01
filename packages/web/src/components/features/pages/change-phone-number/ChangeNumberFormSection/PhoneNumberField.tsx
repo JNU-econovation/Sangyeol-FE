@@ -63,9 +63,15 @@ const PhoneNumberField = () => {
         </span>
       }
       right={
-        <Button size="sm" onClick={handlePhoneNumberVerification}>
-          재요청
-        </Button>
+        <div className="w-18">
+          <Button
+            size="sm"
+            onClick={handlePhoneNumberVerification}
+            className="w-full"
+          >
+            재요청
+          </Button>
+        </div>
       }
     />
   );
