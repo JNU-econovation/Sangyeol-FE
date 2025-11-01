@@ -28,7 +28,7 @@ const ReportScreen = () => {
 
       <Spacing size={38} />
       <TextContainer>
-        <Text color="mainWhite" fontWeight="bold" fontSize={28}>
+        <Text color="mainWhite" fontWeight="bold" fontSize={30}>
           위급 상황인가요?
         </Text>
         <Spacing size={16} />
@@ -40,38 +40,39 @@ const ReportScreen = () => {
         </Text>
       </TextContainer>
 
-      <ImmediatelyReportLink
-        activeOpacity={0.8}
-        onPress={handleGoToImmediatelyReport}
-      >
-        <Text fontSize={48} color="red" fontWeight="semibold">
-          즉시
-        </Text>
-        <Text color="primary" fontSize={36} fontWeight="semibold">
-          신고하기
-        </Text>
-      </ImmediatelyReportLink>
-
-      <Spacing size={26} />
-
-      <DetailReportLink activeOpacity={0.8} onPress={handleGoToDetailReport}>
-        <Text
-          fontSize={48}
-          color="primary"
-          fontWeight="semibold"
-          textAlign="right"
+      <ButtonContainer>
+        <ImmediatelyReportLink
+          activeOpacity={0.8}
+          onPress={handleGoToImmediatelyReport}
         >
-          상세
-        </Text>
-        <Text
-          color="primary"
-          fontSize={36}
-          fontWeight="semibold"
-          textAlign="right"
-        >
-          신고하기
-        </Text>
-      </DetailReportLink>
+          <Text fontSize={48} color="red" fontWeight="semibold">
+            즉시
+          </Text>
+          <Text color="primary" fontSize={36} fontWeight="semibold">
+            신고하기
+          </Text>
+        </ImmediatelyReportLink>
+
+        <Spacing size={26} />
+        <DetailReportLink activeOpacity={0.8} onPress={handleGoToDetailReport}>
+          <Text
+            fontSize={48}
+            color="primary"
+            fontWeight="semibold"
+            textAlign="right"
+          >
+            상세
+          </Text>
+          <Text
+            color="primary"
+            fontSize={36}
+            fontWeight="semibold"
+            textAlign="right"
+          >
+            신고하기
+          </Text>
+        </DetailReportLink>
+      </ButtonContainer>
       <Spacing size={35} />
     </ScreenContainer>
   );
@@ -87,15 +88,25 @@ const ImmediatelyReportLink = styled.TouchableOpacity`
   background-color: ${COLORS.mainWhite};
   padding-top: 28px;
   padding-inline: 28px;
-  flex-grow: 1;
+  border-radius: 12px;
+  width: 92%;
+  height: 230px;
 `;
 
 const DetailReportLink = styled.TouchableOpacity`
   background-color: ${COLORS.mainWhite};
   padding-inline: 28px;
   padding-bottom: 28px;
-  flex-grow: 1;
   justify-content: flex-end;
+  border-radius: 12px;
+  width: 92%;
+  height: 230px;
+`;
+
+const ButtonContainer = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default ReportScreen;

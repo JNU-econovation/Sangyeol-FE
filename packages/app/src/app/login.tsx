@@ -1,3 +1,4 @@
+import PositionBottom from "@components/common/shared/layout/PositionBottom";
 import styled from "@emotion/native";
 import Spacing from "@shared/layout/Spacing";
 import { HikingSVG, BackArrow, StarSVG } from "@shared/ui/Icons";
@@ -5,26 +6,26 @@ import Text from "@shared/ui/Text";
 import AppleLoginButton from "@widget/AppleLoginButton";
 import KakaoLoginButton from "@widget/KakaoLoginButton";
 import { router } from "expo-router";
-import { TouchableOpacity } from "react-native";
+import { Platform, TouchableOpacity } from "react-native";
 
 const LoginScreen = () => {
   return (
     <Container>
-      <Spacing size={28} />
+      {/* <Spacing size={28} /> */}
       <HeaderContainer>
         <TouchableOpacity onPress={() => router.back()} activeOpacity={0.8}>
           <BackArrow />
         </TouchableOpacity>
       </HeaderContainer>
 
-      <Spacing size={24} />
+      {/* <Spacing size={24} /> */}
 
       <TitleContainer>
         <Text fontSize={30} fontWeight="bold" color="primary">
           그럼,
         </Text>
         <Text fontSize={30} fontWeight="bold" color="primary">
-          모험을 시작해볼까요?
+          산행을 시작해볼까요?
         </Text>
         <TitleStarPositioner>
           <StarSVG />
@@ -34,11 +35,14 @@ const LoginScreen = () => {
       <Spacing size={68} />
       <HikingSVG />
       <Spacing size={68} />
+      <Spacing size={68} />
+      <Spacing size={68} />
 
-      <KakaoLoginButton />
-
-      <Spacing size={14} />
-      <AppleLoginButton />
+      <PositionBottom bottom={116}>
+        <KakaoLoginButton />
+        <Spacing size={14} />
+        {Platform.OS === "ios" && <AppleLoginButton />}
+      </PositionBottom>
     </Container>
   );
 };
@@ -48,12 +52,17 @@ const Container = styled.View`
   background-color: white;
   padding-inline: 25px;
   padding-block: 40px;
+  justify-content: center;
   align-items: center;
 `;
 
 const TitleContainer = styled.View`
   position: relative;
   width: 100%;
+`;
+
+const ContentContainer = styled.View`
+  margin-top: 8px;
 `;
 
 const TitleStarPositioner = styled.View`
@@ -65,6 +74,8 @@ const TitleStarPositioner = styled.View`
 
 const HeaderContainer = styled.View`
   width: 100%;
+  position: absolute;
+  top: 88px;
 `;
 
 export default LoginScreen;

@@ -43,7 +43,7 @@ const ModalComponent = ({ closeModal }: { closeModal: () => void }) => {
           다음 화면에서 문자를 통해
         </Text>
         <Text fontSize={16} fontWeight="medium">
-          산학 구조대에 신고할 수 있습니다.
+          산악구조대에 신고할 수 있습니다.
         </Text>
         <Spacing size={20} />
         <Text fontSize={16} fontWeight="medium">
@@ -69,6 +69,7 @@ const ModalComponent = ({ closeModal }: { closeModal: () => void }) => {
               onPress={closeModal}
               backgroundColor="gray700"
               color="mainWhite"
+              // heigh
             />
           </ButtonItem>
           <Spacing size={4} horizontal />
@@ -99,6 +100,7 @@ const ModalContainer = styled.View`
   text-align: center;
   width: 300px;
   padding: 30px;
+  padding-bottom: 20px;
   background-color: ${COLORS.mainWhite};
   border-radius: 12px;
   align-items: center;
@@ -112,6 +114,7 @@ const ButtonContainer = styled.View`
   width: 100%;
   justify-content: flex-end;
   align-items: center;
+  gap: 8px;
 `;
 
 const ButtonItem = styled.View`

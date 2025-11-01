@@ -9,6 +9,7 @@ const ReportAttachment = () => {
         <ImageSelectField
           title="첨부 파일"
           buttonTitle="파일 +"
+          titleWeight="bold"
           value={value}
           onChange={onChange}
         />

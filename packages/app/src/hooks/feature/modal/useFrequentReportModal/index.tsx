@@ -79,7 +79,7 @@ const ModalComponent = ({
   const applySelectedOptions = () => {
     if (selectedOptions.length === 0) return;
     const currentContent = watch("reportContent") || "";
-    const selectedText = selectedOptions.join(", ");
+    const selectedText = selectedOptions.join(" ");
     const newContent = currentContent
       ? `${currentContent} ${selectedText}`
       : selectedText;
@@ -97,7 +97,7 @@ const ModalComponent = ({
       <ModalContainer>
         <TitleContainer>
           <Text fontSize={20} fontWeight="bold">
-            자주하는 신고
+            자주 하는 신고
           </Text>
           <CloseButtonContainer onPress={closeModal}>
             <CloseButton source={require("@assets/images/Close_Button.png")} />
@@ -218,8 +218,8 @@ const ReportListItem = styled.TouchableOpacity`
 `;
 
 const CheckBox = styled(Checkbox)`
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 10px;
 `;
 
