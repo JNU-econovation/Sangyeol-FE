@@ -25,7 +25,7 @@ const KakaoLoginButton = () => {
   return (
     <Container>
       <DefaultButton
-        title="카카오톡으로 3초만에 시작하기"
+        title="카카오톡으로 시작하기"
         backgroundColor="kakaoYellow"
         color="black"
         fullWidth
