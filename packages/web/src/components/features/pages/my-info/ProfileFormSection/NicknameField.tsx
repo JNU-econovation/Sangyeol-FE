@@ -20,7 +20,7 @@ const nicknameSchema = z
   .max(12)
   .regex(
     /^[가-힣a-zA-Z0-9]{1,12}$/,
-    "공백 없이 12자 이내 한글, 영문, 숫자만 입력 가능",
+    "공백 없이 2~12자 이내 한글, 영문, 숫자만 입력 가능",
   );
 
 const NicknameField = Suspense.with(
@@ -60,7 +60,7 @@ const NicknameField = Suspense.with(
         onChange={(e) => handleChange(e.target.value)}
         helperText={
           watch("nicknameHelperState") === "INVALID"
-            ? "공백 없이 12자 이내 한글, 영문, 숫자만 입력 가능"
+            ? "공백 없이 2~12자 이내 한글, 영문, 숫자만 입력 가능"
             : watch("nicknameHelperState") === "DUPLICATED"
               ? "이미 사용 중인 닉네임입니다"
               : watch("nicknameHelperState") === "NEEDS_CHECK"

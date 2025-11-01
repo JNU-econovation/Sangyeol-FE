@@ -6,7 +6,7 @@ const CourseBookmarkPage = () => {
   return (
     <>
       <CourseBookmarkHeaderSection />
-      <div className="h-screen flex flex-col bg-gray-600">
+      <div className="h-screen flex flex-col bg-gray-300">
         <Spacing size={14} />
         <CourseBookmarkContentSection />
       </div>

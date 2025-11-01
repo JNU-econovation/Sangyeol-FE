@@ -22,8 +22,8 @@ const CourseBookmarkContentSection = Suspense.with(
     } = useBookmarkQuery();
 
     return (
-      <section className="bg-gray-600 grow">
-        <ul className="flex flex-col bg-gray-600 grow overflow-y-auto px-6 gap-4">
+      <section className="grow h-full">
+        <ul className="flex h-full flex-col grow overflow-y-auto px-6 gap-4">
           <Spacing size={4} />
           {bookmarkList.map((props) => (
             <CourseBookmarkContentList key={props.id} {...props} />

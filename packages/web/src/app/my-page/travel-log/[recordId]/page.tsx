@@ -10,7 +10,7 @@ const TravelLogDetailPage = () => {
       <div className="max-h-screen overflow-y-scroll">
         <Spacing size={20} />
         <hr className="border-gray-300" />
-        <Spacing size={8} />
+        <Spacing size={4} />
         <TravelLogDetailContentSection />
         <Spacing size={2} className="bg-gray-300" />
         <div className="px-6">

@@ -69,9 +69,9 @@ const ProfileFormSection = Suspense.with(
             위급 시 개인 정보
           </span>
           <Spacing size={8} />
-          <WeightField />
-          <Spacing size={8} />
           <HeightField />
+          <Spacing size={8} />
+          <WeightField />
           <Spacing size={8} />
           <BloodTypeField />
           <Spacing size={8} />

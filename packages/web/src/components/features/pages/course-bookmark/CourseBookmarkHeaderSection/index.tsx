@@ -1,5 +1,3 @@
-"use client";
-
 import WeekHeader from "@entities/WeekHeader";
 
 const CourseBookmarkHeaderSection = () => {

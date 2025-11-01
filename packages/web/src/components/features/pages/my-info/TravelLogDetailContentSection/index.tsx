@@ -43,20 +43,22 @@ const TravelLogDetailContentSection = Suspense.with(
 
     return (
       <section>
-        <div className="px-6">
-          <div className="flex items-center justify-between">
-            <p className="text-lg font-semibold">{displayName}</p>
-            <button onClick={openTravelLogDeleteModal} className="pl-4 pr-2">
-              <TrashIcon />
-            </button>
+        <div className="px-6 flex justify-between">
+          <div>
+            <div className="flex items-center justify-between">
+              <p className="text-lg font-semibold">{displayName}</p>
+            </div>
+            <span className="text-gray-900 text-sm font-medium">
+              {dateString}
+            </span>
           </div>
-          <span className="text-gray-900 text-sm font-medium">
-            {dateString}
-          </span>
+          <button onClick={openTravelLogDeleteModal} className="pl-4 pr-2">
+            <TrashIcon width={16} height={16} />
+          </button>
         </div>
         <Spacing size={3.5} />
         <div className="h-80 bg-gray-100 select-none">
-          <TravelResultPathMapView traveledPath={coordinates} />
+          {/* <TravelResultPathMapView traveledPath={coordinates} /> */}
         </div>
         <div className="flex">
           <div className="grow p-3.5">
@@ -71,7 +73,7 @@ const TravelLogDetailContentSection = Suspense.with(
           <div className="grow p-3.5">
             <p className="text-2xl font-bold text-center">{length}</p>
             <p className="text-gray-900 text-base font-medium text-center">
-              산행거리
+              산행거리(km)
             </p>
           </div>
         </div>
