@@ -22,7 +22,7 @@ const ExplainItem1 = () => {
             opacity={0.6}
             textAlign="center"
           >
-            실시간 코스 안내와 실시간 정보로
+            실시간 코스 안내 및 정보로
           </Text>
           <Text
             fontSize={20}
@@ -148,7 +148,11 @@ const Container = styled.View`
 `;
 
 const ExplainItems = {
-  Views: [ExplainItem1, ExplainItem2, ExplainItem4],
+  Views: [
+    ExplainItem1,
+    ExplainItem2,
+    // ExplainItem4
+  ],
   SCREEN_HEIGHT: SCREEN_HEIGHT,
 };
 

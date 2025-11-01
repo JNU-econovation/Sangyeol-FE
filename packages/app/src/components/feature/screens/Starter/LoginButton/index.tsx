@@ -16,12 +16,10 @@ const LoginButton = () => {
         }}
       />
       <DefaultButton
-        title="로그인 하러 가기"
+        title="로그인하기"
         fullWidth
         color="mainWhite"
-        onPress={() => {
-          router.push("/login");
-        }}
+        onPress={() => router.push("/login")}
       />
     </PositionBottom>
   );

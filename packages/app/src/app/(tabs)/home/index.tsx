@@ -53,9 +53,9 @@ const HomeScreen = () => {
 
   return (
     <Container source={require("@assets/images/Home_Background.png")}>
-      {isDevelopment && (
+      {/* {isDevelopment && (
         <Button title="업데이트 확인" onPress={checkForUpdates} />
-      )}
+      )} */}
       <HomeNavGridSection />
       <Spacing size={20} />
     </Container>

@@ -74,7 +74,7 @@ const AppleLoginButton = () => {
   return (
     <Container>
       <DefaultButton
-        title="apple로 계속하기"
+        title="Apple로 시작하기"
         backgroundColor="black"
         color="mainWhite"
         startIcon={<AppleSVG />}
