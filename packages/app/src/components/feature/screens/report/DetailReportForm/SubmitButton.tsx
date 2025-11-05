@@ -9,10 +9,10 @@ const SubmitButton = () => {
 
   const { goSMS, isLoading, sendStatus } = useDetailReportSMS({
     content: watch("reportContent"),
-    lat: reportPosition?.latitude || 0,
-    lng: reportPosition?.longitude || 0,
-    reporterName: "익명",
-    reporterPhone: "000-0000-0000",
+    lat: watch("reportLocation").latitude || 0,
+    lng: watch("reportLocation").longitude || 0,
+    reporterName: watch("reporterName"),
+    reporterPhone: watch("reporterPhone"),
     attachment: watch("attachments"),
     enable: watch("reportContent").trim().length > 0 && !!reportPosition,
   });
