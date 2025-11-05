@@ -1,14 +1,13 @@
-import * as Updates from "expo-updates";
-import { Alert, Button } from "react-native";
 import styled from "@emotion/native";
 import useRouterPrefetcher from "@hooks/common/useRouterPrefetcher";
+import useCheckEnvironment from "@hooks/feature/env/useCheckEnvironment";
 import usePersonalInfoModal from "@hooks/feature/modal/usePersonalInfoModal";
 import useUserProfileStatusQuery from "@hooks/feature/query/query/useUserProfileStatusQuery";
 import HomeNavGridSection from "@screens/Home/HomeNavGridSection";
 import Spacing from "@shared/layout/Spacing";
+import * as Updates from "expo-updates";
 import { useEffect } from "react";
-import { ImageBackground } from "react-native";
-import useCheckEnvironment from "@hooks/feature/env/useCheckEnvironment";
+import { Alert, Button, ImageBackground } from "react-native";
 
 const HomeScreen = () => {
   const {
@@ -35,7 +34,6 @@ const HomeScreen = () => {
     try {
       Alert.alert("업데이트 확인 중...");
       const update = await Updates.checkForUpdateAsync();
-
       if (update.isAvailable) {
         Alert.alert("업데이트가 있습니다! 다운로드를 시작합니다.");
         await Updates.fetchUpdateAsync();
@@ -53,9 +51,9 @@ const HomeScreen = () => {
 
   return (
     <Container source={require("@assets/images/Home_Background.png")}>
-      {/* {isDevelopment && (
+      {isDevelopment && (
         <Button title="업데이트 확인" onPress={checkForUpdates} />
-      )} */}
+      )}
       <HomeNavGridSection />
       <Spacing size={20} />
     </Container>

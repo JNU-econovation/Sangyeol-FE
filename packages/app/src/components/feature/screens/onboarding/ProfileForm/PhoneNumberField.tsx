@@ -57,7 +57,7 @@ const PhoneNumberField = () => {
               watch("phoneNumberFieldHelperState")
             ]
           }
-          paddingHorizontal={55}
+          paddingHorizontal={46}
           onChangeText={(phoneNumber) => {
             if (watch("isPhoneNumberValid")) {
               return;
