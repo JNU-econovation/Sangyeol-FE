@@ -4,6 +4,7 @@ import { useProfileSetFormContext } from "@hooks/feature/form/useProfileSetForm"
 import useCheckNicknameDuplicatedMutate from "@hooks/feature/query/mutate/useCheckNicknameDuplicatedMutate";
 import useRandomNicknameQuery from "@hooks/feature/query/query/useRandomNicknameQuery";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
+import Text from "@shared/ui/Text";
 import TextAreaField from "@shared/ui/TextareaField";
 import { COLORS } from "@styles/colorPalette";
 import { Suspense } from "@suspensive/react";
@@ -84,6 +85,7 @@ const NicknameField = Suspense.with(
             title="닉네임"
             titleSpacing={0}
             titleSize={18}
+            titleSideComponent={<Text color="red">*</Text>}
             placeholder={randomNickname}
             backgroundColor="gray300"
             borderColor="gray300"
@@ -125,7 +127,6 @@ const NicknameField = Suspense.with(
       />
     );
   },
-  // ),
 );
 
 const InputRightSideContainer = styled.View`
