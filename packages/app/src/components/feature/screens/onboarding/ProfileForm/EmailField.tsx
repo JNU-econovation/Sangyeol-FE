@@ -1,8 +1,9 @@
 import { COLORS } from "@styles/colorPalette";
 
-import TextAreaField from "@components/common/shared/ui/TextareaField";
 import HELPER from "@constants/inputField/helper";
 import { useProfileSetFormContext } from "@hooks/feature/form/useProfileSetForm";
+import Text from "@shared/ui/Text";
+import TextAreaField from "@shared/ui/TextareaField";
 import { Controller } from "react-hook-form";
 import { z } from "zod";
 
@@ -36,6 +37,7 @@ const EmailField = () => {
           title="이메일"
           titleSpacing={0}
           titleSize={18}
+          titleSideComponent={<Text color="red">*</Text>}
           backgroundColor="gray300"
           borderColor="gray300"
           paddingVertical={16}

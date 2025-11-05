@@ -47,6 +47,7 @@ const PhoneNumberField = () => {
           title="전화번호"
           titleSize={18}
           titleSpacing={0}
+          titleSideComponent={<Text color="red">*</Text>}
           backgroundColor="gray300"
           borderColor="gray300"
           paddingVertical={16}

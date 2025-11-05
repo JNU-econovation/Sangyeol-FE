@@ -104,11 +104,14 @@ const VerificationField = () => {
           value={`${value}`}
           maxLength={6}
           titleSideComponent={
-            <Text>
-              {verificationTimer !== null
-                ? timestampToMinutesSeconds(verificationTimer)
-                : ""}
-            </Text>
+            <>
+              <Text color="red">*</Text>
+              <Text>
+                {verificationTimer !== null
+                  ? timestampToMinutesSeconds(verificationTimer)
+                  : ""}
+              </Text>
+            </>
           }
           helperTextProps={{
             color:
