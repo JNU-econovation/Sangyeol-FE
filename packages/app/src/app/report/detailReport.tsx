@@ -1,8 +1,8 @@
-import DetailReportForm from "@components/feature/screens/report/DetailReportForm";
+import styled from "@emotion/native";
+import DetailReportForm from "@screens/report/DetailReportForm";
 import ScreenContainer from "@shared/layout/Screen";
 import Spacing from "@shared/layout/Spacing";
 import Header from "@shared/ui/Header";
-import styled from "@emotion/native";
 
 const DetailReport = () => {
   return (

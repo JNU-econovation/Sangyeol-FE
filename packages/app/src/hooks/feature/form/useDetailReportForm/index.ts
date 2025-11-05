@@ -7,6 +7,8 @@ interface DetailReportForm {
     latitude: number;
     longitude: number;
   };
+  reporterName: string;
+  reporterPhone: string;
 }
 
 const useDetailReportForm = () => {
