@@ -27,6 +27,7 @@ const BloodPicker = ({ value, onChange }: BloodPickerProps) => {
       placeholder="혈액형 선택"
       onChange={onChange}
       value={value}
+      required
     />
   );
 };

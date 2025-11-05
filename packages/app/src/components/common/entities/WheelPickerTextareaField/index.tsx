@@ -1,6 +1,7 @@
-import FieldLayout from "@components/common/shared/layout/FieldLayout";
 import styled from "@emotion/native";
 import WheelPicker from "@quidone/react-native-wheel-picker";
+import FieldLayout from "@shared/layout/FieldLayout";
+import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 import { ComponentProps, useState } from "react";
 import { GestureResponderEvent, Modal, Platform } from "react-native";
@@ -16,6 +17,7 @@ interface WheelPickerProps<T extends string>
   value: T | null;
   onChange: (value: T) => void;
   placeholder?: string;
+  required?: boolean;
 }
 
 const WheelPickerTextareaField = <T extends string>({
@@ -23,6 +25,7 @@ const WheelPickerTextareaField = <T extends string>({
   value,
   onChange,
   placeholder = "선택하세요",
+  required = false,
   ...props
 }: WheelPickerProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,6 +51,7 @@ const WheelPickerTextareaField = <T extends string>({
 
   return (
     <FieldLayout
+      titleSideComponent={required && <Text color="red">*</Text>}
       {...props}
       content={
         <>
@@ -59,7 +63,6 @@ const WheelPickerTextareaField = <T extends string>({
           >
             <InputText hasValue={value != null}>{getSelectedLabel()}</InputText>
           </InputButton>
-
           {/* Modal */}
           <Modal
             visible={isOpen}

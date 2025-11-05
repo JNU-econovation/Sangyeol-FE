@@ -16,6 +16,7 @@ const WeightField = () => {
           titleSize={16}
           titleSpacing={4}
           titleWeight="semibold"
+          titleSideComponent={<Text color="red">*</Text>}
           value={value}
           onChangeText={onChange}
           helperText={
