@@ -50,7 +50,7 @@ export default Suspense.with(
 
     return (
       <section className="flex flex-col flex-1 overflow-hidden">
-        <div className="flex justify-between items-center px-6">
+        <div className="grid grid-cols-4 gap-1 justify-between items-center px-6">
           {tabTitleList.map(({ title: tabTitle, sort }, index) => (
             <button
               key={`${index}-${tabTitle}`}
@@ -62,7 +62,7 @@ export default Suspense.with(
             >
               <div
                 className={cn("px-3 py-1 text-white rounded-full text-sm", {
-                  "bg-gray-400": sort !== sortBy,
+                  "bg-gray-700": sort !== sortBy,
                   "bg-primary": sort === sortBy,
                 })}
               >
@@ -70,8 +70,19 @@ export default Suspense.with(
               </div>
             </button>
           ))}
+
+          {tabTitleList.map(({ title: tabTitle, sort }, index) => (
+            <div key={`${index}-${tabTitle}-underline`}>
+              <Spacing size={2} />
+              <div
+                className={cn("h-1", {
+                  "bg-primary": sort === sortBy,
+                })}
+              />
+            </div>
+          ))}
         </div>
-        <Spacing size={4} />
+
         <ul className="flex flex-col gap-4 bg-gray-200 p-6 overflow-y-auto flex-1">
           {courses.map(({ id, peakBaseId, ...props }, index) => (
             <StackLink
