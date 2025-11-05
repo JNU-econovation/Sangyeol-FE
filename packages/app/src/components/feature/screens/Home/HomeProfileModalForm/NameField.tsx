@@ -1,4 +1,5 @@
 import { useProfileModalFormContext } from "@hooks/feature/form/useProfileModalForm";
+import Text from "@shared/ui/Text";
 import TextAreaField from "@shared/ui/TextareaField";
 import { Controller } from "react-hook-form";
 
@@ -13,6 +14,7 @@ const NameField = () => {
           titleSize={16}
           titleSpacing={4}
           titleWeight="semibold"
+          titleSideComponent={<Text color="red">*</Text>}
           value={value}
           onChangeText={onChange}
           helperText={
