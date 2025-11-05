@@ -9,20 +9,19 @@ import {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@model/webview";
-import useToast from "@service/toast";
 import { useTokenStore } from "@store/secureStorage/useTokenStore/index";
 import { COLORS } from "@styles/colorPalette";
-import { getPathToRoute } from "@utils/bridge";
-import { logMessageWithTime } from "@utils/log";
 import { WebviewWithBridge } from "bridge/native";
-import { router } from "expo-router";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Animated, BackHandler, View } from "react-native";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Animated, View } from "react-native";
 import WebView from "react-native-webview";
 import type {
   WebViewNavigation,
   WebViewSource,
 } from "react-native-webview/lib/WebViewTypes";
+
+import useMiddleware from "./hooks/useMiddleware";
+import useWebviewHistory from "./hooks/useWebViewHistory";
 
 type OnMessage = (
   reqMessage: MessageEventRequestData,
@@ -50,16 +49,11 @@ const WebViewWithInjected = ({
   loadingBar = false,
   onNavigate,
 }: WebViewWithInjectedProps) => {
-  const webViewRef = useRef<WebView>(null);
   const progressAnim = useRef(new Animated.Value(0)).current;
-
-  const showToast = useToast();
-
-  const [canGoBack, setCanGoBack] = useState(false);
-  const [canGoForward, setCanGoForward] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
   const { accessToken, refreshToken } = useTokenStore();
+  const { webViewRef, onNavigationStateChange } = useWebviewHistory();
+  const { middleware } = useMiddleware();
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
@@ -72,90 +66,6 @@ const WebViewWithInjected = ({
       ref.current = webViewRef.current;
     }
   }, [webViewRef.current, ref]);
-
-  useEffect(() => {
-    const backAction = () => {
-      if (canGoBack) {
-        webViewRef.current?.goBack();
-        return true;
-      }
-      return false;
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction,
-    );
-    return () => {
-      backHandler.remove();
-    };
-  }, [webViewRef, canGoBack]);
-
-  // useEffect(() => {
-  //   onNavigate && onNavigate();
-  // }, [canGoBack, canGoForward]);
-
-  const middleware = useCallback((reqMessage: MessageEventRequestData) => {
-    logMessageWithTime(`WebView received: \n${JSON.stringify(reqMessage)}`);
-
-    const { name, method, body } = reqMessage;
-
-    if (name === ("log-message" as string)) {
-      console.log(body);
-      return;
-    }
-
-    // 라우팅 메시지 처리
-    if (name === ("route-to" as string) && method === "POST") {
-      const { path, routeType, params } = body as {
-        path: string;
-        routeType?: "replace" | "push";
-        params?: Record<string, any>[];
-      };
-
-      routeType === "replace"
-        ? router.replace(getPathToRoute({ path, params }))
-        : router.push(getPathToRoute({ path, params }));
-
-      // TODO: 동적 에러처리 필요
-
-      return {
-        name: "route-to",
-        status: "success",
-      };
-    }
-
-    // 뒤로가기 메시지 처리
-    if (name === "route-back" && method === "POST") {
-      try {
-        router.back();
-      } catch (error) {
-        console.warn(error);
-        router.push("/(tabs)/home");
-      }
-
-      return {
-        name: "route-back",
-        status: "success",
-      };
-    }
-
-    // 토스트 메시지 처리
-    if (name === "show-toast" && method === "POST") {
-      const toastProps = body as {
-        type: "success" | "info" | "error";
-        text1: string;
-        text2: string;
-      };
-
-      showToast(toastProps);
-
-      return {
-        name: "show-toast",
-        status: "success",
-      };
-    }
-  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -207,11 +117,9 @@ const WebViewWithInjected = ({
         onReadyToMessage={onReadyToMessage}
         strictMode={false}
         // 뒤로가기, 앞으로가기 기능
-        onNavigationStateChange={(navState) => {
-          setCanGoBack(navState.canGoBack);
-          setCanGoForward(navState.canGoForward);
-          onNavigate && onNavigate(navState);
-        }}
+        onNavigationStateChange={(navState) =>
+          onNavigationStateChange(navState, onNavigate)
+        }
         webviewDebuggingEnabled={__DEV__}
         bounces={false}
         scrollEnabled={true}
