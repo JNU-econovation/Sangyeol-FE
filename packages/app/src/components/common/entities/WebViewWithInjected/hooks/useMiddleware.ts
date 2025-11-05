@@ -2,6 +2,7 @@ import { MessageEventRequestData } from "@model/webview";
 import useToast from "@service/toast";
 import { getPathToRoute } from "@utils/bridge";
 import { logMessageWithTime } from "@utils/log";
+import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import { useCallback } from "react";
 
@@ -70,6 +71,10 @@ const useMiddleware = () => {
         name: "show-toast",
         status: "success",
       };
+    }
+
+    if (name === "haptic" && method === "POST") {
+      Haptics.selectionAsync();
     }
   }, []);
 

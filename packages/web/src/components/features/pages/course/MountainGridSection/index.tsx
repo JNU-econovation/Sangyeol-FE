@@ -4,8 +4,11 @@ import ROUTE from "@/constants/route";
 import { StackLink } from "stack-link";
 import Spacing from "@shared/layout/Spacing";
 import MountainBgItem from "@shared/ui/MountainBgItem";
+import useHapticBridge from "@/hooks/feature/bridge/useHapticBridge";
 
 export default function MountainGridSection() {
+  const hapticFeedback = useHapticBridge();
+
   return (
     <section className="flex grow gap-4">
       <div className="flex flex-col w-full h-fit gap-4">
@@ -13,12 +16,18 @@ export default function MountainGridSection() {
         <StackLink href={ROUTE.MOUNTAIN_COURSE("1") + "?sort=my"} preLoad>
           <MountainBgItem region="광주" mountainName="무등산" />
         </StackLink>
-        <MountainBgItem locked />
+        <button onClick={hapticFeedback}>
+          <MountainBgItem locked />
+        </button>
       </div>
       <div className="flex flex-col w-full h-fit gap-4">
         <Spacing size={12} />
-        <MountainBgItem locked />
-        <MountainBgItem locked />
+        <button onClick={hapticFeedback}>
+          <MountainBgItem locked />
+        </button>
+        <button onClick={hapticFeedback}>
+          <MountainBgItem locked />
+        </button>
       </div>
     </section>
   );

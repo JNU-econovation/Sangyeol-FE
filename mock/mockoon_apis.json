@@ -664,7 +664,7 @@
       "responses": [
         {
           "uuid": "9f680107-d110-41bb-8109-7445bb1ec125",
-          "body": "{\n  \"data\": {\n    \"profileStatusInfoDTO\": {\n      \"isBasicInfoSet\": false,\n      \"isPersonalInfoSet\": false\n    }\n  },\n  \"status\": \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"profileStatusInfoDTO\": {\n      \"isBasicInfoSet\": true,\n      \"isPersonalInfoSet\": true\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
