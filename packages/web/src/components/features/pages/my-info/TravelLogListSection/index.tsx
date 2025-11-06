@@ -4,12 +4,13 @@ import ROUTE from "@/constants/route";
 import useTravelRecordListQuery from "@hooks/feature/query/query/useTravelRecordListQuery";
 import TravelLogList from "@shared/ui/TravelLogList";
 import { Suspense } from "@suspensive/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useStackLinkRouter } from "stack-link";
 
 const TravelLogListSection = Suspense.with(
   {
     fallback: null,
+    clientOnly: true,
   },
   () => {
     const { navigate } = useStackLinkRouter({});

@@ -12,6 +12,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 const TravelLogCalendarSection = Suspense.with(
   {
     fallback: <CalendarLayout content={() => <WeekPolygonIcon />} />,
+    clientOnly: true,
   },
   () => {
     const searchParams = useSearchParams();
