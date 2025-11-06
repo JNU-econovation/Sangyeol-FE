@@ -33,7 +33,16 @@ const WEBVIEW = {
 
   MY_INFO: `${webviewBaseUri}/my-page/my-info`,
   // FAQ: `${webviewBaseUri}/customer-center?faq`,
-  TRAVEL_LOG: `${webviewBaseUri}/my-page/travel-log`,
+  TRAVEL_LOG: ({
+    year,
+    month,
+    date,
+  }: {
+    year: number;
+    month: number;
+    date: number;
+  }) =>
+    `${webviewBaseUri}/my-page/travel-log?year=${year}&month=${month}&date=${date}`,
   COURSE_BOOKMARK: `${webviewBaseUri}/my-page/course-bookmark`,
   NOTIFICATION_SETTING: `${webviewBaseUri}/my-page/notification-setting`,
   CHANGE_PASSWORD: `${webviewBaseUri}/my-page/change-password`,
