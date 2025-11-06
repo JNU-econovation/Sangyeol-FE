@@ -110,8 +110,8 @@ const WebViewWithInjected = ({
           progressAnim.setValue(0);
           setIsLoading(false);
         }}
-        cacheEnabled={false}
-        cacheMode="LOAD_NO_CACHE"
+        // cacheEnabled={false}
+        // cacheMode="LOAD_NO_CACHE"
         allowsLinkPreview={false}
         middleware={middleware}
         onReadyToMessage={onReadyToMessage}

@@ -1,4 +1,3 @@
-import { useModalContext } from "@/service/modal";
 import TravelLogCalendarSection from "@pages/my-info/TravelLogCalendarSection";
 import TravelLogHeaderSection from "@pages/my-info/TravelLogHeaderSection";
 import TravelLogListSection from "@pages/my-info/TravelLogListSection";
