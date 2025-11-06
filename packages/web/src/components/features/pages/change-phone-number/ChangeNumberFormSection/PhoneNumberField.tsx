@@ -51,7 +51,7 @@ const PhoneNumberField = () => {
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       maxLength={9}
-      paddingInline={12}
+      paddingInline={10}
       left={
         <span
           className={cn("transition-colors", {
@@ -59,7 +59,7 @@ const PhoneNumberField = () => {
             "text-gray-400": watch("phoneNumber") === "",
           })}
         >
-          010 -
+          010-
         </span>
       }
       right={
