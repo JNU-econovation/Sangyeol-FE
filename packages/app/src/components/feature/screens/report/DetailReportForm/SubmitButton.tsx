@@ -1,23 +1,24 @@
 import { useDetailReportFormContext } from "@hooks/feature/form/useDetailReportForm";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
 import { useDetailReportSMSStore } from "@store/report/useDetailReportSMSStore";
-import { useReportPositionStore } from "@store/report/useReportPositionStore";
 import { router } from "expo-router";
 
 const SubmitButton = () => {
   const { watch } = useDetailReportFormContext();
-  const { reportPosition } = useReportPositionStore();
   const { setSMSContent } = useDetailReportSMSStore();
+
+  console.log(watch("reportLocation"));
 
   const handleSubmit = () => {
     setSMSContent({
       content: watch("reportContent"),
-      lat: reportPosition?.latitude || 0,
-      lng: reportPosition?.longitude || 0,
+      lat: watch("reportLocation")?.latitude || 0,
+      lng: watch("reportLocation")?.longitude || 0,
       reporterName: watch("reporterName"),
       reporterPhone: watch("reporterPhone"),
       attachment: watch("attachments"),
-      enable: watch("reportContent").trim().length > 0 && !!reportPosition,
+      enable:
+        watch("reportContent").trim().length > 0 && !!watch("reportLocation"),
     });
 
     router.push("/report/reportTerm");
@@ -27,7 +28,7 @@ const SubmitButton = () => {
     const reportContent = watch("reportContent");
     const reporterName = watch("reporterName");
     const reporterPhone = watch("reporterPhone");
-    const reportPosition = useReportPositionStore.getState().reportPosition;
+    const reportPosition = watch("reportLocation");
 
     if (
       reportContent.trim().length === 0 ||
