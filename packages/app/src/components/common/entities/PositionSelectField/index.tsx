@@ -21,6 +21,7 @@ interface PositionSelectFieldProps extends Omit<FieldLayoutProps, "content"> {
 
 //TODO: 사이드 이팩트가 있으므로 수정 필요 (지도로 이동 및 전역 상태 변경)
 
+// [!warning] 현재는 사용하지 않는 컴포넌트입니다.
 const PositionSelectField = memo(
   ({
     title,

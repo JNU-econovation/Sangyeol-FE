@@ -1,5 +1,4 @@
 import styled from "@emotion/native";
-import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
 import { NaverMapViewRef } from "@mj-studio/react-native-naver-map";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
@@ -16,21 +15,21 @@ const CheckPositionScreen = () => {
   const mapRef = useRef<NaverMapViewRef>(null);
   const [mapLayout, setMapLayout] = useState({ width: 0, height: 0 });
   const { top } = useSafeAreaInsets();
-  const { isLoading, location } = useGetCurrentPosition();
-  const { setReportPosition } = useReportPositionStore();
+  const { reportPosition, setReportPosition } = useReportPositionStore();
   const [position, setPosition] = useState<{
     latitude: number;
     longitude: number;
   }>();
 
   useEffect(() => {
-    if (!isLoading && location) {
+    if (reportPosition) {
       setPosition({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
+        latitude: reportPosition.latitude,
+        longitude: reportPosition.longitude,
       });
+      return;
     }
-  }, [isLoading, location]);
+  }, [reportPosition]);
 
   return (
     <Screen>
@@ -42,6 +41,26 @@ const CheckPositionScreen = () => {
         <ConfigurableMapView
           ref={mapRef}
           options={{
+            initialCamera: {
+              zoom: 14,
+              latitude: reportPosition.latitude,
+              longitude: reportPosition.longitude,
+            },
+            isShowLocationButton: true,
+            // locationOverlay: {
+            //   circleOutlineColor: "rgb(21, 255, 0)",
+            //   circleOutlineWidth: 2,
+            //   isVisible: true,
+            //   circleColor: "rgba(255, 0, 0, 0.3)",
+            //   circleRadius: 20,
+            //   subImageWidth: 40,
+            //   subImageHeight: 40,
+            //   anchor: { x: 0.5, y: 0.5 },
+            //   position: {
+            //     latitude: reportPosition.latitude,
+            //     longitude: reportPosition.longitude,
+            //   },
+            // },
             onLayout: (event) => {
               const { width, height } = event.nativeEvent.layout;
               setMapLayout({ width, height });
@@ -57,8 +76,6 @@ const CheckPositionScreen = () => {
                   latitude: result.latitude,
                   longitude: result.longitude,
                 });
-
-                console.log(result);
               }
             },
           }}
@@ -72,7 +89,7 @@ const CheckPositionScreen = () => {
           title="현재 위치로 설정"
           fullWidth
           onPress={() => {
-            if (isLoading || !position) return;
+            // if (isLoading || !position) return;
             setReportPosition(position);
             router.back();
           }}
