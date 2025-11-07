@@ -2,12 +2,12 @@ const appConfig = {
   expo: {
     name: "산결",
     slug: "sangyeol",
-    version: "1.0.0",
+    version: "0.0.1",
     orientation: "portrait",
-    icon: "./assets/images/splash-icon.png",
+    icon: "./assets/images/App_Icon.png",
     splash: {
-      image: "./assets/images/splash-icon.png",
-      resizeMode: "cover",
+      image: "./assets/images/App_Icon.png",
+      resizeMode: "contain",
     },
     scheme: "sangyeol",
     userInterfaceStyle: "automatic",
@@ -26,7 +26,7 @@ const appConfig = {
     android: {
       softwareKeyboardLayoutMode: "pan",
       adaptiveIcon: {
-        foregroundImage: "./assets/images/splash-icon.png",
+        foregroundImage: "./assets/images/App_Icon.png",
         backgroundColor: "#ffffff",
       },
       package: "com.geongyu09.sangyeol",
