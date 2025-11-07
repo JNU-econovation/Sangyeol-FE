@@ -32,11 +32,7 @@ const ReportPosition = memo(() => {
   }, [setValue]);
 
   useEffect(() => {
-    if (
-      reportPosition &&
-      reportPosition.latitude !== watch("reportLocation")?.latitude &&
-      reportPosition.longitude !== watch("reportLocation")?.longitude
-    ) {
+    if (reportPosition) {
       setValue("reportLocation", {
         latitude: reportPosition.latitude,
         longitude: reportPosition.longitude,
