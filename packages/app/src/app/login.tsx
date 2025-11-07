@@ -61,10 +61,6 @@ const TitleContainer = styled.View`
   width: 100%;
 `;
 
-const ContentContainer = styled.View`
-  margin-top: 8px;
-`;
-
 const TitleStarPositioner = styled.View`
   position: absolute;
   top: 50%;
