@@ -112,8 +112,6 @@ const ProfileImagePlaceholder = styled.View`
   background-color: ${COLORS.gray300};
 `;
 
-const ProfileChangeButton = styled.TouchableOpacity``;
-
 const UserNameContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;

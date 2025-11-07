@@ -29,6 +29,8 @@ const TravelLogList = ({
         </Button>
       </div>
       <div
+        role="img"
+        aria-label={name}
         className="w-24 h-24 bg-slate-100 rounded-xl relative overflow-hidden"
         style={{
           backgroundImage: `url(${imageSrc})`,

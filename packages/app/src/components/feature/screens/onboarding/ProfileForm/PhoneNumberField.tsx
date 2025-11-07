@@ -23,7 +23,6 @@ const PhoneNumberField = () => {
 
   const handlePhoneNumberVerification = () => {
     const phoneNumber = `010-${getValues("phoneNumber")}`;
-    console.log(phoneNumber);
     Keyboard.dismiss();
     if (isValidPhoneNumber(phoneNumber)) {
       sendSMSVerification(phoneNumber, {

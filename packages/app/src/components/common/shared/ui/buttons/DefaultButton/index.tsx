@@ -14,7 +14,7 @@ export interface ButtonStyledProps {
   fontWeight?: "bold";
   paddingVertical?: number;
   paddingHorizontal?: number;
-  height?: number;
+  // height?: number;
 }
 
 interface DefaultButtonProps extends ButtonStyledProps {
