@@ -16,16 +16,16 @@ export default function MountainGridSection() {
         <StackLink href={ROUTE.MOUNTAIN_COURSE("1") + "?sort=my"} preLoad>
           <MountainBgItem region="광주" mountainName="무등산" />
         </StackLink>
-        <button onClick={hapticFeedback}>
+        <button onClick={hapticFeedback} aria-label="산 준비 중">
           <MountainBgItem locked />
         </button>
       </div>
       <div className="flex flex-col w-full h-fit gap-4">
         <Spacing size={12} />
-        <button onClick={hapticFeedback}>
+        <button onClick={hapticFeedback} aria-label="산 준비 중">
           <MountainBgItem locked />
         </button>
-        <button onClick={hapticFeedback}>
+        <button onClick={hapticFeedback} aria-label="산 준비 중">
           <MountainBgItem locked />
         </button>
       </div>

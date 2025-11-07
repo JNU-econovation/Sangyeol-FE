@@ -8,7 +8,7 @@ import {
 } from "../WheelPicker";
 import { useState } from "react";
 
-const hourOptions: WheelPickerOption<number>[] = [
+const yearOptions: WheelPickerOption<number>[] = [
   { label: "2025년", value: 2025 },
   { label: "2024년", value: 2024 },
   { label: "2023년", value: 2023 },
@@ -16,7 +16,7 @@ const hourOptions: WheelPickerOption<number>[] = [
   { label: "2021년", value: 2021 },
   { label: "2020년", value: 2020 },
 ];
-const minuteOptions: WheelPickerOption<number>[] = [
+const monthOptions: WheelPickerOption<number>[] = [
   { label: "1월", value: 0 },
   { label: "2월", value: 1 },
   { label: "3월", value: 2 },
@@ -66,7 +66,7 @@ const MonthPicker = ({
         <WheelPickerWrapper>
           {/* <div className="w-50 flex mx-auto !text-lg"> */}
           <WheelPicker
-            options={hourOptions}
+            options={yearOptions}
             defaultValue={ym.year}
             visibleCount={17}
             classNames={{
@@ -80,7 +80,7 @@ const MonthPicker = ({
             optionItemHeight={32}
           />
           <WheelPicker
-            options={minuteOptions}
+            options={monthOptions}
             defaultValue={ym.month}
             visibleCount={17}
             optionItemHeight={32}

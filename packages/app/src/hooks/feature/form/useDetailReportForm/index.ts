@@ -20,6 +20,8 @@ const useDetailReportForm = () => {
         latitude: 0,
         longitude: 0,
       },
+      reporterName: "",
+      reporterPhone: "",
     },
   });
 };
