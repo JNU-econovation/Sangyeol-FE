@@ -83,6 +83,9 @@ const ConfigurableMapView = memo(
           longitudeDelta: 0,
         }}
         isShowLocationButton={false}
+        // locationOverlay={{
+        //   circleOutlineColor
+        // }}
         initialCamera={{
           zoom: zoomLevel,
           latitude: location.coords.latitude,

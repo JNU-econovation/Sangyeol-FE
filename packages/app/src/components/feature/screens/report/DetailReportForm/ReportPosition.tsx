@@ -1,11 +1,16 @@
-import PositionSelectField from "@entities/PositionSelectField";
+import FieldLayout from "@components/common/shared/layout/FieldLayout";
+import Textarea from "@components/common/shared/ui/Textarea";
+import WeakButton from "@components/common/shared/ui/WeakButton";
 import { useDetailReportFormContext } from "@hooks/feature/form/useDetailReportForm";
+import { useReportPositionStore } from "@store/report/useReportPositionStore";
+import { convertToDMS } from "@utils/coords";
 import * as Location from "expo-location";
-import { memo, useEffect, useRef } from "react";
+import { router } from "expo-router";
+import { memo, useEffect } from "react";
 
 const ReportPosition = memo(() => {
-  const { setValue } = useDetailReportFormContext();
-  const currentPositionRef = useRef<{ lat: number; lng: number } | null>(null);
+  const { reportPosition, setReportPosition } = useReportPositionStore(); // 위치 설정 페이지에서 초기 위치 & 변경될 위치 데이터
+  const { setValue, watch } = useDetailReportFormContext();
 
   // 현재 위치로 초기 설정
   useEffect(() => {
@@ -16,6 +21,10 @@ const ReportPosition = memo(() => {
           latitude: coords.latitude,
           longitude: coords.longitude,
         });
+        setReportPosition({
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        });
       } catch (error) {
         console.log("위치 정보를 가져오지 못했습니다.", error);
       }
@@ -23,27 +32,41 @@ const ReportPosition = memo(() => {
   }, [setValue]);
 
   useEffect(() => {
-    if (currentPositionRef.current) {
-      const { lat, lng } = currentPositionRef.current;
-      setValue("reportLocation", { latitude: lat, longitude: lng });
+    if (
+      reportPosition &&
+      reportPosition.latitude !== watch("reportLocation")?.latitude &&
+      reportPosition.longitude !== watch("reportLocation")?.longitude
+    ) {
+      setValue("reportLocation", {
+        latitude: reportPosition.latitude,
+        longitude: reportPosition.longitude,
+      });
     }
-  }, [
-    currentPositionRef.current?.lat,
-    currentPositionRef.current?.lng,
-    setValue,
-  ]);
+  }, [reportPosition, setValue]);
+
+  const lat = watch("reportLocation")?.latitude || 0;
+  const lng = watch("reportLocation")?.longitude || 0;
 
   return (
-    <PositionSelectField
+    <FieldLayout
       title="현재 위치"
-      titleSideButtonTitle="현재 위치 +"
-      titleWeight="bold"
-    >
-      {({ latitude, longitude }) => {
-        currentPositionRef.current = { lat: latitude, lng: longitude };
-        return null;
-      }}
-    </PositionSelectField>
+      titleSideComponent={
+        <WeakButton
+          title="현재 위치 +"
+          onPress={() => {
+            router.push("/report/checkPosition");
+          }}
+        />
+      }
+      content={
+        <Textarea
+          value={`위도 ${convertToDMS(lat, lng).split(", ")[0]} 경도 ${convertToDMS(lat, lng).split(", ")[1]}`}
+          editable={false}
+          backgroundColor="gray300"
+          borderColor="gray300"
+        />
+      }
+    />
   );
 });
 
