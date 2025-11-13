@@ -1,7 +1,7 @@
 import PositionBottom from "@components/common/shared/layout/PositionBottom";
 import styled from "@emotion/native";
 import Spacing from "@shared/layout/Spacing";
-import { HikingSVG, BackArrow, StarSVG } from "@shared/ui/Icons";
+import { BackArrow, HikingSVG, StarSVG } from "@shared/ui/Icons";
 import Text from "@shared/ui/Text";
 import AppleLoginButton from "@widget/AppleLoginButton";
 import KakaoLoginButton from "@widget/KakaoLoginButton";
