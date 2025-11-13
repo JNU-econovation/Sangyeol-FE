@@ -32,8 +32,10 @@ jobs:
               }}')
 
           curl -s \
+            --fail \
             -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.INFRA_GH_PAT }}" \
             https://api.github.com/repos/${{ secrets.INFRA_REPO_OWNER }}/${{ secrets.INFRA_REPO_NAME }}/dispatches \
-            -d "${DISPATCH_JSON}"
+            -d "${DISPATCH_JSON}" \
+            || { echo "Failed to trigger dispatch"; exit 1; }
