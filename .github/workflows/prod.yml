@@ -1,0 +1,39 @@
+name: Dispatch Frontend Deploy
+
+on:
+  push:
+    branches: ["develop"]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Infra Repo Deploy
+        run: |
+          REPO="${{ github.repository }}"
+          BRANCH="${{ github.ref_name }}"
+          COMMIT="${{ github.sha }}"
+          AUTHOR="${{ github.actor }}"
+          PUSHED_AT="${{ github.event.head_commit.timestamp }}"
+
+          DISPATCH_JSON=$(jq -n \
+            --arg repo "$REPO" \
+            --arg branch "$BRANCH" \
+            --arg commit "$COMMIT" \
+            --arg author "$AUTHOR" \
+            --arg pushed_at "$PUSHED_AT" \
+            '{event_type: "fe-deploy", client_payload: {
+                repo: $repo,
+                branch: $branch,
+                commit: $commit,
+                author: $author,
+                pushed_at: $pushed_at
+              }}')
+
+          curl -s \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.INFRA_GH_PAT }}" \
+            https://api.github.com/repos/${{ secrets.INFRA_REPO_OWNER }}/${{ secrets.INFRA_REPO_NAME }}/dispatches \
+            -d "${DISPATCH_JSON}"
