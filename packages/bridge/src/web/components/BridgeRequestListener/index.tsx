@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import getBridge from "../../core";
 import useSendHandshakeSynMessage from "./useHandshake";
 import useHandleRequest from "./useRequestHandler";
 
@@ -18,7 +17,8 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
   requestValidator,
 }: BridgeProps<RequestType, ResponseType>) {
   const [isReady, setIsReady] = useState(false);
-  const sendHandshakeSynMessage = useSendHandshakeSynMessage({
+
+  useSendHandshakeSynMessage({
     isAlreadyHandshaked: isReady,
     onHandshakeSuccess: () => setIsReady(true),
   });
@@ -29,11 +29,6 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
     onRequest,
     requestValidator,
   });
-
-  // 웹뷰 핸드쉐이크를 위한 로직
-  useEffect(() => {
-    sendHandshakeSynMessage();
-  }, [sendHandshakeSynMessage]);
 
   return null;
 }

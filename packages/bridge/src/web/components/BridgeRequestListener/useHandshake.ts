@@ -1,6 +1,6 @@
 import BRIDGE from "@/web/constants";
 import getBridge from "@/web/core";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 interface UseHandshakeProps {
   isAlreadyHandshaked: boolean;
@@ -12,7 +12,7 @@ const useSendHandshakeSynMessage = ({
   onHandshakeSuccess,
 }: UseHandshakeProps) => {
   const Bridge = getBridge();
-  return useCallback(() => {
+  const sendHandshakeSynMessage = useCallback(() => {
     if (isAlreadyHandshaked) return;
     Bridge.createMessage({
       syn: BRIDGE.SET,
@@ -23,6 +23,7 @@ const useSendHandshakeSynMessage = ({
         ack,
         flag: { syn },
       } = message;
+
       {
         if (syn !== BRIDGE.SET)
           throw new Error(
@@ -42,6 +43,10 @@ const useSendHandshakeSynMessage = ({
       onHandshakeSuccess && onHandshakeSuccess();
     });
   }, [Bridge, isAlreadyHandshaked]);
+
+  useEffect(() => {
+    sendHandshakeSynMessage();
+  }, [sendHandshakeSynMessage]);
 };
 
 export default useSendHandshakeSynMessage;
