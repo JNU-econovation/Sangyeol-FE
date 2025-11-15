@@ -79,9 +79,6 @@ const WebviewWithBridge = <ReqMessage, ResMessage>({
             ack: _id,
           }).send<WebviewHandshake>(({ ack, flag: { syn } }) => {
             if (!isReady && syn === 0 && ack !== null) {
-              // console.log(
-              //   `[${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}]handshake end`,
-              // );
               setIsReady(true);
               return;
             }
@@ -156,7 +153,7 @@ const WebviewWithBridge = <ReqMessage, ResMessage>({
         }
       }
     },
-    [onBridgeMessage, middleware, isReady],
+    [onBridgeMessage, middleware, isReady, webViewRef, strictMode, handleMissingResponse],
   );
 
   return <WebView ref={webViewRef} onMessage={handleMessage} {...props} />;
