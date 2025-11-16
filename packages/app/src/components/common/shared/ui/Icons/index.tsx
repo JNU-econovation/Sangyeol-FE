@@ -38,3 +38,4 @@ export { default as WeekTriangle } from "@assets/icons/Week_Triangle.svg";
 
 // cancel
 export { default as TrashSVG } from "@assets/icons/Trash.svg";
+export { default as Rounded_X } from "@assets/icons/Rounded_X.svg";
