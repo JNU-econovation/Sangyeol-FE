@@ -1,5 +1,9 @@
 import { MessageEventRequestData } from "@model/webview";
 import useToast from "@service/toast";
+import {
+  useGetHandleConsoleMessage,
+  useGetHandleNetworkMessage,
+} from "plugin-test";
 import { getPathToRoute } from "@utils/bridge";
 import { logMessageWithTime } from "@utils/log";
 import * as Haptics from "expo-haptics";
@@ -11,9 +15,22 @@ import { useCallback } from "react";
  */
 const useMiddleware = () => {
   const showToast = useToast();
+  const { isConsoleMessage, handleConsoleMessage } =
+    useGetHandleConsoleMessage();
+  const { isNetworkMessage, handleNetworkMessage } =
+    useGetHandleNetworkMessage();
 
   const middleware = useCallback(
     (reqMessage: MessageEventRequestData) => {
+      if (isConsoleMessage(reqMessage)) {
+        handleConsoleMessage(reqMessage);
+        return;
+      }
+      if (isNetworkMessage(reqMessage)) {
+        handleNetworkMessage(reqMessage);
+        return;
+      }
+
       logMessageWithTime(`WebView received: \n${JSON.stringify(reqMessage)}`);
 
       const { name, method, body } = reqMessage;
@@ -81,7 +98,7 @@ const useMiddleware = () => {
         Haptics.selectionAsync();
       }
     },
-    [showToast],
+    [showToast, isConsoleMessage, handleConsoleMessage],
   );
 
   return { middleware };
