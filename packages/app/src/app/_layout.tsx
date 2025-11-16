@@ -5,10 +5,12 @@ import QueryProvider from "@service/query/provider";
 import { ErrorBoundary } from "@suspensive/react";
 import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import { Stack } from "expo-router";
+import { useDevToolPlugin } from "plugin-test";
 import { StatusBar } from "react-native";
 import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
+  useDevToolPlugin();
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (

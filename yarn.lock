@@ -15117,6 +15117,7 @@ __metadata:
     expo: ">=54.0.0"
     react: "*"
     react-native: "*"
+    react-native-webview: "*"
   languageName: node
   linkType: soft
 

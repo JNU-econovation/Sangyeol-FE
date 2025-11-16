@@ -22,6 +22,10 @@ import type {
 
 import useMiddleware from "./hooks/useMiddleware";
 import useWebviewHistory from "./hooks/useWebViewHistory";
+import {
+  getWebViewInterceptorScript,
+  getWebViewNetworkInterceptorScript,
+} from "plugin-test";
 
 type OnMessage = (
   reqMessage: MessageEventRequestData,
@@ -57,7 +61,7 @@ const WebViewWithInjected = ({
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
-      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}${INJECT_TOKEN(accessToken ?? "", refreshToken ?? "")}`,
+      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}${INJECT_TOKEN(accessToken ?? "", refreshToken ?? "")}${getWebViewInterceptorScript()}${getWebViewNetworkInterceptorScript()}`,
     [accessToken, refreshToken],
   );
 
@@ -110,8 +114,6 @@ const WebViewWithInjected = ({
           progressAnim.setValue(0);
           setIsLoading(false);
         }}
-        // cacheEnabled={false}
-        // cacheMode="LOAD_NO_CACHE"
         allowsLinkPreview={false}
         middleware={middleware}
         onReadyToMessage={onReadyToMessage}
@@ -125,6 +127,7 @@ const WebViewWithInjected = ({
         scrollEnabled={true}
         decelerationRate={0.998}
         contentInsetAdjustmentBehavior="never"
+        // devClient={devClient}
       />
     </View>
   );
