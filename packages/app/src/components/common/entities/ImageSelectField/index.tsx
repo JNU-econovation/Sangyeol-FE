@@ -1,10 +1,12 @@
-import { TrashSVG } from "@components/common/shared/ui/Icons";
+import { Rounded_X } from "@components/common/shared/ui/Icons";
 import Text from "@components/common/shared/ui/Text";
 import styled from "@emotion/native";
 import useImagePicker from "@hooks/common/useImagePicker";
 import FieldLayout, { FieldLayoutProps } from "@shared/layout/FieldLayout";
 import WeakButton from "@shared/ui/WeakButton";
 import { COLORS } from "@styles/colorPalette";
+
+const MAX_IMAGE_COUNT = 3;
 
 interface ImageSelectFieldProps extends Omit<FieldLayoutProps, "content"> {
   title: string;
@@ -42,11 +44,12 @@ const ImageSelectField = ({
                     removeImage(index);
                   }}
                 >
-                  <TrashSVG />
+                  <Rounded_X />
                 </AttachmentItemDeleteButton>
               </AttachmentItemContainer>
             ))}
-          {(!selectedImagesUri || selectedImagesUri?.length < 3) && (
+          {(!selectedImagesUri ||
+            selectedImagesUri?.length < MAX_IMAGE_COUNT) && (
             <EmptyAttachmentItem onPress={pickImage}>
               <Text color="gray900" fontSize={40} textAlign="center">
                 +
@@ -73,22 +76,24 @@ const AttachmentItem = styled.Image<{ uri?: string }>`
   width: 85px;
   height: 85px;
   border-radius: 8px;
-  background-color: #f0f0f0;
+  border-color: ${COLORS.gray500};
 `;
 
 const EmptyAttachmentItem = styled.TouchableOpacity`
   width: 85px;
   height: 85px;
   border-radius: 8px;
-  background-color: ${COLORS.gray300};
+  background-color: white;
+  border-width: 1px;
+  border-color: ${COLORS.gray500};
   justify-content: center;
   align-items: center;
 `;
 
 const AttachmentItemDeleteButton = styled.TouchableOpacity`
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: -4px;
+  right: -4px;
   padding: 8px;
 `;
 
