@@ -30,11 +30,9 @@ export default function CourseListWithBookmarkMutate({
 
   const { mutate: postBookmark } = useBookmarkMutation({
     mountainId,
-    sortBy: searchParams.get("sort") as CourseSortType,
   });
   const { mutate: deleteBookmark } = useDeleteBookmarkMutation({
     mountainId,
-    sortBy: searchParams.get("sort") as CourseSortType,
   });
 
   return (
