@@ -14,6 +14,8 @@ export interface ButtonStyledProps {
   fontWeight?: "bold";
   paddingVertical?: number;
   paddingHorizontal?: number;
+  borderColor?: keyof typeof COLORS;
+  borderWidth?: number;
   // height?: number;
 }
 
@@ -32,6 +34,8 @@ const DefaultButton = ({
   startIcon,
   paddingVertical,
   paddingHorizontal,
+  borderColor,
+  borderWidth,
   // height,
   onPress,
 }: DefaultButtonProps) => {
@@ -44,6 +48,8 @@ const DefaultButton = ({
       activeOpacity={0.8}
       paddingVertical={paddingVertical}
       paddingHorizontal={paddingHorizontal}
+      borderColor={borderColor}
+      borderWidth={borderWidth}
     >
       {startIcon && startIcon}
       <StyledText color={color} fontSize={fontSize}>
@@ -60,6 +66,8 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonStyledProps>(
     backgroundColor,
     paddingVertical,
     paddingHorizontal,
+    borderColor,
+    borderWidth,
     // height,
   }) => ({
     backgroundColor: backgroundColor ? COLORS[backgroundColor] : COLORS.primary,
@@ -72,6 +80,8 @@ const StyledTouchableOpacity = styled.TouchableOpacity<ButtonStyledProps>(
     opacity: disabled ? 0.5 : 1,
     flexDirection: "row",
     gap: 12,
+    borderColor: borderColor ? COLORS[borderColor] : "transparent",
+    borderWidth: borderWidth || 0,
     // height: height || 48, // TODO: 버튼 높이 수정 필요. 임의로 설정한 값
   }),
 );
