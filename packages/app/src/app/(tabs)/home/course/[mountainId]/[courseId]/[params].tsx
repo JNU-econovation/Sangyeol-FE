@@ -1,7 +1,7 @@
-import Text from "@components/common/shared/ui/Text";
 import PATH_ROUTE from "@constants/pathRoute";
 import WebViewWithInjected from "@entities/WebViewWithInjected";
 import useGetCurrentPosition from "@hooks/feature/location/useGetCurrentPosition";
+import ScreenContainer from "@shared/layout/Screen";
 import { router, useLocalSearchParams } from "expo-router";
 
 const CourseDetailWebview = () => {
@@ -13,8 +13,7 @@ const CourseDetailWebview = () => {
   }>();
 
   return (
-    <>
-      <Text>Course Detail</Text>
+    <ScreenContainer>
       <WebViewWithInjected
         loadingBar
         source={{
@@ -62,7 +61,7 @@ const CourseDetailWebview = () => {
           };
         }}
       />
-    </>
+    </ScreenContainer>
   );
 };
 
