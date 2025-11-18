@@ -12,13 +12,7 @@ import { StackLink } from "stack-link";
 
 //inner imports
 import CourseTabBarSectionLoader from "./loader";
-
-const tabTitleList = [
-  { title: "내 맞춤형", sort: "my" },
-  { title: "인기순", sort: "popular" },
-  { title: "거리순", sort: "length" },
-  { title: "난이도순", sort: "difficulty" },
-] as const;
+import { TAB_TITLE_LIST } from "@/constants/course";
 
 export default Suspense.with(
   {
@@ -31,7 +25,7 @@ export default Suspense.with(
     const { mountainId } = useParams<{ mountainId: string }>();
     const searchParams = useSearchParams();
     const sortBy = searchParams.get("sort") as
-      | (typeof tabTitleList)[number]["sort"]
+      | (typeof TAB_TITLE_LIST)[number]["sort"]
       | null;
 
     const { data: courseList } = useCoursesOfMountainQuery({
@@ -51,7 +45,7 @@ export default Suspense.with(
     return (
       <section className="flex flex-col flex-1 overflow-hidden">
         <div className="grid grid-cols-4 gap-1 justify-between items-center px-6">
-          {tabTitleList.map(({ title: tabTitle, sort }, index) => (
+          {TAB_TITLE_LIST.map(({ title: tabTitle, sort }, index) => (
             <button
               key={`${index}-${tabTitle}`}
               onClick={() => {
@@ -71,7 +65,7 @@ export default Suspense.with(
             </button>
           ))}
 
-          {tabTitleList.map(({ title: tabTitle, sort }, index) => (
+          {TAB_TITLE_LIST.map(({ title: tabTitle, sort }, index) => (
             <div key={`${index}-${tabTitle}-underline`}>
               <Spacing size={2} />
               <div

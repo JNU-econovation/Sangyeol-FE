@@ -1,5 +1,7 @@
 "use client";
 
+import useBookmarkMutation from "@/hooks/feature/query/mutate/useBookmarkMutation";
+import useDeleteBookmarkMutation from "@/hooks/feature/query/mutate/useDeleteBookmarkMutation";
 import useRouteBridge from "@hooks/feature/bridge/useRouteBridge";
 import useGetCourseDetails from "@hooks/feature/course/useGetCourseDetails";
 import useBookmarkQuery from "@hooks/feature/query/query/useBookmarkQuery";
@@ -61,6 +63,12 @@ const CourseBookmarkContentList = ({
       },
     ],
   });
+  const { mutate: postBookmark } = useBookmarkMutation({
+    mountainId,
+  });
+  const { mutate: deleteBookmark } = useDeleteBookmarkMutation({
+    mountainId,
+  });
 
   return (
     <div onClick={routeToCourseDetail} className="w-full" role="button">
@@ -72,6 +80,8 @@ const CourseBookmarkContentList = ({
         stared={bookmark}
         duration={duration}
         difficulty={difficulty}
+        onSetStared={() => postBookmark(id)}
+        onResetStared={() => deleteBookmark(id)}
       />
     </div>
   );
