@@ -722,7 +722,7 @@
       "responses": [
         {
           "uuid": "e07c9d16-9c0c-4a05-83b5-2005bc309594",
-          "body": "{\n  \"data\": {\n    \"userProfileDTO\": {\n      \"name\": \"타이론 유\",\n      \"nickname\": \"별헤는피글렛\",\n      \"phoneNumber\": \"010-1234-5678\",\n      \"imageUrl\": \"https://example.com/profile.jpg\",\n      \"email\": \"stevenu@something.com\",\n      \"height\": 175,\n      \"weight\": 60,\n      \"bloodType\": \"O\",\n      \"etc\": \"등산을 좋아합니다\"\n    }\n  },\n  \"status\": \"success\"\n}",
+          "body": "{\n  \"data\": {\n    \"userProfileDTO\": {\n      \"name\": \"타이론 우\",\n      \"nickname\": \"별헤는피글렛\",\n      \"phoneNumber\": \"010-1234-5678\",\n      \"imageUrl\": \"https://example.com/profile.jpg\",\n      \"email\": \"stevenu@something.com\",\n      \"height\": 175,\n      \"weight\": 60,\n      \"bloodType\": \"O\",\n      \"etc\": \"등산을 좋아합니다\"\n    }\n  },\n  \"status\": \"success\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
