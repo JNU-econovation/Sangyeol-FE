@@ -1,5 +1,3 @@
-// import { mypageWebviewRef } from "@components/feature/screens/mypage/MypageHomeWebview";
-import useRouteToBridge from "@hooks/feature/bridge/useRouteToBridge";
 import QueryProvider from "@service/query/provider";
 import {
   HeroBlockSVG,
@@ -14,15 +12,9 @@ import {
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { COLORS } from "@styles/colorPalette";
 import { Redirect, Tabs } from "expo-router";
-import { WebView } from "react-native-webview";
-
-export let mypageWebviewRef: React.RefObject<WebView<{}>> = null;
 
 export default function TabLayout() {
   const { accessToken } = useTokenStore();
-  const { ref, routeTo } = useRouteToBridge();
-
-  mypageWebviewRef = ref;
 
   if (!accessToken) return <Redirect href="/starter" />;
 
@@ -32,7 +24,7 @@ export default function TabLayout() {
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: COLORS.primary,
-          animation: "fade",
+          // animation: "fade",
           tabBarStyle: {
             backgroundColor: COLORS.mainWhite,
           },
@@ -47,18 +39,7 @@ export default function TabLayout() {
             title: "홈",
             tabBarLabel: "홈",
             tabBarIcon: ({ focused }) =>
-              focused ? (
-                // <TouchableOpacity
-                //   onPress={() => {
-                //     router.dismissAll();
-                //     router.replace("/(tabs)/home");
-                //   }}
-                // >
-                <HomeBlockSVG />
-              ) : (
-                // </TouchableOpacity>
-                <HomeSVG />
-              ),
+              focused ? <HomeBlockSVG /> : <HomeSVG />,
           }}
         />
         <Tabs.Screen
@@ -72,7 +53,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="map"
           options={{
-            tabBarLabel: "지도",
+            title: "지도",
             tabBarIcon: ({ focused }) =>
               focused ? <MapBlockSVG /> : <MapSVG />,
           }}
@@ -80,7 +61,8 @@ export default function TabLayout() {
         <Tabs.Screen
           name="store"
           options={{
-            tabBarLabel: "스토어",
+            title: "스토어",
+            // tabBarLabel: "스토어",
             tabBarIcon: ({ focused }) =>
               focused ? <StoreSVG /> : <StoreSVG />,
           }}
@@ -91,7 +73,6 @@ export default function TabLayout() {
             tabBarLabel: "마이",
             tabBarIcon: ({ focused }) =>
               focused ? <HeroBlockSVG /> : <HeroSVG />,
-            animation: "fade",
           }}
         />
       </Tabs>
