@@ -8,7 +8,7 @@ const EtcField = () => {
     <TextField
       label="기타 사항"
       subtitle="지병이나 복용 중인 약이 있다면 작성해주세요."
-      placeholder="추가 정보를 입력해주세요."
+      placeholder="추가 정보를 입력해 주세요."
       color="white"
       value={watch("etc") || ""}
       onChange={(e) => setValue("etc", e.target.value)}

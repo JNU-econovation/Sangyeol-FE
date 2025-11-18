@@ -53,7 +53,7 @@ const MountainSearchInputSection = () => {
   return (
     <section className="relative z-10">
       <SearchInput
-        placeholder="산 이름을 입력해주세요"
+        placeholder="산 이름을 입력해 주세요"
         onChange={handleInputChange}
         value={searchText}
         // handleSearch={handleSearch}

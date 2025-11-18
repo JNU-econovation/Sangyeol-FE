@@ -25,7 +25,7 @@ export default function CustomerCenterTabInquiryContentSection() {
       <Spacing size={8} />
       <textarea
         className="w-full h-40 px-4 border border-gray-30 rounded-md focus:outline-none p-4"
-        placeholder="문의 내용을 입력해주세요."
+        placeholder="문의 내용을 입력해 주세요."
       />
       <Spacing size={9} />
       <Button fullWidth>문의하기</Button>

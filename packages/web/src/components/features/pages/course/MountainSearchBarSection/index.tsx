@@ -11,7 +11,7 @@ export default function MountainSearchBarSection() {
   return (
     <StackLink href={ROUTE.MOUNTAIN_SEARCH} animation="none" preLoad>
       <SearchInput
-        placeholder="산 이름을 입력해주세요"
+        placeholder="산 이름을 입력해 주세요"
         onFocus={() =>
           navigate({ href: ROUTE.MOUNTAIN_SEARCH, animation: "none" })
         }
