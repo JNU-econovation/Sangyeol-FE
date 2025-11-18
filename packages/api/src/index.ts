@@ -26,3 +26,9 @@ export * from "./api/v1/travel/records/[recordId]/details";
 // Model 타입들도 re-export
 export * from "./model/course";
 export * from "./model/map";
+
+// Constants re-export
+export { default as MAP_CONSTANTS } from "./constants/map";
+
+// Utils re-export
+export * from "./utils/phoneNumber";

@@ -1,9 +1,9 @@
-import { Rounded_X } from "@components/common/shared/ui/Icons";
-import Text from "@components/common/shared/ui/Text";
 import styled from "@emotion/native";
 import useImagePicker from "@hooks/common/useImagePicker";
+import useSelectImagePickerTypeModal from "@hooks/feature/modal/useSelectImagePickerTypeModal";
 import FieldLayout, { FieldLayoutProps } from "@shared/layout/FieldLayout";
-import WeakButton from "@shared/ui/WeakButton";
+import { Rounded_X } from "@shared/ui/Icons";
+import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 
 const MAX_IMAGE_COUNT = 3;
@@ -18,21 +18,24 @@ interface ImageSelectFieldProps extends Omit<FieldLayoutProps, "content"> {
 
 const ImageSelectField = ({
   title,
-  titleButton = false,
-  buttonTitle,
   onChange,
   ...props
 }: ImageSelectFieldProps) => {
   const { selectedImagesUri, pickImage, removeImage } = useImagePicker({
     onChange,
   });
+  const { showSelectImagePickerType } = useSelectImagePickerTypeModal();
+
+  const handleAddImage = () => {
+    showSelectImagePickerType({
+      onSelectCamera: () => pickImage("camera"),
+      onSelectGallery: () => pickImage("photoLibrary"),
+    });
+  };
 
   return (
     <FieldLayout
       title={title}
-      titleSideComponent={
-        titleButton && <WeakButton title={buttonTitle} onPress={pickImage} />
-      }
       content={
         <ImageContainer>
           {selectedImagesUri &&
@@ -50,7 +53,7 @@ const ImageSelectField = ({
             ))}
           {(!selectedImagesUri ||
             selectedImagesUri?.length < MAX_IMAGE_COUNT) && (
-            <EmptyAttachmentItem onPress={pickImage}>
+            <EmptyAttachmentItem onPress={handleAddImage}>
               <Text color="gray900" fontSize={40} textAlign="center">
                 +
               </Text>
