@@ -12,9 +12,9 @@ import dynamic from "next/dynamic";
 
 const TravelResultPathMapView = dynamic(
   () =>
-    import(
-      "@/components/features/widgets/map/TravelResultPathMapView/index"
-    ).then((mod) => mod.default),
+    import("@widgets/map/TravelResultPathMapView/index").then(
+      (mod) => mod.default,
+    ),
   {
     ssr: false,
   },
@@ -58,7 +58,7 @@ const TravelLogDetailContentSection = Suspense.with(
         </div>
         <Spacing size={3.5} />
         <div className="h-80 bg-gray-100 select-none">
-          {/* <TravelResultPathMapView traveledPath={coordinates} /> */}
+          <TravelResultPathMapView traveledPath={coordinates} />
         </div>
         <div className="flex">
           <div className="grow p-3.5">
