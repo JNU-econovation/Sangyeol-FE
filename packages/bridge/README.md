@@ -2,6 +2,8 @@
 
 TCP 3-way Handshake 프로토콜 기반의 웹뷰-네이티브 양방향 통신 라이브러리입니다.
 
+[🔗 blog post](https://geongyu09.github.io/post/webviewThreeWayHandshake/)
+
 ## 개요
 
 Bridge는 React Native 앱과 웹뷰 간의 안정적이고 타입 안전한 양방향 통신을 제공합니다. 기존 `postMessage` 방식의 단방향 통신을 넘어, 요청-응답 패턴과 콜백 기반 비동기 처리를 지원합니다.
@@ -13,18 +15,6 @@ Bridge는 React Native 앱과 웹뷰 간의 안정적이고 타입 안전한 양
 - **메시지 손실 방지**: 3-way Handshake를 통해 웹뷰 준비 상태를 확인하고 안전하게 통신합니다
 - **플랫폼 독립성**: iOS/Android 자동 감지 및 동일한 API 제공
 - **에러 핸들링**: Strict mode와 Validator를 통한 견고한 에러 처리
-
-## 설치
-
-이 패키지는 Yarn Workspaces 모노레포 내부 라이브러리입니다. 별도 설치가 필요하지 않으며, workspace 의존성으로 자동 연결됩니다.
-
-```json
-{
-  "dependencies": {
-    "bridge": "workspace:*"
-  }
-}
-```
 
 ## 빠른 시작
 
@@ -165,7 +155,7 @@ export default function RootLayout({ children }) {
 
 ```typescript
 interface LocationRequest {
-  type: 'getLocation';
+  type: "getLocation";
 }
 
 interface LocationResponse {
@@ -179,10 +169,10 @@ const { ref, postMessage } = usePostMessageBridge<
 >();
 
 postMessage({
-  message: { type: 'getLocation' },
+  message: { type: "getLocation" },
   onResponse: (res) => {
     console.log(res.lat, res.lng); // 타입 안전
-  }
+  },
 });
 ```
 
@@ -270,7 +260,7 @@ interface RequestProps<ReqBody, ResBody> {
 
 ```typescript
 interface CameraRequest {
-  type: 'openCamera';
+  type: "openCamera";
   options?: {
     quality: number;
   };
@@ -286,15 +276,15 @@ const { request } = useBridge<CameraRequest, CameraResponse>();
 
 request({
   requestMessage: {
-    type: 'openCamera',
-    options: { quality: 0.8 }
+    type: "openCamera",
+    options: { quality: 0.8 },
   },
   responseCallback: (res) => {
     console.log(res.uri); // 타입 안전
   },
   onErrorCallback: (err) => {
     console.error(err);
-  }
+  },
 });
 ```
 
@@ -372,12 +362,12 @@ Web                           Native
 
 ```typescript
 interface WebviewBridgeMessage<Body> {
-  _id: string;           // 메시지 고유 ID (랜덤 생성)
-  ack: string | null;    // 응답 대상 메시지 ID (응답일 경우)
+  _id: string; // 메시지 고유 ID (랜덤 생성)
+  ack: string | null; // 응답 대상 메시지 ID (응답일 경우)
   flag: {
-    syn: 0 | 1;         // SYN 플래그 (1=SET, 0=RESET)
+    syn: 0 | 1; // SYN 플래그 (1=SET, 0=RESET)
   };
-  body?: Body;          // 실제 전달 데이터
+  body?: Body; // 실제 전달 데이터
 }
 ```
 
@@ -398,10 +388,12 @@ message.send((response) => {
 });
 
 // 웹에서 응답 전송
-bridge.createMessage({
-  ack: messageId,  // RWindow에서 콜백을 찾아 실행
-  body: responseData
-}).send();
+bridge
+  .createMessage({
+    ack: messageId, // RWindow에서 콜백을 찾아 실행
+    body: responseData,
+  })
+  .send();
 ```
 
 ## 고급 사용법
@@ -413,37 +405,37 @@ bridge.createMessage({
 ```typescript
 // 메시지 타입 정의
 type BridgeMessage =
-  | { type: 'getLocation'; payload?: never }
-  | { type: 'openCamera'; payload: { quality: number } }
-  | { type: 'saveData'; payload: { key: string; value: string } };
+  | { type: "getLocation"; payload?: never }
+  | { type: "openCamera"; payload: { quality: number } }
+  | { type: "saveData"; payload: { key: string; value: string } };
 
 type BridgeResponse =
-  | { type: 'getLocation'; data: { lat: number; lng: number } }
-  | { type: 'openCamera'; data: { uri: string } }
-  | { type: 'saveData'; data: { success: boolean } };
+  | { type: "getLocation"; data: { lat: number; lng: number } }
+  | { type: "openCamera"; data: { uri: string } }
+  | { type: "saveData"; data: { success: boolean } };
 
 // Native
 const bridge = usePostMessageBridge<BridgeMessage, BridgeResponse>();
 
 bridge.postMessage({
-  message: { type: 'getLocation' },
+  message: { type: "getLocation" },
   onResponse: (res) => {
-    if (res.type === 'getLocation') {
+    if (res.type === "getLocation") {
       console.log(res.data.lat); // 타입 체크됨
     }
-  }
+  },
 });
 
 // Web
 const { request } = useBridge<BridgeMessage, BridgeResponse>();
 
 request({
-  requestMessage: { type: 'openCamera', payload: { quality: 0.9 } },
+  requestMessage: { type: "openCamera", payload: { quality: 0.9 } },
   responseCallback: (res) => {
-    if (res.type === 'openCamera') {
+    if (res.type === "openCamera") {
       console.log(res.data.uri); // 타입 체크됨
     }
-  }
+  },
 });
 ```
 
@@ -599,6 +591,7 @@ Handshake가 완료되기 전에 전송된 메시지는 무시됩니다. `onRead
 RWindow는 최대 20개의 대기 메시지만 추적할 수 있습니다. 응답을 받지 못한 메시지가 20개 이상 쌓이면 발생합니다.
 
 **해결 방법:**
+
 - 응답이 필요 없는 메시지는 콜백 없이 전송
 - 타임아웃 처리 구현
 - 메시지 전송 빈도 조절
@@ -620,18 +613,22 @@ message.send((response) => {
 ```typescript
 // Bad
 const { request } = useBridge();
-request({ requestMessage: { type: 'test' } }); // 타입 any
+request({ requestMessage: { type: "test" } }); // 타입 any
 
 // Good
-interface Request { type: string }
-interface Response { success: boolean }
+interface Request {
+  type: string;
+}
+interface Response {
+  success: boolean;
+}
 
 const { request } = useBridge<Request, Response>();
 request({
-  requestMessage: { type: 'test' }, // 타입 체크됨
+  requestMessage: { type: "test" }, // 타입 체크됨
   responseCallback: (res) => {
     console.log(res.success); // 자동완성 지원
-  }
+  },
 });
 ```
 
