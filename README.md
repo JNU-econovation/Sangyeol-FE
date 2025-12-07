@@ -2,7 +2,7 @@
 
 > 등산객들의 안전한 산행을 위한 크로스 플랫폼 애플리케이션
 
-산결은 등산 코스 검색, 실시간 위치 추적, 긴급 신고 시스템을 제공하는 등산 안전 플랫폼입니다. React Native 모바일 앱과 Next.js 웹 앱으로 구성되어 있으며, 혁신적인 자체 라이브러리를 통해 최고의 사용자 경험을 제공합니다.
+산결은 등산 코스 검색, 실시간 위치 추적, 긴급 신고 시스템을 제공하는 등산 안전 플랫폼입니다. React Native 모바일 앱과 Next.js 웹 앱으로 구성되어 있습니다.
 
 - 마이그래이션 전 레포: [app](https://github.com/JNU-econovation/Soop-APP) | [web](https://github.com/JNU-econovation/Soop-WEB)
 
