@@ -17,7 +17,9 @@ export * from "./api/v1/auth/sms";
 export * from "./api/v1/auth/sms/verify";
 export * from "./api/v1/users/profile/basic-information";
 export * from "./api/v1/users/profile/personal-information";
-export * from "./api/v1/users/profile/image";
+// export * from "./api/v1/users/profile/image"; // 주석 처리: profile-image와 중복
+export * from "./api/v1/users/profile-image";
+export * from "./api/v1/users/profile-image/save";
 export * from "./api/v1/users/alert";
 export * from "./api/v1/travel/records";
 export * from "./api/v1/travel/records/[recordId]";
