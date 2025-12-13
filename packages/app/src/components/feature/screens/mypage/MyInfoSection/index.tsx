@@ -4,11 +4,10 @@ import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 import { Suspense } from "@suspensive/react";
-import { router } from "expo-router";
-import { useCallback } from "react";
 
-import PATH_ROUTE from "@constants/pathRoute";
+import useRouteHandler from "./hooks/useRouteHandler";
 import MyInfoSectionLoader from "./loader";
+import ProfileImageView from "../ProfileImageView";
 
 const MyInfoSection = Suspense.with(
   {
@@ -16,43 +15,13 @@ const MyInfoSection = Suspense.with(
   },
   () => {
     const { data } = useProfileQuery();
-
-    const goToMyInfo = useCallback(() => {
-      router.push({
-        pathname: "/(tabs)/mypage/webview/[url]",
-        params: {
-          url: PATH_ROUTE.WEBVIEW.MY_INFO,
-        },
-      });
-    }, []);
-
-    const goToTravelLog = useCallback(() => {
-      const now = new Date();
-      router.push({
-        pathname: "/(tabs)/mypage/webview/[url]",
-        params: {
-          url: PATH_ROUTE.WEBVIEW.TRAVEL_LOG({
-            year: now.getFullYear(),
-            month: now.getMonth() + 1,
-            date: now.getDate(),
-          }),
-        },
-      });
-    }, []);
-
-    const goToCourseBookmark = useCallback(() => {
-      router.push({
-        pathname: "/(tabs)/mypage/webview/[url]",
-        params: {
-          url: PATH_ROUTE.WEBVIEW.COURSE_BOOKMARK,
-        },
-      });
-    }, []);
+    const { goToMyInfo, goToTravelLog, goToCourseBookmark } = useRouteHandler();
+    const handleProfileImage = () => {};
 
     return (
       <Container>
         <ContentContainer>
-          <ProfileImagePlaceholder />
+          <ProfileImageView />
           <Spacing size={20} />
 
           <Text fontSize={14} fontWeight="regular" color="primary">
@@ -103,13 +72,6 @@ const Container = styled.View`
 const ContentContainer = styled.View`
   align-items: center;
   padding: 0 16px;
-`;
-
-const ProfileImagePlaceholder = styled.View`
-  width: 96px;
-  height: 96px;
-  border-radius: 48px;
-  background-color: ${COLORS.gray300};
 `;
 
 const UserNameContainer = styled.TouchableOpacity`
