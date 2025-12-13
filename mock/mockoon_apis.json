@@ -102,6 +102,18 @@
         {
           "type": "route",
           "uuid": "40d0a16a-4a5a-4dd0-82e7-4376ba52b088"
+        },
+        {
+          "type": "route",
+          "uuid": "5cd2ce01-8025-4784-854d-abd603bf49d2"
+        },
+        {
+          "type": "route",
+          "uuid": "048d55f5-4513-4b7a-89ee-b84b144a4e4b"
+        },
+        {
+          "type": "route",
+          "uuid": "a5f1c1c5-b263-4aa2-a8ad-8a6cd04eb2d1"
         }
       ]
     },
@@ -1031,6 +1043,122 @@
         }
       ],
       "responseMode": null
+    },
+    {
+      "uuid": "85ada419-da5a-49eb-a719-243f85ce84c8",
+      "type": "http",
+      "documentation": "프로필 이미지 URL 조회",
+      "method": "get",
+      "endpoint": "api/v1/users/profile-image/",
+      "responses": [
+        {
+          "uuid": "bfa0eef3-a6fd-4924-9628-792a783be4cf",
+          "body": "{\n  \"data\": {\n    \"profileImageUrlDTO\": {\n      \"profileImageUrl\": \"https://picsum.photos/200\"\n    }\n  },\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "19470747-92e2-4791-8e13-459e6db8c35a",
+      "type": "http",
+      "documentation": "프로필 이미지 Presigned URL 생성",
+      "method": "post",
+      "endpoint": "api/v1/users/profile-image/",
+      "responses": [
+        {
+          "uuid": "c3767cf1-2327-4e49-b7cd-b5270c0652a5",
+          "body": "{\n  \"data\": {\n    \"presignedUrlDTO\": {\n      \"presignedUrl\": \"https://s3.amazonaws.com/bucket/profile-images/test-file.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256\",\n      \"fileName\": \"test-file.jpg\"\n    }\n  },\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "f3ef181a-aee7-42f8-afbe-01d4facd0389",
+      "type": "http",
+      "documentation": "프로필 이미지 삭제",
+      "method": "delete",
+      "endpoint": "api/v1/users/profile-image/",
+      "responses": [
+        {
+          "uuid": "ea6c141a-fb12-4048-af5d-77278ada31ff",
+          "body": "{\n  \"data\": null,\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "0964e042-4504-4dd9-8b2a-8a35132e8030",
+      "type": "http",
+      "documentation": "프로필 이미지 S3 키 저장",
+      "method": "post",
+      "endpoint": "api/v1/users/profile-image/save",
+      "responses": [
+        {
+          "uuid": "186e6f26-9ddd-4750-88dd-60082d7a7dc8",
+          "body": "{\n  \"data\": {\n    \"presignedUrlDTO\": {\n      \"presignedUrl\": \"https://s3.amazonaws.com/bucket/profile-images/saved-file.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256\",\n      \"fileName\": \"saved-file.jpg\"\n    }\n  },\n  \"status\": \"success\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -1056,15 +1184,19 @@
     },
     {
       "type": "route",
-      "uuid": "5cd2ce01-8025-4784-854d-abd603bf49d2"
+      "uuid": "85ada419-da5a-49eb-a719-243f85ce84c8"
     },
     {
       "type": "route",
-      "uuid": "048d55f5-4513-4b7a-89ee-b84b144a4e4b"
+      "uuid": "19470747-92e2-4791-8e13-459e6db8c35a"
     },
     {
       "type": "route",
-      "uuid": "a5f1c1c5-b263-4aa2-a8ad-8a6cd04eb2d1"
+      "uuid": "f3ef181a-aee7-42f8-afbe-01d4facd0389"
+    },
+    {
+      "type": "route",
+      "uuid": "0964e042-4504-4dd9-8b2a-8a35132e8030"
     }
   ],
   "proxyMode": false,
