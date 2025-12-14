@@ -8,7 +8,13 @@ import { COLORS } from "@styles/colorPalette";
 import { SaveFormat, useImageManipulator } from "expo-image-manipulator";
 import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import { ActivityIndicator, Alert, Dimensions, Image } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Dimensions,
+  Image,
+  ImageStyle,
+} from "react-native";
 import {
   GestureDetector,
   GestureHandlerRootView,
@@ -20,6 +26,7 @@ const ProfileImageScreen = () => {
   const { uri } = useLocalSearchParams<{ uri: string }>();
   const decodedUri = decodeURIComponent(uri);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState<number>(60);
   const insets = useSafeAreaInsets();
 
   const context = useImageManipulator(decodedUri);
@@ -53,9 +60,9 @@ const ProfileImageScreen = () => {
               const { height } = Dimensions.get("window");
 
               // 화면 컨테이너 크기
-              const headerApproxHeight = 60; // 헤더 대략 높이
+              // headerHeight state 사용 (실제 측정된 값)
               const contentContainerHeight =
-                height - insets.top - insets.bottom - headerApproxHeight;
+                height - insets.top - insets.bottom - headerHeight;
               const containerWidth = width;
               const containerHeight = contentContainerHeight * 0.5; // height: "50%"
 
@@ -246,26 +253,16 @@ const ProfileImageScreen = () => {
                 width: finalWidth,
                 height: finalHeight,
               });
-              // context.resize({
-              //   width: width,
-              //   height: width,
-              // });
               const renderedImage = await context.renderAsync();
               const result = await renderedImage.saveAsync({
                 format: SaveFormat.PNG,
               });
 
-              // FormData 생성 및 서버로 업로드
-              const formData = new FormData();
-              formData.append("file", {
-                uri: result.uri,
-                name: "profile.png",
-                type: "image/png",
-              } as any);
-
-              // TODO: S3 업로드 API 호출
-              await uploadProfileImage(formData);
-              // await uploadProfileImageApi(axiosInstance, formData);
+              // S3 업로드 API 호출
+              const uploadResult = await uploadProfileImage(result.uri, "PNG");
+              if (!uploadResult.success) {
+                throw new Error(uploadResult.error || "이미지 업로드 실패");
+              }
 
               resolve();
             } catch (error) {
@@ -290,7 +287,12 @@ const ProfileImageScreen = () => {
 
   return (
     <ScreenContainer backgroundColor="mainWhite">
-      <HeaderContainer>
+      <HeaderContainer
+        onLayout={(event) => {
+          const { height } = event.nativeEvent.layout;
+          setHeaderHeight(height);
+        }}
+      >
         <BackButton />
         <ConfirmButton onPress={handleComplete} disabled={isProcessing}>
           {isProcessing ? (
@@ -317,15 +319,13 @@ const ProfileImageScreen = () => {
               accessible={true}
               accessibilityLabel="Selected profile image preview"
               resizeMode="cover"
-              style={
-                [
-                  {
-                    width: "100%",
-                    height: "50%",
-                  },
-                  animatedStyle,
-                ] as any
-              }
+              style={[
+                {
+                  width: "100%",
+                  height: "50%",
+                } as ImageStyle,
+                animatedStyle as ImageStyle,
+              ]}
             />
           </GestureDetector>
           <CircularGuide
