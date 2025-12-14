@@ -1,9 +1,11 @@
 import useImagePicker from "@hooks/common/useImagePicker";
 import useProfileImageChangeModal from "@hooks/feature/modal/useProfileImageChangeModal";
+import useDeleteProfileImageMutate from "@hooks/feature/query/mutate/useDeleteProfileImageMutate";
 import { router } from "expo-router";
 import { useEffect } from "react";
 
 const useProfileImageHandler = () => {
+  const { mutate: setDefaultImage } = useDeleteProfileImageMutate();
   const { showSelectImagePickerType } = useProfileImageChangeModal();
 
   const { pickImage, removeImage, selectedImagesUri } = useImagePicker({
@@ -29,6 +31,9 @@ const useProfileImageHandler = () => {
       },
       onSelectGallery: () => {
         pickImage("photoLibrary");
+      },
+      onSelectDefaultImage: () => {
+        setDefaultImage();
       },
     });
   };
