@@ -11,6 +11,7 @@ const BUTTON_PADDING_VERTICAL = 24;
 interface ShowSelectImagePickerTypeParams {
   onSelectCamera: () => void;
   onSelectGallery: () => void;
+  onSelectDefaultImage: () => void;
 }
 
 const useProfileImageChangeModal = () => {
@@ -37,6 +38,7 @@ const ModalComponent = ({
   closeModal,
   onSelectCamera,
   onSelectGallery,
+  onSelectDefaultImage,
 }: ModalComponentProps) => {
   const { setIsShowReportAlert: setShowReportAlert } = useSetModalAlertStore();
 
@@ -52,6 +54,11 @@ const ModalComponent = ({
   const selectGallery = useCallback(() => {
     closeModal();
     onSelectGallery();
+  }, [closeModal]);
+
+  const selectDefaultImage = useCallback(() => {
+    closeModal();
+    onSelectDefaultImage();
   }, [closeModal]);
 
   return (
@@ -81,7 +88,7 @@ const ModalComponent = ({
               title="기본 이미지"
               backgroundColor="mainWhite"
               color="black"
-              onPress={selectGallery}
+              onPress={selectDefaultImage}
               fullWidth
               paddingVertical={BUTTON_PADDING_VERTICAL}
             />

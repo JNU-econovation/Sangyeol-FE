@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 import BackButton from "@entities/BackButton";
 import { useImageZoomPan } from "@hooks/common/useImageZoomPan";
-import uploadProfileImage from "@hooks/feature/query/imageupload";
+import uploadProfileImage from "@service/s3/query";
 import ScreenContainer from "@shared/layout/Screen";
 import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
