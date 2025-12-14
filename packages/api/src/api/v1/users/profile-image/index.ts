@@ -5,7 +5,7 @@ import { AxiosInstance } from "axios";
  * @category Constants
  * @description 프로필 이미지 API 경로
  */
-export const GET_PROFILE_IMAGE_API_PATH = "/api/v1/users/profile-image/";
+export const PROFILE_IMAGE_API_PATH = "/api/v1/users/profile-image/";
 
 /**
  * @public
@@ -51,13 +51,13 @@ export interface PostProfileImageKeySaveResponse {
  * @param instance - Axios 인스턴스
  * @returns 프로필 이미지 URL
  * @example
- * const result = await getProfileImageSave(axiosInstance);
+ * const result = await getProfileImageUrl(axiosInstance);
  * console.log(result.profileImageUrlDTO.profileImageUrl);
  */
-export const getProfileImageSave = async (instance: AxiosInstance) => {
+export const getProfileImageUrl = async (instance: AxiosInstance) => {
   const response = await instance<GetProfileImageUrl>({
     method: "GET",
-    url: GET_PROFILE_IMAGE_API_PATH,
+    url: PROFILE_IMAGE_API_PATH,
   });
 
   return response.data;
@@ -84,7 +84,7 @@ export const postProfileImageSave = async (
 ) => {
   const response = await instance<PostProfileImageKeySaveResponse>({
     method: "POST",
-    url: GET_PROFILE_IMAGE_API_PATH,
+    url: PROFILE_IMAGE_API_PATH,
     data: {
       imageFileFormat,
     },
@@ -105,7 +105,7 @@ export const postProfileImageSave = async (
 export const deleteProfileImage = async (instance: AxiosInstance) => {
   const response = await instance<null>({
     method: "DELETE",
-    url: GET_PROFILE_IMAGE_API_PATH,
+    url: PROFILE_IMAGE_API_PATH,
   });
 
   return response.data;
