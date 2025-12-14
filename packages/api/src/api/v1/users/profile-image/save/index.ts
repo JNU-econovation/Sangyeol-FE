@@ -37,7 +37,7 @@ export interface PostProfileImageSaveResponse {
 /**
  * @public
  * @category Users
- * @description 프로필 이미지 업로드를 위한 S3 키를 서버에 저장하고 Presigned URL을 받습니다
+ * @description 프로필 이미지 S3 키를 서버로 보내 저장하고 Presigned URL을 받습니다
  * @param instance - Axios 인스턴스
  * @param body - 파일명 정보
  * @returns S3 업로드용 Presigned URL 및 파일명

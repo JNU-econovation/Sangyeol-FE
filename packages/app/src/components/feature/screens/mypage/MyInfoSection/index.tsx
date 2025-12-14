@@ -5,9 +5,11 @@ import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 import { Suspense } from "@suspensive/react";
 
+import { Pressable } from "react-native";
+import ProfileImageView from "../ProfileImageView";
+import useProfileImageHandler from "./hooks/useProfileImageHandler";
 import useRouteHandler from "./hooks/useRouteHandler";
 import MyInfoSectionLoader from "./loader";
-import ProfileImageView from "../ProfileImageView";
 
 const MyInfoSection = Suspense.with(
   {
@@ -16,7 +18,7 @@ const MyInfoSection = Suspense.with(
   () => {
     const { data } = useProfileQuery();
     const { goToMyInfo, goToTravelLog, goToCourseBookmark } = useRouteHandler();
-    const handleProfileImage = () => {};
+    const { handleProfileImage } = useProfileImageHandler();
 
     return (
       <Container>
@@ -24,9 +26,11 @@ const MyInfoSection = Suspense.with(
           <ProfileImageView />
           <Spacing size={20} />
 
-          <Text fontSize={14} fontWeight="regular" color="primary">
-            프로필 변경
-          </Text>
+          <Pressable onPress={handleProfileImage}>
+            <Text fontSize={14} fontWeight="regular" color="primary">
+              프로필 변경
+            </Text>
+          </Pressable>
 
           <Spacing size={20} />
 
