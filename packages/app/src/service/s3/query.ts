@@ -1,6 +1,15 @@
 import authenticatedApi from "@api/_instances/authenticatedApi";
 import { FileFormat, postProfileImageSave, postS3Key } from "api";
 
+const getMimeType = (fileType: FileFormat): string => {
+  const mimeTypeMap: Record<FileFormat, string> = {
+    JPG: "image/jpeg",
+    PNG: "image/png",
+    HEIC: "image/heic",
+  };
+  return mimeTypeMap[fileType];
+};
+
 const uploadProfileImage = async (
   fileUri: string,
   fileType: FileFormat = "PNG",
@@ -20,7 +29,7 @@ const uploadProfileImage = async (
       method: "PUT",
       body: blob,
       headers: {
-        "Content-Type": `image/${fileType.toLowerCase()}`,
+        "Content-Type": getMimeType(fileType),
       },
     });
 
