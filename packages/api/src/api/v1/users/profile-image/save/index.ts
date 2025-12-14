@@ -56,7 +56,7 @@ export const postS3Key = async (
   const response = await instance<PostProfileImageSaveResponse>({
     method: "POST",
     url: POST_S3_KEY_API_PATH,
-    data: { body },
+    data: body,
   });
 
   return response.data;
