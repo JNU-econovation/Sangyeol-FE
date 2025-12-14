@@ -239,26 +239,6 @@ const ProfileImageScreen = () => {
                * 1. 원본 이미지에서 계산된 영역을 크롭
                * 2. 크롭된 이미지를 정사각형(width x width)으로 리사이즈
                */
-              // const result = await manipulateAsync(
-              //   decodedUri,
-              //   [
-              //     {
-              //       crop: {
-              //         originX: finalX,
-              //         originY: finalY,
-              //         width: finalWidth,
-              //         height: finalHeight,
-              //       },
-              //     },
-              //     {
-              //       resize: {
-              //         width: width,
-              //         height: width,
-              //       },
-              //     },
-              //   ],
-              //   { format: SaveFormat.PNG },
-              // );
 
               context.crop({
                 originX: finalX,
