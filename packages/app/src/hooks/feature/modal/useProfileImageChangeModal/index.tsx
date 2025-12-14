@@ -71,7 +71,7 @@ const ModalComponent = ({
               fullWidth
               paddingVertical={BUTTON_PADDING_VERTICAL}
             />
-            <ButtonSeperator />
+            <ButtonSeparator />
             <DefaultButton
               title="갤러리"
               backgroundColor="mainWhite"
@@ -80,7 +80,7 @@ const ModalComponent = ({
               fullWidth
               paddingVertical={BUTTON_PADDING_VERTICAL}
             />
-            <ButtonSeperator />
+            <ButtonSeparator />
             <DefaultButton
               title="기본 이미지"
               backgroundColor="mainWhite"
@@ -136,7 +136,7 @@ const SelectButtonsContainer = styled.View`
   border-radius: 8px;
 `;
 
-const ButtonSeperator = styled.View`
+const ButtonSeparator = styled.View`
   height: 1px;
   background-color: ${COLORS.gray400};
 `;
