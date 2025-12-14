@@ -3,7 +3,6 @@ import styled from "@emotion/native";
 import useModal from "@service/modal/hooks";
 import Spacing from "@shared/layout/Spacing";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
-import useSetModalAlertStore from "@store/asyncStorage/useSetModalAlertStore";
 import { useCallback } from "react";
 
 const BUTTON_PADDING_VERTICAL = 24;
@@ -40,11 +39,9 @@ const ModalComponent = ({
   onSelectGallery,
   onSelectDefaultImage,
 }: ModalComponentProps) => {
-  const { setIsShowReportAlert: setShowReportAlert } = useSetModalAlertStore();
-
   const cancel = useCallback(() => {
     closeModal();
-  }, [closeModal, setShowReportAlert]);
+  }, [closeModal]);
 
   const selectCamera = useCallback(() => {
     closeModal();
