@@ -22,6 +22,7 @@ export { default as MountainSVG } from "@assets/icons/Mountain.svg";
 export { default as MapSVG } from "@assets/icons/Map.svg";
 export { default as StoreSVG } from "@assets/icons/Store.svg";
 export { default as HeroSVG } from "@assets/icons/Hero.svg";
+export { default as CommunitySVG } from "@assets/icons/Community.svg";
 
 // Header
 export { default as BellSVG } from "@assets/icons/Bell.svg";
