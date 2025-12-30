@@ -1,12 +1,12 @@
 import QueryProvider from "@service/query/provider";
 import {
+  CommunitySVG,
   HeroBlockSVG,
   HeroSVG,
   HomeBlockSVG,
   HomeSVG,
   MapBlockSVG,
   MapSVG,
-  MountainSVG,
   StoreSVG,
 } from "@shared/ui/Icons";
 import { useTokenStore } from "@store/secureStorage/useTokenStore";
@@ -24,7 +24,6 @@ export default function TabLayout() {
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: COLORS.primary,
-          // animation: "fade",
           tabBarStyle: {
             backgroundColor: COLORS.mainWhite,
           },
@@ -43,11 +42,11 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="sangyeol"
+          name="community"
           options={{
-            tabBarLabel: "산결",
+            tabBarLabel: "커뮤니티",
             tabBarIcon: ({ focused }) =>
-              focused ? <MountainSVG /> : <MountainSVG />,
+              focused ? <CommunitySVG /> : <CommunitySVG />,
           }}
         />
         <Tabs.Screen
