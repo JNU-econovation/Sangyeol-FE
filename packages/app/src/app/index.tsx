@@ -57,7 +57,7 @@ export default function Index() {
   }
 
   if (isLoggedIn && !isBasicInfoSet)
-    return <Redirect href="/onboarding/profile" />;
+    return <Redirect href="/onboarding/terms" />;
 
   if (accessToken) return <Redirect href="/(tabs)/home" />;
   return <Redirect href={"/starter"} />;
