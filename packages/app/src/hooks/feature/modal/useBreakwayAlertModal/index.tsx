@@ -54,7 +54,7 @@ const ModalComponent = () => {
     <OutsideContainer activeOpacity={1}>
       <ModalContainer>
         <Spacing size={14} />
-        <Icon source={require("@assets/icons/alert/Alert_Message.png")} />
+        <Icon source={require("@assets/images/Alert_Message.png")} />
         <Spacing size={18} />
         <Title>
           <Emphasis>경로를 이탈</Emphasis>하였습니다.
