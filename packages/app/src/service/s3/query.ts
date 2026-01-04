@@ -10,6 +10,10 @@ const getMimeType = (fileType: FileFormat): string => {
   return mimeTypeMap[fileType];
 };
 
+/**
+ * 프로필 이미지를 S3에 업로드하고, S3 키를 서버에 저장합니다.
+ */
+
 const uploadProfileImage = async (
   fileUri: string,
   fileType: FileFormat = "PNG",
