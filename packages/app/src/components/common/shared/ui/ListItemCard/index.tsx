@@ -1,12 +1,8 @@
 import styled from "@emotion/native";
-import {
-  ChosenTriangle,
-  PointerPolygon,
-  WeekGreenTriangle,
-  WeekTriangle,
-} from "@shared/ui/Icons";
+import { PointerPolygon } from "@shared/ui/Icons";
 import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
+import TriangleCheckbox from "../TriangleCheckbox";
 
 interface ListItemCardProps {
   title: string;
@@ -40,15 +36,7 @@ const ListItemCard = ({
             필수
           </Text>
         </PermissionListItemTextContainer>
-        {!checked ? (
-          disabled ? (
-            <WeekTriangle />
-          ) : (
-            <WeekGreenTriangle />
-          )
-        ) : (
-          <ChosenTriangle />
-        )}
+        <TriangleCheckbox disabled={disabled} checked={checked} />
       </PermissionListItem>
       {selected && (
         <PointerPolygon style={{ transform: [{ translateX: 10 }] }} />
