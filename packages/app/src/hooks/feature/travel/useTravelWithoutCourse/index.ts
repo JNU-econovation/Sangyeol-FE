@@ -12,6 +12,7 @@ import { useEffect, useRef } from "react";
 import { AppState } from "react-native";
 import SOCKET from "./constants";
 import { SocketMessageResponse } from "./types";
+import useBreakwayAlertModal from "@hooks/feature/modal/useBreakwayAlertModal";
 
 const TRAVEL_SOCKET_URL = process.env.EXPO_PUBLIC_TRAVEL_SOCKET_URL;
 const TRAVEL_LOCATION_UPDATE_INTERVAL = 5000;
@@ -39,9 +40,9 @@ const useTravelWithoutCourse = () => {
     timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
     distanceInterval: 5,
   });
-  const { showDeviationToast } = useDeviationToast();
   const { showTravelEndToast } = useTravelEndToast();
   const { showTravelErrorToast } = useTravelErrorToast();
+  const { showReportResult, closeAlertModal } = useBreakwayAlertModal();
 
   // init
   useEffect(() => {
@@ -64,7 +65,8 @@ const useTravelWithoutCourse = () => {
       setDistance(travelDistance);
 
       // 경로 이탈한 경우
-      if (isDeviation) showDeviationToast();
+      if (isDeviation) showReportResult();
+      else closeAlertModal();
 
       // 도착한 경우
       if (isArrived) {
