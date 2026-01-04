@@ -4,8 +4,8 @@ import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 import { Suspense } from "@suspensive/react";
-
 import { Pressable } from "react-native";
+
 import ProfileImageView from "../ProfileImageView";
 import useProfileImageHandler from "./hooks/useProfileImageHandler";
 import useRouteHandler from "./hooks/useRouteHandler";
