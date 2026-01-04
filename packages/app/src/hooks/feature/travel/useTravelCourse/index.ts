@@ -10,6 +10,7 @@ import * as Location from "expo-location";
 import { router } from "expo-router";
 import { useEffect, useRef } from "react";
 
+import useBreakwayAlertModal from "@hooks/feature/modal/useBreakwayAlertModal";
 import { AppState } from "react-native";
 import SOCKET from "./constants";
 import { SocketMessageResponse } from "./types";
@@ -47,10 +48,9 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
     timeInterval: TRAVEL_LOCATION_UPDATE_INTERVAL,
     distanceInterval: 5,
   });
-  // const { showDeviationToast } = useDeviationToast();
   const { showTravelEndToast } = useTravelEndToast();
   const { showTravelErrorToast } = useTravelErrorToast();
-  const { showNotice } = useNoticeBar();
+  const { showReportResult, closeAlertModal } = useBreakwayAlertModal();
 
   // init
   useEffect(() => {
@@ -58,8 +58,6 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   }, [setTravelType]);
 
   const onMessage = async ({ event, status, data }: SocketMessageResponse) => {
-    // console.log("소캣 메시지 수신:", { event, status, data });
-
     if (status === "error") return console.error("에러 발생");
 
     if (event === "start") {
@@ -82,19 +80,14 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
       setRemainTimeToStopover(remainTimeToStopover);
 
       // 경로 이탈한 경우
-      // if (isDeviation) showDeviationToast();
-      if (isDeviation)
-        showNotice({
-          message: "⚠️ 경로를 이탈했습니다!",
-          duration: 2500,
-        });
+      if (isDeviation) showReportResult();
+      else closeAlertModal();
 
       // 도착한 경우
       if (isArrived) {
         // 설정 상태 초기화
         setTravelState("completed");
         addTimelog("end", Date.now());
-        // clearIntervalId();
 
         showTravelEndToast();
 
