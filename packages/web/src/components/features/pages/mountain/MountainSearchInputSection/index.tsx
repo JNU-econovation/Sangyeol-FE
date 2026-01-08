@@ -11,8 +11,9 @@ import { useStackLinkRouter } from "stack-link";
 const MountainSearchInputSection = () => {
   const [searchText, setSearchText] = useState("");
   const { data: relatedMountains } = useRelatedMountainsQuery(searchText);
-  // 우선적으로 임시로 아무 산에 대한 코스 정보를 가져오도록 함. 이는 fallback만 보여줌.
+
   const { navigate } = useStackLinkRouter({
+    // 우선적으로 임시로 아무 산에 대한 코스 정보를 가져오도록 함. 이는 fallback만 보여줌.
     prefetchHref: ROUTE.MOUNTAIN_COURSE("1"),
   });
 
@@ -50,13 +51,29 @@ const MountainSearchInputSection = () => {
     [navigate],
   );
 
+  const handleSearchDirectly = useCallback(() => {
+    // 직접 검색하는 경우, 정확하게 산이 있는 경우에는 해당 id로 이동합니다.
+    // 정확한 산이 있지 않은 경우, -1 페이지로 이동합니다.
+    if (relatedMountains.suggestedMountainDTOs.length === 1) {
+      navigate({
+        href:
+          ROUTE.MOUNTAIN_COURSE(relatedMountains.suggestedMountainDTOs[0].id) +
+          "?sort=my",
+      });
+      return;
+    }
+    navigate({
+      href: ROUTE.MOUNTAIN_COURSE("-1") + "?sort=my",
+    });
+  }, []);
+
   return (
     <section className="relative z-10">
       <SearchInput
         placeholder="산 이름을 입력해 주세요"
         onChange={handleInputChange}
         value={searchText}
-        // handleSearch={handleSearch}
+        handleSearch={handleSearchDirectly}
         autoFocus
       />
       {relatedMountains && (
