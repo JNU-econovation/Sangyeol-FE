@@ -1,3 +1,4 @@
+import useHaptics from "@hooks/common/useHaptic";
 import { MessageEventRequestData } from "@model/webview";
 import useToast from "@service/toast";
 import { getPathToRoute } from "@utils/bridge";
@@ -11,6 +12,7 @@ import { useCallback } from "react";
  */
 const useMiddleware = () => {
   const showToast = useToast();
+  const { defaultFeedback } = useHaptics();
 
   const middleware = useCallback(
     (reqMessage: MessageEventRequestData) => {
@@ -78,7 +80,7 @@ const useMiddleware = () => {
       }
 
       if (name === "haptic" && method === "POST") {
-        Haptics.selectionAsync();
+        defaultFeedback();
       }
     },
     [showToast],
