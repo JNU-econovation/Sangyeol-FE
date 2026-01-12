@@ -8,6 +8,8 @@ import Text from "@shared/ui/Text";
 import { useCallback, useState } from "react";
 import { useStackLinkRouter } from "stack-link";
 
+const CURRENT_SEARCH_LIST_KEY = "currenMountainSearchList";
+
 const MountainSearchInputSection = () => {
   const [searchText, setSearchText] = useState("");
   const { data: relatedMountains } = useRelatedMountainsQuery(searchText);
@@ -31,7 +33,7 @@ const MountainSearchInputSection = () => {
       const set = [param];
       const prevSearchData = JSON.parse(
         // TODO: 하드코딩 피하기
-        localStorage.getItem("currenMountainSearchList") ?? "[]",
+        localStorage.getItem(CURRENT_SEARCH_LIST_KEY) ?? "[]",
       ) as { mountainId: string; name: string }[];
 
       prevSearchData.forEach((text) => set.push(text));
@@ -41,7 +43,7 @@ const MountainSearchInputSection = () => {
 
       const newCurrentSearchTexts = JSON.stringify(newCurrentSearchData);
 
-      localStorage.setItem("currenMountainSearchList", newCurrentSearchTexts);
+      localStorage.setItem(CURRENT_SEARCH_LIST_KEY, newCurrentSearchTexts);
 
       navigate({
         href: ROUTE.MOUNTAIN_COURSE(param.mountainId) + "?sort=my",
@@ -52,9 +54,10 @@ const MountainSearchInputSection = () => {
   );
 
   const handleSearchDirectly = useCallback(() => {
-    // 직접 검색하는 경우, 정확하게 산이 있는 경우에는 해당 id로 이동합니다.
-    // 정확한 산이 있지 않은 경우, -1 페이지로 이동합니다.
+    if (!relatedMountains) return;
     if (relatedMountains.suggestedMountainDTOs.length === 1) {
+      // 직접 검색하는 경우, 정확하게 산이 있는 경우에는 해당 id로 이동합니다.
+      // 정확한 산이 있지 않은 경우, -1 페이지로 이동합니다.
       navigate({
         href:
           ROUTE.MOUNTAIN_COURSE(relatedMountains.suggestedMountainDTOs[0].id) +
@@ -65,7 +68,7 @@ const MountainSearchInputSection = () => {
     navigate({
       href: ROUTE.MOUNTAIN_COURSE("-1") + "?sort=my",
     });
-  }, []);
+  }, [relatedMountains]);
 
   return (
     <section className="relative z-10">
