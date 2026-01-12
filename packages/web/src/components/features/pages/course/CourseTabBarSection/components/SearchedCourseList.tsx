@@ -23,15 +23,15 @@ const SearchedCourseList = () => {
       sortBy === "my" || sortBy === "popular" ? null : (sortBy ?? "length"),
   });
 
-  const { courses } = courseList;
-
-  if (!courses) {
+  if (!courseList?.courses || courseList.courses.length === 0) {
     return <div className="text-center text-gray-500">코스가 없습니다.</div>;
   }
 
+  const { courses } = courseList;
+
   return (
     <ul className="flex flex-col gap-4 bg-gray-200 p-6 overflow-y-auto flex-1">
-      {courses.map(({ id, peakBaseId, ...props }, index) => (
+      {courses.map(({ id, peakBaseId, ...props }) => (
         <StackLink
           href={ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, id, {
             tag: MAP.BASE.id,
@@ -40,7 +40,7 @@ const SearchedCourseList = () => {
           key={id}
           animation="none"
         >
-          <div key={`${id}-${index}`} role="button">
+          <div role="button">
             <CourseListWithBookmarkMutate id={id} {...props} />
           </div>
         </StackLink>

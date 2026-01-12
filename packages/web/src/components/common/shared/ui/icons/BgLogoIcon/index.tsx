@@ -13,5 +13,5 @@ export default function BgLogoIcon({
   alt = DEFAULT_ALT,
   ...props
 }: BgLogoIconProps) {
-  return <Image src={Bg_Logo} alt={alt} width={140} {...props} />;
+  return <Image src={Bg_Logo} alt={alt} width={140} height={140} {...props} />;
 }
