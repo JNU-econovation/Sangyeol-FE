@@ -9,6 +9,7 @@ import SearchedCourseList from "./components/SearchedCourseList";
 import CourseTabBarSectionLoader from "./loader";
 import { useParams } from "next/navigation";
 import SwitchCase from "@/components/common/entities/SwitchCase";
+import { NO_RESULT_MOUNTAIN_ID } from "@/constants/mountain";
 
 export default Suspense.with(
   {
@@ -25,7 +26,7 @@ export default Suspense.with(
         <SwitchCase
           value={mountainId}
           caseBy={{
-            "-1": <NoResultUl />,
+            [NO_RESULT_MOUNTAIN_ID]: <NoResultUl />,
           }}
           defaultComponent={<SearchedCourseList />}
         />
