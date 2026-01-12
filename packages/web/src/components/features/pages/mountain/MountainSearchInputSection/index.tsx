@@ -1,14 +1,18 @@
 "use client";
 
 import ROUTE from "@/constants/route";
+import {
+  CURRENT_SEARCH_LIST_KEY,
+  MAX_SEARCH_HISTORY_COUNT,
+  NO_RESULT_MOUNTAIN_ID,
+} from "@/constants/mountain";
+import type { MountainSearchHistoryItem } from "@/types/mountain";
 import useRelatedMountainsQuery from "@hooks/feature/query/query/useRelatedMountainsQuery";
 import LinkArrowIcon from "@icons/LinkArrowIcon";
 import SearchInput from "@shared/ui/SearchInput";
 import Text from "@shared/ui/Text";
 import { useCallback, useState } from "react";
 import { useStackLinkRouter } from "stack-link";
-
-const CURRENT_SEARCH_LIST_KEY = "currenMountainSearchList";
 
 const MountainSearchInputSection = () => {
   const [searchText, setSearchText] = useState("");
@@ -26,24 +30,37 @@ const MountainSearchInputSection = () => {
     [setSearchText],
   );
 
+  /**
+   * 연관 검색 결과 클릭 시 처리
+   *
+   * @description
+   * 1. 클릭한 산을 검색 이력에 추가 (최대 20개)
+   * 2. 해당 산의 코스 목록 페이지로 이동
+   *
+   * @param param.mountainId - 산 ID
+   * @param param.name - 산 이름
+   */
   const handleRelatedResultClick = useCallback(
-    (param: { mountainId: string; name: string }) => {
+    (param: MountainSearchHistoryItem) => {
       if (typeof window === "undefined") return;
 
-      const set = [param];
+      // 기존 검색 이력 가져오기
       const prevSearchData = JSON.parse(
-        // TODO: 하드코딩 피하기
         localStorage.getItem(CURRENT_SEARCH_LIST_KEY) ?? "[]",
-      ) as { mountainId: string; name: string }[];
+      ) as MountainSearchHistoryItem[];
 
-      prevSearchData.forEach((text) => set.push(text));
+      // 새 검색을 맨 앞에 추가하고 중복 제거
+      const newSearchData = [
+        param,
+        ...prevSearchData.filter(
+          (item) => item.mountainId !== param.mountainId,
+        ),
+      ].slice(0, MAX_SEARCH_HISTORY_COUNT);
 
-      const newCurrentSearchData = [...set].filter(Boolean);
-      newCurrentSearchData.splice(20); // 최대 20개까지만 저장
-
-      const newCurrentSearchTexts = JSON.stringify(newCurrentSearchData);
-
-      localStorage.setItem(CURRENT_SEARCH_LIST_KEY, newCurrentSearchTexts);
+      localStorage.setItem(
+        CURRENT_SEARCH_LIST_KEY,
+        JSON.stringify(newSearchData),
+      );
 
       navigate({
         href: ROUTE.MOUNTAIN_COURSE(param.mountainId) + "?sort=my",
@@ -53,11 +70,30 @@ const MountainSearchInputSection = () => {
     [navigate],
   );
 
+  /**
+   * 직접 검색 버튼 클릭 시 처리
+   *
+   * @description
+   * 검색 결과에 따라 다른 페이지로 이동:
+   * - 정확히 1개 결과: 해당 산의 코스 목록으로 이동
+   * - 0개 또는 2개 이상: 검색 결과 없음 페이지로 이동 (mountainId = -1)
+   *
+   * @remarks
+   * **임시 구현**:
+   * 현재 백엔드에서 "사용자 입력에 대한 정확한 코스 검색 API"가 없어
+   * mountainId=-1을 사용하여 결과 없음을 표시합니다.
+   *
+   * **향후 개선 방향**:
+   * 1. 백엔드에서 직접 검색 API 제공 시: 해당 API 연동
+   * 2. 프론트엔드 개선: 별도 라우트(/mountain/search?query=xxx) 사용
+   *
+   * @see NO_RESULT_MOUNTAIN_ID
+   * @see {@link https://github.com/JNU-econovation/Sangyeol-FE/issues/61}
+   */
   const handleSearchDirectly = useCallback(() => {
     if (!relatedMountains) return;
     if (relatedMountains.suggestedMountainDTOs.length === 1) {
       // 직접 검색하는 경우, 정확하게 산이 있는 경우에는 해당 id로 이동합니다.
-      // 정확한 산이 있지 않은 경우, -1 페이지로 이동합니다.
       navigate({
         href:
           ROUTE.MOUNTAIN_COURSE(relatedMountains.suggestedMountainDTOs[0].id) +
@@ -65,10 +101,11 @@ const MountainSearchInputSection = () => {
       });
       return;
     }
+    // 정확한 산이 있지 않은 경우, NO_RESULT_MOUNTAIN_ID 페이지로 이동합니다.
     navigate({
-      href: ROUTE.MOUNTAIN_COURSE("-1") + "?sort=my",
+      href: ROUTE.MOUNTAIN_COURSE(NO_RESULT_MOUNTAIN_ID) + "?sort=my",
     });
-  }, [relatedMountains]);
+  }, [relatedMountains, navigate]);
 
   return (
     <section className="relative z-10">
