@@ -10,9 +10,9 @@ const CourseSearchTab = () => {
   const router = useRouter();
   const { mountainId } = useParams<{ mountainId: string }>();
   const searchParams = useSearchParams();
-  const sortBy = searchParams.get("sort") as
-    | (typeof TAB_TITLE_LIST)[number]["sort"]
-    | null;
+  const sortBy =
+    (searchParams.get("sort") as (typeof TAB_TITLE_LIST)[number]["sort"]) ??
+    "length";
 
   return (
     <div className="grid grid-cols-4 gap-1 justify-between items-center px-6">

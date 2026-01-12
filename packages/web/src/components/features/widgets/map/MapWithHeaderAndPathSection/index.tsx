@@ -1,7 +1,7 @@
 "use client";
 
 import MAP from "@/constants/map";
-import MOUNTAIN from "@/constants/mountain";
+import MOUNTAIN from "@/constants/mountain/index";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
 import MapView from "@entities/MapView";
