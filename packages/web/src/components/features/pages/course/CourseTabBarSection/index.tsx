@@ -4,7 +4,7 @@ import { Suspense } from "@suspensive/react";
 
 //inner imports
 import CourseSearchTab from "./components/CourseSearchTab";
-import NoResultUl from "./components/NoResultUl";
+import NoResult from "./components/NoResult";
 import SearchedCourseList from "./components/SearchedCourseList";
 import CourseTabBarSectionLoader from "./loader";
 import { useParams } from "next/navigation";
@@ -26,7 +26,7 @@ export default Suspense.with(
         <SwitchCase
           value={mountainId}
           caseBy={{
-            [NO_RESULT_MOUNTAIN_ID]: <NoResultUl />,
+            [NO_RESULT_MOUNTAIN_ID]: <NoResult />,
           }}
           defaultComponent={<SearchedCourseList />}
         />

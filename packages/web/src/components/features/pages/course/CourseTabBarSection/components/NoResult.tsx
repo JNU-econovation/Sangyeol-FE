@@ -1,7 +1,7 @@
 import Spacing from "@shared/layout/Spacing";
 import BgLogoIcon from "@shared/ui/icons/BgLogoIcon";
 
-const NoResultUl = () => {
+const NoResult = () => {
   return (
     <div className="flex justify-center items-center h-full bg-gray-200">
       <div className="flex justify-center items-center flex-col ">
@@ -19,4 +19,4 @@ const NoResultUl = () => {
   );
 };
 
-export default NoResultUl;
+export default NoResult;
