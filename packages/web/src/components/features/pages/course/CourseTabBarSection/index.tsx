@@ -1,18 +1,14 @@
 "use client";
 
-import MAP from "@/constants/map";
-import ROUTE from "@/constants/route";
-import { cn } from "@/utils/cn";
-import useCoursesOfMountainQuery from "@hooks/feature/query/query/useCoursesOfMountainQuery";
-import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
-import CourseListWithBookmarkMutate from "@widgets/course/CourseListWithBookmarkMutate";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { StackLink } from "stack-link";
 
 //inner imports
+import CourseSearchTab from "./components/CourseSearchTab";
+import NoResultUl from "./components/NoResultUl";
+import SearchedCourseList from "./components/SearchedCourseList";
 import CourseTabBarSectionLoader from "./loader";
-import { TAB_TITLE_LIST } from "@/constants/course";
+import { useParams } from "next/navigation";
+import SwitchCase from "@/components/common/entities/SwitchCase";
 
 export default Suspense.with(
   {
@@ -21,78 +17,18 @@ export default Suspense.with(
     fallback: <CourseTabBarSectionLoader />,
   },
   function CourseTabSection() {
-    const router = useRouter();
     const { mountainId } = useParams<{ mountainId: string }>();
-    const searchParams = useSearchParams();
-    const sortBy = searchParams.get("sort") as
-      | (typeof TAB_TITLE_LIST)[number]["sort"]
-      | null;
-
-    const { data: courseList } = useCoursesOfMountainQuery({
-      mountainId,
-      //TODO: 지금은 length, difficulty만 지원하지만, ui가 나오지 않아 우선적으로 다른 정렬 기준의 경우 length로 처리
-      // sortBy: sortBy ?? "length",
-      sortBy:
-        sortBy === "my" || sortBy === "popular" ? null : (sortBy ?? "length"),
-    });
-
-    const { courses } = courseList;
-
-    if (!courses) {
-      return <div className="text-center text-gray-500">코스가 없습니다.</div>;
-    }
 
     return (
       <section className="flex flex-col flex-1 overflow-hidden">
-        <div className="grid grid-cols-4 gap-1 justify-between items-center px-6">
-          {TAB_TITLE_LIST.map(({ title: tabTitle, sort }, index) => (
-            <button
-              key={`${index}-${tabTitle}`}
-              onClick={() => {
-                router.replace(
-                  `${ROUTE.MOUNTAIN_COURSE(mountainId)}?sort=${sort}`,
-                );
-              }}
-            >
-              <div
-                className={cn("px-3 py-1 text-white rounded-full text-sm", {
-                  "bg-gray-700": sort !== sortBy,
-                  "bg-primary": sort === sortBy,
-                })}
-              >
-                {tabTitle}
-              </div>
-            </button>
-          ))}
-
-          {TAB_TITLE_LIST.map(({ title: tabTitle, sort }, index) => (
-            <div key={`${index}-${tabTitle}-underline`}>
-              <Spacing size={2} />
-              <div
-                className={cn("h-1", {
-                  "bg-primary": sort === sortBy,
-                })}
-              />
-            </div>
-          ))}
-        </div>
-
-        <ul className="flex flex-col gap-4 bg-gray-200 p-6 overflow-y-auto flex-1">
-          {courses.map(({ id, peakBaseId, ...props }, index) => (
-            <StackLink
-              href={ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, id, {
-                tag: MAP.BASE.id,
-                baseId: peakBaseId,
-              })}
-              key={id}
-              animation="none"
-            >
-              <div key={`${id}-${index}`} role="button">
-                <CourseListWithBookmarkMutate id={id} {...props} />
-              </div>
-            </StackLink>
-          ))}
-        </ul>
+        <CourseSearchTab />
+        <SwitchCase
+          value={mountainId}
+          caseBy={{
+            "-1": <NoResultUl />,
+          }}
+          defaultComponent={<SearchedCourseList />}
+        />
       </section>
     );
   },

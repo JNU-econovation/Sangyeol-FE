@@ -12,7 +12,6 @@ export default function MountainCoursePage() {
         <Flex flexDirection="flex-col">
           <div className="px-6 pt-12">
             <BackButton />
-            {/* <CourseSearchBarSection /> */}
             <Spacing size={4} />
           </div>
         </Flex>
