@@ -241,7 +241,7 @@
       "responses": [
         {
           "uuid": "1e68ae8f-68d5-4105-a592-d378537ce667",
-          "body": "\n{\n\t\t\"data\" : {\n\t\t\turi : \"https://accounts.kakao.com/login/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fclient_id%3Dadf1cfad349f0843a6920c411c3005c2%26redirect_uri%3Dhttps%253A%252F%252Fapi.econo.soop.euichan.com%253A8080%252Fapi%252Fv1%252Foauth%252Fkakao%252Fcallback%26response_type%3Dcode%26through_account%3Dtrue#login\"\n\t\t}\n\t\t\"status\" : \"success\"\n}\n\n",
+          "body": "\n{\n\t\t\"data\" : {\n\t\t\turi : \"http://localhost:3000/social-login-loading?accessToken=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OSwiaWF0IjoxNzY4MjkyNTkwLCJleHAiOjE3Njk1MDIxOTB9.N3gkQUN5RnClvmlK5fhRQGuMLoClYzBCGUKVQJ3t6a0&refreshToken=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OSwiaWF0IjoxNzY4MjkyNTkwLCJleHAiOjE3Njk1MDIxOTB9.mZpNyho0IzBBrmSqGmVPrlHF4yJjtnGWJK1AY9BmKDo&expiredTime=1769502190632\"\n\t\t}\n\t\t\"status\" : \"success\"\n}\n\n",
           "latency": 0,
           "statusCode": 301,
           "label": "",
