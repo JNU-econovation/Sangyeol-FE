@@ -52,7 +52,7 @@ export default Suspense.with(
               {recommendedOutfit ?? "추천 복장"}
             </p>
             <p className="text-xs text-black-800">긴팔 긴바지 착용 권장</p>
-            <button className="w-5 h-2 bg-primary rounded-2xl" />
+            {/* <button className="w-5 h-2 bg-primary rounded-2xl" /> */}
           </div>
         </div>
       </div>

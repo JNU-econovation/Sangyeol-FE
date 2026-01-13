@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 "use client";
 
 import useGetCourseDetails from "@hooks/feature/course/useGetCourseDetails";
