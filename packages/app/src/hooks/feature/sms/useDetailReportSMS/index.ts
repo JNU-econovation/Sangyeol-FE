@@ -1,4 +1,5 @@
 import useSMS from "@hooks/common/useSMS";
+import useReportResultModal from "@hooks/feature/modal/useReportResultModal";
 
 const REPORT_MESSAGE = ({
   lng,
@@ -39,6 +40,8 @@ const useDetailReportSMS = ({
   attachment,
   enable,
 }: UseDetailReportSMSProps) => {
+  const { showReportResult } = useReportResultModal();
+
   if (!REPORT_NUMBER) {
     throw new Error("신고하기 번호가 설정되지 않았습니다.");
   }
@@ -58,6 +61,7 @@ const useDetailReportSMS = ({
           attachments: attachments,
         }
       : undefined,
+    onSuccess: showReportResult,
   });
 };
 
