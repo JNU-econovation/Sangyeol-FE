@@ -1,12 +1,7 @@
-import Text from "@components/common/shared/ui/Text";
-import { View } from "react-native";
+import ComingSoonScreen from "@shared/ui/ComingSoonScreen";
 
 const StoreScreen = () => {
-  return (
-    <View>
-      <Text>store</Text>
-    </View>
-  );
+  return <ComingSoonScreen />;
 };
 
 export default StoreScreen;
