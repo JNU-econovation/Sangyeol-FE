@@ -4,6 +4,7 @@ export { default as RightArrowSVG } from "@assets/icons/Right_Arrow.svg";
 export { default as LeftArrowWithWhiteBgSVG } from "@assets/icons/Left_Arrow_Black.svg";
 export { default as BackArrow } from "@assets/icons/Back_Arrow.svg";
 export { default as BackButton } from "@assets/icons/Back_Button.svg";
+export { default as ChevronLeft } from "@assets/icons/Chevron_Left.svg";
 
 //image
 export { default as StarSVG } from "@assets/icons/Star.svg";
