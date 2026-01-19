@@ -5,10 +5,6 @@ const appConfig = {
     version: "0.0.1",
     orientation: "portrait",
     icon: "./assets/images/App_Icon.png",
-    splash: {
-      image: "./assets/images/App_Icon.png",
-      resizeMode: "contain",
-    },
     scheme: "sangyeol",
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
@@ -39,7 +35,16 @@ const appConfig = {
     plugins: [
       "expo-maps",
       "expo-secure-store",
-      "expo-splash-screen",
+      [
+        "expo-splash-screen",
+        {
+          // image: "./assets/images/App_Icon.png",
+          image: "./assets/images/Splash_Image.png",
+          imageWidth: 200,
+          resizeMode: "contain",
+          backgroundColor: "#ffffff",
+        },
+      ],
       "expo-apple-authentication",
       "expo-router",
       // naver map
