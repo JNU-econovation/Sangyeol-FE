@@ -48,6 +48,12 @@ export default function RootLayout() {
                     }}
                   />
                   <Stack.Screen
+                    name="webModal"
+                    options={{
+                      presentation: "modal",
+                    }}
+                  />
+                  <Stack.Screen
                     name="report"
                     options={{
                       animation: "fade",
