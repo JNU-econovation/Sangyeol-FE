@@ -13,10 +13,7 @@ const MyPageNavListSection = () => {
 
   const goToCheckTerms = useCallback(() => {
     router.push({
-      pathname: "/(tabs)/mypage/webview/[url]",
-      params: {
-        url: PATH_ROUTE.WEBVIEW.CHECK_TERMS,
-      },
+      pathname: "/(tabs)/mypage/checkTerms",
     });
   }, []);
 
