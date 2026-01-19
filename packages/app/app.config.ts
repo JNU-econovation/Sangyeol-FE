@@ -14,6 +14,7 @@ const appConfig = {
       bundleIdentifier: "com.geongyu09.sangyeol",
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
+        LSApplicationQueriesSchemes: ["kakaoplus", "kakaotalk"],
       },
       config: {
         usesNonExemptEncryption: false,
