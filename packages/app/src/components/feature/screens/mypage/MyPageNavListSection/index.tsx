@@ -1,4 +1,3 @@
-import PATH_ROUTE from "@constants/pathRoute";
 import styled from "@emotion/native";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
@@ -19,10 +18,7 @@ const MyPageNavListSection = () => {
 
   const goToCustomerCenter = useCallback(() => {
     router.push({
-      pathname: "/(tabs)/mypage/webview/[url]",
-      params: {
-        url: PATH_ROUTE.WEBVIEW.CUSTOMER_CENTER("inquiry"),
-      },
+      pathname: "/(tabs)/mypage/customer",
     });
   }, []);
 
