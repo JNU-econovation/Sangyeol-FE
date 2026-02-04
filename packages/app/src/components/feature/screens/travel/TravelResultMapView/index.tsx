@@ -28,13 +28,8 @@ const TravelResultMapView = memo(() => {
     const centerLat = (Math.max(...latitudes) + Math.min(...latitudes)) / 2;
     const centerLng = (Math.max(...longitudes) + Math.min(...longitudes)) / 2;
 
-    const latRange = Math.max(...latitudes) - Math.min(...latitudes);
-
-    const offsetFactor = 0.4;
-    const latOffset = latRange * offsetFactor;
-
     return {
-      latitude: centerLat - latOffset,
+      latitude: centerLat,
       longitude: centerLng,
     };
   }, [traveledPath]);
@@ -89,10 +84,7 @@ const TravelResultMapView = memo(() => {
         isScrollGesturesEnabled: false, // 스크롤 제스처 비활성화
         isZoomGesturesEnabled: false, // 줌 제스처 비활성화
         isLiteModeEnabled: true, // 라이트 모드 활성화 (성능 향상)
-        logoAlign: "BottomLeft",
-        logoMargin: {
-          bottom: 250,
-        },
+        logoAlign: "TopLeft",
       }}
       basePoints={basePoints}
     />
