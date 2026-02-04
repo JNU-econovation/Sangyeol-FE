@@ -18,10 +18,9 @@ const ResultScreen = () => {
         <Spacing size={82} />
         <TravelResultCancelButton />
       </HeaderContainer>
+      <TravelWithoutCourseResultReviewSection />
       <TravelResultMapView />
-      <PositionBottom paddingInline={28}>
-        <TravelWithoutCourseResultReviewSection />
-      </PositionBottom>
+      <PositionBottom paddingInline={28}></PositionBottom>
     </Container>
   );
 };
@@ -32,8 +31,8 @@ const Container = styled.View`
 `;
 
 const HeaderContainer = styled.View`
-  position: absolute;
-  z-index: 10;
+  /* position: absolute; */
+  z-index: 20;
   padding-inline: 24px;
   display: flex;
   flex-direction: row;

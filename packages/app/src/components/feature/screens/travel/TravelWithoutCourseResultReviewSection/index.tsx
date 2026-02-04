@@ -1,6 +1,6 @@
-import Spacing from "@components/common/shared/layout/Spacing";
-import Text from "@components/common/shared/ui/Text";
 import styled from "@emotion/native";
+import Spacing from "@shared/layout/Spacing";
+import Text from "@shared/ui/Text";
 import useTravelStateStore from "@store/travel";
 import { COLORS } from "@styles/colorPalette";
 import { msToTimeText } from "@utils/time";
@@ -26,7 +26,6 @@ const TravelWithoutCourseResultReviewSection = () => {
 
 const Container = styled.View`
   background-color: ${COLORS.mainWhite};
-  border-radius: 12px;
   z-index: 50;
   display: flex;
   width: 100%;
