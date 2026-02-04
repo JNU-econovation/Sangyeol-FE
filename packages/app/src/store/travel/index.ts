@@ -2,6 +2,19 @@ import { Coordinate } from "@model/map";
 import { TravelState } from "@model/travel";
 import { create } from "zustand";
 
+const DUMP_PATH = [
+  [126.9889, 35.1349],
+  [126.9895, 35.1355],
+  [126.9903, 35.1368],
+  [126.9918, 35.1385],
+  [126.9935, 35.1402],
+  [126.9948, 35.1421],
+  [126.9965, 35.1445],
+  [126.9978, 35.1468],
+  [126.9989, 35.1489],
+  [127.0, 35.151],
+];
+
 type TravelTimelogType = "start" | "pause" | "restart" | "end";
 
 interface TravelStateStore {
@@ -10,7 +23,7 @@ interface TravelStateStore {
   distance: number;
   traveledPath: Coordinate[];
   connectedURL: string | null;
-  timelog: [TravelTimelogType, number][];
+  timelog: [TravelTimelogType, number][]; // [타입, 타임스탬프] 형식의 배열
   remainTimeToStopover: number | null; // 다음 베이스까지 남은 시간 (밀리초 단위)
   remainTimeToEnd: number | null; // 코스 종료 지점까지 남은 시간 (밀리초 단위)
   travelType: "with-course" | "without-course" | null;
