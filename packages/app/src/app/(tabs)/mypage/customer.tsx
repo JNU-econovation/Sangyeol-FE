@@ -9,7 +9,7 @@ import { Linking } from "react-native";
 
 const CustomerScreen = () => {
   const openKakaoChannel = async () => {
-    const channelId = process.env.EXPO_PUBLIC_KAKAO_CHANEL_ID;
+    const channelId = process.env.EXPO_PUBLIC_KAKAO_CHANNEL_ID;
     const channelUrl = `kakaoplus://plusfriend/home/${channelId}`;
     const fallbackUrl = `https://pf.kakao.com/${channelId}`;
 
