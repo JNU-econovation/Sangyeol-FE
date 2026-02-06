@@ -4,7 +4,7 @@
     "access": "public"
   },
   "packageManager": "yarn@4.9.3",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "WebView-Native bridge library with TCP-like protocol",
   "author": "geongyu <geongyu09@gmail.com>",
   "license": "MIT",
