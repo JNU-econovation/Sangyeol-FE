@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@geongyu/bridge": "workspace:^",
     "@ncdai/react-wheel-picker": "^1.0.19",
     "@sangyeol/utils": "workspace:^",
     "@suspensive/react": "^3.3.0",
@@ -16,7 +17,6 @@
     "@tanstack/react-query-devtools": "^5.87.4",
     "api": "workspace:^",
     "axios": "^1.9.0",
-    "bridge": "workspace:^",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "next": "15.5.7",

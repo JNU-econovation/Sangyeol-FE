@@ -2,7 +2,7 @@ import {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@model/webview";
-import { usePostMessageBridge } from "bridge/native";
+import { usePostMessageBridge } from "@geongyu/bridge/native";
 import { useCallback } from "react";
 
 export type RouteType = "push" | "replace" | "dismiss";

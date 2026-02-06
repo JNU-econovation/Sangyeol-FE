@@ -3194,6 +3194,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@geongyu/bridge@workspace:^, @geongyu/bridge@workspace:packages/bridge":
+  version: 0.0.0-use.local
+  resolution: "@geongyu/bridge@workspace:packages/bridge"
+  dependencies:
+    react: "npm:19.1.0"
+    react-dom: "npm:19.1.0"
+    react-native: "npm:0.81.4"
+    react-native-webview: "npm:13.15.0"
+    tsup: "npm:^8.5.0"
+    typescript: "npm:^5.1.0"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+    react-native: "*"
+    react-native-webview: "*"
+  languageName: unknown
+  linkType: soft
+
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"
@@ -6861,6 +6879,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@expo/cli": "npm:0.24.20"
     "@expo/vector-icons": "npm:^15.0.2"
+    "@geongyu/bridge": "workspace:^"
     "@mj-studio/react-native-naver-map": "npm:^2.6.4"
     "@quidone/react-native-wheel-picker": "npm:^1.6.1"
     "@react-native-async-storage/async-storage": "npm:2.2.0"
@@ -6878,7 +6897,6 @@ __metadata:
     api: "workspace:^"
     axios: "npm:^1.9.0"
     babel-plugin-module-resolver: "npm:^5.0.2"
-    bridge: "workspace:^"
     drizzle-kit: "npm:^0.31.5"
     drizzle-orm: "npm:^0.44.6"
     eslint: "npm:^8.57.0"
@@ -7546,24 +7564,6 @@ __metadata:
   checksum: 10c0/7c6dfd30c338d2997ba77500539227b9d1f85e388a5f43220865201e407e076783d0881f2d297b9f80951b4c957fcf0b51c1d2d24227631643c3f7c284b0aa04
   languageName: node
   linkType: hard
-
-"bridge@workspace:^, bridge@workspace:packages/bridge":
-  version: 0.0.0-use.local
-  resolution: "bridge@workspace:packages/bridge"
-  dependencies:
-    react: "npm:19.1.0"
-    react-dom: "npm:19.1.0"
-    react-native: "npm:0.81.4"
-    react-native-webview: "npm:13.15.0"
-    tsup: "npm:^8.5.0"
-    typescript: "npm:^5.1.0"
-  peerDependencies:
-    react: "*"
-    react-dom: "*"
-    react-native: "*"
-    react-native-webview: "*"
-  languageName: unknown
-  linkType: soft
 
 "browserslist@npm:^4.24.0, browserslist@npm:^4.25.3":
   version: 4.25.4
@@ -18475,6 +18475,7 @@ __metadata:
   dependencies:
     "@eslint/eslintrc": "npm:^3.3.1"
     "@eslint/js": "npm:^9.23.0"
+    "@geongyu/bridge": "workspace:^"
     "@ncdai/react-wheel-picker": "npm:^1.0.19"
     "@sangyeol/utils": "workspace:^"
     "@suspensive/react": "npm:^3.3.0"
@@ -18487,7 +18488,6 @@ __metadata:
     "@types/react-dom": "npm:^19"
     api: "workspace:^"
     axios: "npm:^1.9.0"
-    bridge: "workspace:^"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
     eslint: "npm:^9.23.0"

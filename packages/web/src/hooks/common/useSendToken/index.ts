@@ -1,6 +1,6 @@
 import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 import useShowToastBridge from "@/hooks/feature/bridge/useShowToastBridge";
-import { useBridge } from "bridge/web";
+import { useBridge } from "@geongyu/bridge/web";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 

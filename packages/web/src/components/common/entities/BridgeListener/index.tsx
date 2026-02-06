@@ -1,4 +1,4 @@
-import { BridgeRequestListener } from "bridge/web";
+import { BridgeRequestListener } from "@geongyu/bridge/web";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,
