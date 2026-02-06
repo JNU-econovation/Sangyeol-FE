@@ -1,5 +1,8 @@
 {
   "name": "@geongyu/bridge",
+  "publishConfig": {
+    "access": "public"
+  },
   "packageManager": "yarn@4.9.3",
   "version": "0.1.0",
   "description": "WebView-Native bridge library with TCP-like protocol",
