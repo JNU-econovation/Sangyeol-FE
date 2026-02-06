@@ -1,6 +1,30 @@
 {
-  "name": "bridge",
+  "name": "@geongyu/bridge",
   "packageManager": "yarn@4.9.3",
+  "version": "0.1.0",
+  "description": "WebView-Native bridge library with TCP-like protocol",
+  "author": "geongyu <geongyu09@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JNU-econovation/Sangyeol-FE.git",
+    "directory": "packages/bridge"
+  },
+  "bugs": {
+    "url": "https://github.com/JNU-econovation/Sangyeol-FE/issues"
+  },
+  "keywords": [
+    "react-native",
+    "webview",
+    "bridge",
+    "communication",
+    "cross-platform"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",

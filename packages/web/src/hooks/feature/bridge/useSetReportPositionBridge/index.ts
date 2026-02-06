@@ -3,7 +3,7 @@ import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
-import { useBridge } from "bridge/web";
+import { useBridge } from "@geongyu/bridge/web";
 
 interface Position {
   latitude: number;

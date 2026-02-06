@@ -11,7 +11,7 @@ import {
 } from "@model/webview";
 import { useTokenStore } from "@store/secureStorage/useTokenStore/index";
 import { COLORS } from "@styles/colorPalette";
-import { WebviewWithBridge } from "bridge/native";
+import { WebviewWithBridge } from "@geongyu/bridge/native";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Animated, View } from "react-native";
 import WebView from "react-native-webview";
