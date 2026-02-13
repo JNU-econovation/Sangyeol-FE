@@ -1,7 +1,8 @@
 import { cn } from "@/utils/cn";
+import SelectorCloseIcon from "@icons/SelectorCloseIcon";
+import SelectorOpenIcon from "@icons/SelectorOpenIcon";
 import Spacing from "@shared/layout/Spacing";
 import { useEffect, useState } from "react";
-import SelectorCloseIcon from "@icons/SelectorCloseIcon";
 
 interface SelectorProps {
   options: {
@@ -55,7 +56,7 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
             ?.text ?? "Select an option"}
         </p>
         <div className="absolute top-1/2 right-4 -translate-y-1/2">
-          <SelectorCloseIcon />
+          {optionsOpen ? <SelectorOpenIcon /> : <SelectorCloseIcon />}
         </div>
       </button>
 
