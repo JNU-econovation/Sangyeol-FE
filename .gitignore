@@ -71,3 +71,5 @@ Thumbs.db
 !.yarn/versions
 
 ./packages/api/docs/
+
+context
