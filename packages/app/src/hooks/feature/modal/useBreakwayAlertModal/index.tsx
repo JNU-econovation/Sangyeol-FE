@@ -27,7 +27,7 @@ const useBreakwayAlertModal = () => {
     };
   }, [isOpen]);
 
-  const showReportResult = () => {
+  const showBreakwayAlert = () => {
     if (isOpen) return;
     setIsOpen(true);
     openModal(<ModalComponent />, {
@@ -45,7 +45,7 @@ const useBreakwayAlertModal = () => {
     closeModal();
   };
 
-  return { showReportResult, closeAlertModal };
+  return { showBreakwayAlert, closeAlertModal };
 };
 
 // Modal Component
@@ -77,14 +77,16 @@ const OutsideContainer = styled.TouchableOpacity`
 const ModalContainer = styled.View`
   display: flex;
   text-align: center;
-  width: 300px;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
   background-color: ${COLORS.mainWhite};
   border-radius: 12px;
 `;
 
 const Icon = styled.Image`
-  width: 64px;
-  height: 64px;
+  width: 52px;
+  height: 52px;
 `;
 
 const Title = styled.Text`
