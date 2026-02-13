@@ -50,7 +50,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
   });
   const { showTravelEndToast } = useTravelEndToast();
   const { showTravelErrorToast } = useTravelErrorToast();
-  const { showReportResult, closeAlertModal } = useBreakwayAlertModal();
+  const { showBreakwayAlert, closeAlertModal } = useBreakwayAlertModal();
 
   // init
   useEffect(() => {
@@ -80,7 +80,7 @@ const useTravelCourse = ({ mountainId, courseId }: UseTravelCourseProps) => {
       setRemainTimeToStopover(remainTimeToStopover);
 
       // 경로 이탈한 경우
-      if (isDeviation) showReportResult();
+      if (isDeviation) showBreakwayAlert();
       else closeAlertModal();
 
       // 도착한 경우
