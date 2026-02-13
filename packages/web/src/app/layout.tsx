@@ -61,6 +61,8 @@ const font = localFont({
   ],
 });
 
+const NODE_ENV = process.env.NODE_ENV;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -77,6 +79,9 @@ export default function RootLayout({
             </ModalProvider>
           </StackLinkProvider>
         </TanstackQueryProvider>
+        {NODE_ENV === "development" && (
+          <script src="http://localhost:3002/devtools-client.js"></script>
+        )}
       </body>
     </html>
   );
