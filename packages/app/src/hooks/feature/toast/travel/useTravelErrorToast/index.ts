@@ -6,8 +6,8 @@ const useTravelErrorToast = () => {
   const showTravelErrorToast = () => {
     showToast({
       type: "error",
-      text1: "여행 오류 발생",
-      text2: "여행 중 오류가 발생했습니다.",
+      text1: "산행 오류 발생",
+      text2: "산행 중 오류가 발생했습니다.",
     });
   };
   return { showTravelErrorToast };
