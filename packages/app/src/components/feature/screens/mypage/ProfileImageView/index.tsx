@@ -1,17 +1,22 @@
 import useProfileImageUrlQuery from "@hooks/feature/query/query/useProfileImageUrlQuery";
-import { Suspense } from "@suspensive/react";
+import { ErrorBoundary, Suspense } from "@suspensive/react";
 import ProfileImageViewLoader from "./loader";
 import styled from "@emotion/native";
 
-const ProfileImageView = Suspense.with(
+const ProfileImageView = ErrorBoundary.with(
   {
     fallback: <ProfileImageViewLoader />,
   },
-  () => {
-    const { data: uri } = useProfileImageUrlQuery();
+  Suspense.with(
+    {
+      fallback: <ProfileImageViewLoader />,
+    },
+    () => {
+      const { data: uri } = useProfileImageUrlQuery();
 
-    return <ProfileImage source={{ uri }} />;
-  },
+      return <ProfileImage source={{ uri }} />;
+    },
+  ),
 );
 
 const ProfileImage = styled.Image`

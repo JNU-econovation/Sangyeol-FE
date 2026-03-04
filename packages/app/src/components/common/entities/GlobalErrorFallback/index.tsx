@@ -20,7 +20,7 @@ const GlobalErrorFallback = () => {
   return (
     <Container>
       <Text color="primary" fontSize={28} fontWeight="regular">
-        {/* 혹시나 백엔드에서 합의되지 않은 에러 코드가 오는 경우를 재비하여 옵셔널로 보여주기 */}
+        {/* 혹시나 백엔드에서 합의되지 않은 에러 코드가 오는 경우를 대비하여 옵셔널로 보여주기 */}
         {ERROR_CODES[errorCode]?.message}
       </Text>
       <ResetButton onPress={handleErrorReset}>
