@@ -7,7 +7,7 @@ const useProfileImageUrlQuery = () => {
   return useSuspenseQuery({
     queryKey: [PROFILE_IMAGE_API_PATH],
     queryFn: () => getProfileImageUrl(authenticatedApi),
-    select: (data) => data.profileImageUrlDTO.profileImageUrl,
+    select: (data) => data.profileImageUrl,
   });
 };
 

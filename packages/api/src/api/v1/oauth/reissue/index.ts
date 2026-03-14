@@ -5,7 +5,7 @@ import { AxiosInstance } from "axios";
  * @category Constants
  * @description 토큰 재발급 API 경로
  */
-export const REISSUE_API_PATH = "/api/v1/auth/reissue";
+export const REISSUE_API_PATH = "/api/v1/oauth/reissue";
 
 /**
  * @public

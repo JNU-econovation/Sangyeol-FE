@@ -8,7 +8,7 @@ const useProfileImageUrlPrefetch = () => {
     queryKey: [PROFILE_IMAGE_API_PATH],
     queryFn: async () => {
       const res = await getProfileImageUrl(authenticatedApi);
-      return res.profileImageUrlDTO;
+      return res.profileImageUrl;
     },
   });
 };
