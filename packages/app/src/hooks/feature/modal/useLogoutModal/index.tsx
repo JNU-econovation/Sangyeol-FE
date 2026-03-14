@@ -6,6 +6,7 @@ import Text from "@shared/ui/Text";
 import { COLORS } from "@styles/colorPalette";
 import { useCallback } from "react";
 import useLogoutAlertModal from "../useLogoutAlertModal";
+import useLogoutMutate from "@hooks/feature/query/mutate/useLogoutMutate";
 
 const useLogoutModal = () => {
   const { openModal, closeModal } = useModal();
@@ -23,10 +24,15 @@ const useLogoutModal = () => {
 
 const ModalComponent = ({ closeModal }: { closeModal: () => void }) => {
   const { showLogoutAlertModal } = useLogoutAlertModal();
+  const { mutate: logoutRequest } = useLogoutMutate();
 
   const handleLogout = useCallback(async () => {
-    closeModal();
-    showLogoutAlertModal();
+    logoutRequest(null, {
+      onSuccess: () => {
+        closeModal();
+        showLogoutAlertModal();
+      },
+    });
   }, [closeModal, showLogoutAlertModal]);
 
   return (

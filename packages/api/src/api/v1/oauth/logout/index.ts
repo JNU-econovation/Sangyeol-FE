@@ -9,31 +9,17 @@ export const LOGOUT_API_PATH = "/api/v1/oauth/logout";
 
 /**
  * @public
- * @category Types
- * @interface PostLogoutResponse
- * @description 로그아웃 응답 타입
- * @property {null} data - 응답 데이터 (없음)
- * @property {string} status - 응답 상태
- */
-export interface PostLogoutResponse {
-  data: null;
-  status: string;
-}
-
-/**
- * @public
  * @category OAuth
  * @description 로그아웃을 처리합니다
  * @param {AxiosInstance} instance - Axios 인스턴스
- * @returns {Promise<PostLogoutResponse>} 로그아웃 응답
+ * @returns {Promise<null>} 로그아웃 응답 데이터 (null)
  * @example
- * const result = await postLogoutApi(axiosInstance);
- * console.log(result.status); // "success"
+ * await postLogoutApi(axiosInstance);
  */
 export const postLogoutApi = async (
   instance: AxiosInstance,
-): Promise<PostLogoutResponse> => {
-  const response = await instance<PostLogoutResponse>({
+): Promise<null> => {
+  const response = await instance<null>({
     method: "POST",
     url: LOGOUT_API_PATH,
   });
