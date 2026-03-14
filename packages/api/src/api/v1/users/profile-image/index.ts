@@ -5,7 +5,7 @@ import { AxiosInstance } from "axios";
  * @category Constants
  * @description 프로필 이미지 API 경로
  */
-export const PROFILE_IMAGE_API_PATH = "/api/v1/users/profile-image/";
+export const PROFILE_IMAGE_API_PATH = "/api/v1/users/profile-image";
 
 /**
  * @public
@@ -23,9 +23,7 @@ export type FileFormat = "JPG" | "PNG" | "HEIC";
  * @property {string} profileImageUrlDTO.profileImageUrl - 프로필 이미지 URL
  */
 export interface GetProfileImageUrl {
-  profileImageUrlDTO: {
-    profileImageUrl: string;
-  };
+  profileImageUrl: string;
 }
 
 /**

@@ -8,6 +8,7 @@ export * from "./api/v1/mountains/[mountainId]/courses";
 export * from "./api/v1/mountains/searches/suggestions";
 export * from "./api/v1/oauth/apple/login";
 export * from "./api/v1/oauth/kakao";
+export * from "./api/v1/oauth/logout";
 export * from "./api/v1/oauth/reissue";
 export * from "./api/v1/pathways";
 export * from "./api/v1/users/nickname/check";
