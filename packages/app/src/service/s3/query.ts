@@ -20,9 +20,10 @@ const uploadProfileImage = async (
 ): Promise<{ success: boolean; error?: string }> => {
   try {
     // 1. Presigned URL 획득
-    const {
-      presignedUrlDTO: { presignedUrl, fileName },
-    } = await postProfileImageSave(authenticatedApi, fileType);
+    const { presignedUrl, fileName } = await postProfileImageSave(
+      authenticatedApi,
+      fileType,
+    );
 
     // 2. 파일을 blob으로 읽기
     const response = await fetch(fileUri);

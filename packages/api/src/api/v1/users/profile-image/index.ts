@@ -36,10 +36,8 @@ export interface GetProfileImageUrl {
  * @property {string} presignedUrlDTO.fileName - 저장될 파일명
  */
 export interface PostProfileImageKeySaveResponse {
-  presignedUrlDTO: {
-    presignedUrl: string;
-    fileName: string;
-  };
+  presignedUrl: string;
+  fileName: string;
 }
 
 /**
