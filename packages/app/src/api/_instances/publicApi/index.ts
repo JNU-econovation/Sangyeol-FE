@@ -16,19 +16,22 @@ publicApi.interceptors.request.use(
   (config) => {
     if (EXPO_PUBLIC_MODE === "development") {
       console.log(
-        "==================[Public API Request]======================",
+        "\n==================[ ✅ Public API Request]======================",
       );
       console.log("[method:]", config.method?.toUpperCase());
       console.log("[url:]", config.url);
       console.log("[data:]", config.data);
       console.log("[params:]", config.params, "\n");
     }
+    console.log(
+      "=========================================================\n\n",
+    );
     return config;
   },
   (error) => {
     if (EXPO_PUBLIC_MODE === "development") {
       console.error(
-        "==================[Public API Request Error]======================",
+        "\n==================[ ❌ Public API Request Error]======================",
       );
       console.error("[error:]", error.message);
       if (error.config) {
@@ -38,6 +41,9 @@ publicApi.interceptors.request.use(
       }
     }
     console.error("[error:]", error);
+    console.log(
+      "=========================================================\n\n",
+    );
     return Promise.reject(error);
   },
 );
@@ -46,27 +52,30 @@ publicApi.interceptors.response.use(
   async (response) => {
     if (EXPO_PUBLIC_MODE === "development") {
       console.log(
-        "==================[Public API Response]======================",
+        "\n==================[ ✅ Public API Response]======================",
       );
       console.log("[status:]", response.status);
       console.log("[url:]", response.config.url);
       console.log("[data:]", response.data, "\n");
-      console.log("=========================================================");
+      console.log(
+        "=========================================================\n\n",
+      );
       console.log("");
     }
     return response.data;
   },
   (error) => {
     if (EXPO_PUBLIC_MODE === "development") {
-      console.error(
-        "==================[Public API error]======================",
+      console.warn(
+        "\n==================[ ❌ Public API Response Error]======================",
       );
-      console.error("[error :]", error);
-      console.error("[url:]", error.config?.url);
-      console.error("[data:]", error.response?.data);
-      console.error("[status:]", error.response?.status, "\n");
-      console.log("=========================================================");
-      console.log("");
+      console.warn("[error :]", error);
+      console.warn("[url:]", error.config?.url);
+      console.warn("[data:]", error.response?.data);
+      console.warn("[status:]", error.response?.status, "\n");
+      console.log(
+        "=========================================================\n",
+      );
     }
 
     const err = Object.assign(

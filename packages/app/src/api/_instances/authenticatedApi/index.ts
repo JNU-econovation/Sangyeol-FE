@@ -20,9 +20,37 @@ authenticatedApi.interceptors.request.use(
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
+
+    if (EXPO_PUBLIC_MODE === "development") {
+      console.log(
+        "==================[ ✅ authenticatedApi API Request]======================",
+      );
+      console.log("[method:]", config.method?.toUpperCase());
+      console.log("[url:]", config.url);
+      console.log("[data:]", config.data);
+      console.log("[params:]", config.params, "\n");
+    }
+    console.log(
+      "=========================================================\n\n",
+    );
     return config;
   },
   (error) => {
+    if (EXPO_PUBLIC_MODE === "development") {
+      console.error(
+        "==================[ ❌ authenticatedApi API Request Error]======================",
+      );
+      console.error("[error:]", error.message);
+      if (error.config) {
+        console.error("[url:]", error.config.url);
+        console.error("[data:]", error.config.data);
+        console.error("[params:]", error.config.params, "\n");
+      }
+    }
+    console.error("[error:]", error);
+    console.log(
+      "=========================================================\n\n",
+    );
     return Promise.reject(error);
   },
 );
@@ -31,26 +59,30 @@ authenticatedApi.interceptors.response.use(
   (response) => {
     if (EXPO_PUBLIC_MODE === "development") {
       console.log(
-        "==================[authenticatedApi API Response]======================",
+        "==================[ ✅ authenticatedApi API Response]======================",
       );
       console.log("[status:]", response.status);
       console.log("[url:]", response.config.url);
       console.log("[data:]", response.data, "\n");
-      console.log("=========================================================");
-      console.log("");
+      console.log(
+        "=========================================================\n\n",
+      );
     }
 
     return response.data;
   },
   (error: AxiosError<ErrorResponse>) => {
     if (EXPO_PUBLIC_MODE === "development") {
-      console.warn("=============[authenticatedApi API error]=============");
+      console.warn(
+        "==================[ ❌ authenticatedApi API error]======================",
+      );
       console.warn("[error :]", error);
       console.warn("[url:]", error.config?.url);
       console.warn("[data:]", error.response?.data);
       console.warn("[status:]", error.response?.status, "\n");
-      console.log("=========================================================");
-      console.log("");
+      console.log(
+        "=========================================================\n\n",
+      );
     }
 
     const err = Object.assign(
