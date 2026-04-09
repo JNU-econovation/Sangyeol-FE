@@ -26,13 +26,16 @@ const useBookmarkMutation = ({ mountainId }: UseBookmarkMutationProps) => {
       postBookmarkApi(authenticatedApi, courseId),
     onMutate: (selectedCourseId) => {
       TAB_TITLE_LIST.forEach(({ sort }) => {
-        const prevCourseListData =
+        const prevCoursesOfMountainResponse =
           queryClient.getQueryData<GetCoursesOfMountainResponse>([
             COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
               searchParams: { sortBy: sort },
             }),
-          ]).courses;
-        const newCourseListData = prevCourseListData.map((course) => {
+          ]);
+        if (!prevCoursesOfMountainResponse) return;
+        const prevCourseListData = prevCoursesOfMountainResponse.courses;
+
+        const newCourseListData = prevCourseListData?.map((course) => {
           if (course.id === selectedCourseId) {
             return {
               ...course,

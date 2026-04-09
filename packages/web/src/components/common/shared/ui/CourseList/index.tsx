@@ -1,3 +1,5 @@
+"use client";
+
 import type { CourseDifficulty } from "@/types/course";
 import StarBlockIcon from "@icons/StarBlockIcon";
 import StarWeakIcon from "@icons/StarWeakIcon";

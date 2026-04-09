@@ -27,14 +27,18 @@ const useDeleteBookmarkMutation = ({
       TAB_TITLE_LIST.forEach(({ sort }) => {
         // const prev = queryClient.getQueryData([BOOKMARK_API_PATH]);
 
-        // 코스 리스트 데이터가 들어있다.
-        const prevCourseListData =
+        // 특정 산에 대한 코스 리스트 데이터가 담겨있다.
+        const prevCoursesOfMountainResponse =
           queryClient.getQueryData<GetCoursesOfMountainResponse>([
             COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
               searchParams: { sortBy: sort },
             }),
-          ]).courses;
-        const newCourseListData = prevCourseListData.map((course) => {
+          ]);
+        if (!prevCoursesOfMountainResponse) return;
+        // 코스 리스트 데이터가 들어있다.
+        const prevCourseListData = prevCoursesOfMountainResponse.courses;
+
+        const newCourseListData = prevCourseListData?.map((course) => {
           if (course.id === selectedCourseId) {
             return {
               ...course,

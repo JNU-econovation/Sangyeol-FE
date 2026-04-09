@@ -14,6 +14,7 @@ const ProfileImageView = ErrorBoundary.with(
     () => {
       const { data: uri } = useProfileImageUrlQuery();
 
+      //TODO: 이미지 크기 조정하기
       return <ProfileImage source={{ uri }} />;
     },
   ),
