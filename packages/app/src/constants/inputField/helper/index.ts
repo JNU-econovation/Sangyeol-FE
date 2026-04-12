@@ -11,6 +11,8 @@ const PROFILE_FORM = {
   PHONE_NUMBER: {
     REQUIRE: "필수 입력 항목입니다.",
     NEED_VERIFICATION: "전화번호 인증이 필요합니다.",
+    DUPLICATED:
+      "이미 가입된 번호입니다 기존의 로그인 방식으로 다시 로그인해주세요.",
     SUCCESS: " ",
     NONE: " ",
   },

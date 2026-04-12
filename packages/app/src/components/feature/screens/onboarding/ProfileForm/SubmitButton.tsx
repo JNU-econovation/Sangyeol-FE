@@ -1,3 +1,4 @@
+import { ApiError } from "api";
 import { useProfileSetFormContext } from "@hooks/feature/form/useProfileSetForm";
 import postBasicInformation from "@hooks/feature/query/mutate/useBasicInformationMutation";
 import DefaultButton from "@shared/ui/buttons/DefaultButton";
@@ -47,9 +48,14 @@ const SubmitButton = () => {
         onSuccess: () => {
           router.replace("/(tabs)/home");
         },
-        onError: () => {
-          //TODO: 명세가 정해진 이후 수정 필요
-          setValue("emailFieldHelperState", "DUPLICATED");
+        onError: (error) => {
+          if (ApiError.isApiError(error)) {
+            if (error.errorCode === "USER400_002") {
+              setValue("phoneNumberFieldHelperState", "DUPLICATED");
+            }
+          }
+          // TODO: 현재로서는 핸드폰 에러가 아니라면 모두 이메일 에러로 간주
+          else setValue("emailFieldHelperState", "DUPLICATED");
         },
       },
     );

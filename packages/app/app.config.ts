@@ -11,7 +11,7 @@ const appConfig = {
     ios: {
       usesAppleSignIn: true,
       supportsTablet: true,
-      bundleIdentifier: "com.geongyu09.sangyeol",
+      bundleIdentifier: "com.sangyeol.sangyeol",
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
         LSApplicationQueriesSchemes: ["kakaoplus", "kakaotalk"],
@@ -26,7 +26,7 @@ const appConfig = {
         foregroundImage: "./assets/images/App_Icon.png",
         backgroundColor: "#ffffff",
       },
-      package: "com.geongyu09.sangyeol",
+      package: "com.sangyeol.sangyeol",
     },
     web: {
       bundler: "metro",
