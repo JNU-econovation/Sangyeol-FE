@@ -13,6 +13,11 @@ interface UseDeleteBookmarkMutationProps {
   mountainId: string;
 }
 
+type MutateContext = Array<{
+  queryKey: string[];
+  prevData: GetCoursesOfMountainResponse;
+}>;
+
 const useDeleteBookmarkMutation = ({
   mountainId,
 }: UseDeleteBookmarkMutationProps) => {
@@ -23,61 +28,53 @@ const useDeleteBookmarkMutation = ({
     mutationFn: (courseId: string) =>
       deleteBookmarkApi(authenticatedApi, courseId),
 
-    onMutate: (selectedCourseId) => {
-      TAB_TITLE_LIST.forEach(({ sort }) => {
-        // const prev = queryClient.getQueryData([BOOKMARK_API_PATH]);
+    onMutate: async (selectedCourseId): Promise<MutateContext> => {
+      const context: MutateContext = [];
+      const processedKeys = new Set<string>();
 
-        // 특정 산에 대한 코스 리스트 데이터가 담겨있다.
-        const prevCoursesOfMountainResponse =
-          queryClient.getQueryData<GetCoursesOfMountainResponse>([
-            COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
-              searchParams: { sortBy: sort },
-            }),
-          ]);
-        if (!prevCoursesOfMountainResponse) return;
-        // 코스 리스트 데이터가 들어있다.
-        const prevCourseListData = prevCoursesOfMountainResponse.courses;
+      for (const { sort } of TAB_TITLE_LIST) {
+        // SearchedCourseList에서 "my", "popular"는 sortBy 없이 요청됨
+        const normalizedSort =
+          sort === "my" || sort === "popular" ? undefined : sort;
 
-        const newCourseListData = prevCourseListData?.map((course) => {
-          if (course.id === selectedCourseId) {
-            return {
-              ...course,
-              bookmark: false,
-            };
-          }
-          return course;
+        const queryKey = [
+          COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
+            searchParams: { sortBy: normalizedSort },
+          }),
+        ];
+
+        // 동일 쿼리 키 중복 처리 방지 ("my", "popular"는 같은 키)
+        if (processedKeys.has(queryKey[0])) continue;
+        processedKeys.add(queryKey[0]);
+
+        await queryClient.cancelQueries({ queryKey });
+
+        const prevData =
+          queryClient.getQueryData<GetCoursesOfMountainResponse>(queryKey);
+        if (!prevData) continue;
+
+        context.push({ queryKey, prevData });
+
+        queryClient.setQueryData(queryKey, {
+          ...prevData,
+          courses: prevData.courses.map((course) =>
+            course.id === selectedCourseId
+              ? { ...course, bookmark: false }
+              : course,
+          ),
         });
+      }
 
-        queryClient.setQueryData(
-          [
-            COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
-              searchParams: { sortBy: sort },
-            }),
-          ],
-          {
-            courses: newCourseListData,
-          },
-        );
-      });
-      // return prevCourseListData;
+      return context;
     },
 
     onSuccess: () => {
-      // TODO: 낙관적 업데이트로 변경하기
       queryClient.invalidateQueries({ queryKey: [BOOKMARK_API_PATH] });
     },
     onError: (_, __, context) => {
-      //   queryClient.setQueryData(
-      //     [
-      //       COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
-      //         searchParams: { sortBy },
-      //       }),
-      //     ],
-      //     {
-      //       courses: context,
-      //     },
-      //   );
-      queryClient.invalidateQueries({ queryKey: [BOOKMARK_API_PATH] });
+      context?.forEach(({ queryKey, prevData }) => {
+        queryClient.setQueryData(queryKey, prevData);
+      });
     },
   });
 };

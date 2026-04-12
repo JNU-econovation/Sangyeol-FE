@@ -25,45 +25,34 @@ const useBookmarkMutation = ({
 
   return useMutation({
     mutationKey: [BOOKMARK_API_PATH],
-    mutationFn: (courseId: string) => postBookmarkApi(authenticatedApi, courseId),
-    onMutate: (selectedCourseId) => {
-      // const prev = queryClient.getQueryData([BOOKMARK_API_PATH]);
+    mutationFn: (courseId: string) =>
+      postBookmarkApi(authenticatedApi, courseId),
+    onMutate: async (selectedCourseId) => {
+      const queryKey = [
+        COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
+          searchParams: { sortBy },
+        }),
+      ];
 
-      // 코스 리스트 데이터가 들어있다.
+      await queryClient.cancelQueries({ queryKey });
+
       const prevCoursesResponse =
-        queryClient.getQueryData<GetCoursesOfMountainResponse>([
-          COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
-            searchParams: { sortBy },
-          }),
-        ]);
+        queryClient.getQueryData<GetCoursesOfMountainResponse>(queryKey);
       if (prevCoursesResponse == null) return null;
-      const prevCourseListData = prevCoursesResponse.courses;
-      const newCourseListData = prevCourseListData.map((course) => {
-        if (course.id === selectedCourseId) {
-          return {
-            ...course,
-            bookmark: true,
-          };
-        }
-        return course;
+
+      queryClient.setQueryData(queryKey, {
+        ...prevCoursesResponse,
+        courses: prevCoursesResponse.courses.map((course) =>
+          course.id === selectedCourseId
+            ? { ...course, bookmark: true }
+            : course,
+        ),
       });
 
-      queryClient.setQueryData(
-        [
-          COURSES_OF_MOUNTAIN_API_PATH(mountainId, {
-            searchParams: { sortBy },
-          }),
-        ],
-        {
-          courses: newCourseListData,
-        },
-      );
-
-      return prevCourseListData;
+      return prevCoursesResponse;
     },
 
     onSuccess: () => {
-      // TODO: 낙관적 업데이트로 변경하기
       queryClient.invalidateQueries({ queryKey: [BOOKMARK_API_PATH] });
     },
     onError: (_, __, context) => {
@@ -74,9 +63,7 @@ const useBookmarkMutation = ({
             searchParams: { sortBy },
           }),
         ],
-        {
-          courses: context,
-        },
+        context,
       );
     },
   });
