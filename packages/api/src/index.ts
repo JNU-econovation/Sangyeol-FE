@@ -33,6 +33,10 @@ export * from "./model/map";
 
 // Constants re-export
 export { default as MAP_CONSTANTS } from "./constants/map";
+export { ERROR_CODES, type ErrorCode } from "./constants/ERROR";
+
+// Error re-export
+export { ApiError, type ServerErrorBody } from "./model/error";
 
 // Utils re-export
 export * from "./utils/phoneNumber";
