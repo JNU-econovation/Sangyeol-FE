@@ -33,6 +33,9 @@ const PhoneNumberField = () => {
             watch("phoneNumberVerificationCount") + 1,
           );
         },
+        onError: () => {
+          setValue("phoneNumberFieldHelperState", "DUPLICATED");
+        },
       });
     }
   };

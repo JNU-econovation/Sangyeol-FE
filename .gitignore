@@ -58,7 +58,8 @@ Thumbs.db
 *.swo
 
 # Claude
-.claude
+CLAUDE.md
+.claude/
 
 # Yarn (node_modules mode)
 .pnp.*
