@@ -21,7 +21,7 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <Container paddingBlock={paddingBlock} paddingInline={paddingInline}>
-      <HeaderItem>{headerLeft && <BackButton />}</HeaderItem>
+      <HeaderItem>{headerLeft && headerLeft}</HeaderItem>
       <HeaderItem>
         <Text textAlign="center" fontSize={18} fontWeight="semibold">
           {headerTitle}
