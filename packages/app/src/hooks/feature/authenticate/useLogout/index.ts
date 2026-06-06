@@ -1,4 +1,4 @@
-import { useTokenStore } from "@/src/store/secureStorage/useTokenStore";
+import { useTokenStore } from "@store/secureStorage/useTokenStore";
 import { removeValueFromSecureStore } from "@utils/secureStore";
 
 const useLogout = () => {
