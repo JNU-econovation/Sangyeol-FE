@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@geongyu/bridge": "workspace:^",
@@ -29,6 +31,8 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.23.0",
+    "@storybook/addon-docs": "^10.4.2",
+    "@storybook/nextjs": "^10.4.2",
     "@tailwindcss/postcss": "^4",
     "@types/navermaps": "^3.7.10",
     "@types/node": "^20",
@@ -37,8 +41,10 @@
     "eslint": "^9.23.0",
     "eslint-config-next": "15.3.5",
     "eslint-plugin-import": "^2.31.0",
+    "storybook": "^10.4.2",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "typescript-eslint": "^8.29.0"
+    "typescript-eslint": "^8.29.0",
+    "webpack": "^5"
   }
 }
