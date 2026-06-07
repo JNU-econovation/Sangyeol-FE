@@ -8,14 +8,15 @@ import {
 } from "../WheelPicker";
 import { useState } from "react";
 
-const yearOptions: WheelPickerOption<number>[] = [
-  { label: "2025년", value: 2025 },
-  { label: "2024년", value: 2024 },
-  { label: "2023년", value: 2023 },
-  { label: "2022년", value: 2022 },
-  { label: "2021년", value: 2021 },
-  { label: "2020년", value: 2020 },
-];
+const START_YEAR = 2026;
+
+const yearOptions: WheelPickerOption<number>[] = Array.from(
+  { length: Math.max(new Date().getFullYear() - START_YEAR + 1, 1) },
+  (_, index) => {
+    const year = new Date().getFullYear() - index;
+    return { label: `${year}년`, value: year };
+  },
+);
 const monthOptions: WheelPickerOption<number>[] = [
   { label: "1월", value: 0 },
   { label: "2월", value: 1 },
