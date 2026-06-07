@@ -4,7 +4,7 @@ import { StackLinkProvider } from "stack-link";
 import WeekHeader from ".";
 
 const meta = {
-  title: "Entities/WeekHeader",
+  title: "Widgets/WeekHeader",
   component: WeekHeader,
   parameters: {
     layout: "fullscreen",
