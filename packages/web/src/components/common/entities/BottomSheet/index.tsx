@@ -7,7 +7,7 @@ import { memo, PropsWithChildren, useEffect, useRef, useState } from "react";
 const MIN_CONTENT_HEIGHT = 0; // 최소 컨텐츠 높이
 const SNAP_THRESHOLD = 1; // 스냅 임계값
 
-interface BottomSheetProps extends PropsWithChildren {
+export interface BottomSheetProps extends PropsWithChildren {
   debug?: boolean;
 }
 

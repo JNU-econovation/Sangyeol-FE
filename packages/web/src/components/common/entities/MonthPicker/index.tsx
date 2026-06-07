@@ -31,7 +31,7 @@ const monthOptions: WheelPickerOption<number>[] = [
   { label: "12월", value: 11 },
 ];
 
-interface MonthPickerProps {
+export interface MonthPickerProps {
   defaultValue?: { year: number; month: number };
   onConfirm?: (value: { year: number; month: number }) => void;
   onCancel?: () => void;

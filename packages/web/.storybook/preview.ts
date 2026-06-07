@@ -5,6 +5,10 @@ import "../src/app/globals.css";
 
 const preview: Preview = {
   parameters: {
+    // App Router(next/navigation) 라우터 목을 활성화 — BackButton 등 useRouter 사용 컴포넌트가 동작하도록
+    nextjs: {
+      appDirectory: true,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -2,7 +2,7 @@ import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
 
-interface TravelLogListProps {
+export interface TravelLogListProps {
   name: string;
   duration: number;
   length: number;
