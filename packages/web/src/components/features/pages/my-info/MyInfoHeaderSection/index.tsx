@@ -1,4 +1,4 @@
-import WeekHeader from "@entities/WeekHeader";
+import WeekHeader from "@widgets/WeekHeader";
 
 export default function MyInfoHeaderSection() {
   return (
