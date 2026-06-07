@@ -53,6 +53,7 @@ export default function RootLayout() {
                       presentation: "modal",
                     }}
                   />
+                  <Stack.Screen name="webview" />
                   <Stack.Screen
                     name="report"
                     options={{
