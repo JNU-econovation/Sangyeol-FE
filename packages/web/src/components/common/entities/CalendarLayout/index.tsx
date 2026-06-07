@@ -39,7 +39,7 @@ function getCalendarArray(year: number, month: number) {
   );
 }
 
-interface CalendarProps {
+export interface CalendarProps {
   onDateClick?: (date: Date) => void;
   content?: (props?: { date: Date }) => ReactNode;
 }

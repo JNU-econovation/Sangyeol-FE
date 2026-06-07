@@ -1,7 +1,7 @@
 import { SizeNumberType } from "@/types/css/height";
 import { memo } from "react";
 
-interface SpacingProps {
+export interface SpacingProps {
   size: number;
   className?: string;
 }

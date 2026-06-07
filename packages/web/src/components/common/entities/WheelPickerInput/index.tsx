@@ -7,7 +7,7 @@ export interface WheelPickerOption<T = string> {
   value: T;
 }
 
-interface WheelPickerProps<T extends string> {
+export interface WheelPickerProps<T extends string> {
   options: WheelPickerOption<T>[];
   value: T | null;
   onChange: (value: T) => void;
