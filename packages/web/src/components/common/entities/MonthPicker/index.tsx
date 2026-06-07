@@ -6,17 +6,10 @@ import {
   WheelPickerOption,
   WheelPickerWrapper,
 } from "../WheelPicker";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const START_YEAR = 2026;
 
-const yearOptions: WheelPickerOption<number>[] = Array.from(
-  { length: Math.max(new Date().getFullYear() - START_YEAR + 1, 1) },
-  (_, index) => {
-    const year = new Date().getFullYear() - index;
-    return { label: `${year}년`, value: year };
-  },
-);
 const monthOptions: WheelPickerOption<number>[] = [
   { label: "1월", value: 0 },
   { label: "2월", value: 1 },
@@ -44,6 +37,17 @@ const MonthPicker = ({
   onCancel,
 }: MonthPickerProps) => {
   const today = new Date();
+  const yearOptions = useMemo<WheelPickerOption<number>[]>(() => {
+    const currentYear = new Date().getFullYear();
+    return Array.from(
+      { length: Math.max(currentYear - START_YEAR + 1, 1) },
+      (_, index) => {
+        const year = currentYear - index;
+        return { label: `${year}년`, value: year };
+      },
+    );
+  }, []);
+
   const [ym, setYm] = useState<{ year: number; month: number }>({
     year: defaultValue ? defaultValue.year : today.getFullYear(),
     month: defaultValue ? defaultValue.month : today.getMonth(),
