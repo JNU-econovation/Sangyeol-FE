@@ -1,33 +1,72 @@
-import Spacing from "@shared/layout/Spacing";
-import Button from "@shared/ui/Button";
 import CopyIcon from "@shared/ui/icons/CopyIcon";
+
+interface RecommendStore {
+  id: number;
+  name: string;
+  description: string;
+  discount: number;
+}
+
+const STORES: RecommendStore[] = [
+  {
+    id: 1,
+    name: "부곡정",
+    description: "푸짐한 보리밥 한상과 불향 가득한 연탄구이",
+    discount: 10,
+  },
+  {
+    id: 2,
+    name: "산골식당",
+    description: "정성 가득한 산골 밥상과 직접 담근 장맛",
+    discount: 10,
+  },
+  {
+    id: 3,
+    name: "능선쉼터",
+    description: "막걸리 한잔에 어울리는 손두부와 도토리묵",
+    discount: 15,
+  },
+];
 
 const RecommendStoresList = () => {
   return (
-    <ul className="flex flex-col gap-4">
-      {Array.from({ length: 10 }).map(() => (
-        <li className="p-2 rounded-xl bg-white">
-          <div className="flex justify-between items-center">
-            <h3 className="text-2xl font-bold">부곡정</h3>
-            <div className="text-gray-700 flex items-center gap-1">
-              주소 복사하기
-              <CopyIcon />
+    <ul className="flex flex-col gap-3">
+      {STORES.map((store) => (
+        <li
+          key={store.id}
+          className="overflow-hidden rounded-sm border border-gray-400 bg-main-white"
+        >
+          <div className="relative h-[158px] bg-gray-300">
+            <div className="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-wide text-gray-700">
+              [ 가게 사진 ]
             </div>
+            <span className="absolute bottom-3.5 left-3.5 bg-yellow px-[11px] py-[5px] text-[13px] font-bold tracking-[-0.2px] text-black-800">
+              {store.discount}% 할인
+            </span>
           </div>
-          <Spacing size={4} />
-          <hr className="opacity-20" />
-          <Spacing size={4} />
-          <div className="flex gap-2">
-            {/* images */}
-            <div className="w-28 h-20 bg-amber-200" />
-            <div className="w-28 h-20 bg-amber-200" />
-            <div className="w-28 h-20 bg-amber-200" />
-          </div>
-          <Spacing size={4} />
-          <p className="text-lg">푸짐한 보리밥 한상과 불향 가득한 연탄구이</p>
-          <div className="flex justify-between items-center">
-            <p className="text-xl font-bold text-red-500">{"10"}% 할인</p>
-            <Button size="sm">쿠폰 사용</Button>
+
+          <div className="px-[18px] pb-[18px] pt-4">
+            <div className="flex items-center justify-between">
+              <span className="text-lg font-bold tracking-[-0.4px] text-black-800">
+                {store.name}
+              </span>
+              <button
+                type="button"
+                className="flex items-center gap-[5px] text-[12.5px] text-gray-800"
+              >
+                <CopyIcon />
+                주소 복사
+              </button>
+            </div>
+            <p className="mt-[9px] text-[13.5px] leading-[1.55] text-gray-900">
+              {store.description}
+            </p>
+            <button
+              type="button"
+              className="mt-4 h-12 w-full rounded-sm bg-primary text-[15px] font-semibold tracking-[-0.2px] text-white"
+            >
+              쿠폰 사용
+            </button>
           </div>
         </li>
       ))}
