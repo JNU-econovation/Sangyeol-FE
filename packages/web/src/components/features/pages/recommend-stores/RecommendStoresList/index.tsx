@@ -34,36 +34,36 @@ const RecommendStoresList = () => {
       {STORES.map((store) => (
         <li
           key={store.id}
-          className="overflow-hidden rounded-sm border border-gray-400 bg-main-white"
+          className="overflow-hidden rounded-md border border-gray-400 bg-main-white"
         >
           <div className="relative h-[158px] bg-gray-300">
             <div className="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-wide text-gray-700">
               [ 가게 사진 ]
             </div>
-            <span className="absolute bottom-3.5 left-3.5 bg-yellow px-[11px] py-[5px] text-[13px] font-bold tracking-[-0.2px] text-black-800">
+            <span className="absolute bottom-3.5 left-3.5 bg-yellow px-3 py-1 text-[13px] font-bold text-black-800 rounded-sm">
               {store.discount}% 할인
             </span>
           </div>
 
-          <div className="px-[18px] pb-[18px] pt-4">
+          <div className="p-5">
             <div className="flex items-center justify-between">
-              <span className="text-lg font-bold tracking-[-0.4px] text-black-800">
+              <span className="text-lg font-bold text-black-800">
                 {store.name}
               </span>
               <button
                 type="button"
-                className="flex items-center gap-[5px] text-[12.5px] text-gray-800"
+                className="flex items-center gap-1 text-xs text-gray-800"
               >
                 <CopyIcon />
                 주소 복사
               </button>
             </div>
-            <p className="mt-[9px] text-[13.5px] leading-[1.55] text-gray-900">
+            <p className="mt-2 text-base leading-6 text-gray-900">
               {store.description}
             </p>
             <button
               type="button"
-              className="mt-4 h-12 w-full rounded-sm bg-primary text-[15px] font-semibold tracking-[-0.2px] text-white"
+              className="mt-4 h-12 w-full rounded-sm bg-primary text-base font-semibold text-white"
             >
               쿠폰 사용
             </button>
