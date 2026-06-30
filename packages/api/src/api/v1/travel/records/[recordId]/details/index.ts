@@ -25,7 +25,7 @@ export const TRAVEL_RECORD_DETAILS_API_PATH = ({
  * @property {number} endAt - 종료 시간 (timestamp)
  * @property {number} duration - 소요 시간 (초)
  * @property {number} length - 거리 (m)
- * @property {[number, number][]} coordinates - GPS 좌표 배열 ([위도, 경도])
+ * @property {[number, number][]} coordinates - GPS 좌표 배열 ([경도, 위도])
  * @property {string} courseId - 코스 ID
  * @property {string} mountainId - 산 ID
  */
