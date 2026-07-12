@@ -1,9 +1,11 @@
 "use client";
 
+import { cn } from "@/utils/cn";
+import useCouponFailureModal from "@hooks/feature/modal/useCouponFailureModal";
+import useCouponSuccessModal from "@hooks/feature/modal/useCouponSuccessModal";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
-import { cn } from "@/utils/cn";
 import WeekHeader from "@widgets/WeekHeader";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,7 +13,8 @@ const DiscountCouponPage = () => {
   const couponTitle = "부곡정 10% 할인 코드";
 
   const [inputValues, setInputValues] = useState(["", "", ""]);
-  // const { registerFocus } = useFocus();
+  const { openCouponFailureModal } = useCouponFailureModal();
+  const { openCouponSuccessModal } = useCouponSuccessModal();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -20,6 +23,17 @@ const DiscountCouponPage = () => {
       inputRef.current?.blur();
     }
   }, [inputValues]);
+
+  const handleConfirm = () => {
+    // 숫자형인지 체크
+    // 3자리인지 체크
+
+    if (inputValues.join("") === "123") {
+      openCouponSuccessModal();
+    } else {
+      openCouponFailureModal();
+    }
+  };
 
   return (
     <>
@@ -126,7 +140,9 @@ const DiscountCouponPage = () => {
         <Spacing size={20} />
       </div>
       <PositionBottom padding={6}>
-        <Button fullWidth>확인</Button>
+        <Button fullWidth onClick={handleConfirm}>
+          확인
+        </Button>
       </PositionBottom>
     </>
   );

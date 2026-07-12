@@ -144,17 +144,7 @@ Next.js 웹에서 **앱과 같은 부드러운 페이지 전환**을 제공합�
    yarn install
    ```
 
-3. **환경 변수 설정**
-
-   ```bash
-   # 모바일 앱 환경 변수
-   cp packages/app/.env.example packages/app/.env
-
-   # 웹 환경 변수
-   cp packages/web/.env.example packages/web/.env.local
-   ```
-
-4. **개발 서버 실행**
+3. **개발 서버 실행**
 
    ```bash
    # 모바일 앱
