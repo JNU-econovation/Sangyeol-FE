@@ -1,4 +1,9 @@
+// "use client";
+
+import ROUTE from "@/constants/route";
+import Button from "@shared/ui/Button";
 import CopyIcon from "@shared/ui/icons/CopyIcon";
+import { StackLink } from "stack-link";
 
 interface RecommendStore {
   id: number;
@@ -61,12 +66,14 @@ const RecommendStoresList = () => {
             <p className="mt-2 text-base leading-6 text-gray-900">
               {store.description}
             </p>
-            <button
-              type="button"
-              className="mt-4 h-12 w-full rounded-sm bg-primary text-base font-semibold text-white"
-            >
-              쿠폰 사용
-            </button>
+            <StackLink href={ROUTE.DISCOUNT_COUPON}>
+              <Button
+                type="button"
+                className="mt-4 h-12 w-full rounded-sm bg-primary text-base font-semibold text-white"
+              >
+                쿠폰 사용
+              </Button>
+            </StackLink>
           </div>
         </li>
       ))}

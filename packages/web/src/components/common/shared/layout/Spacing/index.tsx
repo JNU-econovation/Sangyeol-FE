@@ -1,4 +1,4 @@
-import { SizeNumberType } from "@/types/css/height";
+// import { SizeNumberType } from "@/types/css/height";
 import { memo } from "react";
 
 export interface SpacingProps {
