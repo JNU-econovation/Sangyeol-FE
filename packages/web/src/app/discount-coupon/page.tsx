@@ -25,8 +25,12 @@ const DiscountCouponPage = () => {
   }, [inputValues]);
 
   const handleConfirm = () => {
-    // 숫자형인지 체크
-    // 3자리인지 체크
+    // const isValidCode = inputValues.every((value) => /^\d$/.test(value));
+
+    // if (!isValidCode) {
+    //   openCouponFailureModal();
+    //   return;
+    // }
 
     if (inputValues.join("") === "123") {
       openCouponSuccessModal();
@@ -45,7 +49,8 @@ const DiscountCouponPage = () => {
           <p className="text-lg">3자리 코드를 입력하세요</p>
           <Spacing size={5} />
           <div
-            role="button"
+            role="group"
+            aria-label="3자리 쿠폰 코드 입력"
             className="flex gap-8 items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
@@ -59,7 +64,7 @@ const DiscountCouponPage = () => {
                 className={cn(
                   "w-16 h-16 text-center border border-gray-900 rounded-xl font-bold text-4xl text-primary flex items-center justify-center",
                   {
-                    "!outline-none !ring-2 !ring-primary":
+                    "outline-none! ring-2! ring-primary!":
                       inputValues[index] !== "" ||
                       (inputValues[index + 1] !== "" &&
                         index !== inputValues.length - 1),
@@ -73,6 +78,7 @@ const DiscountCouponPage = () => {
           <input
             type="number"
             inputMode="numeric"
+            aria-label="3자리 쿠폰 코드"
             ref={inputRef}
             className="w-0 h-0"
             value={inputValues.join("")}
