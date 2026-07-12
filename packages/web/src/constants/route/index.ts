@@ -50,6 +50,9 @@ const ROUTE = {
   NOTIFICATION_SETTINGS: "/my-page/notification-settings",
   CHANGE_PHONE_NUMBER: "/my-page/change-phone-number",
   TRAVEL_LOG_DETAIL: (recordId: string) => `/my-page/travel-log/${recordId}`,
+
+  // discount coupon
+  DISCOUNT_COUPON: "/discount-coupon",
 };
 
 export default ROUTE;
