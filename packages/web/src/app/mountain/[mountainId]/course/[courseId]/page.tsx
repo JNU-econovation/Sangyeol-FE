@@ -10,19 +10,15 @@ import TravelStartButton from "@widgets/route/TravelStartButton";
 export default function CourseDetailPage() {
   return (
     <Suspense clientOnly>
-      <div className="relative w-screen h-screen">
+      <div className="w-screen h-screen">
         <div className="px-6 z-10 fixed w-full">
           <Spacing size={8} />
           <MapHeaderNavbar />
         </div>
-        <PositionBottom bottom={80}>
-          <div className="px-6">
-            <CourseDetailBottomSheetSection />
-          </div>
-        </PositionBottom>
-
         <PositionBottom>
           <div className="px-6">
+            <CourseDetailBottomSheetSection />
+            <Spacing size={10} />
             <TravelStartButton />
           </div>
         </PositionBottom>
