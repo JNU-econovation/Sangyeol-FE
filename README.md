@@ -57,7 +57,7 @@ sangyeol/
 
 | 패키지         | 설명                       | 기술 스택                               |
 | -------------- | -------------------------- | --------------------------------------- |
-| **app**        | React Native 모바일 앱     | Expo 54, React Native 0.81, Emotion     |
+| **app**        | React Native 모바일 앱     | Expo 57, React Native 0.86, Emotion     |
 | **web**        | Next.js 웹 앱              | Next.js 15, Tailwind CSS 4.0, Turbopack |
 | **api**        | 타입 안전한 API 클라이언트 | Axios, TanStack Query, Docflow          |
 | **bridge**     | 웹뷰-네이티브 양방향 통신  | TCP 3-way Handshake 프로토콜            |
@@ -96,7 +96,7 @@ Next.js 웹에서 **앱과 같은 부드러운 페이지 전환**을 제공합�
 
 ### 공통
 
-- **언어**: TypeScript 5.x
+- **언어**: TypeScript 6.x
 - **패키지 관리**: Yarn 4.9.3 (Yarn Berry)
 - **모노레포**: Yarn Workspaces
 - **상태 관리**: TanStack Query v5, Zustand v5
@@ -104,8 +104,8 @@ Next.js 웹에서 **앱과 같은 부드러운 페이지 전환**을 제공합�
 
 ### 모바일 앱
 
-- **프레임워크**: React Native 0.81.4, Expo SDK 54
-- **라우팅**: Expo Router 6.0 (파일 기반 라우팅)
+- **프레임워크**: React Native 0.86, Expo SDK 57
+- **라우팅**: Expo Router 57.0 (파일 기반 라우팅)
 - **스타일링**: Emotion Native (CSS-in-JS)
 - **지도**: Naver Map SDK for React Native
 - **폼**: React Hook Form 7.62, TanStack React Form 1.12
