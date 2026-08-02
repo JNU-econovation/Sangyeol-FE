@@ -2,7 +2,7 @@ import {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
-import { useBridge } from "@geongyu/bridge/web";
+import { useBridge } from "@geongyu/react-native-bridge/web";
 import { useCallback } from "react";
 
 const useHapticBridge = () => {

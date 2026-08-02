@@ -1,4 +1,4 @@
-import { useBridge } from "@geongyu/bridge/web";
+import { useBridge } from "@geongyu/react-native-bridge/web";
 import { useCallback } from "react";
 import type {
   MessageEventRequestData,

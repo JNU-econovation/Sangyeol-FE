@@ -11,7 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@geongyu/bridge": "workspace:^",
+    "@geongyu/react-native-bridge": "^0.2.1",
     "@ncdai/react-wheel-picker": "^1.0.19",
     "@sangyeol/utils": "workspace:^",
     "@suspensive/react": "^3.3.0",
@@ -25,7 +25,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.63.0",
-    "stack-link": "workspace:^",
+    "stack-link": "^0.1.1",
     "tailwind-merge": "^3.1.0"
   },
   "devDependencies": {
