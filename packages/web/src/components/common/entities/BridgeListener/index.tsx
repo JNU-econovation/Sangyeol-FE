@@ -1,4 +1,4 @@
-import { BridgeRequestListener } from "@geongyu/bridge/web";
+import { BridgeRequestListener } from "@geongyu/react-native-bridge/web";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,

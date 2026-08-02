@@ -3,7 +3,7 @@ import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
-import { useBridge } from "@geongyu/bridge/web";
+import { useBridge } from "@geongyu/react-native-bridge/web";
 
 interface Coords {
   accuracy: number;
