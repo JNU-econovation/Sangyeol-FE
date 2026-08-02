@@ -1,8 +1,0 @@
-src/
-tsup.config.ts
-*.test.ts
-*.spec.ts
-.DS_Store
-node_modules/
-.yarn/
-.pnp.*
