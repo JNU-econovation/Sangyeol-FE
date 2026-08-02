@@ -17,7 +17,7 @@ export default function PositionBottom({
 }: PositionBottomProps) {
   return (
     <div
-      className={cn("sticky left-0 w-full")}
+      className={cn("fixed left-0 w-full")}
       style={{ bottom, zIndex, padding: `${padding * 0.25}rem` }}
     >
       {children}
