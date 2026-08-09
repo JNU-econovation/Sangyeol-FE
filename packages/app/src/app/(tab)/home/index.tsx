@@ -1,7 +1,8 @@
-import { Text } from "react-native";
+import WebViewWithInjected from "@shared/components/composites/WebViewWithInjected";
+import WEB_PATH from "@/shared/constants/WEB_PATH";
 
 const HomeScreen = () => {
-  return <Text>homehomehomehomehomehomehomehomehomehomehome</Text>;
+  return <WebViewWithInjected source={{ uri: WEB_PATH.HOME }} />;
 };
 
 export default HomeScreen;

@@ -1,5 +1,5 @@
-import { HouseSVG, MenuSVG } from "@shared/ui/Icons";
-import { COLOR_PALETTE } from "@constants/colors";
+import { HouseSVG, MenuSVG } from "@icons";
+import { COLOR_PALETTE } from "@shared/constants/colors";
 import { Tabs } from "expo-router";
 import { View } from "react-native";
 

@@ -2,7 +2,7 @@ import styled from "@emotion/native";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { router } from "expo-router";
-import { COLOR_PALETTE } from "@constants/colors";
+import { COLOR_PALETTE } from "@shared/constants/colors";
 
 export default function HomeScreen() {
   useEffect(() => {

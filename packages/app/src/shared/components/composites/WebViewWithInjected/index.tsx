@@ -1,17 +1,9 @@
-import {
-  DISABLED_PINCH_GESTURE,
-  DISABLED_SCROLL,
-  DISABLED_TEXT_SELECT,
-  INJECT_TOKEN,
-  SET_VIEWPORT_RATE,
-} from "@constants/webview";
 import { WebviewWithBridge } from "@geongyu/react-native-bridge/native";
-import {
+import { COLOR_PALETTE } from "@shared/constants/colors";
+import type {
   MessageEventRequestData,
   MessageEventResponseData,
-} from "@model/webview";
-import { useTokenStore } from "@store/secureStorage/useTokenStore/index";
-import { COLORS } from "@styles/colorPalette";
+} from "@shared/types/webview";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Animated, View } from "react-native";
 import WebView from "react-native-webview";
@@ -20,8 +12,15 @@ import type {
   WebViewSource,
 } from "react-native-webview/lib/WebViewTypes";
 
-import useMiddleware from "./hooks/useMiddleware";
-import useWebviewHistory from "./hooks/useWebViewHistory";
+import {
+  DISABLED_PINCH_GESTURE,
+  DISABLED_SCROLL,
+  DISABLED_TEXT_SELECT,
+  INJECT_TOKEN,
+  SET_VIEWPORT_RATE,
+} from "./constants/scripts";
+import useMiddleware from "./model/useMiddleware";
+import useWebviewHistory from "./model/useWebViewHistory";
 
 type OnMessage = (
   reqMessage: MessageEventRequestData,
@@ -51,14 +50,13 @@ const WebViewWithInjected = ({
 }: WebViewWithInjectedProps) => {
   const progressAnim = useRef(new Animated.Value(0)).current;
   const [isLoading, setIsLoading] = useState(true);
-  const { accessToken, refreshToken } = useTokenStore();
   const { webViewRef, onNavigationStateChange } = useWebviewHistory();
   const { middleware } = useMiddleware();
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
-      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}${INJECT_TOKEN(accessToken ?? "", refreshToken ?? "")}`,
-    [accessToken, refreshToken],
+      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}`,
+    [],
   );
 
   useEffect(() => {
@@ -77,7 +75,7 @@ const WebViewWithInjected = ({
               top: 0,
               left: 0,
               height: 2,
-              backgroundColor: COLORS.primary,
+              backgroundColor: COLOR_PALETTE.primary,
               zIndex: 9999,
               width: "100%",
               borderTopEndRadius: 1,

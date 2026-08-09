@@ -6,11 +6,14 @@
       "@/*": [
         "./src/*"
       ],
-      "@shared/*": [
-        "./src/components/common/shared/*"
+      "@modules/*": [
+        "./src/modules/*"
       ],
-      "@constants/*": [
-        "./src/constants/*"
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@icons": [
+        "./src/shared/components/primitives/ui/Icons"
       ],
       "@assets/*": [
         "./assets/*"
