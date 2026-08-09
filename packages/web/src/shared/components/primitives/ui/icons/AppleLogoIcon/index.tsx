@@ -22,5 +22,13 @@ export default function AppleLogoIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: AppleLogoIconProps) {
-  return <Image src={Apple_Logo} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image
+      src={Apple_Logo}
+      alt={alt}
+      width={width}
+      height={height}
+      {...props}
+    />
+  );
 }

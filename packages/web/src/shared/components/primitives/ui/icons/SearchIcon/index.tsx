@@ -22,5 +22,7 @@ export default function SearchIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: SearchIconProps) {
-  return <Image src={Search} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image src={Search} alt={alt} width={width} height={height} {...props} />
+  );
 }

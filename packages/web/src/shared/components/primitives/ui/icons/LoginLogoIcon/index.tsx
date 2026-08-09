@@ -22,5 +22,13 @@ export default function LoginLogoIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: LoginLogoIconProps) {
-  return <Image src={Login_Logo} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image
+      src={Login_Logo}
+      alt={alt}
+      width={width}
+      height={height}
+      {...props}
+    />
+  );
 }

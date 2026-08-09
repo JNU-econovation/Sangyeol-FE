@@ -21,12 +21,6 @@ export default function FrostbiteIcon({
   ...props
 }: FrostbiteIconProps) {
   return (
-    <Image
-      src={Frostbite}
-      alt={alt}
-      width={width}
-      height={height}
-      {...props}
-    />
+    <Image src={Frostbite} alt={alt} width={width} height={height} {...props} />
   );
 }
