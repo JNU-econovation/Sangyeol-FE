@@ -1,4 +1,4 @@
-import CheckPositionMap from "@pages/check-position/CheckPositionMap";
+import CheckPositionMap from "@modules/widgets/check-position/CheckPositionMap";
 
 export default function CheckPositionPage() {
   return <CheckPositionMap />;

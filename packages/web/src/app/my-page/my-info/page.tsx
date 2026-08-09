@@ -1,7 +1,7 @@
-import MemberLeaveButtonSection from "@pages/my-info/MemberLeaveButtonSection";
-import MyInfoHeaderSection from "@pages/my-info/MyInfoHeaderSection";
-import ProfileFormSection from "@pages/my-info/ProfileFormSection";
-import Spacing from "@shared/layout/Spacing";
+import MemberLeaveButtonSection from "@modules/widgets/my-info/MemberLeaveButtonSection";
+import MyInfoHeaderSection from "@modules/widgets/my-info/MyInfoHeaderSection";
+import ProfileFormSection from "@modules/widgets/my-info/ProfileFormSection";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 export default function MyInfoPage() {
   return (

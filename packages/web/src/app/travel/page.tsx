@@ -1,4 +1,4 @@
-import TravelMapSection from "@pages/travel/TravelMapSection";
+import TravelMapSection from "@modules/widgets/travel/TravelMapSection";
 
 export default function TravelPage() {
   return (

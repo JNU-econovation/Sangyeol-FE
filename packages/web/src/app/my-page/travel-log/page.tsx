@@ -1,7 +1,7 @@
-import TravelLogCalendarSection from "@pages/my-info/TravelLogCalendarSection";
-import TravelLogHeaderSection from "@pages/my-info/TravelLogHeaderSection";
-import TravelLogListSection from "@pages/my-info/TravelLogListSection";
-import Spacing from "@shared/layout/Spacing";
+import TravelLogCalendarSection from "@modules/widgets/my-info/TravelLogCalendarSection";
+import TravelLogHeaderSection from "@modules/widgets/my-info/TravelLogHeaderSection";
+import TravelLogListSection from "@modules/widgets/my-info/TravelLogListSection";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 export default function TravelLogPage() {
   return (

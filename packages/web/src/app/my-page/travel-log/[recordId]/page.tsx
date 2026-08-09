@@ -1,7 +1,7 @@
-import TravelLogDetailContentSection from "@pages/my-info/TravelLogDetailContentSection";
-import TravelLogDetailCoursesSection from "@pages/my-info/TravelLogDetailCoursesSection";
-import TravelLogDetailHeaderSection from "@pages/my-info/TravelLogDetailHeaderSection";
-import Spacing from "@shared/layout/Spacing";
+import TravelLogDetailContentSection from "@modules/widgets/my-info/TravelLogDetailContentSection";
+import TravelLogDetailCoursesSection from "@modules/widgets/my-info/TravelLogDetailCoursesSection";
+import TravelLogDetailHeaderSection from "@modules/widgets/my-info/TravelLogDetailHeaderSection";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 const TravelLogDetailPage = () => {
   return (

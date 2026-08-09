@@ -1,6 +1,6 @@
-import ManualGridSection from "@pages/safe-manual/ManualGridSection";
-import ManualSearchInput from "@pages/safe-manual/ManualSearchInput";
-import Spacing from "@shared/layout/Spacing";
+import ManualGridSection from "@modules/widgets/safe-manual/ManualGridSection";
+import ManualSearchInput from "@modules/widgets/safe-manual/ManualSearchInput";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 export default function page() {
   return (

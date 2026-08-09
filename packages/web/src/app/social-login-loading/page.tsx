@@ -1,4 +1,4 @@
-import TokenProcessingSection from "@pages/social-login-loading/TokenProcessingSection";
+import TokenProcessingSection from "@modules/widgets/social-login-loading/TokenProcessingSection";
 import { Suspense } from "react";
 
 export default function SocialLoginLoadingPage() {

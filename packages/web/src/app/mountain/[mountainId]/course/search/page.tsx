@@ -1,7 +1,7 @@
-import Spacing from "@shared/layout/Spacing";
-import Button from "@shared/ui/Button";
-import MapWithCurrentPositionSection from "@widgets/map/MapWithCurrentPositionSection";
-import BackButton from "@widgets/route/BackButton";
+import Spacing from "@shared/components/primitives/layout/Spacing";
+import Button from "@shared/components/primitives/ui/Button";
+import MapWithCurrentPositionSection from "@modules/features/map/MapWithCurrentPositionSection";
+import BackButton from "@modules/features/route/BackButton";
 
 export default function CourseSearchPage() {
   return (

@@ -1,0 +1,38 @@
+import { useBridge } from "@geongyu/react-native-bridge/web";
+import { useModalContext } from "@shared/model/modal";
+import type {
+  MessageEventRequestData,
+  MessageEventResponseData,
+} from "@shared/types/bridge";
+import useLogoutAlertModal from "@shared/hooks/domain/modal/useLogoutAlertModal";
+import { useCallback } from "react";
+
+const useLogoutBridge = () => {
+  const { request } = useBridge<
+    MessageEventRequestData,
+    MessageEventResponseData
+  >();
+
+  const { closeModalAsync } = useModalContext();
+
+  const { openLogoutAlertModal } = useLogoutAlertModal();
+
+  return useCallback(() => {
+    request({
+      requestMessage: {
+        method: "DELETE",
+        name: "logout",
+      },
+      responseCallback: ({ status }) => {
+        if (status === "success") {
+          closeModalAsync();
+          openLogoutAlertModal();
+          return;
+        }
+        console.error("Logout failed");
+      },
+    });
+  }, [closeModalAsync, openLogoutAlertModal, request]);
+};
+
+export default useLogoutBridge;

@@ -1,0 +1,24 @@
+import { useBridge } from "@geongyu/react-native-bridge/web";
+import { useCallback } from "react";
+import type {
+  MessageEventRequestData,
+  MessageEventResponseData,
+} from "@shared/types/bridge";
+
+const useRouteBackBridge = () => {
+  const { request } = useBridge<
+    MessageEventRequestData,
+    MessageEventResponseData
+  >();
+
+  return useCallback(() => {
+    request({
+      requestMessage: {
+        method: "POST",
+        name: "route-back",
+      },
+    });
+  }, [request]);
+};
+
+export default useRouteBackBridge;

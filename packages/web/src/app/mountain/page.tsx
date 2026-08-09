@@ -1,9 +1,9 @@
-import CoursePrefetcher from "@pages/course/CoursePrefetcher";
-import MountainGridSection from "@pages/course/MountainGridSection";
-import MountainSearchBarSection from "@pages/course/MountainSearchBarSection";
-import MountainSearchTitleSection from "@pages/course/MountainSearchTitleSection";
-import Flex from "@shared/layout/Flex";
-import Spacing from "@shared/layout/Spacing";
+import CoursePrefetcher from "@modules/widgets/course/CoursePrefetcher";
+import MountainGridSection from "@modules/widgets/course/MountainGridSection";
+import MountainSearchBarSection from "@modules/widgets/course/MountainSearchBarSection";
+import MountainSearchTitleSection from "@modules/widgets/course/MountainSearchTitleSection";
+import Flex from "@shared/components/primitives/layout/Flex";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 export default function CoursePage() {
   return (

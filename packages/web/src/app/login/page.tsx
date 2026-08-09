@@ -1,5 +1,5 @@
-import ROUTE from "@/constants/route";
-import KakaoLoginSection from "@pages/login/KakaoLoginSection";
+import ROUTE from "@shared/constants/route";
+import KakaoLoginSection from "@modules/widgets/login/KakaoLoginSection";
 import { redirect } from "next/navigation";
 
 const isMockServer = process.env.NEXT_PUBLIC_NODE_ENV === "development";

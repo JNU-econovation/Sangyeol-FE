@@ -15,29 +15,14 @@
         "./src/*",
         "./public/*"
       ],
+      "@modules/*": [
+        "./src/modules/*"
+      ],
       "@shared/*": [
-        "./src/components/common/shared/*"
+        "./src/shared/*"
       ],
       "@icons/*": [
-        "./src/components/common/shared/ui/icons/*"
-      ],
-      "@pages/*": [
-        "./src/components/features/pages/*"
-      ],
-      "@widgets/*": [
-        "./src/components/features/widgets/*"
-      ],
-      "@api/*": [
-        "./src/api/*"
-      ],
-      "@entities/*": [
-        "./src/components/common/entities/*"
-      ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@types/*": [
-        "./src/types/*"
+        "./src/shared/components/primitives/ui/icons/*"
       ]
     }
   },
