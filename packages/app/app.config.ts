@@ -4,20 +4,17 @@ const appConfig = {
     slug: "sangyeol",
     version: "0.0.1",
     orientation: "portrait",
-    icon: "./assets/images/icon.png",
+    icon: "./assets/images/App_Icon.png",
     scheme: "sangyeol",
     userInterfaceStyle: "automatic",
     ios: {
-      icon: "./assets/expo.icon",
       bundleIdentifier: "com.sangyeol.sangyeol",
     },
     android: {
       package: "com.sangyeol.sangyeol",
       adaptiveIcon: {
-        backgroundColor: "#E6F4FE",
-        foregroundImage: "./assets/images/android-icon-foreground.png",
-        backgroundImage: "./assets/images/android-icon-background.png",
-        monochromeImage: "./assets/images/android-icon-monochrome.png",
+        foregroundImage: "./assets/images/App_Icon.png",
+        backgroundColor: "#ffffff",
       },
       predictiveBackGestureEnabled: false,
     },
