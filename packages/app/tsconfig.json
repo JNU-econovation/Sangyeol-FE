@@ -6,7 +6,13 @@
       "@/*": [
         "./src/*"
       ],
-      "@/assets/*": [
+      "@shared/*": [
+        "./src/components/common/shared/*"
+      ],
+      "@constants/*": [
+        "./src/constants/*"
+      ],
+      "@assets/*": [
         "./assets/*"
       ]
     }
