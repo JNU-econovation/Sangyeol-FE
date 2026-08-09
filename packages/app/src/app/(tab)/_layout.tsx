@@ -60,7 +60,7 @@ const TabLayout = () => {
                   }}
                 />
               )}
-              <MenuSVG color={COLOR_PALETTE.primary} />,
+              <MenuSVG color={COLOR_PALETTE.primary} />
             </>
           ),
         }}
