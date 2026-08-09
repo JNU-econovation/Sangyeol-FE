@@ -22,5 +22,7 @@ export default function StarIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: StarIconProps) {
-  return <Image src={Star} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image src={Star} alt={alt} width={width} height={height} {...props} />
+  );
 }

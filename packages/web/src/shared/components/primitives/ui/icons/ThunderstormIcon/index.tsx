@@ -21,6 +21,12 @@ export default function ThunderstormIcon({
   ...props
 }: ThunderstormIconProps) {
   return (
-    <Image src={Thunderstorm} alt={alt} width={width} height={height} {...props} />
+    <Image
+      src={Thunderstorm}
+      alt={alt}
+      width={width}
+      height={height}
+      {...props}
+    />
   );
 }

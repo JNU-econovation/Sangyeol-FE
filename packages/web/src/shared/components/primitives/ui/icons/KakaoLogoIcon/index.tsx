@@ -22,5 +22,13 @@ export default function KakaoLogoIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: KakaoLogoIconProps) {
-  return <Image src={Kakao_Logo} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image
+      src={Kakao_Logo}
+      alt={alt}
+      width={width}
+      height={height}
+      {...props}
+    />
+  );
 }
