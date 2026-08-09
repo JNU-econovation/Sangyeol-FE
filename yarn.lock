@@ -10121,12 +10121,14 @@ __metadata:
     "@emotion/native": "npm:^11.11.0"
     "@emotion/react": "npm:^11.14.0"
     "@expo/ui": "npm:~57.0.8"
+    "@geongyu/react-native-bridge": "npm:^0.2.1"
     "@types/react": "npm:~19.2.2"
     expo: "npm:~57.0.9"
     expo-constants: "npm:~57.0.8"
     expo-device: "npm:~57.0.1"
     expo-font: "npm:~57.0.1"
     expo-glass-effect: "npm:~57.0.1"
+    expo-haptics: "npm:~57.0.1"
     expo-image: "npm:~57.0.1"
     expo-linking: "npm:~57.0.4"
     expo-router: "npm:~57.0.9"
@@ -10145,6 +10147,7 @@ __metadata:
     react-native-svg: "npm:15.15.4"
     react-native-svg-transformer: "npm:^1.5.3"
     react-native-web: "npm:~0.21.0"
+    react-native-webview: "npm:13.16.1"
     react-native-worklets: "npm:0.10.1"
     typescript: "npm:~6.0.3"
   languageName: unknown
@@ -14531,6 +14534,15 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 10c0/a71b918acc49ecfd12452d24b90ae4cd18f5d194c71503bc1521136684f9ba5953d8e923ec229927b4a99842e7a083ce6582d50966d0ea3f679bad8d5fb4fe77
+  languageName: node
+  linkType: hard
+
+"expo-haptics@npm:~57.0.1":
+  version: 57.0.1
+  resolution: "expo-haptics@npm:57.0.1"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/60f69e0b062a48dab9904cd910996049ef5b64c354f532fccc219bc07470ae2592df55b25f0a14d47b6daebd77b3e47d334e04d5fc6b23e53932c1fbed1fa59b
   languageName: node
   linkType: hard
 
