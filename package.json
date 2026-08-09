@@ -34,6 +34,9 @@
     "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
-    "expo": "^57.0.4"
+    "app": "workspace:^",
+    "expo": "^57.0.4",
+    "expo-dev-client": "^57.0.10",
+    "workspace": "^0.0.1-preview.2"
   }
 }

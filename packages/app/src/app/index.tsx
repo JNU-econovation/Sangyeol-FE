@@ -21,5 +21,5 @@ export default function HomeScreen() {
 
 const BackgroundView = styled.View`
   flex: 1;
-  background-color: ${COLOR_PALETTE.primary};
+  background-color: ${COLOR_PALETTE.primarySoft};
 `;
