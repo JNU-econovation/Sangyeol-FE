@@ -1,12 +1,12 @@
 "use client";
 
-import { cn } from "@/utils/cn";
-import useCouponFailureModal from "@hooks/feature/modal/useCouponFailureModal";
-import useCouponSuccessModal from "@hooks/feature/modal/useCouponSuccessModal";
-import PositionBottom from "@shared/layout/PositionBottom";
-import Spacing from "@shared/layout/Spacing";
-import Button from "@shared/ui/Button";
-import WeekHeader from "@widgets/WeekHeader";
+import { cn } from "@shared/lib/cn";
+import useCouponFailureModal from "@shared/hooks/domain/modal/useCouponFailureModal";
+import useCouponSuccessModal from "@shared/hooks/domain/modal/useCouponSuccessModal";
+import PositionBottom from "@shared/components/primitives/layout/PositionBottom";
+import Spacing from "@shared/components/primitives/layout/Spacing";
+import Button from "@shared/components/primitives/ui/Button";
+import WeekHeader from "@modules/features/WeekHeader";
 import { useEffect, useRef, useState } from "react";
 
 const DiscountCouponPage = () => {

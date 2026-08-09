@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
+import useRouteBackBridge from "@shared/hooks/domain/bridge/useRouteBackBridge";
 import { useEffect } from "react";
 import { useStackLinkBack } from "stack-link";
 

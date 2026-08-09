@@ -1,6 +1,6 @@
-import RecommendStoresHeader from "@pages/recommend-stores/RecommendStoresHeader";
-import RecommendStoresList from "@pages/recommend-stores/RecommendStoresList";
-import Spacing from "@shared/layout/Spacing";
+import RecommendStoresHeader from "@modules/widgets/recommend-stores/RecommendStoresHeader";
+import RecommendStoresList from "@modules/widgets/recommend-stores/RecommendStoresList";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 const RecommendStoresPage = () => {
   return (

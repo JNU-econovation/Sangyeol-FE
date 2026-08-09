@@ -1,8 +1,8 @@
-import CurrentSearchMountainSection from "@pages/mountain/CurrentSearchMountainSection";
-import MountainSearchInputSection from "@pages/mountain/MountainSearchInputSection";
-import RealtimePopularSearchesSection from "@pages/mountain/RealtimePopularSearchesSection";
-import Spacing from "@shared/layout/Spacing";
-import BackButton from "@widgets/route/BackButton";
+import CurrentSearchMountainSection from "@modules/widgets/mountain/CurrentSearchMountainSection";
+import MountainSearchInputSection from "@modules/widgets/mountain/MountainSearchInputSection";
+import RealtimePopularSearchesSection from "@modules/widgets/mountain/RealtimePopularSearchesSection";
+import Spacing from "@shared/components/primitives/layout/Spacing";
+import BackButton from "@modules/features/route/BackButton";
 
 const MountainSearchPage = () => {
   return (

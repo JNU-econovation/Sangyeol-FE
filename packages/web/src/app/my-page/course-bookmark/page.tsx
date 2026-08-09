@@ -1,6 +1,6 @@
-import CourseBookmarkContentSection from "@pages/course-bookmark/CourseBookmarkContentSection";
-import CourseBookmarkHeaderSection from "@pages/course-bookmark/CourseBookmarkHeaderSection";
-import Spacing from "@shared/layout/Spacing";
+import CourseBookmarkContentSection from "@modules/widgets/course-bookmark/CourseBookmarkContentSection";
+import CourseBookmarkHeaderSection from "@modules/widgets/course-bookmark/CourseBookmarkHeaderSection";
+import Spacing from "@shared/components/primitives/layout/Spacing";
 
 const CourseBookmarkPage = () => {
   return (

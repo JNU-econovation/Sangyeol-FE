@@ -1,6 +1,6 @@
-import MapHeaderNavbar from "@entities/MapHeaderNavbar";
-import Spacing from "@shared/layout/Spacing";
-import MapWithCurrentPositionSection from "@widgets/map/MapWithCurrentPositionSection";
+import MapHeaderNavbar from "@shared/components/composites/MapHeaderNavbar";
+import Spacing from "@shared/components/primitives/layout/Spacing";
+import MapWithCurrentPositionSection from "@modules/features/map/MapWithCurrentPositionSection";
 
 export default function MapPage() {
   return (

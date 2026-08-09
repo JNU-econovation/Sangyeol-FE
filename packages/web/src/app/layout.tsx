@@ -1,10 +1,10 @@
-import ModalProvider from "@/service/modal/provider";
+import ModalProvider from "@shared/model/modal/provider";
 import { StackLinkProvider } from "stack-link";
-import TanstackQueryProvider from "@entities/TanstackQueryProvider";
+import TanstackQueryProvider from "@shared/components/composites/TanstackQueryProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import GlobalBridgeListener from "@/components/features/widgets/bridgeListener/GlobalBridgeListener";
+import GlobalBridgeListener from "@modules/features/bridgeListener/GlobalBridgeListener";
 
 export const metadata: Metadata = {
   title: "산악구조",
