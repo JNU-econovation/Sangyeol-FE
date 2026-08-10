@@ -14,10 +14,10 @@ const ETCPage = () => {
       <SafeArea>
         <div className="flex flex-col gap-6 px-5 pt-4 pb-6">
           <header className="flex w-full flex-col gap-1 py-1">
-            <h1 className="text-xl font-bold tracking-[-0.4px] text-black-900">
+            <h1 className="text-2xl font-bold tracking-[-0.4px] text-black-900">
               더보기
             </h1>
-            <p className="text-xs font-normal text-gray-900">
+            <p className="text-sm font-normal text-gray-900">
               산결을 더 편하게 이용해 보세요
             </p>
           </header>
@@ -63,7 +63,9 @@ const ETCPage = () => {
               title="버전정보"
               trailing={
                 // TODO: 버전정보를 env에서 동적으로 가져오도록 수정 필요
-                <span className="text-sm font-medium text-gray-900">1.0.0</span>
+                <span className="text-base font-medium text-gray-900">
+                  1.0.0
+                </span>
               }
             />
           </InfoSection>
@@ -80,7 +82,7 @@ interface SectionProps {
 const InfoSection = ({ label, children }: PropsWithChildren<SectionProps>) => {
   return (
     <section className="flex w-full flex-col gap-2.5">
-      <h2 className="text-xs font-semibold tracking-[0.2px] text-gray-900">
+      <h2 className="text-sm font-semibold tracking-[0.2px] text-gray-900">
         {label}
       </h2>
       <div className="flex w-full flex-col overflow-hidden rounded-[15px] bg-main-white px-3.5 py-0.5">
@@ -124,9 +126,9 @@ const InfoRow = ({ icon, title, value, trailing }: InfoRowProps) => {
         {icon}
       </div>
       <div className="flex flex-1 flex-col gap-0.5">
-        <span className="text-xs font-medium text-black-900">{title}</span>
+        <span className="text-sm font-medium text-black-900">{title}</span>
         {value && (
-          <span className="text-[10px] font-normal text-gray-900">{value}</span>
+          <span className="text-xs font-normal text-gray-900">{value}</span>
         )}
       </div>
       {trailing}
