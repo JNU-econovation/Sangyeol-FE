@@ -7,7 +7,10 @@ import { useStackLinkBack } from "stack-link";
 interface BackButtonProps {
   animation?: "none" | "fade" | "slide";
 }
-
+/**
+ * 보더가 있는 뒤로가기 버튼입니다.
+ * 이전 레커시 코드입니다. 사용하지마세요
+ */
 export default function BackButton({ animation }: BackButtonProps) {
   const { goBack, canGoBack } = useStackLinkBack();
   const goBackBridge = useRouteBackBridge();
