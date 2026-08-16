@@ -54,6 +54,14 @@ export const DISABLED_SCROLL = `
 })();
 `;
 
+export const DISABLED_OVERSCROLL_BOUNCE = `
+(() => {
+  const style = document.createElement('style');
+  style.textContent = 'html, body { overscroll-behavior: none; } * { overscroll-behavior-y: contain; }';
+  document.head.appendChild(style);
+})();
+`;
+
 export const SET_VIEWPORT_RATE = `
 (() => {
   const meta = document.createElement('meta');
