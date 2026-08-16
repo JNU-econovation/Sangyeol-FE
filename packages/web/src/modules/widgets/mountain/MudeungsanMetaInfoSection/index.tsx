@@ -6,10 +6,9 @@ import MudeungsanWeatherNotice from "@modules/features/mountain/MudeungsanWeathe
 import Spacing from "@shared/components/primitives/layout/Spacing";
 
 const MudeungsanMetaInfoSection = () => {
-  const routeToWebview = useRouteToInternalWebview();
+  const routeToCourseListPage = useRouteToInternalWebview();
 
-  // const handleClickCourseButton = () => routeToWebview("V1_COURSE");
-  const handleClickCourseButton = () => routeToWebview("V1_ETC");
+  const handleClickCourseButton = () => routeToCourseListPage("V1_COURSES");
 
   return (
     <section>
