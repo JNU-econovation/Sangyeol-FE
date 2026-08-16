@@ -16,7 +16,7 @@ import {
   DISABLED_PINCH_GESTURE,
   DISABLED_SCROLL,
   DISABLED_TEXT_SELECT,
-  INJECT_TOKEN,
+  // INJECT_TOKEN,
   SET_VIEWPORT_RATE,
 } from "./constants/scripts";
 import useMiddleware from "./model/useMiddleware";

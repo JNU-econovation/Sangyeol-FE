@@ -1,12 +1,14 @@
 import useHaptics from "@shared/hooks/common/useHaptic";
-import { getPathToRoute } from "@shared/lib/bridge";
-import { logMessageWithTime } from "@shared/lib/log";
+import { getPathToRoute } from "@shared/utils/bridge";
+import { logMessageWithTime } from "@shared/utils/log";
 import { MessageEventRequestData } from "@shared/types/webview";
 import { router } from "expo-router";
 import { useCallback } from "react";
 
 /**
  * WebViewWithInjected 컴포넌트에서 middleware로직을 관리하는 훅
+ * 웹으로 부터 받은 메시지를 처리합니다.
+ * return문은 웹으로 다시 메시지를 보내는 용도로 사용됩니다.
  */
 const useMiddleware = () => {
   const { defaultFeedback } = useHaptics();
@@ -61,6 +63,11 @@ const useMiddleware = () => {
 
     if (name === "haptic" && method === "POST") {
       defaultFeedback();
+    }
+
+    if (name === "route-to-internal-webview" && method === "POST") {
+      const { uri } = body as { uri: string };
+      router.push(`/webview/${encodeURIComponent(uri)}`);
     }
   }, []);
 

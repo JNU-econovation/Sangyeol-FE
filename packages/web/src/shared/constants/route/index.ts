@@ -53,6 +53,11 @@ const ROUTE = {
 
   // discount coupon
   DISCOUNT_COUPON: "/discount-coupon",
+
+  //v1
+  V1_HOME: "/v1/home",
+  V1_COURSE: "/v1/course",
+  V1_ETC: "/v1/etc",
 };
 
 export default ROUTE;
