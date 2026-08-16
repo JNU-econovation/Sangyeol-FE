@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 export const SpinnerVariants = cva(
   `rounded-full border-t-transparent animate-spin`,

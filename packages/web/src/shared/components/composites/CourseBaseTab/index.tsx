@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { ReactNode, useState } from "react";
 
 interface CourseBaseTabProps {

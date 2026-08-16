@@ -6,7 +6,7 @@ import {
   WeightType,
   ZIndexType,
 } from "@shared/types/css";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 interface TextProps {
   children: React.ReactNode;

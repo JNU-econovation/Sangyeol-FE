@@ -1,4 +1,4 @@
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { memo, useEffect } from "react";
 
 import useTabContext from "../../model/useTabContext";

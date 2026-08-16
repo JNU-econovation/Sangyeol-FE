@@ -1,5 +1,5 @@
 import Spacing from "@shared/components/primitives/layout/Spacing";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 const ProfileFormSectionLoader = () => {
   return (

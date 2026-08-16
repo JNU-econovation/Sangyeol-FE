@@ -1,4 +1,4 @@
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import TravelLogDeleteModal from "@modules/widgets/my-info/TravelLogDeleteModal";
 import { useEffect } from "react";
 

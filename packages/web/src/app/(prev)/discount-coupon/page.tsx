@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import useCouponFailureModal from "@shared/hooks/domain/modal/useCouponFailureModal";
 import useCouponSuccessModal from "@shared/hooks/domain/modal/useCouponSuccessModal";
 import PositionBottom from "@shared/components/primitives/layout/PositionBottom";

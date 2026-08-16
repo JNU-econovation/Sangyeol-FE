@@ -1,6 +1,6 @@
 "use client";
 
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import Button from "@shared/components/primitives/ui/Button";
 import Dimmed from "@shared/components/primitives/ui/Dimmed";

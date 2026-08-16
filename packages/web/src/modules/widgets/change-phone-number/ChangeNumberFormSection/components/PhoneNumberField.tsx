@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { useChangeNumberFormContext } from "@shared/hooks/domain/form/useChangeNumberForm";
 import useSMSForVerificationMutate from "@shared/api/mutates/useSMSForVerificationMutate";
 import {

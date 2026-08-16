@@ -1,4 +1,4 @@
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { PropsWithChildren } from "react";
 
 const DEFAULT_BOTTOM_SPACE = 18; // 하단 여백

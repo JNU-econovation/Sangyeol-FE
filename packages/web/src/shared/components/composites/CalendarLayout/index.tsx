@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import LeftChevronThinIcon from "@icons/LeftChevronThinIcon";
 import RightChevronThinIcon from "@icons/RightChevronThinIcon";
 import Spacing from "@shared/components/primitives/layout/Spacing";

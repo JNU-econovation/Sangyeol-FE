@@ -1,4 +1,4 @@
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import { useEffect, useRef, useState } from "react";
 

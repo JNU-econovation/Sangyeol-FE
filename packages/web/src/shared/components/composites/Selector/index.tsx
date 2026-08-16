@@ -1,4 +1,4 @@
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import SelectorCloseIcon from "@icons/SelectorCloseIcon";
 import SelectorOpenIcon from "@icons/SelectorOpenIcon";
 import Spacing from "@shared/components/primitives/layout/Spacing";

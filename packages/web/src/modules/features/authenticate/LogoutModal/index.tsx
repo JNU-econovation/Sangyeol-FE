@@ -1,6 +1,6 @@
 "use client";
 
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import useLogoutBridge from "@shared/hooks/domain/bridge/useLogoutBridge";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import Button from "@shared/components/primitives/ui/Button";

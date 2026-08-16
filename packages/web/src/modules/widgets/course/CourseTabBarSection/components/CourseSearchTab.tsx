@@ -3,7 +3,7 @@
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import { TAB_TITLE_LIST } from "@shared/constants/course";
 import ROUTE from "@shared/constants/route";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 const CourseSearchTab = () => {

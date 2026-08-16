@@ -2,7 +2,7 @@
 
 import MAP from "@shared/constants/map";
 import type { Markers } from "@shared/types/map";
-import { getFacilitiesByFacilityType } from "@shared/lib/map";
+import { getFacilitiesByFacilityType } from "@shared/utils/map";
 import MapView from "@shared/components/composites/MapView";
 import useDrawMarkers from "@shared/hooks/domain/map/useDrawMarkers";
 import useBasesQuery from "@shared/api/suspenseQueries/useBasesQuery";
