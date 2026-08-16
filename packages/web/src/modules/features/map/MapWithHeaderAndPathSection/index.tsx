@@ -1,18 +1,21 @@
 "use client";
 
-import MAP from "@shared/constants/map";
+// import MAP from "@shared/constants/map";
 import MOUNTAIN from "@shared/constants/mountain/index";
 import type { Markers } from "@shared/types/map";
-import { getFacilitiesByFacilityType } from "@shared/utils/map";
+// import { getFacilitiesByFacilityType } from "@shared/utils/map";
 import MapView from "@shared/components/composites/MapView";
-import useGetCoursePathByCourseId from "@shared/hooks/domain/course/useGetCoursePath";
+// import useGetCoursePathByCourseId from "@shared/hooks/domain/course/useGetCoursePath";
 import useDrawMarkers from "@shared/hooks/domain/map/useDrawMarkers";
-import useBasesQuery from "@shared/api/suspenseQueries/useBasesQuery";
-import useFacilitiesQuery from "@shared/api/suspenseQueries/useFacilitiesQuery";
+// import useBasesQuery from "@shared/api/suspenseQueries/useBasesQuery";
+// import useFacilitiesQuery from "@shared/api/suspenseQueries/useFacilitiesQuery";
 import Spinner from "@shared/components/primitives/ui/Spinner";
 import { Suspense } from "@suspensive/react";
-import { useParams, useSearchParams } from "next/navigation";
+// import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
+import { getCoursePathByCourseId, getFacilities } from "@/shared/api/proto";
+import useCourseInfo from "./useCourseInfo";
+import useSelectedTag from "./useSelectedTag";
 
 export default Suspense.with(
   {
@@ -26,60 +29,94 @@ export default Suspense.with(
     clientOnly: true,
   },
   () => {
-    const params = useParams<{
-      mountainId: string;
-      courseId: string;
-    }>();
-    const searchParams = useSearchParams();
+    const { courseId } = useCourseInfo();
+    const { selectedTagIds } = useSelectedTag();
 
-    const { mountainId, courseId } = params;
+    const {
+      bases,
+      emergencyKits,
+      markets,
+      rentals,
+      // shelters,
+      toilets,
+    } = getFacilities();
 
-    const selectedTagIds = useMemo(() => {
-      const raw = searchParams.getAll("tag");
-      const allowed = new Set<string>([
-        MAP.BASE.id,
-        ...Object.keys(MAP.BASE_AND_FACILITY),
-      ]);
-      return Array.from(new Set(raw.filter((t) => allowed.has(t)))) as (
-        | keyof typeof MAP.BASE_AND_FACILITY
-        | typeof MAP.BASE.id
-      )[];
-    }, [searchParams]);
-
-    const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
-    const { data: basesData } = useBasesQuery({ mountainId });
-
-    const coursePath = useGetCoursePathByCourseId({ courseId });
-
-    const { facilities } = facilitiesData;
-    const { bases } = basesData;
+    // const coursePath = useGetCoursePathByCourseId({ courseId });
+    const coursePath = getCoursePathByCourseId(courseId);
 
     const markers: Markers[] = useMemo(() => {
-      const result = [];
-      selectedTagIds.forEach((selectedTagId) => {
-        if (selectedTagId === MAP.BASE.id) {
-          result.push(
-            ...bases.map(({ baseId, coordinate, name }) => ({
-              id: baseId,
-              name: name,
-              coordinate,
-              type: MAP.BASE.id,
-            })),
-          );
-        }
-        result.push(
-          ...getFacilitiesByFacilityType(facilities, selectedTagId).map(
-            ({ coordinate, facilityId, facilityName, facilityType }) => ({
-              id: facilityId,
-              type: facilityType,
-              name: facilityName,
-              coordinate,
-            }),
-          ),
-        );
-      });
-      return result;
-    }, [facilities, bases, selectedTagIds]);
+      const baseMarkers: Markers[] = bases.map(
+        ({ latitude, longitude, name }) => {
+          return {
+            coordinate: [longitude, latitude],
+            id: name,
+            name: name,
+            type: "BASE",
+          };
+        },
+      );
+      const emergencyKitsMarkers: Markers[] = emergencyKits.map(
+        ({ latitude, longitude, name }) => {
+          return {
+            coordinate: [longitude, latitude],
+            id: name,
+            name: name,
+            type: "EMERGENCY_KIT",
+          };
+        },
+      );
+      const marketsMarkers: Markers[] = markets.map(
+        ({ latitude, longitude, name }) => {
+          return {
+            coordinate: [longitude, latitude],
+            id: name,
+            name: name,
+            type: "MARKET",
+          };
+        },
+      );
+      const rentalsMarkers: Markers[] = rentals.map(
+        ({ latitude, longitude, name }) => {
+          return {
+            coordinate: [longitude, latitude],
+            id: name,
+            name: name,
+            type: "RENTAL",
+          };
+        },
+      );
+      // const sheltersMarkers: Markers[] = shelters.map(
+      //   ({ latitude, longitude, name }) => {
+      //     return {
+      //       coordinate: [longitude, latitude],
+      //       id: name,
+      //       name: name,
+      //       type: "SHELTER",
+      //     };
+      //   },
+      // );
+      const sheltersMarkers: Markers[] = [];
+      const toiletsMarkers: Markers[] = toilets.map(
+        ({ latitude, longitude, name }) => {
+          return {
+            coordinate: [longitude, latitude],
+            id: name,
+            name: name,
+            type: "TOILET",
+          };
+        },
+      );
+      const markers = [
+        ...baseMarkers,
+        ...emergencyKitsMarkers,
+        ...marketsMarkers,
+        ...rentalsMarkers,
+        ...sheltersMarkers,
+        ...toiletsMarkers,
+      ];
+
+      return markers.filter((marker) => selectedTagIds.includes(marker.type));
+    }, [bases, emergencyKits, markets, rentals, toilets, selectedTagIds]);
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">
@@ -88,13 +125,11 @@ export default Suspense.with(
           currentPositionIcon={true}
           zoom={12}
           initPosition={{
-            //TODO: 단정 대신 추론으로 사용하기
+            //TODO: 우선 무등산 좌표로 고정, 추후 courseId에 따라 산 좌표로 변경
             longitude:
-              MOUNTAIN[mountainId]?.coordinate[0] ??
-              MOUNTAIN.default.coordinate[0],
+              MOUNTAIN["1"]?.coordinate[0] ?? MOUNTAIN.default.coordinate[0],
             latitude:
-              MOUNTAIN[mountainId]?.coordinate[1] ??
-              MOUNTAIN.default.coordinate[1],
+              MOUNTAIN["1"]?.coordinate[1] ?? MOUNTAIN.default.coordinate[1],
           }}
         >
           {({ map }) => {
