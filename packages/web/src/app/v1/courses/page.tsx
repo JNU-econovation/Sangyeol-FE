@@ -1,6 +1,8 @@
-import V1Header from "@/modules/features/header/V1Header";
+"use client";
+
 import Clock3Icon from "@icons/Clock3Icon";
 import FootprintsIcon from "@icons/FootprintsIcon";
+import V1Header from "@modules/features/header/V1Header";
 import SafeArea from "@shared/components/primitives/layout/SafeArea";
 import CourseCard from "@shared/components/primitives/ui/CourseCard";
 import EasyDifficultyBadge from "@shared/components/primitives/ui/EasyDifficultyBadge";

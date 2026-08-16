@@ -1,28 +1,20 @@
 "use client";
 
 import ChevronLeftIcon from "@/shared/components/primitives/ui/icons/ChevronLeftIcon";
-import useRouteBackBridge from "@shared/hooks/domain/bridge/useRouteBackBridge";
-import { useStackLinkBack } from "stack-link";
+import useGoBack from "@shared/hooks/domain/route/useGoBack";
+import type { RouteAnimation } from "@shared/types/route";
 
 interface V1HeaderProps {
   title: string;
-  animation?: "none" | "fade" | "slide";
+  animation?: RouteAnimation;
 }
 
 const V1Header = ({ title, animation }: V1HeaderProps) => {
-  const { goBack, canGoBack } = useStackLinkBack();
-  const goBackBridge = useRouteBackBridge();
-
-  const handleClick = () => {
-    if (!canGoBack) return goBackBridge();
-    goBack({
-      animation: animation || "slide",
-    });
-  };
+  const { handleGoBack } = useGoBack(animation);
 
   return (
     <header className="flex h-11 w-full items-center gap-2 sticky top-0 z-10 bg-gray-300">
-      <button onClick={handleClick}>
+      <button type="button" aria-label="뒤로 가기" onClick={handleGoBack}>
         <ChevronLeftIcon />
       </button>
 
