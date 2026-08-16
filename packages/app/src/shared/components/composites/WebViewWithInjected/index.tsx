@@ -13,6 +13,7 @@ import type {
 } from "react-native-webview/lib/WebViewTypes";
 
 import {
+  DISABLED_OVERSCROLL_BOUNCE,
   DISABLED_PINCH_GESTURE,
   DISABLED_SCROLL,
   DISABLED_TEXT_SELECT,
@@ -55,7 +56,7 @@ const WebViewWithInjected = ({
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
-      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${SET_VIEWPORT_RATE}`,
+      `${DISABLED_PINCH_GESTURE}${DISABLED_TEXT_SELECT}${DISABLED_SCROLL}${DISABLED_OVERSCROLL_BOUNCE}${SET_VIEWPORT_RATE}`,
     [],
   );
 
@@ -120,6 +121,7 @@ const WebViewWithInjected = ({
         }
         webviewDebuggingEnabled={__DEV__}
         bounces={false}
+        overScrollMode="never"
         scrollEnabled={true}
         decelerationRate={0.998}
         contentInsetAdjustmentBehavior="never"
