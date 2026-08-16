@@ -1,19 +1,14 @@
 "use client";
 
-// import MAP from "@shared/constants/map";
 import MOUNTAIN from "@shared/constants/mountain/index";
 import type { Markers } from "@shared/types/map";
-// import { getFacilitiesByFacilityType } from "@shared/utils/map";
 import MapView from "@shared/components/composites/MapView";
-// import useGetCoursePathByCourseId from "@shared/hooks/domain/course/useGetCoursePath";
 import useDrawMarkers from "@shared/hooks/domain/map/useDrawMarkers";
-// import useBasesQuery from "@shared/api/suspenseQueries/useBasesQuery";
-// import useFacilitiesQuery from "@shared/api/suspenseQueries/useFacilitiesQuery";
 import Spinner from "@shared/components/primitives/ui/Spinner";
 import { Suspense } from "@suspensive/react";
-// import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import { getCoursePathByCourseId, getFacilities } from "@/shared/api/proto";
+
 import useCourseInfo from "./useCourseInfo";
 import useSelectedTag from "./useSelectedTag";
 
@@ -138,6 +133,7 @@ export default Suspense.with(
               markers: markers ?? [],
               enable: (markers ?? []).length > 0,
             });
+
             return null;
           }}
         </MapView>
