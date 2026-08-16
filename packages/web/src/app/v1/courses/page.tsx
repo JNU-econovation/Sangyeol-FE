@@ -1,4 +1,4 @@
-import ChevronLeftIcon from "@icons/ChevronLeftIcon";
+import V1Header from "@/modules/features/header/V1Header";
 import Clock3Icon from "@icons/Clock3Icon";
 import FootprintsIcon from "@icons/FootprintsIcon";
 import SafeArea from "@shared/components/primitives/layout/SafeArea";
@@ -17,15 +17,7 @@ const CoursesPage = () => {
       bottomSpacing={8}
     >
       <div className="flex flex-col gap-6 px-5 pt-4">
-        <header className="flex h-11 w-full items-center gap-2">
-          <ChevronLeftIcon size={24} className="shrink-0 text-black-900" />
-
-          <h1 className="w-full text-center text-xl font-semibold tracking-[-0.4px] text-black-900">
-            무등산국립공원
-          </h1>
-
-          <div className="size-6 shrink-0" />
-        </header>
+        <V1Header title="무등산 국립공원" />
 
         <section className="flex w-full flex-col gap-3.5 pb-6">
           <CourseCard

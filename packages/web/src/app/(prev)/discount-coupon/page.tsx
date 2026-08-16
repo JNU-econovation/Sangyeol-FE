@@ -6,7 +6,7 @@ import useCouponSuccessModal from "@shared/hooks/domain/modal/useCouponSuccessMo
 import PositionBottom from "@shared/components/primitives/layout/PositionBottom";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import Button from "@shared/components/primitives/ui/Button";
-import WeekHeader from "@modules/features/WeekHeader";
+import WeekHeader from "@/modules/features/header/WeekHeader";
 import { useEffect, useRef, useState } from "react";
 
 const DiscountCouponPage = () => {
