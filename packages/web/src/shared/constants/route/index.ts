@@ -56,7 +56,7 @@ const ROUTE = {
 
   //v1
   V1_HOME: "/v1/home",
-  V1_COURSE: "/v1/course",
+  V1_COURSES: "/v1/courses",
   V1_ETC: "/v1/etc",
 };
 
