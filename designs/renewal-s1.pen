@@ -1,5 +1,5 @@
 {
-  "version": "2.15",
+  "version": "2.17",
   "children": [
     {
       "type": "frame",
@@ -6240,7 +6240,7 @@
                           "fill": {
                             "type": "image",
                             "enabled": true,
-                            "url": "https://images.unsplash.com/photo-1606318005254-bdb2bcd14d34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM0NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "url": "images/generated-1786461818314.png",
                             "mode": "fill"
                           },
                           "width": "fill_container",
@@ -6345,7 +6345,7 @@
                               "id": "zptQ7",
                               "name": "Weather Source",
                               "fill": "$ds-muted",
-                              "content": "기상청 · 실시간",
+                              "content": "OpenWeatherMap · 실시간",
                               "fontFamily": "$ds-font",
                               "fontSize": "$type-label",
                               "fontWeight": "normal"
@@ -6977,6 +6977,1769 @@
             },
             {
               "type": "frame",
+              "id": "fgiLJ",
+              "name": "홈 - 정보 로드 중",
+              "clip": true,
+              "width": 375,
+              "height": 812,
+              "fill": "$ds-bg",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "o01WeN",
+                  "name": "Status Bar",
+                  "clip": true,
+                  "width": 375,
+                  "height": 44,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "group",
+                      "id": "ZMowd",
+                      "x": 78,
+                      "y": -2,
+                      "name": "Notch",
+                      "enabled": false,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "t45PHH",
+                          "x": -78,
+                          "y": 2,
+                          "name": "BG",
+                          "enabled": false,
+                          "fill": "#000000ff",
+                          "width": 375,
+                          "height": 44
+                        },
+                        {
+                          "type": "group",
+                          "id": "srjRy",
+                          "x": -78,
+                          "y": 2,
+                          "name": "Exclude",
+                          "enabled": false,
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "DXs07",
+                              "x": 0,
+                              "y": 0,
+                              "name": "BG",
+                              "fill": "#d6d9ddff",
+                              "width": 375,
+                              "height": 44
+                            }
+                          ]
+                        },
+                        {
+                          "type": "path",
+                          "id": "NCxah",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Notch",
+                          "geometry": "M0 0l654 0-10.5517 3-0.4483 13.5 0 72.5-632 0 0-72.5-0.44828-13.5-10.55172-3z",
+                          "fill": "#000000ff",
+                          "width": 219,
+                          "height": 30
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "i2hpxV",
+                      "x": 293.66650390625,
+                      "y": 17.331054687499996,
+                      "name": "Right Side",
+                      "children": [
+                        {
+                          "type": "group",
+                          "id": "mDAyU",
+                          "x": 42.33349609375,
+                          "y": 0.0029296875,
+                          "name": "Battery",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "Fa6S1",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Rectangle",
+                              "opacity": 0.3499999940395355,
+                              "geometry": "M0 0l22 0 0 11.33333-22 0 0-11.33333z",
+                              "fillRule": "evenodd",
+                              "width": 22,
+                              "height": 11.333333015441895,
+                              "stroke": "#000000ff",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner"
+                            },
+                            {
+                              "type": "path",
+                              "id": "nlg5F",
+                              "x": 23,
+                              "y": 3.6669921875,
+                              "name": "Combined Shape",
+                              "opacity": 0.4000000059604645,
+                              "geometry": "M0 0l0 4c0.80473-0.33878 1.32804-1.12687 1.32804-2 0-0.87313-0.52331-1.66122-1.32804-2",
+                              "fill": "#000000ff",
+                              "width": 1.328037977218628,
+                              "height": 4
+                            },
+                            {
+                              "type": "path",
+                              "id": "B25CA",
+                              "x": 2,
+                              "y": 1.9999998807907104,
+                              "name": "Rectangle",
+                              "geometry": "M0 0l18 0 0 7.33333-18 0 0-7.33333z",
+                              "fill": "#000000ff",
+                              "width": 18,
+                              "height": 7.333333492279053
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "Fbdee",
+                          "x": 22.027069091796875,
+                          "y": 0,
+                          "name": "Wifi",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "Ptgop",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Wifi-path",
+                              "geometry": "M7.63661 2.27733c2.21589 0.0001 4.34705 0.85153 5.953 2.37833 0.12093 0.11787 0.31423 0.11639 0.43333-0.00333l1.156-1.16667c0.06031-0.06072 0.09393-0.14297 0.09343-0.22855-0.0005-0.08558-0.03508-0.16743-0.0961-0.22745-4.2151-4.03955-10.8649-4.03955-15.08 0-0.06106 0.05997-0.0957 0.1418-0.09626 0.22738-0.00056 0.08558 0.033 0.16786 0.09326 0.22862l1.15634 1.16667c0.11903 0.1199 0.31247 0.12139 0.43333 0.00333 1.60615-1.5269 3.73756-2.37834 5.95367-2.37833l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 15.27237606048584,
+                              "height": 4.743237495422363
+                            },
+                            {
+                              "type": "path",
+                              "id": "hb4FJ",
+                              "x": 2.663280963897705,
+                              "y": 3.7940404415130615,
+                              "name": "Wifi-path",
+                              "geometry": "M4.97332 2.27895c1.21749-0.00007 2.39153 0.45246 3.294 1.26967 0.12206 0.11598 0.31434 0.11347 0.43334-0.00567l1.15466-1.16666c0.06081-0.06119 0.09455-0.14421 0.09367-0.23048-0.00088-0.08626-0.0363-0.16858-0.09833-0.22852-2.7482-2.55638-7.00413-2.55638-9.75234 0-0.06208 0.05995-0.0975 0.1423-0.09831 0.22859-0.00081 0.08629 0.03304 0.1693 0.09398 0.23041l1.15433 1.16666c0.11899 0.11913 0.31127 0.12165 0.43334 0.00567 0.90187-0.81667 2.07498-1.26916 3.29166-1.26967l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 9.94901180267334,
+                              "height": 3.6339809894561768
+                            },
+                            {
+                              "type": "path",
+                              "id": "v453VI",
+                              "x": 5.3232421875,
+                              "y": 7.5908203125,
+                              "name": "Wifi-path",
+                              "geometry": "M4.53223 1.26616c0.06175-0.06061 0.09576-0.14401 0.094-0.23051-0.00177-0.08651-0.03915-0.16845-0.10333-0.22649-1.27557-1.07888-3.14376-1.07888-4.41933 0-0.06422 0.05799-0.10167 0.13991-0.1035 0.22642-0.00183 0.08651 0.03212 0.16994 0.09383 0.23058l1.99767 2.01567c0.05855 0.05924 0.13838 0.09258 0.22166 0.09258 0.08329 0 0.16312-0.03334 0.22167-0.09258l1.99733-2.01567z",
+                              "fill": "#dadadaff",
+                              "width": 4.626293659210205,
+                              "height": 3.3744072914123535
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "gfRdK",
+                          "x": 0,
+                          "y": 0.3359375,
+                          "name": "Mobile Signal",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "u0LFz1",
+                              "x": 0,
+                              "y": 6.6669921875,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 2c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-2c0-0.55228 0.44772-1 1-1l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 4
+                            },
+                            {
+                              "type": "path",
+                              "id": "Q0UPN",
+                              "x": 4.66650390625,
+                              "y": 4.6669921875,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 4c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-4c0-0.55228 0.44772-1 1-1z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 6
+                            },
+                            {
+                              "type": "path",
+                              "id": "HcqpU",
+                              "x": 9.33349609375,
+                              "y": 2.3330078125,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 6.33333c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44771-1-1l0-6.33333c0-0.55228 0.44772-1 1-1z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 8.333333015441895
+                            },
+                            {
+                              "type": "path",
+                              "id": "m9Uopt",
+                              "x": 14,
+                              "y": 0,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 8.66667c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-8.66667c0-0.55228 0.44772-1 1-1l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 10.666666984558105
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "FPoz2",
+                          "x": 4.33349609375,
+                          "y": -9.3310546875,
+                          "name": "Recording Indicator",
+                          "enabled": false,
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "C7i2w",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Indicator",
+                              "sweepAngle": -360.00001001791264,
+                              "fill": "#ff9500ff",
+                              "width": 6,
+                              "height": 6
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "zTyrd",
+                      "x": 21.000022888183594,
+                      "y": 12,
+                      "name": "Left Side",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "yFztC",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Time",
+                          "width": 54,
+                          "height": 21,
+                          "cornerRadius": 32,
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "PzYdr",
+                              "x": 12.45361328125,
+                              "y": 5.16796875,
+                              "name": "9:41",
+                              "geometry": "M3.86719 11.08887c2.68799 0 4.28467-2.10205 4.28467-5.66162 0-1.34033-0.25635-2.46826-0.74707-3.33985-0.71045-1.35498-1.93359-2.0874-3.47901-2.0874-2.2998 0-3.92578 1.54541-3.92578 3.71338 0 2.03613 1.46484 3.51563 3.479 3.51562 1.23779 0 2.24121-0.57861 2.73926-1.58203l0.02197 0c0 0 0.0293 0 0.03663 0 0.01465 0 0.06592 0 0.06591 0 0 2.41699-0.91553 3.85986-2.46093 3.85987-0.9082 0-1.61133-0.49805-1.85303-1.29639l-1.88233 0c0.31494 1.73584 1.78711 2.87842 3.72071 2.87842z m0.06592-5.36133c-1.21582 0-2.08008-0.86426-2.08008-2.07275 0-1.1792 0.9082-2.08008 2.0874-2.08008 1.1792 0 2.0874 0.91553 2.0874 2.10937 0 1.1792-0.88623 2.04346-2.09472 2.04346z m7.30986 5.25879c0.6958 0 1.17188-0.49805 1.17187-1.15723 0-0.6665-0.47607-1.15723-1.17187-1.15723-0.68848 0-1.17188 0.49072-1.17188 1.15723 0 0.65918 0.4834 1.15723 1.17188 1.15723z m0-5.49317c0.6958 0 1.17188-0.49072 1.17187-1.1499 0-0.6665-0.47607-1.15723-1.17187-1.15722-0.68848 0-1.17188 0.49072-1.17188 1.15722 0 0.65918 0.4834 1.1499 1.17188 1.1499z m8.02764 5.33936l1.80908 0 0-1.97022 1.42822 0 0-1.59668-1.42822 0 0-7.00195-2.66602 0c-1.86768 2.8125-3.35449 5.16357-4.30664 6.91406l0 1.68457 5.16357 0 0 1.97022z m-3.41309-3.63281c1.23047-2.16797 2.3291-3.90381 3.33984-5.39795l0.10254 0 0 5.50781-3.44238 0 0-0.10986z m10.679 3.63281l1.88965 0 0-10.56885-1.88233 0-2.76123 1.9336 0 1.8164 2.6294-1.8457 0.12451 0 0 8.66455z",
+                              "fill": "#000000ff",
+                              "width": 28.42616844177246,
+                              "height": 11.0888671875
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YE9oK",
+                  "name": "Content Slot",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": [
+                    16,
+                    20,
+                    0,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "l4emYb",
+                      "name": "Hero",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$space-3",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-lg",
+                          "id": "AoS5A",
+                          "name": "Hero Image",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "danieljschwarz",
+                            "link": "https://unsplash.com/@danieljschwarz",
+                            "author": "Daniel J. Schwarz"
+                          },
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "images/generated-1786461818314.png",
+                            "mode": "fill"
+                          },
+                          "width": "fill_container",
+                          "height": 130
+                        },
+                        {
+                          "type": "frame",
+                          "id": "O5AmT",
+                          "name": "Hero Title Row",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "RZ8V1",
+                              "name": "Hero Title",
+                              "fill": "$ds-text",
+                              "content": "무등산국립공원",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-title",
+                              "fontWeight": "700",
+                              "letterSpacing": -0.4
+                            },
+                            {
+                              "type": "text",
+                              "id": "wXiDq",
+                              "name": "Hero Link",
+                              "fill": "$ds-primary",
+                              "content": "코스 보러가기 ›",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-body",
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "QduuD",
+                      "name": "Weather Card",
+                      "width": "fill_container",
+                      "fill": "$ds-surface",
+                      "cornerRadius": "$radius-lg",
+                      "stroke": "$ds-border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000f",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 12
+                      },
+                      "layout": "vertical",
+                      "gap": "$space-4",
+                      "padding": "$space-4",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "w8AI4E",
+                          "name": "Weather Header",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Pvvu5",
+                              "name": "Header Left",
+                              "gap": "$space-2",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "B5HZF",
+                                  "name": "Sun Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "icon": "sun",
+                                  "library": "lucide",
+                                  "fill": "$ds-primary"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "lg4Mr",
+                                  "name": "Weather Title",
+                                  "fill": "$ds-text",
+                                  "content": "무등산 날씨",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-subtitle",
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "m4erlY",
+                              "name": "Weather Source",
+                              "fill": "$ds-muted",
+                              "content": "기상청 · 불러오는 중",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-label",
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RPHcX",
+                          "name": "Temp Skeleton Row",
+                          "gap": "$space-3",
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "cornerRadius": "$radius-sm",
+                              "id": "o3hJZL",
+                              "name": "온도 스켈레톤",
+                              "fill": "$ds-border",
+                              "width": 110,
+                              "height": 34
+                            },
+                            {
+                              "type": "frame",
+                              "id": "AuS78",
+                              "name": "체감 Pad",
+                              "layout": "vertical",
+                              "padding": [
+                                0,
+                                0,
+                                6,
+                                0
+                              ],
+                              "justifyContent": "end",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "WRZjN",
+                                  "name": "체감 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 72,
+                                  "height": 16
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oRPnR",
+                          "name": "Metrics",
+                          "width": "fill_container",
+                          "fill": "$ds-bg",
+                          "cornerRadius": "$radius-md",
+                          "padding": "$space-3",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "zSJXl",
+                              "name": "강수확률 스켈레톤",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": "$space-1",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "yhv2d",
+                                  "name": "강수확률 라벨 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 40,
+                                  "height": 14
+                                },
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "dAyKd",
+                                  "name": "강수확률 값 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 36,
+                                  "height": 20
+                                }
+                              ]
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "uPg7z",
+                              "name": "Metric Divider",
+                              "fill": "$ds-border",
+                              "width": 1,
+                              "height": 28
+                            },
+                            {
+                              "type": "frame",
+                              "id": "I8KKvx",
+                              "name": "강수량 스켈레톤",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": "$space-1",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "TDjxd",
+                                  "name": "강수량 라벨 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 40,
+                                  "height": 14
+                                },
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "broha",
+                                  "name": "강수량 값 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 36,
+                                  "height": 20
+                                }
+                              ]
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "BEleZ",
+                              "name": "Metric Divider",
+                              "fill": "$ds-border",
+                              "width": 1,
+                              "height": 28
+                            },
+                            {
+                              "type": "frame",
+                              "id": "RuQ7x",
+                              "name": "습도 스켈레톤",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": "$space-1",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "TNM4p",
+                                  "name": "습도 라벨 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 40,
+                                  "height": 14
+                                },
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-sm",
+                                  "id": "SPKRa",
+                                  "name": "습도 값 스켈레톤",
+                                  "fill": "$ds-border",
+                                  "width": 36,
+                                  "height": 20
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hVK7O",
+                          "name": "Sun Row Skeleton",
+                          "gap": "$space-3",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "cornerRadius": "$radius-sm",
+                              "id": "qeki8",
+                              "name": "일출 스켈레톤",
+                              "fill": "$ds-border",
+                              "width": 84,
+                              "height": 12
+                            },
+                            {
+                              "type": "rectangle",
+                              "cornerRadius": "$radius-sm",
+                              "id": "Q1wXt4",
+                              "name": "일몰 스켈레톤",
+                              "fill": "$ds-border",
+                              "width": 84,
+                              "height": 12
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SyScA",
+                      "name": "Control Card",
+                      "width": "fill_container",
+                      "fill": "$ds-surface",
+                      "cornerRadius": "$radius-lg",
+                      "stroke": "$ds-border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000f",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 12
+                      },
+                      "layout": "vertical",
+                      "gap": "$space-3",
+                      "padding": "$space-4",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "P74zXf",
+                          "name": "Control Header",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "hBXWI",
+                              "name": "Header Left",
+                              "gap": "$space-2",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "ELObD",
+                                  "name": "Warn Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "icon": "triangle-alert",
+                                  "library": "lucide",
+                                  "fill": "$ds-danger"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "kP2kN",
+                                  "name": "Control Title",
+                                  "fill": "$ds-text",
+                                  "content": "실시간 통제정보",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-subtitle",
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "p8iruV",
+                              "name": "Control Source",
+                              "fill": "$ds-muted",
+                              "content": "국립공원공단 · 불러오는 중",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-label",
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "n9h90",
+                          "name": "Control List",
+                          "width": "fill_container",
+                          "fill": "$ds-bg",
+                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "hwlH8",
+                              "name": "통제 Row 스켈레톤 1",
+                              "width": "fill_container",
+                              "padding": [
+                                "$space-3",
+                                "$space-4"
+                              ],
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "JNmCS",
+                                  "name": "Row Left",
+                                  "gap": "$space-2",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "aC2DG",
+                                      "name": "Pin 스켈레톤",
+                                      "fill": "$ds-border",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "rectangle",
+                                      "cornerRadius": "$radius-sm",
+                                      "id": "S0X2yi",
+                                      "name": "지역명 스켈레톤 1",
+                                      "fill": "$ds-border",
+                                      "width": 72,
+                                      "height": 12
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-pill",
+                                  "id": "T9XD4C",
+                                  "name": "배지 스켈레톤 1",
+                                  "fill": "$ds-border",
+                                  "width": 64,
+                                  "height": 22
+                                }
+                              ]
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "AmHeh",
+                              "name": "Row Divider",
+                              "fill": "$ds-border",
+                              "width": "fill_container",
+                              "height": 1
+                            },
+                            {
+                              "type": "frame",
+                              "id": "OpAk5",
+                              "name": "통제 Row 스켈레톤 2",
+                              "width": "fill_container",
+                              "padding": [
+                                "$space-3",
+                                "$space-4"
+                              ],
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "nnqbq",
+                                  "name": "Row Left",
+                                  "gap": "$space-2",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "vsY8S",
+                                      "name": "Pin 스켈레톤",
+                                      "fill": "$ds-border",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "rectangle",
+                                      "cornerRadius": "$radius-sm",
+                                      "id": "lkKqt",
+                                      "name": "지역명 스켈레톤 2",
+                                      "fill": "$ds-border",
+                                      "width": 88,
+                                      "height": 12
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "rectangle",
+                                  "cornerRadius": "$radius-pill",
+                                  "id": "Nl5sT",
+                                  "name": "배지 스켈레톤 2",
+                                  "fill": "$ds-border",
+                                  "width": 64,
+                                  "height": 22
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zYxFY",
+                  "name": "Tab Bar Wrapper",
+                  "width": "fill_container",
+                  "padding": [
+                    12,
+                    16,
+                    16,
+                    16
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Sh623",
+                      "name": "Tab Bar",
+                      "width": "fill_container",
+                      "height": 60,
+                      "fill": "#FFFFFFF2",
+                      "cornerRadius": "$radius-pill",
+                      "stroke": "$ds-border",
+                      "strokeAlignment": "inner",
+                      "effect": [
+                        {
+                          "type": "shadow",
+                          "shadowType": "outer",
+                          "color": "#1B3A2A26",
+                          "offset": {
+                            "x": 0,
+                            "y": 6
+                          },
+                          "blur": 20
+                        },
+                        {
+                          "type": "background_blur",
+                          "radius": 18
+                        }
+                      ],
+                      "padding": [
+                        6,
+                        10
+                      ],
+                      "justifyContent": "space_around",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ZTkJS",
+                          "name": "Tab Home",
+                          "fill": "$ds-primary-soft",
+                          "cornerRadius": "$radius-pill",
+                          "layout": "vertical",
+                          "gap": 3,
+                          "padding": [
+                            7,
+                            16
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "e5du2",
+                              "name": "홈 아이콘",
+                              "width": 21,
+                              "height": 21,
+                              "icon": "house",
+                              "library": "lucide",
+                              "fill": "$ds-primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "LdqwB",
+                              "name": "홈 라벨",
+                              "fill": "$ds-primary",
+                              "content": "홈",
+                              "fontFamily": "$ds-font",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qJ1FV",
+                          "name": "Tab More",
+                          "cornerRadius": "$radius-pill",
+                          "layout": "vertical",
+                          "gap": 3,
+                          "padding": [
+                            7,
+                            16
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "qJW1v",
+                              "name": "더보기 아이콘",
+                              "width": 21,
+                              "height": 21,
+                              "icon": "menu",
+                              "library": "lucide",
+                              "fill": "$ds-muted"
+                            },
+                            {
+                              "type": "text",
+                              "id": "A01D30",
+                              "name": "더보기 라벨",
+                              "fill": "$ds-muted",
+                              "content": "더보기",
+                              "fontFamily": "$ds-font",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xOVVE",
+              "name": "홈 - 정보 로드 실패",
+              "clip": true,
+              "width": 375,
+              "height": 812,
+              "fill": "$ds-bg",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZeDcC",
+                  "name": "Status Bar",
+                  "clip": true,
+                  "width": 375,
+                  "height": 44,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "group",
+                      "id": "cr7Q8",
+                      "x": 78,
+                      "y": -2,
+                      "name": "Notch",
+                      "enabled": false,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "E5DJG2",
+                          "x": -78,
+                          "y": 2,
+                          "name": "BG",
+                          "enabled": false,
+                          "fill": "#000000ff",
+                          "width": 375,
+                          "height": 44
+                        },
+                        {
+                          "type": "group",
+                          "id": "vyU7Q",
+                          "x": -78,
+                          "y": 2,
+                          "name": "Exclude",
+                          "enabled": false,
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "iX8ll",
+                              "x": 0,
+                              "y": 0,
+                              "name": "BG",
+                              "fill": "#d6d9ddff",
+                              "width": 375,
+                              "height": 44
+                            }
+                          ]
+                        },
+                        {
+                          "type": "path",
+                          "id": "JuSto",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Notch",
+                          "geometry": "M0 0l654 0-10.5517 3-0.4483 13.5 0 72.5-632 0 0-72.5-0.44828-13.5-10.55172-3z",
+                          "fill": "#000000ff",
+                          "width": 219,
+                          "height": 30
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "VUHvM",
+                      "x": 293.66650390625,
+                      "y": 17.331054687499996,
+                      "name": "Right Side",
+                      "children": [
+                        {
+                          "type": "group",
+                          "id": "urxDJ",
+                          "x": 42.33349609375,
+                          "y": 0.0029296875,
+                          "name": "Battery",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "OWrIk",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Rectangle",
+                              "opacity": 0.3499999940395355,
+                              "geometry": "M0 0l22 0 0 11.33333-22 0 0-11.33333z",
+                              "fillRule": "evenodd",
+                              "width": 22,
+                              "height": 11.333333015441895,
+                              "stroke": "#000000ff",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner"
+                            },
+                            {
+                              "type": "path",
+                              "id": "AtK1d",
+                              "x": 23,
+                              "y": 3.6669921875,
+                              "name": "Combined Shape",
+                              "opacity": 0.4000000059604645,
+                              "geometry": "M0 0l0 4c0.80473-0.33878 1.32804-1.12687 1.32804-2 0-0.87313-0.52331-1.66122-1.32804-2",
+                              "fill": "#000000ff",
+                              "width": 1.328037977218628,
+                              "height": 4
+                            },
+                            {
+                              "type": "path",
+                              "id": "w054B",
+                              "x": 2,
+                              "y": 1.9999998807907104,
+                              "name": "Rectangle",
+                              "geometry": "M0 0l18 0 0 7.33333-18 0 0-7.33333z",
+                              "fill": "#000000ff",
+                              "width": 18,
+                              "height": 7.333333492279053
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "b0e4y",
+                          "x": 22.027069091796875,
+                          "y": 0,
+                          "name": "Wifi",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "iBYw8",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Wifi-path",
+                              "geometry": "M7.63661 2.27733c2.21589 0.0001 4.34705 0.85153 5.953 2.37833 0.12093 0.11787 0.31423 0.11639 0.43333-0.00333l1.156-1.16667c0.06031-0.06072 0.09393-0.14297 0.09343-0.22855-0.0005-0.08558-0.03508-0.16743-0.0961-0.22745-4.2151-4.03955-10.8649-4.03955-15.08 0-0.06106 0.05997-0.0957 0.1418-0.09626 0.22738-0.00056 0.08558 0.033 0.16786 0.09326 0.22862l1.15634 1.16667c0.11903 0.1199 0.31247 0.12139 0.43333 0.00333 1.60615-1.5269 3.73756-2.37834 5.95367-2.37833l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 15.27237606048584,
+                              "height": 4.743237495422363
+                            },
+                            {
+                              "type": "path",
+                              "id": "Qc6Nf",
+                              "x": 2.663280963897705,
+                              "y": 3.7940404415130615,
+                              "name": "Wifi-path",
+                              "geometry": "M4.97332 2.27895c1.21749-0.00007 2.39153 0.45246 3.294 1.26967 0.12206 0.11598 0.31434 0.11347 0.43334-0.00567l1.15466-1.16666c0.06081-0.06119 0.09455-0.14421 0.09367-0.23048-0.00088-0.08626-0.0363-0.16858-0.09833-0.22852-2.7482-2.55638-7.00413-2.55638-9.75234 0-0.06208 0.05995-0.0975 0.1423-0.09831 0.22859-0.00081 0.08629 0.03304 0.1693 0.09398 0.23041l1.15433 1.16666c0.11899 0.11913 0.31127 0.12165 0.43334 0.00567 0.90187-0.81667 2.07498-1.26916 3.29166-1.26967l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 9.94901180267334,
+                              "height": 3.6339809894561768
+                            },
+                            {
+                              "type": "path",
+                              "id": "f2AEL",
+                              "x": 5.3232421875,
+                              "y": 7.5908203125,
+                              "name": "Wifi-path",
+                              "geometry": "M4.53223 1.26616c0.06175-0.06061 0.09576-0.14401 0.094-0.23051-0.00177-0.08651-0.03915-0.16845-0.10333-0.22649-1.27557-1.07888-3.14376-1.07888-4.41933 0-0.06422 0.05799-0.10167 0.13991-0.1035 0.22642-0.00183 0.08651 0.03212 0.16994 0.09383 0.23058l1.99767 2.01567c0.05855 0.05924 0.13838 0.09258 0.22166 0.09258 0.08329 0 0.16312-0.03334 0.22167-0.09258l1.99733-2.01567z",
+                              "fill": "#dadadaff",
+                              "width": 4.626293659210205,
+                              "height": 3.3744072914123535
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "rdGfI",
+                          "x": 0,
+                          "y": 0.3359375,
+                          "name": "Mobile Signal",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "tDXqB",
+                              "x": 0,
+                              "y": 6.6669921875,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 2c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-2c0-0.55228 0.44772-1 1-1l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 4
+                            },
+                            {
+                              "type": "path",
+                              "id": "WpYio",
+                              "x": 4.66650390625,
+                              "y": 4.6669921875,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 4c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-4c0-0.55228 0.44772-1 1-1z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 6
+                            },
+                            {
+                              "type": "path",
+                              "id": "m2F3bY",
+                              "x": 9.33349609375,
+                              "y": 2.3330078125,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 6.33333c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44771-1-1l0-6.33333c0-0.55228 0.44772-1 1-1z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 8.333333015441895
+                            },
+                            {
+                              "type": "path",
+                              "id": "W08S7G",
+                              "x": 14,
+                              "y": 0,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 8.66667c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-8.66667c0-0.55228 0.44772-1 1-1l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 10.666666984558105
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "E8x2i",
+                          "x": 4.33349609375,
+                          "y": -9.3310546875,
+                          "name": "Recording Indicator",
+                          "enabled": false,
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "i46B0S",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Indicator",
+                              "sweepAngle": -360.00001001791264,
+                              "fill": "#ff9500ff",
+                              "width": 6,
+                              "height": 6
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "SERLW",
+                      "x": 21.000022888183594,
+                      "y": 12,
+                      "name": "Left Side",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "nFBjO",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Time",
+                          "width": 54,
+                          "height": 21,
+                          "cornerRadius": 32,
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "LERDE",
+                              "x": 12.45361328125,
+                              "y": 5.16796875,
+                              "name": "9:41",
+                              "geometry": "M3.86719 11.08887c2.68799 0 4.28467-2.10205 4.28467-5.66162 0-1.34033-0.25635-2.46826-0.74707-3.33985-0.71045-1.35498-1.93359-2.0874-3.47901-2.0874-2.2998 0-3.92578 1.54541-3.92578 3.71338 0 2.03613 1.46484 3.51563 3.479 3.51562 1.23779 0 2.24121-0.57861 2.73926-1.58203l0.02197 0c0 0 0.0293 0 0.03663 0 0.01465 0 0.06592 0 0.06591 0 0 2.41699-0.91553 3.85986-2.46093 3.85987-0.9082 0-1.61133-0.49805-1.85303-1.29639l-1.88233 0c0.31494 1.73584 1.78711 2.87842 3.72071 2.87842z m0.06592-5.36133c-1.21582 0-2.08008-0.86426-2.08008-2.07275 0-1.1792 0.9082-2.08008 2.0874-2.08008 1.1792 0 2.0874 0.91553 2.0874 2.10937 0 1.1792-0.88623 2.04346-2.09472 2.04346z m7.30986 5.25879c0.6958 0 1.17188-0.49805 1.17187-1.15723 0-0.6665-0.47607-1.15723-1.17187-1.15723-0.68848 0-1.17188 0.49072-1.17188 1.15723 0 0.65918 0.4834 1.15723 1.17188 1.15723z m0-5.49317c0.6958 0 1.17188-0.49072 1.17187-1.1499 0-0.6665-0.47607-1.15723-1.17187-1.15722-0.68848 0-1.17188 0.49072-1.17188 1.15722 0 0.65918 0.4834 1.1499 1.17188 1.1499z m8.02764 5.33936l1.80908 0 0-1.97022 1.42822 0 0-1.59668-1.42822 0 0-7.00195-2.66602 0c-1.86768 2.8125-3.35449 5.16357-4.30664 6.91406l0 1.68457 5.16357 0 0 1.97022z m-3.41309-3.63281c1.23047-2.16797 2.3291-3.90381 3.33984-5.39795l0.10254 0 0 5.50781-3.44238 0 0-0.10986z m10.679 3.63281l1.88965 0 0-10.56885-1.88233 0-2.76123 1.9336 0 1.8164 2.6294-1.8457 0.12451 0 0 8.66455z",
+                              "fill": "#000000ff",
+                              "width": 28.42616844177246,
+                              "height": 11.0888671875
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZKqv2",
+                  "name": "Content Slot",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": [
+                    16,
+                    20,
+                    0,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "a1xPB2",
+                      "name": "Hero",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$space-3",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": "$radius-lg",
+                          "id": "yKvPL",
+                          "name": "Hero Image",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "danieljschwarz",
+                            "link": "https://unsplash.com/@danieljschwarz",
+                            "author": "Daniel J. Schwarz"
+                          },
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "images/generated-1786461818314.png",
+                            "mode": "fill"
+                          },
+                          "width": "fill_container",
+                          "height": 130
+                        },
+                        {
+                          "type": "frame",
+                          "id": "mLKOP",
+                          "name": "Hero Title Row",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "kepPX",
+                              "name": "Hero Title",
+                              "fill": "$ds-text",
+                              "content": "무등산국립공원",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-title",
+                              "fontWeight": "700",
+                              "letterSpacing": -0.4
+                            },
+                            {
+                              "type": "text",
+                              "id": "vtG9K",
+                              "name": "Hero Link",
+                              "fill": "$ds-primary",
+                              "content": "코스 보러가기 ›",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-body",
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uyEbM",
+                      "name": "Weather Card",
+                      "width": "fill_container",
+                      "fill": "$ds-surface",
+                      "cornerRadius": "$radius-lg",
+                      "stroke": "$ds-border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000f",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 12
+                      },
+                      "layout": "vertical",
+                      "gap": "$space-4",
+                      "padding": "$space-4",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "P3mfVn",
+                          "name": "Weather Header",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "CejHs",
+                              "name": "Header Left",
+                              "gap": "$space-2",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "nv8aq",
+                                  "name": "Sun Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "icon": "sun",
+                                  "library": "lucide",
+                                  "fill": "$ds-primary"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Bb5jP",
+                                  "name": "Weather Title",
+                                  "fill": "$ds-text",
+                                  "content": "무등산 날씨",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-subtitle",
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "HJ0Gb",
+                              "name": "Weather Source",
+                              "fill": "$ds-muted",
+                              "content": "기상청 · 업데이트 실패",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-label",
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "A54C5",
+                          "name": "Error State",
+                          "width": "fill_container",
+                          "fill": "$ds-bg",
+                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "padding": [
+                            "$space-3",
+                            "$space-4"
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "eZ9wV",
+                              "name": "Error Icon",
+                              "width": 24,
+                              "height": 24,
+                              "icon": "cloud-off",
+                              "library": "lucide",
+                              "fill": "$ds-muted"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Y4iFJ0",
+                              "name": "Error Texts",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": "$space-1",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "jb711",
+                                  "name": "Error Title",
+                                  "fill": "$ds-text-secondary",
+                                  "content": "날씨 정보를 불러오지 못했어요",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-body",
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "jePmm",
+                                  "name": "Error Desc",
+                                  "fill": "$ds-muted",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "잠시 후 다시 시도해 주세요",
+                                  "lineHeight": 1.5,
+                                  "textAlign": "center",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-label",
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "T4AY63",
+                              "name": "Retry Button",
+                              "fill": "$ds-surface",
+                              "cornerRadius": "$radius-pill",
+                              "stroke": "$ds-border",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "gap": 6,
+                              "padding": [
+                                8,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "ryFKK",
+                                  "name": "Retry Icon",
+                                  "width": 14,
+                                  "height": 14,
+                                  "icon": "rotate-cw",
+                                  "library": "lucide",
+                                  "fill": "$ds-primary"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "CsgRK",
+                                  "name": "Retry Label",
+                                  "fill": "$ds-primary",
+                                  "content": "다시 시도",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-label",
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wU27u",
+                      "name": "Control Card",
+                      "width": "fill_container",
+                      "fill": "$ds-surface",
+                      "cornerRadius": "$radius-lg",
+                      "stroke": "$ds-border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000f",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 12
+                      },
+                      "layout": "vertical",
+                      "gap": "$space-3",
+                      "padding": "$space-4",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Hskru",
+                          "name": "Control Header",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "RsT9h",
+                              "name": "Header Left",
+                              "gap": "$space-2",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "x5EClz",
+                                  "name": "Warn Icon",
+                                  "width": 16,
+                                  "height": 16,
+                                  "icon": "triangle-alert",
+                                  "library": "lucide",
+                                  "fill": "$ds-danger"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "SCCxV",
+                                  "name": "Control Title",
+                                  "fill": "$ds-text",
+                                  "content": "실시간 통제정보",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-subtitle",
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "C6gyxi",
+                              "name": "Control Source",
+                              "fill": "$ds-muted",
+                              "content": "국립공원공단 · 업데이트 실패",
+                              "fontFamily": "$ds-font",
+                              "fontSize": "$type-label",
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ISmBh",
+                          "name": "Error State",
+                          "width": "fill_container",
+                          "fill": "$ds-bg",
+                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "padding": [
+                            "$space-3",
+                            "$space-4"
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "WbqeS",
+                              "name": "Error Icon",
+                              "width": 24,
+                              "height": 24,
+                              "icon": "wifi-off",
+                              "library": "lucide",
+                              "fill": "$ds-muted"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "GC68A",
+                              "name": "Error Texts",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": "$space-1",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "xbuOj",
+                                  "name": "Error Title",
+                                  "fill": "$ds-text-secondary",
+                                  "content": "통제정보를 불러오지 못했어요",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-body",
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "zumKz",
+                                  "name": "Error Desc",
+                                  "fill": "$ds-muted",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "잠시 후 다시 시도해 주세요",
+                                  "lineHeight": 1.5,
+                                  "textAlign": "center",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-label",
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "IFKPM",
+                              "name": "Retry Button",
+                              "fill": "$ds-surface",
+                              "cornerRadius": "$radius-pill",
+                              "stroke": "$ds-border",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
+                              "gap": 6,
+                              "padding": [
+                                8,
+                                14
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "X3lnQ",
+                                  "name": "Retry Icon",
+                                  "width": 14,
+                                  "height": 14,
+                                  "icon": "rotate-cw",
+                                  "library": "lucide",
+                                  "fill": "$ds-primary"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "GNShZ",
+                                  "name": "Retry Label",
+                                  "fill": "$ds-primary",
+                                  "content": "다시 시도",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": "$type-label",
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "M0sty",
+                  "name": "Tab Bar Wrapper",
+                  "width": "fill_container",
+                  "padding": [
+                    12,
+                    16,
+                    16,
+                    16
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Menhw",
+                      "name": "Tab Bar",
+                      "width": "fill_container",
+                      "height": 60,
+                      "fill": "#FFFFFFF2",
+                      "cornerRadius": "$radius-pill",
+                      "stroke": "$ds-border",
+                      "strokeAlignment": "inner",
+                      "effect": [
+                        {
+                          "type": "shadow",
+                          "shadowType": "outer",
+                          "color": "#1B3A2A26",
+                          "offset": {
+                            "x": 0,
+                            "y": 6
+                          },
+                          "blur": 20
+                        },
+                        {
+                          "type": "background_blur",
+                          "radius": 18
+                        }
+                      ],
+                      "padding": [
+                        6,
+                        10
+                      ],
+                      "justifyContent": "space_around",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "fpDvb",
+                          "name": "Tab Home",
+                          "fill": "$ds-primary-soft",
+                          "cornerRadius": "$radius-pill",
+                          "layout": "vertical",
+                          "gap": 3,
+                          "padding": [
+                            7,
+                            16
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "y7ifmN",
+                              "name": "홈 아이콘",
+                              "width": 21,
+                              "height": 21,
+                              "icon": "house",
+                              "library": "lucide",
+                              "fill": "$ds-primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Io9vP",
+                              "name": "홈 라벨",
+                              "fill": "$ds-primary",
+                              "content": "홈",
+                              "fontFamily": "$ds-font",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "KAY6T",
+                          "name": "Tab More",
+                          "cornerRadius": "$radius-pill",
+                          "layout": "vertical",
+                          "gap": 3,
+                          "padding": [
+                            7,
+                            16
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "tADAf",
+                              "name": "더보기 아이콘",
+                              "width": 21,
+                              "height": 21,
+                              "icon": "menu",
+                              "library": "lucide",
+                              "fill": "$ds-muted"
+                            },
+                            {
+                              "type": "text",
+                              "id": "pAm0O",
+                              "name": "더보기 라벨",
+                              "fill": "$ds-muted",
+                              "content": "더보기",
+                              "fontFamily": "$ds-font",
+                              "fontSize": 10,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
               "id": "VmCjK",
               "name": "코스 목록",
               "clip": true,
@@ -7337,7 +9100,7 @@
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
-                                "url": "https://images.unsplash.com/photo-1663524963615-1625bcf625d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM1OTl8&ixlib=rb-4.1.0&q=80&w=1080",
+                                "url": "images/course-crew-ridge-v2.jpg",
                                 "mode": "fill"
                               },
                               "width": "fill_container",
@@ -7501,7 +9264,7 @@
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
-                                "url": "https://images.unsplash.com/photo-1665317120823-2de0660c0247?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM2MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+                                "url": "images/course-saeinbong-ipseokdae.jpg",
                                 "mode": "fill"
                               },
                               "width": "fill_container",
@@ -7665,7 +9428,7 @@
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
-                                "url": "https://images.unsplash.com/photo-1553984840-b8cbc34f5215?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM2MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+                                "url": "images/course-neutjae-yetgil.jpg",
                                 "mode": "fill"
                               },
                               "width": "fill_container",
@@ -7829,7 +9592,7 @@
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
-                                "url": "https://images.unsplash.com/photo-1772484814660-62a4108f11c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM2MDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                                "url": "images/generated-1786461807040.png",
                                 "mode": "fill"
                               },
                               "width": "fill_container",
@@ -7959,6 +9722,1074 @@
                                         {
                                           "type": "text",
                                           "id": "mx4JZ",
+                                          "name": "난이도 값",
+                                          "fill": "$ds-danger",
+                                          "content": "어려움",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "600"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jNJUr",
+              "name": "코스 목록",
+              "clip": true,
+              "width": 375,
+              "height": 808,
+              "fill": "$ds-bg",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "U18Uy",
+                  "name": "Status Bar",
+                  "clip": true,
+                  "width": 375,
+                  "height": 44,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "group",
+                      "id": "EYwIZ",
+                      "x": 78,
+                      "y": -2,
+                      "name": "Notch",
+                      "enabled": false,
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "qD7Yl",
+                          "x": -78,
+                          "y": 2,
+                          "name": "BG",
+                          "enabled": false,
+                          "fill": "#000000ff",
+                          "width": 375,
+                          "height": 44
+                        },
+                        {
+                          "type": "group",
+                          "id": "ELzgg",
+                          "x": -78,
+                          "y": 2,
+                          "name": "Exclude",
+                          "enabled": false,
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "MAUmf",
+                              "x": 0,
+                              "y": 0,
+                              "name": "BG",
+                              "fill": "#d6d9ddff",
+                              "width": 375,
+                              "height": 44
+                            }
+                          ]
+                        },
+                        {
+                          "type": "path",
+                          "id": "xWAiO",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Notch",
+                          "geometry": "M0 0l654 0-10.5517 3-0.4483 13.5 0 72.5-632 0 0-72.5-0.44828-13.5-10.55172-3z",
+                          "fill": "#000000ff",
+                          "width": 219,
+                          "height": 30
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "AUJyx",
+                      "x": 293.66650390625,
+                      "y": 17.331054687499996,
+                      "name": "Right Side",
+                      "children": [
+                        {
+                          "type": "group",
+                          "id": "XwzIM",
+                          "x": 42.33349609375,
+                          "y": 0.0029296875,
+                          "name": "Battery",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "nx0RT",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Rectangle",
+                              "opacity": 0.3499999940395355,
+                              "geometry": "M0 0l22 0 0 11.33333-22 0 0-11.33333z",
+                              "fillRule": "evenodd",
+                              "width": 22,
+                              "height": 11.333333015441895,
+                              "stroke": "#000000ff",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner"
+                            },
+                            {
+                              "type": "path",
+                              "id": "PjOZC",
+                              "x": 23,
+                              "y": 3.6669921875,
+                              "name": "Combined Shape",
+                              "opacity": 0.4000000059604645,
+                              "geometry": "M0 0l0 4c0.80473-0.33878 1.32804-1.12687 1.32804-2 0-0.87313-0.52331-1.66122-1.32804-2",
+                              "fill": "#000000ff",
+                              "width": 1.328037977218628,
+                              "height": 4
+                            },
+                            {
+                              "type": "path",
+                              "id": "vC8Pv",
+                              "x": 2,
+                              "y": 1.9999998807907104,
+                              "name": "Rectangle",
+                              "geometry": "M0 0l18 0 0 7.33333-18 0 0-7.33333z",
+                              "fill": "#000000ff",
+                              "width": 18,
+                              "height": 7.333333492279053
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "Q4Ntl",
+                          "x": 22.027069091796875,
+                          "y": 0,
+                          "name": "Wifi",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "GKhcm",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Wifi-path",
+                              "geometry": "M7.63661 2.27733c2.21589 0.0001 4.34705 0.85153 5.953 2.37833 0.12093 0.11787 0.31423 0.11639 0.43333-0.00333l1.156-1.16667c0.06031-0.06072 0.09393-0.14297 0.09343-0.22855-0.0005-0.08558-0.03508-0.16743-0.0961-0.22745-4.2151-4.03955-10.8649-4.03955-15.08 0-0.06106 0.05997-0.0957 0.1418-0.09626 0.22738-0.00056 0.08558 0.033 0.16786 0.09326 0.22862l1.15634 1.16667c0.11903 0.1199 0.31247 0.12139 0.43333 0.00333 1.60615-1.5269 3.73756-2.37834 5.95367-2.37833l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 15.27237606048584,
+                              "height": 4.743237495422363
+                            },
+                            {
+                              "type": "path",
+                              "id": "QzpMk",
+                              "x": 2.663280963897705,
+                              "y": 3.7940404415130615,
+                              "name": "Wifi-path",
+                              "geometry": "M4.97332 2.27895c1.21749-0.00007 2.39153 0.45246 3.294 1.26967 0.12206 0.11598 0.31434 0.11347 0.43334-0.00567l1.15466-1.16666c0.06081-0.06119 0.09455-0.14421 0.09367-0.23048-0.00088-0.08626-0.0363-0.16858-0.09833-0.22852-2.7482-2.55638-7.00413-2.55638-9.75234 0-0.06208 0.05995-0.0975 0.1423-0.09831 0.22859-0.00081 0.08629 0.03304 0.1693 0.09398 0.23041l1.15433 1.16666c0.11899 0.11913 0.31127 0.12165 0.43334 0.00567 0.90187-0.81667 2.07498-1.26916 3.29166-1.26967l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 9.94901180267334,
+                              "height": 3.6339809894561768
+                            },
+                            {
+                              "type": "path",
+                              "id": "EmGTq",
+                              "x": 5.3232421875,
+                              "y": 7.5908203125,
+                              "name": "Wifi-path",
+                              "geometry": "M4.53223 1.26616c0.06175-0.06061 0.09576-0.14401 0.094-0.23051-0.00177-0.08651-0.03915-0.16845-0.10333-0.22649-1.27557-1.07888-3.14376-1.07888-4.41933 0-0.06422 0.05799-0.10167 0.13991-0.1035 0.22642-0.00183 0.08651 0.03212 0.16994 0.09383 0.23058l1.99767 2.01567c0.05855 0.05924 0.13838 0.09258 0.22166 0.09258 0.08329 0 0.16312-0.03334 0.22167-0.09258l1.99733-2.01567z",
+                              "fill": "#dadadaff",
+                              "width": 4.626293659210205,
+                              "height": 3.3744072914123535
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "wE64E",
+                          "x": 0,
+                          "y": 0.3359375,
+                          "name": "Mobile Signal",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "sMR4e",
+                              "x": 0,
+                              "y": 6.6669921875,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 2c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-2c0-0.55228 0.44772-1 1-1l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 4
+                            },
+                            {
+                              "type": "path",
+                              "id": "TXAWT",
+                              "x": 4.66650390625,
+                              "y": 4.6669921875,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 4c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-4c0-0.55228 0.44772-1 1-1z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 6
+                            },
+                            {
+                              "type": "path",
+                              "id": "t2J4gZ",
+                              "x": 9.33349609375,
+                              "y": 2.3330078125,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 6.33333c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44771-1-1l0-6.33333c0-0.55228 0.44772-1 1-1z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 8.333333015441895
+                            },
+                            {
+                              "type": "path",
+                              "id": "nmHhC",
+                              "x": 14,
+                              "y": 0,
+                              "name": "Cellular_Connection-path",
+                              "geometry": "M1 0l1 0c0.55228 0 1 0.44772 1 1l0 8.66667c0 0.55228-0.44772 1-1 1l-1 0c-0.55228 0-1-0.44772-1-1l0-8.66667c0-0.55228 0.44772-1 1-1l0 0z",
+                              "fill": "#dadadaff",
+                              "width": 3,
+                              "height": 10.666666984558105
+                            }
+                          ]
+                        },
+                        {
+                          "type": "group",
+                          "id": "w9jGD",
+                          "x": 4.33349609375,
+                          "y": -9.3310546875,
+                          "name": "Recording Indicator",
+                          "enabled": false,
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "O7TCB",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Indicator",
+                              "sweepAngle": -360.00001001791264,
+                              "fill": "#ff9500ff",
+                              "width": 6,
+                              "height": 6
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "u1StQ",
+                      "x": 21.000022888183594,
+                      "y": 12,
+                      "name": "Left Side",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "y5kbHS",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Time",
+                          "width": 54,
+                          "height": 21,
+                          "cornerRadius": 32,
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "OSBKD",
+                              "x": 12.45361328125,
+                              "y": 5.16796875,
+                              "name": "9:41",
+                              "geometry": "M3.86719 11.08887c2.68799 0 4.28467-2.10205 4.28467-5.66162 0-1.34033-0.25635-2.46826-0.74707-3.33985-0.71045-1.35498-1.93359-2.0874-3.47901-2.0874-2.2998 0-3.92578 1.54541-3.92578 3.71338 0 2.03613 1.46484 3.51563 3.479 3.51562 1.23779 0 2.24121-0.57861 2.73926-1.58203l0.02197 0c0 0 0.0293 0 0.03663 0 0.01465 0 0.06592 0 0.06591 0 0 2.41699-0.91553 3.85986-2.46093 3.85987-0.9082 0-1.61133-0.49805-1.85303-1.29639l-1.88233 0c0.31494 1.73584 1.78711 2.87842 3.72071 2.87842z m0.06592-5.36133c-1.21582 0-2.08008-0.86426-2.08008-2.07275 0-1.1792 0.9082-2.08008 2.0874-2.08008 1.1792 0 2.0874 0.91553 2.0874 2.10937 0 1.1792-0.88623 2.04346-2.09472 2.04346z m7.30986 5.25879c0.6958 0 1.17188-0.49805 1.17187-1.15723 0-0.6665-0.47607-1.15723-1.17187-1.15723-0.68848 0-1.17188 0.49072-1.17188 1.15723 0 0.65918 0.4834 1.15723 1.17188 1.15723z m0-5.49317c0.6958 0 1.17188-0.49072 1.17187-1.1499 0-0.6665-0.47607-1.15723-1.17187-1.15722-0.68848 0-1.17188 0.49072-1.17188 1.15722 0 0.65918 0.4834 1.1499 1.17188 1.1499z m8.02764 5.33936l1.80908 0 0-1.97022 1.42822 0 0-1.59668-1.42822 0 0-7.00195-2.66602 0c-1.86768 2.8125-3.35449 5.16357-4.30664 6.91406l0 1.68457 5.16357 0 0 1.97022z m-3.41309-3.63281c1.23047-2.16797 2.3291-3.90381 3.33984-5.39795l0.10254 0 0 5.50781-3.44238 0 0-0.10986z m10.679 3.63281l1.88965 0 0-10.56885-1.88233 0-2.76123 1.9336 0 1.8164 2.6294-1.8457 0.12451 0 0 8.66455z",
+                              "fill": "#000000ff",
+                              "width": 28.42616844177246,
+                              "height": 11.0888671875
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZNZSC",
+                  "name": "Content Slot",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": [
+                    16,
+                    20,
+                    0,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KoenY",
+                      "name": "App Bar",
+                      "width": "fill_container",
+                      "height": 44,
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "Gq6ZN",
+                          "name": "Back",
+                          "width": 24,
+                          "height": 24,
+                          "icon": "chevron-left",
+                          "library": "lucide",
+                          "fill": "$ds-text"
+                        },
+                        {
+                          "type": "text",
+                          "id": "hOwwS",
+                          "name": "Title",
+                          "fill": "$ds-text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "무등산국립공원",
+                          "textAlign": "center",
+                          "fontFamily": "$ds-font",
+                          "fontSize": "$type-title",
+                          "fontWeight": "600",
+                          "letterSpacing": -0.4
+                        },
+                        {
+                          "type": "frame",
+                          "id": "o8nav",
+                          "name": "Spacer",
+                          "width": 24,
+                          "height": 24
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "S2nB2",
+                      "name": "Course List",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "lXoEi",
+                          "name": "코스카드1",
+                          "clip": true,
+                          "width": "fill_container",
+                          "fill": "$ds-surface",
+                          "cornerRadius": "$radius-lg",
+                          "stroke": "$ds-border",
+                          "strokeAlignment": "inner",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "NJiTC",
+                              "name": "Card Thumb",
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/course-crew-ridge-v2.jpg",
+                                "mode": "fill"
+                              },
+                              "width": "fill_container",
+                              "height": 116
+                            },
+                            {
+                              "type": "frame",
+                              "id": "YqXva",
+                              "name": "Card Body",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 10,
+                              "padding": 14,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "P5ZD5",
+                                  "name": "Card Header",
+                                  "width": "fill_container",
+                                  "gap": 8,
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "jN9ms",
+                                      "name": "Card Title",
+                                      "fill": "$ds-text",
+                                      "content": "당산나무 코스",
+                                      "fontFamily": "$ds-font",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "B7sXY",
+                                  "name": "Card Stats",
+                                  "width": "fill_container",
+                                  "gap": 14,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "vuMO0",
+                                      "name": "Stat Distance",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "b6JjsJ",
+                                          "name": "거리 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "footprints",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "x84c7",
+                                          "name": "거리 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "9.2km",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "fShWn",
+                                      "name": "Stat Time",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "D3wZd",
+                                          "name": "시간 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "clock-3",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "L3Op9S",
+                                          "name": "시간 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "1시간 44분",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "tYq9g",
+                                      "name": "Stat 난이도 · 쉬움",
+                                      "fill": "$ds-primary-soft",
+                                      "cornerRadius": "$radius-pill",
+                                      "stroke": "#2B755233",
+                                      "strokeAlignment": "inner",
+                                      "gap": 4,
+                                      "padding": [
+                                        3,
+                                        8
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "K7eALR",
+                                          "name": "난이도 아이콘",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "mountain",
+                                          "library": "lucide",
+                                          "fill": "$ds-primary"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "AduPa",
+                                          "name": "난이도 값",
+                                          "fill": "$ds-primary",
+                                          "content": "쉬움",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "600"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "A3DRP",
+                          "name": "코스카드2",
+                          "clip": true,
+                          "width": "fill_container",
+                          "fill": "$ds-surface",
+                          "cornerRadius": [
+                            0,
+                            0,
+                            "$radius-lg",
+                            "$radius-lg"
+                          ],
+                          "stroke": "$ds-border",
+                          "strokeAlignment": "inner",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "B2Bnq",
+                              "name": "Card Thumb",
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/course-saeinbong-ipseokdae.jpg",
+                                "mode": "fill"
+                              },
+                              "width": "fill_container",
+                              "height": 203
+                            },
+                            {
+                              "type": "frame",
+                              "id": "kVJou",
+                              "name": "Photo Credit",
+                              "width": "fill_container",
+                              "padding": [
+                                6,
+                                14,
+                                0,
+                                14
+                              ],
+                              "justifyContent": "end",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "mfJYP",
+                                  "name": "Credit Text",
+                                  "opacity": 0.85,
+                                  "fill": "$ds-muted",
+                                  "content": "© 한국관광공사",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": 9,
+                                  "fontWeight": "300",
+                                  "letterSpacing": 0.3
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "QmClm",
+                              "name": "Card Body",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 10,
+                              "padding": 14,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "S0m56",
+                                  "name": "Card Header",
+                                  "width": "fill_container",
+                                  "gap": 8,
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "KblP2",
+                                      "name": "Card Title",
+                                      "fill": "$ds-text",
+                                      "content": "새인봉-입석대 코스",
+                                      "fontFamily": "$ds-font",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "S0Mse",
+                                  "name": "Card Stats",
+                                  "width": "fill_container",
+                                  "gap": 14,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "hM7T5",
+                                      "name": "Stat Distance",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "h2WDQ",
+                                          "name": "거리 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "footprints",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "Qvf2i",
+                                          "name": "거리 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "8.0km",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "lMzxq",
+                                      "name": "Stat Time",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "w7RGZQ",
+                                          "name": "시간 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "clock-3",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "ES3vB",
+                                          "name": "시간 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "2시간 21분",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "IGx6r",
+                                      "name": "Stat 난이도 · 보통",
+                                      "fill": "#FFF3D6",
+                                      "cornerRadius": "$radius-pill",
+                                      "stroke": "#B06A1233",
+                                      "strokeAlignment": "inner",
+                                      "gap": 4,
+                                      "padding": [
+                                        3,
+                                        8
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "p4w70v",
+                                          "name": "난이도 아이콘",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "mountain-snow",
+                                          "library": "lucide",
+                                          "fill": "#B06A12"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "D45zT",
+                                          "name": "난이도 값",
+                                          "fill": "#B06A12",
+                                          "content": "보통",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "600"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "QwklD",
+                          "name": "코스카드3",
+                          "clip": true,
+                          "width": "fill_container",
+                          "fill": "$ds-surface",
+                          "stroke": "$ds-border",
+                          "strokeAlignment": "inner",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "bFGp4",
+                              "name": "Card Thumb",
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/course-neutjae-yetgil.jpg",
+                                "mode": "fill"
+                              },
+                              "width": "fill_container",
+                              "height": 234
+                            },
+                            {
+                              "type": "frame",
+                              "id": "n9uOOM",
+                              "name": "Photo Credit",
+                              "width": "fill_container",
+                              "padding": [
+                                6,
+                                14,
+                                0,
+                                14
+                              ],
+                              "justifyContent": "end",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "jBeGJ",
+                                  "name": "Credit Text",
+                                  "opacity": 0.85,
+                                  "fill": "$ds-muted",
+                                  "content": "© 한국관광공사",
+                                  "fontFamily": "$ds-font",
+                                  "fontSize": 9,
+                                  "fontWeight": "300",
+                                  "letterSpacing": 0.3
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "C6IOlD",
+                              "name": "Card Body",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 10,
+                              "padding": 14,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "z6qTTo",
+                                  "name": "Card Header",
+                                  "width": "fill_container",
+                                  "gap": 8,
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "zGRtJ",
+                                      "name": "Card Title",
+                                      "fill": "$ds-text",
+                                      "content": "늦재-옛길 코스",
+                                      "fontFamily": "$ds-font",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "KAojD",
+                                  "name": "Card Stats",
+                                  "width": "fill_container",
+                                  "gap": 14,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "S4d4ff",
+                                      "name": "Stat Distance",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "ao5Px",
+                                          "name": "거리 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "footprints",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "u93Gi",
+                                          "name": "거리 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "8.0km",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "yTddN",
+                                      "name": "Stat Time",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "WtYtp",
+                                          "name": "시간 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "clock-3",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "Kn7kj",
+                                          "name": "시간 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "4시간 18분",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "o1yWf",
+                                      "name": "Stat 난이도 · 보통",
+                                      "fill": "#FFF3D6",
+                                      "cornerRadius": "$radius-pill",
+                                      "stroke": "#B06A1233",
+                                      "strokeAlignment": "inner",
+                                      "gap": 4,
+                                      "padding": [
+                                        3,
+                                        8
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "zqgws",
+                                          "name": "난이도 아이콘",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "mountain-snow",
+                                          "library": "lucide",
+                                          "fill": "#B06A12"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "qcCJn",
+                                          "name": "난이도 값",
+                                          "fill": "#B06A12",
+                                          "content": "보통",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "600"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "iLweh",
+                          "name": "코스카드4",
+                          "clip": true,
+                          "width": "fill_container",
+                          "fill": "$ds-surface",
+                          "cornerRadius": [
+                            0,
+                            0,
+                            "$radius-lg",
+                            "$radius-lg"
+                          ],
+                          "stroke": "$ds-border",
+                          "strokeAlignment": "inner",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "tYUYx",
+                              "name": "Card Thumb",
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/generated-1786461807040.png",
+                                "mode": "fill"
+                              },
+                              "width": "fill_container",
+                              "height": 183
+                            },
+                            {
+                              "type": "frame",
+                              "id": "SBycB",
+                              "name": "Card Body",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 10,
+                              "padding": 14,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "vWhRV",
+                                  "name": "Card Header",
+                                  "width": "fill_container",
+                                  "gap": 8,
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "d5GsX",
+                                      "name": "Card Title",
+                                      "fill": "$ds-text",
+                                      "content": "시무지기폭포 코스",
+                                      "fontFamily": "$ds-font",
+                                      "fontSize": 16,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Fq3BI",
+                                  "name": "Card Stats",
+                                  "width": "fill_container",
+                                  "gap": 14,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "pRjlY",
+                                      "name": "Stat Distance",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "ia8pS",
+                                          "name": "거리 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "footprints",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "h8l1at",
+                                          "name": "거리 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "9.0km",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "lpS3v",
+                                      "name": "Stat Time",
+                                      "gap": 5,
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "muhna",
+                                          "name": "시간 아이콘",
+                                          "width": 14,
+                                          "height": 14,
+                                          "icon": "clock-3",
+                                          "library": "lucide",
+                                          "fill": "$ds-muted"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "Wz0E6",
+                                          "name": "시간 값",
+                                          "fill": "$ds-text-secondary",
+                                          "content": "4시간",
+                                          "fontFamily": "$ds-font",
+                                          "fontSize": 11,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "vf9wE",
+                                      "name": "Stat 난이도 · 어려움",
+                                      "fill": "#FFE8E8",
+                                      "cornerRadius": "$radius-pill",
+                                      "stroke": "#C4564F33",
+                                      "strokeAlignment": "inner",
+                                      "gap": 4,
+                                      "padding": [
+                                        3,
+                                        8
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "Forl7",
+                                          "name": "난이도 아이콘",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "triangle-alert",
+                                          "library": "lucide",
+                                          "fill": "$ds-danger"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "ycRm3",
                                           "name": "난이도 값",
                                           "fill": "$ds-danger",
                                           "content": "어려움",
@@ -8955,7 +11786,7 @@
                           "fill": {
                             "type": "image",
                             "enabled": true,
-                            "url": "https://images.unsplash.com/photo-1784873444076-d11d5c8e4b0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM2NTV8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "url": "images/course-crew-ridge-v2.jpg",
                             "mode": "fill"
                           },
                           "width": "fill_container",
@@ -9989,7 +12820,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1640348308077-97bcb7abe803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM4MDl8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/shoe-eider.png",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -10124,7 +12955,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1709433420624-832e2264c346?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM4MTB8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/thumb-food.png",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -10910,7 +13741,7 @@
                   "type": "frame",
                   "id": "OVDRL",
                   "x": 16,
-                  "y": 470,
+                  "y": 384,
                   "name": "Bottom Sheet",
                   "width": 343,
                   "fill": "$ds-surface",
@@ -11165,7 +13996,6 @@
                       "children": [
                         {
                           "type": "rectangle",
-                          "cornerRadius": "$radius-md",
                           "id": "JRwOL",
                           "name": "Course Image",
                           "metadata": {
@@ -11177,11 +14007,26 @@
                           "fill": {
                             "type": "image",
                             "enabled": true,
-                            "url": "https://images.unsplash.com/photo-1596072176229-3029b7bb64a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM4NjF8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "url": "images/course-saeinbong-ipseokdae.jpg",
                             "mode": "fill"
                           },
                           "width": "fill_container",
-                          "height": 120
+                          "height": 184
+                        },
+                        {
+                          "type": "text",
+                          "id": "ipLtq",
+                          "name": "Photo Credit",
+                          "opacity": 0.85,
+                          "fill": "$ds-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "© 한국관광공사",
+                          "textAlign": "right",
+                          "fontFamily": "$ds-font",
+                          "fontSize": 9,
+                          "fontWeight": "300",
+                          "letterSpacing": 0.3
                         },
                         {
                           "type": "frame",
@@ -11193,20 +14038,20 @@
                           "alignItems": "center",
                           "children": [
                             {
-                              "type": "ellipse",
-                              "id": "oQh1D",
-                              "name": "Dot 1",
-                              "fill": "$ds-border",
-                              "width": 6,
-                              "height": 6
-                            },
-                            {
                               "type": "rectangle",
                               "cornerRadius": 3,
                               "id": "bm2Jf",
                               "name": "Dot Active",
                               "fill": "$ds-primary",
                               "width": 18,
+                              "height": 6
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "oQh1D",
+                              "name": "Dot 1",
+                              "fill": "$ds-border",
+                              "width": 6,
                               "height": 6
                             }
                           ]
@@ -11613,7 +14458,7 @@
                           "fill": {
                             "type": "image",
                             "enabled": true,
-                            "url": "https://images.unsplash.com/photo-1647124521398-81096db4a99e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM2NjB8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "url": "images/course-crew-ridge-v2.jpg",
                             "mode": "fill"
                           },
                           "width": "fill_container",
@@ -11957,7 +14802,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1530145782988-1e21d2b70166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM2Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/step-jeungsimsa-gate-upright.png",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -12530,7 +15375,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1700656106838-5a7d917d2678?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM4ODh8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/step-jeungsimsa-gate-upright.png",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -12627,7 +15472,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1644839047297-aab581aaada0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM4OTB8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/step-dangsan-tree.jpg",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -12724,7 +15569,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1777667479206-c27ad785d07f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM4OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/step-jungmeorijae.png",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -13178,18 +16023,18 @@
                                 {
                                   "type": "rectangle",
                                   "cornerRadius": "$radius-md",
-                                  "id": "p8GxUg",
+                                  "id": "n2bUsy",
                                   "name": "Step Image",
                                   "metadata": {
                                     "type": "unsplash",
-                                    "username": "munkstt",
-                                    "link": "https://unsplash.com/@munkstt",
-                                    "author": "Nicholas Bullett"
+                                    "username": "space_face_films",
+                                    "link": "https://unsplash.com/@space_face_films",
+                                    "author": "Luke Galloway"
                                   },
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1707326471974-8878e95d2136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM5NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/step-dangsan-tree.jpg",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
@@ -13286,7 +16131,7 @@
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
-                                    "url": "https://images.unsplash.com/photo-1635131229224-229be8495dfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODUwNjM5NTF8&ixlib=rb-4.1.0&q=80&w=1080",
+                                    "url": "images/step-jungmeorijae.png",
                                     "mode": "fill"
                                   },
                                   "width": "fill_container",
