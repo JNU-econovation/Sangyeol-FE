@@ -3,8 +3,8 @@ import CourseDetailBottomSheetSection from "@modules/widgets/mountain/CourseDeta
 import PositionBottom from "@shared/components/primitives/layout/PositionBottom";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import { Suspense } from "@suspensive/react";
-import MapWithHeaderAndPathSection from "@modules/features/map/MapWithHeaderAndPathSection";
 import TravelStartButton from "@modules/features/route/TravelStartButton";
+import MapWithHeaderAndPathSection from "@/modules/features/map/MapWithHeaderAndPathSection";
 
 //
 export default function CourseDetailPage() {

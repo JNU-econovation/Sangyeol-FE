@@ -11,6 +11,19 @@ interface UseDrawMarkersProps {
   enable?: boolean;
 }
 
+// 거점 마커 디자인 (renewal-s1.pen의 Location Pin) — 앵커는 Pin Dot 중심
+const createBaseMarkerContent = (name: string) => `
+  <div class="relative h-0 w-0">
+    <div class="absolute -bottom-[7px] left-0 flex -translate-x-1/2 flex-col items-center">
+      <div class="flex items-center gap-[5px] rounded-full bg-white px-3 py-[7px] shadow-[0_4px_12px_rgba(27,58,42,0.2)]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-primary"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="whitespace-nowrap text-xs font-semibold text-black">${name}</span>
+      </div>
+      <div class="h-2.5 w-0.5 bg-primary"></div>
+      <div class="h-3.5 w-3.5 rounded-full border-[3px] border-white bg-primary shadow-[0_2px_6px_rgba(27,58,42,0.25)]"></div>
+    </div>
+  </div>`;
+
 //TODO: 그리는 로직만 두고, 도메인과 관련한 로직은 분리하기
 const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
   const router = useRouter(); //event listener를 위한 코드
@@ -43,11 +56,17 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
         position: new naver.maps.LatLng(coordinate[1], coordinate[0]),
         map: null,
         title: name,
-        icon: {
-          url: getIconUrl(type),
-          size: new naver.maps.Size(30, 30),
-          anchor: new naver.maps.Point(15, 15),
-        },
+        icon:
+          type === "BASE"
+            ? {
+                content: createBaseMarkerContent(name),
+                anchor: new naver.maps.Point(0, 0),
+              }
+            : {
+                url: getIconUrl(type),
+                size: new naver.maps.Size(30, 30),
+                anchor: new naver.maps.Point(15, 15),
+              },
         zIndex: type === "BASE" ? 1000 : 1,
       });
       drawnMarkersRef.current.push(marker);
@@ -64,7 +83,8 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
         eventListenersRef.current.push(listener);
       }
 
-      if (type !== "TOILET" && type !== "EMERGENCY_KIT") {
+      // BASE는 라벨이 핀 디자인에 통합되어 별도 라벨 마커가 필요 없음
+      if (type !== "TOILET" && type !== "EMERGENCY_KIT" && type !== "BASE") {
         const markerLabel = new naver.maps.Marker({
           position: new naver.maps.LatLng(coordinate[1], coordinate[0]),
           map: null,
