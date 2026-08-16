@@ -4,8 +4,28 @@ import useGetCurrentPosition from "@shared/hooks/common/useGetCurrentPosition";
 import type { PolylineOptions } from "@shared/hooks/domain/map/useDrawPath";
 import useDrawPath from "@shared/hooks/domain/map/useDrawPath";
 import useNaverMap from "@shared/hooks/domain/map/useNaverMap";
-import useSetCircle from "@shared/hooks/domain/map/useSetCircle";
+import useSetCurrentPositionMarker from "@shared/hooks/domain/map/useSetCurrentPositionMarker";
 import useSetMarker from "@shared/hooks/domain/map/useSetMarker";
+import { useMemo } from "react";
+
+// 경로 디자인 (renewal-s1.pen의 Route Layer) : 흰색 캐이싱 위에 초록 라인
+const ROUTE_LINE_STYLE = {
+  strokeColor: "#2B7552",
+  strokeWeight: 5,
+  strokeOpacity: 1,
+  strokeLineCap: "round",
+  strokeLineJoin: "round",
+} satisfies Omit<PolylineOptions, "path">;
+
+const ROUTE_CASING_STYLE = {
+  strokeColor: "#FFFFFF",
+  strokeOpacity: 1,
+  strokeLineCap: "round",
+  strokeLineJoin: "round",
+} satisfies Omit<PolylineOptions, "path" | "strokeWeight">;
+
+// 캐이싱은 라인보다 양쪽 2px씩 두껍다 (라인 5px + 4px = 9px)
+const ROUTE_CASING_WEIGHT_OFFSET = 4;
 
 interface MapViewProps {
   defaultCurrentPointPosition?: { latitude: number; longitude: number };
@@ -45,23 +65,35 @@ export default function MapView({
     zoom,
   });
 
+  // 라인이 캐이싱 위에 그려지도록 캐이싱을 모두 먼저 그린다
+  const styledPaths = useMemo<PolylineOptions[]>(() => {
+    if (!paths) return [];
+
+    const casings = paths.map(
+      ({ path, strokeWeight = ROUTE_LINE_STYLE.strokeWeight }) => ({
+        ...ROUTE_CASING_STYLE,
+        path,
+        strokeWeight: strokeWeight + ROUTE_CASING_WEIGHT_OFFSET,
+      }),
+    );
+    const lines = paths.map((options) => ({
+      ...ROUTE_LINE_STYLE,
+      ...options,
+    }));
+
+    return [...casings, ...lines];
+  }, [paths]);
+
   useDrawPath({
     map,
-    paths: paths || [],
-    enable: !!paths && paths.length > 0,
+    paths: styledPaths,
+    enable: styledPaths.length > 0,
   });
 
-  useSetCircle({
+  useSetCurrentPositionMarker({
     map,
     position: currentPosition,
-    zoom,
     enable: currentPositionIcon,
-    option: {
-      radius: zoom,
-      fillColor: "#FF0000",
-      fillOpacity: 0.3,
-      strokeColor: "#FF0000",
-    },
   });
 
   useSetMarker({
