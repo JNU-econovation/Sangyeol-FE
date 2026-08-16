@@ -1,4 +1,4 @@
-import WeekHeader from "@modules/features/WeekHeader";
+import WeekHeader from "@/modules/features/header/WeekHeader";
 
 const TravelLogDetailHeaderSection = () => {
   return <WeekHeader headerText="상세 보기" />;

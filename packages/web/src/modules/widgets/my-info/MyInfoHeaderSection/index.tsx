@@ -1,4 +1,4 @@
-import WeekHeader from "@modules/features/WeekHeader";
+import WeekHeader from "@/modules/features/header/WeekHeader";
 
 export default function MyInfoHeaderSection() {
   return (
