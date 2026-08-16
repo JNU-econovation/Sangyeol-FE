@@ -1,5 +1,5 @@
 import { SizeNumberType, SizeType } from "@shared/types/css/height";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 interface FlexProps {
   children: React.ReactNode;

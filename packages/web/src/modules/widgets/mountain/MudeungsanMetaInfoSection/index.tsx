@@ -1,8 +1,16 @@
+"use client";
+
+import useRouteToInternalWebview from "@/shared/hooks/domain/bridge/useRouteToWebviewBridge";
 import MudeungsanControlInfo from "@modules/features/mountain/MudeungsanControlInfo";
 import MudeungsanWeatherNotice from "@modules/features/mountain/MudeungsanWeatherNotice";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 
 const MudeungsanMetaInfoSection = () => {
+  const routeToWebview = useRouteToInternalWebview();
+
+  // const handleClickCourseButton = () => routeToWebview("V1_COURSE");
+  const handleClickCourseButton = () => routeToWebview("V1_ETC");
+
   return (
     <section>
       <div className="w-full h-32 shrink-0 rounded-xl bg-amber-100" />
@@ -11,7 +19,10 @@ const MudeungsanMetaInfoSection = () => {
         <h2 className="text-xl font-bold tracking-tight text-black-900">
           무등산국립공원
         </h2>
-        <button className="text-sm font-semibold text-primary">
+        <button
+          className="text-sm font-semibold text-primary"
+          onClick={handleClickCourseButton}
+        >
           코스 보러가기 ›
         </button>
       </div>

@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 export const InputVariants = cva(`rounded-lg`, {
   variants: {

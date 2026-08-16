@@ -1,4 +1,4 @@
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import UserInfoMutateModal from "@modules/widgets/my-info/UserInfoMutateModal";
 
 const useUserInfoMutateModal = (handleConfirm: () => void) => {

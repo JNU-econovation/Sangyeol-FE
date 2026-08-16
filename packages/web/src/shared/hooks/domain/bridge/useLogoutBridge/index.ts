@@ -1,5 +1,5 @@
 import { useBridge } from "@geongyu/react-native-bridge/web";
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,

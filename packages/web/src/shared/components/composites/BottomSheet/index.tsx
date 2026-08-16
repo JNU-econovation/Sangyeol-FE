@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { memo, PropsWithChildren, useEffect, useRef, useState } from "react";
 
 const MIN_CONTENT_HEIGHT = 0; // 최소 컨텐츠 높이

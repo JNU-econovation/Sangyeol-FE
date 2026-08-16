@@ -1,4 +1,4 @@
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import CouponFailureModal from "@modules/widgets/discount-coupon/CouponFailureModal";
 
 const useCouponFailureModal = () => {

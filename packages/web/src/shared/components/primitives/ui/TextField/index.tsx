@@ -1,4 +1,4 @@
-import { cn } from "@shared/lib/cn/index";
+import { cn } from "@shared/utils/cn/index";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import { ComponentProps, JSX } from "react";
 

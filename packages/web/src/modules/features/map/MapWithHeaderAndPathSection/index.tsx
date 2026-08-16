@@ -3,7 +3,7 @@
 import MAP from "@shared/constants/map";
 import MOUNTAIN from "@shared/constants/mountain/index";
 import type { Markers } from "@shared/types/map";
-import { getFacilitiesByFacilityType } from "@shared/lib/map";
+import { getFacilitiesByFacilityType } from "@shared/utils/map";
 import MapView from "@shared/components/composites/MapView";
 import useGetCoursePathByCourseId from "@shared/hooks/domain/course/useGetCoursePath";
 import useDrawMarkers from "@shared/hooks/domain/map/useDrawMarkers";

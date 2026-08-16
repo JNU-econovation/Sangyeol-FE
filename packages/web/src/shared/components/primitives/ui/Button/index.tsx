@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 export const ButtonVariants = cva(
   `rounded-xl shrink-0 active:opacity-95 active:scale-[99%] transition-all duration-200`,

@@ -1,4 +1,4 @@
-import ModalProvider from "@shared/model/modal/provider";
+import ModalProvider from "@service/modal/provider";
 import { StackLinkProvider } from "stack-link";
 import TanstackQueryProvider from "@shared/components/composites/TanstackQueryProvider";
 import type { Metadata } from "next";

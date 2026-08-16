@@ -1,5 +1,5 @@
 import type { CourseDifficulty } from "@shared/types/course";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 import { cva } from "class-variance-authority";
 
 const DIFFICULTY_MAP: Record<CourseDifficulty, string> = {

@@ -1,7 +1,7 @@
 import "@ncdai/react-wheel-picker/style.css";
 
 import * as WheelPickerPrimitive from "@ncdai/react-wheel-picker";
-import { cn } from "@shared/lib/cn";
+import { cn } from "@shared/utils/cn";
 
 type WheelPickerValue = WheelPickerPrimitive.WheelPickerValue;
 

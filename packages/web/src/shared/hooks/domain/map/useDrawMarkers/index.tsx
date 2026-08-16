@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { Markers } from "@shared/types/map";
-import { updateSearchParams } from "@shared/lib/url";
+import { updateSearchParams } from "@shared/utils/url";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
 

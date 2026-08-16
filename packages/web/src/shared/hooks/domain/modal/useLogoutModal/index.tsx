@@ -1,4 +1,4 @@
-import { useModalContext } from "@shared/model/modal";
+import { useModalContext } from "@service/modal";
 import LogoutModal from "@modules/features/authenticate/LogoutModal";
 
 const useLogoutModal = () => {
