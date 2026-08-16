@@ -28,6 +28,11 @@
   --color-error: #ff0000;
   --color-success: #2d6eff;
   --color-warning: #fbbc05;
+
+  --color-difficulty-normal: #b06a12;
+  --color-difficulty-normal-bg: #fff3d6;
+  --color-difficulty-hard: #c4564f;
+  --color-difficulty-hard-bg: #ffe8e8;
 }
 
 @source inline("mt-{{0..4..0.5},{5..12..1},14,{16..64..4},{72..96..8}}");
