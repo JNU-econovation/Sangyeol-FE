@@ -4,7 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@shared/utils/cn";
 
 export const ButtonVariants = cva(
-  `rounded-xl shrink-0 active:opacity-95 active:scale-[99%] transition-all duration-200`,
+  `rounded-lg shrink-0 active:opacity-95 active:scale-[99%] transition-all duration-200`,
   {
     variants: {
       color: {
@@ -15,7 +15,7 @@ export const ButtonVariants = cva(
         gray: "bg-gray-800 text-white",
       },
       size: {
-        lg: "px-4 py-2 font-bold text-lg",
+        lg: "px-4 py-2 font-semibold text-base",
         md: "px-5 py-2.5 text-base font-semibold",
         sm: "px-4 py-2 text-sm font-semibold",
       },

@@ -89,12 +89,12 @@ export default function Carousel({ items }: CarouselProps) {
         ))}
       </div>
       <Spacing size={4} />
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-1.5">
         {items.map((_, index) => (
           <div
-            className={cn("w-1.5 h-1.5 rounded-full", {
-              "bg-primary": currentIndex === index,
-              "bg-gray-600": currentIndex !== index,
+            className={cn("h-1.5 rounded-full transition-all duration-200", {
+              "w-4.5 bg-primary": currentIndex === index,
+              "w-1.5 bg-gray-600": currentIndex !== index,
             })}
             key={index}
           />
