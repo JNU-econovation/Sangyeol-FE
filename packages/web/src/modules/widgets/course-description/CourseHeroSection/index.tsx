@@ -1,7 +1,7 @@
 import FootprintsIcon from "@icons/FootprintsIcon";
 import NavigationIcon from "@icons/NavigationIcon";
 import TimerIcon from "@icons/TimerIcon";
-import EasyDifficultyBadge from "@shared/components/primitives/ui/EasyDifficultyBadge";
+import NormalDifficultyBadge from "@shared/components/primitives/ui/NormalDifficultyBadge";
 
 const CourseHeroSection = () => {
   return (
@@ -24,12 +24,12 @@ const CourseHeroSection = () => {
 
         <div className="flex shrink-0 items-center gap-1.5">
           <TimerIcon size={15} className="shrink-0 text-primary" />
-          <span className="text-sm font-medium text-black-800">1시간 6분</span>
+          <span className="text-sm font-medium text-black-800">1시간 44분</span>
         </div>
 
         <span className="text-sm text-gray-900">·</span>
 
-        <EasyDifficultyBadge />
+        <NormalDifficultyBadge />
       </div>
 
       {/* TODO(#106): 길찾기 브릿지 연동 전까지 동작 없는 정적 버튼 */}
