@@ -9,6 +9,10 @@ const appConfig = {
     userInterfaceStyle: "automatic",
     ios: {
       bundleIdentifier: "com.sansan.sangyeol",
+      infoPlist: {
+        NSMotionUsageDescription:
+          "산행 중 위치 추적의 정확도를 높이기 위해 모션 데이터를 사용합니다.",
+      },
     },
     android: {
       package: "com.sansan.sangyeol",
