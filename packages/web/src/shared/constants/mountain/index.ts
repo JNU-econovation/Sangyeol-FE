@@ -13,3 +13,6 @@ const MOUNTAIN = {
 } as const;
 
 export default MOUNTAIN;
+
+/** 기상청 동네예보 지역 코드 — 무등산(광주 북구 금곡동) */
+export const MUDEUNGSAN_KMA_DONG_CODE = "1271033500";

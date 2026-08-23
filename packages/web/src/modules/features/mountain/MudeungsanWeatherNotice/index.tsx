@@ -1,23 +1,18 @@
 "use client";
 
+import useKmaWeatherQuery from "@shared/api/queries/useKmaWeatherQuery";
 import SunIcon from "@shared/components/primitives/ui/icons/SunIcon";
 import SunriseIcon from "@shared/components/primitives/ui/icons/SunriseIcon";
 import SunsetIcon from "@shared/components/primitives/ui/icons/SunsetIcon";
+import { MUDEUNGSAN_KMA_DONG_CODE } from "@shared/constants/mountain/index";
 import useRouteToExternalWebviewBridge from "@shared/hooks/domain/bridge/useRouteToExternalWebviewBridge";
 
-const MUDEUNGSAN_WEATHER_URL =
-  "https://www.weather.go.kr/w/index.do#dong/1271033500/35.124385849219784/127.00913112151761/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%EA%B8%88%EA%B3%A1%EB%8F%99/SCH/%EB%AC%B4%EB%93%B1%EC%82%B0";
+const MUDEUNGSAN_WEATHER_URL = `https://www.weather.go.kr/w/index.do#dong/${MUDEUNGSAN_KMA_DONG_CODE}/35.124385849219784/127.00913112151761/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%EA%B8%88%EA%B3%A1%EB%8F%99/SCH/%EB%AC%B4%EB%93%B1%EC%82%B0`;
 
 const MudeungsanWeatherNotice = () => {
-  const weatherData = {
-    temperature: 22.1,
-    feelsLike: 25.4,
-    precipitationProbability: 20,
-    precipitationAmount: null,
-    humidity: 100,
-    sunrise: "05:30",
-    sunset: "19:46",
-  };
+  const { data: weatherData } = useKmaWeatherQuery({
+    code: MUDEUNGSAN_KMA_DONG_CODE,
+  });
 
   const routeToExternalWebview = useRouteToExternalWebviewBridge();
 
@@ -43,10 +38,10 @@ const MudeungsanWeatherNotice = () => {
 
       <div className="flex items-end gap-3">
         <p className="text-3xl/normal font-bold tracking-tight text-black-900">
-          {weatherData.temperature}℃
+          {weatherData?.temperature?.toFixed(1) ?? "-"}℃
         </p>
         <span className="pb-1 text-sm font-medium text-gray-900">
-          체감 ({weatherData.feelsLike}℃)
+          체감 ({weatherData?.feelsLike?.toFixed(1) ?? "-"}℃)
         </span>
       </div>
 
@@ -54,7 +49,7 @@ const MudeungsanWeatherNotice = () => {
         <div className="flex flex-1 flex-col items-center gap-1">
           <p className="text-xs font-normal text-gray-900">강수확률</p>
           <p className="text-base font-semibold text-black-900">
-            {weatherData.precipitationProbability}%
+            {weatherData?.precipitationProbability ?? "-"}%
           </p>
         </div>
 
@@ -63,7 +58,7 @@ const MudeungsanWeatherNotice = () => {
         <div className="flex flex-1 flex-col items-center gap-1">
           <p className="text-xs font-normal text-gray-900">강수량(mm)</p>
           <p className="text-base font-semibold text-black-900">
-            {weatherData.precipitationAmount ?? "-"}
+            {weatherData?.precipitationAmount ?? "-"}
           </p>
         </div>
 
@@ -72,7 +67,7 @@ const MudeungsanWeatherNotice = () => {
         <div className="flex flex-1 flex-col items-center gap-1">
           <p className="text-xs font-normal text-gray-900">습도</p>
           <p className="text-base font-semibold text-black-900">
-            {weatherData.humidity}%
+            {weatherData?.humidity ?? "-"}%
           </p>
         </div>
       </div>
@@ -81,14 +76,14 @@ const MudeungsanWeatherNotice = () => {
         <div className="flex items-center gap-1">
           <SunriseIcon size={14} className="text-gray-900" />
           <span className="text-xs font-medium text-black-800">
-            일출 {weatherData.sunrise}
+            일출 {weatherData?.sunrise ?? "-"}
           </span>
         </div>
         <p className="text-xs font-medium text-gray-900">·</p>
         <div className="flex items-center gap-1">
           <SunsetIcon size={14} className="text-gray-900" />
           <span className="text-xs font-medium text-black-800">
-            일몰 {weatherData.sunset}
+            일몰 {weatherData?.sunset ?? "-"}
           </span>
         </div>
       </div>
