@@ -8,6 +8,8 @@ import CourseImageInfoSection from "@modules/widgets/map/CourseImageInfoSection"
 import CourseWeatherClothesInfoSection from "@modules/widgets/map/CourseWeatherClothesInfoSection";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import CourseMetaDataUi from "@shared/components/primitives/ui/CourseMetaDataUi";
+import useOpenNaverMapRouteBridge from "@shared/hooks/domain/bridge/useOpenNaverMapRouteBridge";
+import NavigationIcon from "@shared/components/primitives/ui/icons/NavigationIcon";
 import { useParams } from "next/navigation";
 import { getCourseById } from "@/shared/api/proto";
 import Button from "@/shared/components/primitives/ui/Button";
@@ -16,12 +18,22 @@ export default function CourseDetailBottomSheetSection() {
   const { courseId } = useParams<{
     courseId: string;
   }>();
+  const openNaverMapRoute = useOpenNaverMapRouteBridge();
 
   if (!courseId) {
     return null;
   }
 
-  const { difficulty, durationMinutes, distanceKm } = getCourseById(courseId);
+  const { difficulty, durationMinutes, distanceKm, startPoint } =
+    getCourseById(courseId);
+
+  const handleFindRouteClick = () => {
+    openNaverMapRoute({
+      dlat: startPoint.latitude,
+      dlng: startPoint.longitude,
+      dname: startPoint.name,
+    });
+  };
 
   return (
     <section>
@@ -39,7 +51,13 @@ export default function CourseDetailBottomSheetSection() {
               time={durationMinutes}
             />
           </div>
-          <Button className="h-full font-light text-sm round">길찾기</Button>
+          <Button
+            className="flex h-11 items-center justify-center gap-2 rounded-[10px] px-3.5 py-0 text-sm"
+            onClick={handleFindRouteClick}
+          >
+            <NavigationIcon size={16} />
+            길찾기
+          </Button>
         </div>
         <Spacing size={4} />
 
