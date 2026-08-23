@@ -72,6 +72,17 @@ const useMiddleware = () => {
       router.push(`/webview/${encodeURIComponent(uri)}`);
     }
 
+    // 외부 소스를 띄우는 아우터 웹뷰(모달) 라우팅 메시지 처리
+    if (name === "route-to-external-webview" && method === "POST") {
+      const { uri } = body as { uri: string };
+      router.push(`/external-webview/${encodeURIComponent(uri)}`);
+
+      return {
+        name: "route-to-external-webview",
+        status: "success",
+      };
+    }
+
     // 네이버 지도 길찾기 메시지 처리
     if (name === "open-naver-map-route" && method === "POST") {
       const { dlat, dlng, dname } = body as {

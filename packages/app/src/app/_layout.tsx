@@ -17,6 +17,10 @@ export default function TabLayout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="webview/[path]/index" options={{ gestureEnabled }} />
+        <Stack.Screen
+          name="external-webview/[uri]/index"
+          options={{ presentation: "modal" }}
+        />
       </Stack>
     </ThemeProvider>
   );
