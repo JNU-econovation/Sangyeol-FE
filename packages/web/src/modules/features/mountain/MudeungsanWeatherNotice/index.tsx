@@ -1,6 +1,12 @@
+"use client";
+
 import SunIcon from "@shared/components/primitives/ui/icons/SunIcon";
 import SunriseIcon from "@shared/components/primitives/ui/icons/SunriseIcon";
 import SunsetIcon from "@shared/components/primitives/ui/icons/SunsetIcon";
+import useRouteToExternalWebviewBridge from "@shared/hooks/domain/bridge/useRouteToExternalWebviewBridge";
+
+const MUDEUNGSAN_WEATHER_URL =
+  "https://www.weather.go.kr/w/index.do#dong/1271033500/35.124385849219784/127.00913112151761/%EC%A0%84%EB%82%A8%EA%B4%91%EC%A3%BC%ED%86%B5%ED%95%A9%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%EA%B8%88%EA%B3%A1%EB%8F%99/SCH/%EB%AC%B4%EB%93%B1%EC%82%B0";
 
 const MudeungsanWeatherNotice = () => {
   const weatherData = {
@@ -13,8 +19,18 @@ const MudeungsanWeatherNotice = () => {
     sunset: "19:46",
   };
 
+  const routeToExternalWebview = useRouteToExternalWebviewBridge();
+
+  const handleClick = () => {
+    routeToExternalWebview(MUDEUNGSAN_WEATHER_URL);
+  };
+
   return (
-    <div className="flex w-full flex-col gap-4 rounded-2xl border border-gray-600 bg-main-white p-4 shadow-md">
+    <button
+      type="button"
+      onClick={handleClick}
+      className="flex w-full cursor-pointer flex-col gap-4 rounded-2xl border border-gray-600 bg-main-white p-4 text-left shadow-md"
+    >
       <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-2">
           <SunIcon size={16} className="text-primary" />
@@ -76,7 +92,7 @@ const MudeungsanWeatherNotice = () => {
           </span>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
