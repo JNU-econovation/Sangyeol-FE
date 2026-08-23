@@ -1,7 +1,11 @@
 import type { CourseDifficulty } from "@shared/types/course";
-import ClockIcon from "@icons/ClockIcon";
-import PositionPointerIcon from "@icons/PositionPointerIcon";
-import DifficultyTag from "@shared/components/primitives/ui/DifficultyTag";
+import FootprintsIcon from "@icons/FootprintsIcon";
+import TimerIcon from "@icons/TimerIcon";
+import EasyDifficultyBadge from "@shared/components/primitives/ui/EasyDifficultyBadge";
+import HardDifficultyBadge from "@shared/components/primitives/ui/HardDifficultyBadge";
+import NormalDifficultyBadge from "@shared/components/primitives/ui/NormalDifficultyBadge";
+
+const ICON_SIZE = 15;
 
 interface CourseMetaDataUiProps {
   distance: number;
@@ -14,28 +18,30 @@ export default function CourseMetaDataUi({
   distance,
   time,
 }: CourseMetaDataUiProps) {
-  const durationText = `${Math.floor(time / 60)}h ${time % 60}m`;
+  const durationText = `${Math.floor(time / 60)}시간 ${time % 60}분`;
+
   return (
-    <div className="flex justify-between items-center">
-      <div className="flex items-center gap-1">
-        <PositionPointerIcon />
-        <span className="text-gray-900 text-sm font-semibold">
+    <div className="flex items-center gap-3">
+      <div className="flex shrink-0 items-center gap-[5px]">
+        <FootprintsIcon size={ICON_SIZE} className="shrink-0 text-primary" />
+        <span className="text-sm font-semibold text-black-800">
           {distance}km
         </span>
       </div>
-      <div className="flex items-center gap-1">
-        <ClockIcon />
-
-        <span className="text-gray-900 text-sm font-semibold">
+      <div className="h-3 w-px shrink-0 bg-gray-600" />
+      <div className="flex shrink-0 items-center gap-[5px]">
+        <TimerIcon size={ICON_SIZE} className="shrink-0 text-primary" />
+        <span className="text-sm font-semibold text-black-800">
           {durationText}
         </span>
       </div>
-      {difficulty ? (
-        <DifficultyTag difficulty={difficulty} />
-      ) : (
-        <div style={{ visibility: "hidden" }}>
-          <DifficultyTag difficulty="NORMAL" />
-        </div>
+      {difficulty && (
+        <>
+          <div className="h-3 w-px shrink-0 bg-gray-600" />
+          {difficulty === "EASY" && <EasyDifficultyBadge />}
+          {difficulty === "NORMAL" && <NormalDifficultyBadge />}
+          {difficulty === "HARD" && <HardDifficultyBadge />}
+        </>
       )}
     </div>
   );
