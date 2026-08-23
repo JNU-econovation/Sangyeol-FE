@@ -11,7 +11,9 @@ import Spacing from "@shared/components/primitives/layout/Spacing";
 import CourseMetaDataUi from "@shared/components/primitives/ui/CourseMetaDataUi";
 import useOpenNaverMapRouteBridge from "@shared/hooks/domain/bridge/useOpenNaverMapRouteBridge";
 import NavigationIcon from "@shared/components/primitives/ui/icons/NavigationIcon";
+// import ROUTE from "@shared/constants/route";
 import { useParams } from "next/navigation";
+// import { useStackLinkRouter } from "stack-link";
 import { getCourseById } from "@/shared/api/proto";
 import Button from "@/shared/components/primitives/ui/Button";
 
@@ -20,12 +22,15 @@ export default function CourseDetailBottomSheetSection() {
     courseId: string;
   }>();
   const openNaverMapRoute = useOpenNaverMapRouteBridge();
+  // const { navigate } = useStackLinkRouter({
+  //   prefetchHref: courseId ? ROUTE.V1_COURSE_DESCRIPTION(courseId) : null,
+  // });
 
   if (!courseId) {
     return null;
   }
 
-  const { difficulty, durationMinutes, distanceKm, startPoint } =
+  const { difficulty, durationMinutes, distanceKm, startPoint, name } =
     getCourseById(courseId);
 
   const handleFindRouteClick = () => {
@@ -36,6 +41,12 @@ export default function CourseDetailBottomSheetSection() {
     });
   };
 
+  // const handleCourseDescriptionClick = () => {
+  //   if (!courseId) return;
+  //   if (courseId !== "1") return; // 현재는 당산나무 코스만 상세페이지가 존재
+  //   navigate({ href: ROUTE.V1_COURSE_DESCRIPTION(courseId) });
+  // };
+
   return (
     <section>
       <BottomSheet>
@@ -43,14 +54,8 @@ export default function CourseDetailBottomSheetSection() {
 
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-xl font-semibold">당산나무 코스</h3>
+            <h3 className="text-xl font-semibold">{name}</h3>
             {/* 어떤 정보를 뜻하는지 확인 필요 */}
-
-            <CourseMetaDataUi
-              difficulty={difficulty}
-              distance={distanceKm}
-              time={durationMinutes}
-            />
           </div>
           <Button
             className="flex h-11 items-center justify-center gap-2 rounded-[10px] px-3.5 py-0 text-sm"
@@ -60,6 +65,11 @@ export default function CourseDetailBottomSheetSection() {
             길찾기
           </Button>
         </div>
+        <CourseMetaDataUi
+          difficulty={difficulty}
+          distance={distanceKm}
+          time={durationMinutes}
+        />
         <Spacing size={4} />
 
         <Carousel
@@ -69,8 +79,10 @@ export default function CourseDetailBottomSheetSection() {
           ]}
         />
         <Spacing size={4} />
-        <Button fullWidth>코스 상세보기</Button>
-        <Spacing size={4} />
+        {/* <Button fullWidth onClick={handleCourseDescriptionClick}>
+          코스 상세보기
+        </Button>
+        <Spacing size={4} /> */}
       </BottomSheet>
     </section>
   );

@@ -57,6 +57,8 @@ const ROUTE = {
   //v1
   V1_HOME: "/v1/home",
   V1_COURSES: "/v1/courses",
+  V1_COURSE_DESCRIPTION: (courseId: string) =>
+    `/v1/courses/${courseId}/description`,
   V1_ETC: "/v1/etc",
 };
 

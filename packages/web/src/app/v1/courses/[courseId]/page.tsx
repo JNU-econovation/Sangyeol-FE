@@ -2,6 +2,7 @@
 // import CourseDetailBottomSheetSection from "@modules/widgets/mountain/CourseDetailBottomSheetSection";
 import MapWithHeaderAndPathSection from "@/modules/features/map/MapWithHeaderAndPathSection";
 import CourseDetailBottomSheetSection from "@/modules/widgets/mountain/CourseDetailBottomSheetSection";
+import CourseDetailDescriptionRedirectButton from "@/modules/widgets/mountain/CourseDetailDescriptionRedirectButton";
 import MapHeaderNavbar from "@shared/components/composites/MapHeaderNavbar";
 import PositionBottom from "@shared/components/primitives/layout/PositionBottom";
 import SafeArea from "@shared/components/primitives/layout/SafeArea";
@@ -15,9 +16,11 @@ const CourseDetailsPage = () => {
           <Spacing size={8} />
           <MapHeaderNavbar />
         </div>
-        <PositionBottom>
+        <PositionBottom bottom={40}>
           <div className="px-6">
             <CourseDetailBottomSheetSection />
+            <Spacing size={4} />
+            <CourseDetailDescriptionRedirectButton />
           </div>
         </PositionBottom>
         <MapWithHeaderAndPathSection />
