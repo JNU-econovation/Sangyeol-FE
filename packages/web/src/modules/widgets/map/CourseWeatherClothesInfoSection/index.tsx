@@ -1,14 +1,16 @@
+"use client";
+
 import SunIcon from "@icons/SunIcon";
+import useKmaWeatherQuery from "@shared/api/queries/useKmaWeatherQuery";
 import InfoTile from "@shared/components/primitives/ui/InfoTile";
+import { MUDEUNGSAN_KMA_DONG_CODE } from "@shared/constants/mountain/index";
 import Image from "next/image";
 
-// TODO(#110): 서버 연동 전까지 사용하는 프로토타입 고정값
-const WEATHER_INFO = {
-  temperature: 22.1,
-  feelsLikeTemperature: 25.4,
-};
-
 export default function CourseWeatherClothesInfoSection() {
+  const { data: weather } = useKmaWeatherQuery({
+    code: MUDEUNGSAN_KMA_DONG_CODE,
+  });
+
   return (
     <div className="flex w-full gap-3">
       <InfoTile label="준비물" sub="등산화 권장">
@@ -21,10 +23,12 @@ export default function CourseWeatherClothesInfoSection() {
         />
       </InfoTile>
 
-      <InfoTile label="날씨" sub={`체감 ${WEATHER_INFO.feelsLikeTemperature}℃`}>
+      <InfoTile label="날씨" sub={`체감 ${weather?.feelsLike?.toFixed(1) ?? "-"}℃`}>
         <div className="flex h-full w-full flex-col items-center justify-center bg-green-500 text-primary">
           <SunIcon size={22} />
-          <p className="text-base font-bold">{WEATHER_INFO.temperature}℃</p>
+          <p className="text-base font-bold">
+            {weather?.temperature?.toFixed(1) ?? "-"}℃
+          </p>
         </div>
       </InfoTile>
 

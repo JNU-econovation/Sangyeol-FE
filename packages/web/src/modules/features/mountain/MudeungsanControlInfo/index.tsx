@@ -2,42 +2,30 @@
 
 import { Fragment } from "react";
 
-import SwitchCase from "@shared/components/composites/SwitchCase";
-import PartialControlBadge from "@shared/components/primitives/ui/CourseControlBadges/PartialControlBadge";
-import PreparingControlBadge from "@shared/components/primitives/ui/CourseControlBadges/PreparingControlBadge";
-import WorkingOnControlBadge from "@shared/components/primitives/ui/CourseControlBadges/WorkingOnControlBadge";
-import MapPinIcon from "@shared/components/primitives/ui/icons/MapPinIcon";
 import TriangleAlertIcon from "@shared/components/primitives/ui/icons/TriangleAlertIcon";
 import useRouteToExternalWebviewBridge from "@shared/hooks/domain/bridge/useRouteToExternalWebviewBridge";
 
-type ControlInfoStatus = "working" | "partial" | "preparing";
-interface ControlInfo {
+import ControlAreaItem from "./components/ControlAreaItem";
+
+const KNPS_CONTROL_DETAIL_PAGE_URL = (rstId: string) =>
+  `https://www.knps.or.kr/front/portal/safe/acsCtrDtl.do?menuNo=8000340&rstId=${rstId}`;
+
+interface ControlArea {
   id: string;
   name: string;
-  status: ControlInfoStatus;
-  url: string;
+  rstId: string;
 }
 
-const MudeungsanControlInfo = () => {
-  const controlAreas: ControlInfo[] = [
-    {
-      id: "mudeungsan",
-      name: "무등산",
-      status: "partial",
-      url: "https://www.knps.or.kr/front/portal/safe/acsCtrDtl.do?menuNo=8000340&rstId=0025",
-    },
-    {
-      id: "mudeungsan-east",
-      name: "무등산동부",
-      status: "partial",
-      url: "https://www.knps.or.kr/front/portal/safe/acsCtrDtl.do?menuNo=8000340&rstId=0026",
-    },
-  ];
+const CONTROL_AREAS: ControlArea[] = [
+  { id: "mudeungsan", name: "무등산", rstId: "0025" },
+  { id: "mudeungsan-east", name: "무등산동부", rstId: "0026" },
+];
 
+const MudeungsanControlInfo = () => {
   const routeToExternalWebview = useRouteToExternalWebviewBridge();
 
-  const handleAreaClick = (url: string) => {
-    routeToExternalWebview(url);
+  const handleAreaClick = (rstId: string) => {
+    routeToExternalWebview(KNPS_CONTROL_DETAIL_PAGE_URL(rstId));
   };
 
   return (
@@ -55,30 +43,14 @@ const MudeungsanControlInfo = () => {
       </div>
 
       <div className="flex w-full flex-col rounded-xl bg-gray-300">
-        {controlAreas.map((area, index) => (
+        {CONTROL_AREAS.map((area, index) => (
           <Fragment key={area.id}>
             {index > 0 && <div className="h-px w-full bg-gray-600" />}
-            <button
-              type="button"
-              onClick={() => handleAreaClick(area.url)}
-              className="flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left"
-            >
-              <div className="flex items-center gap-2">
-                <MapPinIcon size={14} className="text-gray-900" />
-                <p className="text-sm font-medium text-black-900">
-                  {area.name}
-                </p>
-              </div>
-              <SwitchCase
-                value={area.status}
-                caseBy={{
-                  working: <WorkingOnControlBadge />,
-                  partial: <PartialControlBadge />,
-                  preparing: <PreparingControlBadge />,
-                }}
-                defaultComponent={<PartialControlBadge />}
-              ></SwitchCase>
-            </button>
+            <ControlAreaItem
+              name={area.name}
+              rstId={area.rstId}
+              onClick={() => handleAreaClick(area.rstId)}
+            />
           </Fragment>
         ))}
       </div>
