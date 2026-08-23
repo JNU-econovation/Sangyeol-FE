@@ -8,10 +8,10 @@ const appConfig = {
     scheme: "sangyeol",
     userInterfaceStyle: "automatic",
     ios: {
-      bundleIdentifier: "com.sangyeol.sangyeol",
+      bundleIdentifier: "com.sansan.sangyeol",
     },
     android: {
-      package: "com.sangyeol.sangyeol",
+      package: "com.sansan.sangyeol",
       adaptiveIcon: {
         foregroundImage: "./assets/images/App_Icon.png",
         backgroundColor: "#ffffff",

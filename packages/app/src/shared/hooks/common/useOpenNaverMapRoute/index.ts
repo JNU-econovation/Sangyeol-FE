@@ -1,9 +1,9 @@
-import { getNaverMapWalkRouteUrl } from "@shared/utils/naverMap";
+import { getNaverMapPublicRouteUrl } from "@shared/utils/naverMap";
 import * as Linking from "expo-linking";
 import { useCallback } from "react";
 import { Platform } from "react-native";
 
-const APP_NAME = "com.sangyeol.sangyeol";
+const APP_NAME = "com.sansan.sangyeol";
 
 const NAVER_MAP_STORE_URL = Platform.select({
   ios: "https://apps.apple.com/app/id311867728",
@@ -11,7 +11,7 @@ const NAVER_MAP_STORE_URL = Platform.select({
 });
 
 /**
- * 네이버 지도 앱을 열어 도보 길찾기를 실행하는 훅
+ * 네이버 지도 앱을 열어 대중교통 길찾기를 실행하는 훅
  * 네이버 지도 앱이 설치되어 있지 않으면 스토어로 이동합니다.
  */
 const useOpenNaverMapRoute = () => {
@@ -27,7 +27,7 @@ const useOpenNaverMapRoute = () => {
     }) => {
       try {
         await Linking.openURL(
-          getNaverMapWalkRouteUrl({ dlat, dlng, dname, appName: APP_NAME }),
+          getNaverMapPublicRouteUrl({ dlat, dlng, dname, appName: APP_NAME }),
         );
       } catch {
         try {

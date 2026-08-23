@@ -1,4 +1,4 @@
-interface NaverMapWalkRouteUrlParams {
+interface NaverMapPublicRouteUrlParams {
   dlat: number;
   dlng: number;
   dname: string;
@@ -6,15 +6,15 @@ interface NaverMapWalkRouteUrlParams {
 }
 
 /**
- * 네이버 지도 앱의 도보 길찾기 URL Scheme을 생성합니다.
+ * 네이버 지도 앱의 대중교통 길찾기 URL Scheme을 생성합니다.
  * @see https://guide.ncloud-docs.com/docs/appurlscheme-appurlscheme
  */
-export const getNaverMapWalkRouteUrl = ({
+export const getNaverMapPublicRouteUrl = ({
   dlat,
   dlng,
   dname,
   appName,
-}: NaverMapWalkRouteUrlParams) => {
+}: NaverMapPublicRouteUrlParams) => {
   const query = [
     `dlat=${dlat}`,
     `dlng=${dlng}`,
@@ -22,5 +22,5 @@ export const getNaverMapWalkRouteUrl = ({
     `appname=${appName}`,
   ].join("&");
 
-  return `nmap://route/walk?${query}`;
+  return `nmap://route/public?${query}`;
 };
