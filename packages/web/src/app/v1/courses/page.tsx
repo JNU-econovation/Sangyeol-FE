@@ -27,7 +27,7 @@ const CoursesPage = () => {
       contentClassName="bg-gray-300"
       bottomSpacing={8}
     >
-      <div className="flex flex-col gap-6 px-5 pt-4">
+      <div className="flex flex-col gap-6 px-5 pt-4 bg-gray-300">
         <V1Header title="무등산 국립공원" />
 
         <section className="flex w-full flex-col gap-3.5 pb-6">

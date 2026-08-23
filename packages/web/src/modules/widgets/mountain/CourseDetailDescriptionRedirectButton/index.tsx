@@ -20,6 +20,8 @@ const CourseDetailDescriptionRedirectButton = () => {
     navigate({ href: ROUTE.V1_COURSE_DESCRIPTION(courseId) });
   };
 
+  if (courseId !== "1") return;
+
   return (
     <Button fullWidth onClick={handleCourseDescriptionClick}>
       코스 상세보기

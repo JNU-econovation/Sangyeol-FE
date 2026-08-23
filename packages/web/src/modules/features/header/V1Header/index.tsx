@@ -13,7 +13,7 @@ const V1Header = ({ title, animation }: V1HeaderProps) => {
   const { handleGoBack } = useGoBack(animation);
 
   return (
-    <header className="flex h-11 w-full items-center gap-2 sticky top-0 z-10 bg-gray-300">
+    <header className="flex h-11 w-full items-center gap-2 sticky top-0 z-10 bg-inherit">
       <button type="button" aria-label="뒤로 가기" onClick={handleGoBack}>
         <ChevronLeftIcon />
       </button>
