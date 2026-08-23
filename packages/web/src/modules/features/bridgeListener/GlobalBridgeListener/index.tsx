@@ -1,7 +1,6 @@
 "use client";
 
 import BridgeListener from "@shared/components/composites/BridgeListener";
-import { useRouter } from "next/navigation";
 import { useStackLinkBack } from "stack-link";
 
 const GlobalBridgeListener = () => {
@@ -31,7 +30,7 @@ const GlobalBridgeListener = () => {
             };
           }
 
-          const { url, routeType } = body;
+          const { routeType } = body;
 
           // const routeUrl = window.location.origin + url;
 

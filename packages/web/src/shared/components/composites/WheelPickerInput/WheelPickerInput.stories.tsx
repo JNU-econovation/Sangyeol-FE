@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 
 import WheelPickerInput from ".";
 
@@ -30,6 +30,11 @@ const options = [
   { label: "한라산", value: "halla" },
 ];
 
+const DefaultStoryRender = (args: ComponentProps<typeof WheelPickerInput>) => {
+  const [value, setValue] = useState<string | null>(args.value);
+  return <WheelPickerInput {...args} value={value} onChange={setValue} />;
+};
+
 export const Default: Story = {
   args: {
     options,
@@ -37,8 +42,5 @@ export const Default: Story = {
     onChange: () => {},
     placeholder: "산을 선택하세요",
   },
-  render: (args) => {
-    const [value, setValue] = useState<string | null>(args.value);
-    return <WheelPickerInput {...args} value={value} onChange={setValue} />;
-  },
+  render: (args) => <DefaultStoryRender {...args} />,
 };

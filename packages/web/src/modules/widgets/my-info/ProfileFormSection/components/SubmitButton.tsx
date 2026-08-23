@@ -109,7 +109,7 @@ const SubmitButton = () => {
       size="lg"
       fullWidth
       disabled={!checkIsValid() || !hasChanges || isSuccess}
-      onClick={handleSubmit((data) => {
+      onClick={handleSubmit(() => {
         if (!checkIsValid()) return;
         openUserInfoMutateModal();
       })}

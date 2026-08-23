@@ -1,5 +1,4 @@
 import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import Default_Profile_Image from "@/images/Default_Profile_Image.png";
 
 export default function MyProfileImage() {

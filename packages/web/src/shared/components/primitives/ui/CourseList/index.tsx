@@ -4,7 +4,6 @@ import type { CourseDifficulty } from "@shared/types/course";
 import StarBlockIcon from "@icons/StarBlockIcon";
 import StarWeakIcon from "@icons/StarWeakIcon";
 import CourseMetaDataUi from "@shared/components/primitives/ui/CourseMetaDataUi";
-import Image from "next/image";
 
 interface CourseListProps {
   name: string;

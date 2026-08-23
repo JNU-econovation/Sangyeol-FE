@@ -3,14 +3,13 @@
 import useRouteBridge from "@shared/hooks/domain/bridge/useRouteBridge";
 import Spacing from "@shared/components/primitives/layout/Spacing";
 import GrayRightArrowIcon from "@shared/components/primitives/ui/GrayRightArrowIcon";
-import Text from "@shared/components/primitives/ui/Text";
 
 export default function CustomerCenterSection() {
-  const goToFaq = useRouteBridge({
-    path: "customer-center",
-    routeType: "push",
-    params: [{ tab: "faq" }],
-  });
+  // const goToFaq = useRouteBridge({
+  //   path: "customer-center",
+  //   routeType: "push",
+  //   params: [{ tab: "faq" }],
+  // });
 
   const goToInquiry = useRouteBridge({
     path: "customer-center",

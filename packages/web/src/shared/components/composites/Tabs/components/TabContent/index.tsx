@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 import useTabContext from "../../model/useTabContext";
-import type { TabContentProps, TabContentChildrenProps } from "../../types";
+import type { TabContentProps } from "../../types";
 
 function TabContentImpl<TabLabel extends string = string>({
   children,

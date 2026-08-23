@@ -80,7 +80,7 @@ export default function RootLayout({
           </StackLinkProvider>
         </TanstackQueryProvider>
         {NODE_ENV === "development" && (
-          <script src="http://localhost:3002/devtools-client.js"></script>
+          <script async src="http://localhost:3002/devtools-client.js"></script>
         )}
       </body>
     </html>

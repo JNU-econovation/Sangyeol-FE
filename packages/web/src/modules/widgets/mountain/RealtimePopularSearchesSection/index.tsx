@@ -1,5 +1,4 @@
 import Spacing from "@shared/components/primitives/layout/Spacing";
-import Text from "@shared/components/primitives/ui/Text";
 
 const RealtimePopularSearchesSection = () => {
   return (

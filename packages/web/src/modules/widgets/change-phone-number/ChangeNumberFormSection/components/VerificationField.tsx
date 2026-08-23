@@ -32,7 +32,7 @@ const VerificationField = () => {
           setValue("isPhoneNumberValid", true);
           return;
         },
-        onError: (error) => {
+        onError: () => {
           setValue("verificationFieldHelperState", "ERROR");
           setValue("isPhoneNumberValid", false);
         },

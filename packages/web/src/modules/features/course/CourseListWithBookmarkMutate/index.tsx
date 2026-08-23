@@ -4,8 +4,7 @@ import useBookmarkMutation from "@shared/api/mutates/useBookmarkMutation";
 import useDeleteBookmarkMutation from "@shared/api/mutates/useDeleteBookmarkMutation";
 import CoursePathwayPrefetcher from "@modules/widgets/course/CoursePathwayPrefetcher";
 import CourseList from "@shared/components/primitives/ui/CourseList";
-import { CourseSortType } from "api";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 interface CourseListWithBookmarkMutateProps {
   id: string;
@@ -26,7 +25,6 @@ export default function CourseListWithBookmarkMutate({
   ...props
 }: CourseListWithBookmarkMutateProps) {
   const { mountainId } = useParams<{ mountainId: string }>();
-  const searchParams = useSearchParams();
 
   const { mutate: postBookmark } = useBookmarkMutation({
     mountainId,

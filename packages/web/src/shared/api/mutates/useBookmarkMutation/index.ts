@@ -1,9 +1,5 @@
 import { BOOKMARK_API_PATH, postBookmarkApi } from "api";
-import {
-  COURSES_OF_MOUNTAIN_API_PATH,
-  CourseSortType,
-  GetCoursesOfMountainResponse,
-} from "api";
+import { COURSES_OF_MOUNTAIN_API_PATH, GetCoursesOfMountainResponse } from "api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import authenticatedApi from "@shared/api/_instances/authenticatedApi";
 import { TAB_TITLE_LIST } from "@shared/constants/course";

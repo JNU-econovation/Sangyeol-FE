@@ -5,7 +5,6 @@ import useMyProfileMutation from "@shared/api/mutates/useMyProfileMutation";
 import useProfileQuery from "@shared/api/suspenseQueries/useProfileQuery";
 import Button from "@shared/components/primitives/ui/Button";
 import { Suspense } from "@suspensive/react";
-import { useState } from "react";
 import { useStackLinkBack } from "stack-link";
 
 const SubmitButton = Suspense.with(

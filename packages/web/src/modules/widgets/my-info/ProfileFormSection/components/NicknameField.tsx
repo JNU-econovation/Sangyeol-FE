@@ -32,11 +32,8 @@ const NicknameField = Suspense.with(
     const {
       data: { nickname: prevNickname },
     } = useProfileQuery();
-    const {
-      mutate: checkNicknameDuplicated,
-      isIdle,
-      isPending,
-    } = useCheckNicknameDuplicatedMutate();
+    const { mutate: checkNicknameDuplicated } =
+      useCheckNicknameDuplicatedMutate();
 
     const handleChange = (nickname: string) => {
       setValue("nickname", nickname);

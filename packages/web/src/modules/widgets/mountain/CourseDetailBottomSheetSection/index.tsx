@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 "use client";
 
 // import useGetCourseDetails from "@shared/hooks/domain/course/useGetCourseDetails";
@@ -63,7 +64,7 @@ export default function CourseDetailBottomSheetSection() {
 
         <Carousel
           items={[
-            <CourseImageInfoSection key="image" />,
+            <CourseImageInfoSection />,
             <CourseWeatherClothesInfoSection key="weather" />,
           ]}
         />

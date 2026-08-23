@@ -6,7 +6,7 @@ import Spacing from "@shared/components/primitives/layout/Spacing";
 import Button from "@shared/components/primitives/ui/Button";
 import Dimmed from "@shared/components/primitives/ui/Dimmed";
 import { useParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useStackLinkBack } from "stack-link";
 
 const TravelLogDeleteModal = () => {
@@ -74,7 +74,7 @@ const TravelLogDeleteModal = () => {
                         setTrigger(true);
                       },
                       onError: (e) => {
-                        console.log(e);
+                        console.error(e);
                       },
                     });
                 }}

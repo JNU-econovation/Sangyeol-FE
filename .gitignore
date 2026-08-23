@@ -73,6 +73,6 @@ CLAUDE.md
 
 ./packages/api/docs/
 
-context
+/context/
 
 .gitkeep

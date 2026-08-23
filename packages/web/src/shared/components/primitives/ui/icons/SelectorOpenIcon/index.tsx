@@ -4,7 +4,7 @@ import { ComponentProps } from "react";
 
 const DEFAULT_ALT = "선택기 닫기";
 
-interface SelectorOpenIcon
+interface SelectorOpenIconProps
   extends Omit<
     ComponentProps<typeof Image>,
     "src" | "width" | "height" | "alt"
@@ -17,6 +17,6 @@ interface SelectorOpenIcon
 export default function SelectorOpenIcon({
   alt = DEFAULT_ALT,
   ...props
-}: SelectorOpenIcon) {
+}: SelectorOpenIconProps) {
   return <Image src={Selector_Open} alt={alt} {...props} />;
 }
