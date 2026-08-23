@@ -8034,6 +8034,7 @@ __metadata:
     expo-haptics: "npm:~57.0.1"
     expo-image: "npm:~57.0.1"
     expo-linking: "npm:~57.0.4"
+    expo-location: "npm:~57.0.2"
     expo-router: "npm:~57.0.9"
     expo-splash-screen: "npm:~57.0.5"
     expo-status-bar: "npm:~57.0.1"
@@ -11470,6 +11471,17 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/92363aad6e9a8d383424b41ceb9bb2f9b454d93e79a8fd5a63b45b4eaef2c1c371fbe7ac7209b947bae4297c482fd284f3e5a5c2b9d6a1960ccbd64aad2379d3
+  languageName: node
+  linkType: hard
+
+"expo-location@npm:~57.0.2":
+  version: 57.0.12
+  resolution: "expo-location@npm:57.0.12"
+  dependencies:
+    "@expo/image-utils": "npm:^0.11.4"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/9ff1ff801bbe0f6f9e5bcaaf03d93f066b8d9caa0aaffcb75aed4b64e9a7599ef45b26173fc56972494ca614a7aceed29e6d58967161e749ea8edb70b185d175
   languageName: node
   linkType: hard
 

@@ -1,5 +1,6 @@
 import { WebviewWithBridge } from "@geongyu/react-native-bridge/native";
 import { COLOR_PALETTE } from "@shared/constants/colors";
+import useGetCurrentPosition from "@shared/hooks/common/useGetCurrentPosition";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,
@@ -53,6 +54,24 @@ const WebViewWithInjected = ({
   const [isLoading, setIsLoading] = useState(true);
   const { webViewRef, onNavigationStateChange } = useWebviewHistory();
   const { middleware } = useMiddleware();
+  const { location } = useGetCurrentPosition();
+
+  // 응답이 필요한 공통 메시지를 처리한 뒤, 나머지는 화면별 onMessage로 위임한다
+  const handleBridgeMessage = async (
+    reqMessage: MessageEventRequestData,
+  ): Promise<MessageEventResponseData | void> => {
+    const { name, method } = reqMessage;
+
+    if (name === "get-current-position" && method === "GET") {
+      return {
+        name: "get-current-position",
+        status: "success",
+        data: location,
+      };
+    }
+
+    return onMessage?.(reqMessage);
+  };
 
   const INJECTED_JAVASCRIPT = useMemo(
     () =>
@@ -98,7 +117,7 @@ const WebViewWithInjected = ({
         ref={webViewRef}
         // ref={ref}
         injectedJavaScript={INJECTED_JAVASCRIPT}
-        onBridgeMessage={onMessage}
+        onBridgeMessage={handleBridgeMessage}
         onLoadStart={() => {
           setIsLoading(true);
         }}

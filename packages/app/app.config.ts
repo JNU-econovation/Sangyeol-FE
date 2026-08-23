@@ -32,6 +32,13 @@ const appConfig = {
           imageWidth: 76,
         },
       ],
+      [
+        "expo-location",
+        {
+          locationWhenInUsePermission:
+            "$(PRODUCT_NAME)이 위치 정보를 사용하도록 허용합니다.",
+        },
+      ],
     ],
     experiments: {
       typedRoutes: true,
