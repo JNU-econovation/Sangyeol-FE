@@ -1,6 +1,7 @@
 // import MapWithHeaderAndPathSection from "@modules/features/map/MapWithHeaderAndPathSection";
 // import CourseDetailBottomSheetSection from "@modules/widgets/mountain/CourseDetailBottomSheetSection";
 import MapWithHeaderAndPathSection from "@/modules/features/map/MapWithHeaderAndPathSection";
+import CourseDetailBottomSheetSection from "@/modules/widgets/mountain/CourseDetailBottomSheetSection";
 import MapHeaderNavbar from "@shared/components/composites/MapHeaderNavbar";
 import PositionBottom from "@shared/components/primitives/layout/PositionBottom";
 import SafeArea from "@shared/components/primitives/layout/SafeArea";
@@ -16,8 +17,7 @@ const CourseDetailsPage = () => {
         </div>
         <PositionBottom>
           <div className="px-6">
-            {/* <CourseDetailBottomSheetSection /> */}
-            {/*  */}
+            <CourseDetailBottomSheetSection />
           </div>
         </PositionBottom>
         <MapWithHeaderAndPathSection />
