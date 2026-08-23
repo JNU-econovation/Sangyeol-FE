@@ -23,7 +23,7 @@ const useGetCourseDetails = ({
   );
 
   if (courseIndex === -1)
-    throw new Error("[useGetBaseDetails] 존재하지 않는 코스입니다.");
+    throw new Error("[useGetCourseDetails] 존재하지 않는 코스입니다.");
 
   return data?.courses[courseIndex];
 };
