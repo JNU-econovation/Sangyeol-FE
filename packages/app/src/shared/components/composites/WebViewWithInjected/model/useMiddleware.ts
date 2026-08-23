@@ -1,4 +1,5 @@
 import useHaptics from "@shared/hooks/common/useHaptic";
+import useOpenNaverMapRoute from "@shared/hooks/common/useOpenNaverMapRoute";
 import { getPathToRoute } from "@shared/utils/bridge";
 import { logMessageWithTime } from "@shared/utils/log";
 import { MessageEventRequestData } from "@shared/types/webview";
@@ -12,6 +13,7 @@ import { useCallback } from "react";
  */
 const useMiddleware = () => {
   const { defaultFeedback } = useHaptics();
+  const { openNaverMapRoute } = useOpenNaverMapRoute();
 
   const middleware = useCallback((reqMessage: MessageEventRequestData) => {
     logMessageWithTime(`WebView received: \n${JSON.stringify(reqMessage)}`);
@@ -68,6 +70,22 @@ const useMiddleware = () => {
     if (name === "route-to-internal-webview" && method === "POST") {
       const { uri } = body as { uri: string };
       router.push(`/webview/${encodeURIComponent(uri)}`);
+    }
+
+    // 네이버 지도 길찾기 메시지 처리
+    if (name === "open-naver-map-route" && method === "POST") {
+      const { dlat, dlng, dname } = body as {
+        dlat: number;
+        dlng: number;
+        dname: string;
+      };
+
+      openNaverMapRoute({ dlat, dlng, dname });
+
+      return {
+        name: "open-naver-map-route",
+        status: "success",
+      };
     }
   }, []);
 
