@@ -56,6 +56,7 @@ export default function CourseDetailBottomSheetSection() {
           <div>
             <h3 className="text-xl font-semibold">{name}</h3>
             {/* 어떤 정보를 뜻하는지 확인 필요 */}
+            <p className="text-sm text-gray-800">무등산 국립공원</p>
           </div>
           <Button
             className="flex h-11 items-center justify-center gap-2 rounded-[10px] px-3.5 py-0 text-sm"
@@ -65,6 +66,7 @@ export default function CourseDetailBottomSheetSection() {
             길찾기
           </Button>
         </div>
+        <Spacing size={4} />
         <CourseMetaDataUi
           difficulty={difficulty}
           distance={distanceKm}
