@@ -1,3 +1,5 @@
+"use client";
+
 import { Fragment } from "react";
 
 import SwitchCase from "@shared/components/composites/SwitchCase";
@@ -6,20 +8,37 @@ import PreparingControlBadge from "@shared/components/primitives/ui/CourseContro
 import WorkingOnControlBadge from "@shared/components/primitives/ui/CourseControlBadges/WorkingOnControlBadge";
 import MapPinIcon from "@shared/components/primitives/ui/icons/MapPinIcon";
 import TriangleAlertIcon from "@shared/components/primitives/ui/icons/TriangleAlertIcon";
+import useRouteToExternalWebviewBridge from "@shared/hooks/domain/bridge/useRouteToExternalWebviewBridge";
 
 type ControlInfoStatus = "working" | "partial" | "preparing";
 interface ControlInfo {
   id: string;
   name: string;
   status: ControlInfoStatus;
+  url: string;
 }
 
 const MudeungsanControlInfo = () => {
   const controlAreas: ControlInfo[] = [
-    { id: "mudeungsan", name: "무등산", status: "working" },
-    { id: "mudeungsan-east", name: "무등산동부", status: "partial" },
-    { id: "mudeungsan-west", name: "무등산서부", status: "preparing" },
+    {
+      id: "mudeungsan",
+      name: "무등산",
+      status: "partial",
+      url: "https://www.knps.or.kr/front/portal/safe/acsCtrDtl.do?menuNo=8000340&rstId=0025",
+    },
+    {
+      id: "mudeungsan-east",
+      name: "무등산동부",
+      status: "partial",
+      url: "https://www.knps.or.kr/front/portal/safe/acsCtrDtl.do?menuNo=8000340&rstId=0026",
+    },
   ];
+
+  const routeToExternalWebview = useRouteToExternalWebviewBridge();
+
+  const handleAreaClick = (url: string) => {
+    routeToExternalWebview(url);
+  };
 
   return (
     <div className="flex w-full flex-col gap-3 rounded-2xl border border-gray-600 bg-main-white p-4 shadow-md">
@@ -39,7 +58,11 @@ const MudeungsanControlInfo = () => {
         {controlAreas.map((area, index) => (
           <Fragment key={area.id}>
             {index > 0 && <div className="h-px w-full bg-gray-600" />}
-            <div className="flex w-full items-center justify-between px-4 py-3">
+            <button
+              type="button"
+              onClick={() => handleAreaClick(area.url)}
+              className="flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left"
+            >
               <div className="flex items-center gap-2">
                 <MapPinIcon size={14} className="text-gray-900" />
                 <p className="text-sm font-medium text-black-900">
@@ -55,7 +78,7 @@ const MudeungsanControlInfo = () => {
                 }}
                 defaultComponent={<PartialControlBadge />}
               ></SwitchCase>
-            </div>
+            </button>
           </Fragment>
         ))}
       </div>
