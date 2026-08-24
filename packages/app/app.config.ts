@@ -28,6 +28,7 @@ const appConfig = {
     },
     plugins: [
       "expo-router",
+      "expo-image",
       [
         "expo-splash-screen",
         {
