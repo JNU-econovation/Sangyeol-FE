@@ -1,25 +1,23 @@
-import styled from "@emotion/native";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { router } from "expo-router";
-import { COLOR_PALETTE } from "@shared/constants/colors";
 
-export default function HomeScreen() {
+import SplashSection from "@modules/widgets/splash/SplashSection";
+
+const SPLASH_DURATION_MS = 1200;
+
+export default function SplashPage() {
   useEffect(() => {
+    SplashScreen.hideAsync();
+
     const timer = setTimeout(() => {
-      SplashScreen.hideAsync();
       router.replace("/(tab)/home");
-    }, 0);
+    }, SPLASH_DURATION_MS);
 
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
-  return <BackgroundView />;
+  return <SplashSection />;
 }
-
-const BackgroundView = styled.View`
-  flex: 1;
-  background-color: ${COLOR_PALETTE.primarySoft};
-`;

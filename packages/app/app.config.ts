@@ -31,9 +31,9 @@ const appConfig = {
       [
         "expo-splash-screen",
         {
-          backgroundColor: "#208AEF",
-          image: "./assets/images/splash-icon.png",
-          imageWidth: 76,
+          backgroundColor: "#EAF2EE",
+          image: "./assets/images/splash-logo.png",
+          imageWidth: 130,
         },
       ],
       [
