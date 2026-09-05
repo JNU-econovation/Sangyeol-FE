@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteToInternalWebview from "@/shared/hooks/domain/bridge/useRouteToWebviewBridge";
+import useRouteToInternalWebview from "@/shared/hooks/domain/bridge/useRouteToInternalWebview";
 
 const MudeungsanHeaderSection = () => {
   const routeToCourseListPage = useRouteToInternalWebview();

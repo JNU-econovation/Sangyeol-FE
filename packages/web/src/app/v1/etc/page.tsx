@@ -1,3 +1,6 @@
+"use client";
+
+import useRouteToExternalWebviewBridge from "@shared/hooks/domain/bridge/useRouteToExternalWebviewBridge";
 import BellIcon from "@icons/BellIcon";
 import ChevronRightIcon from "@icons/ChevronRightIcon";
 import FileTextIcon from "@icons/FileTextIcon";
@@ -9,6 +12,14 @@ import SafeArea from "@shared/components/primitives/layout/SafeArea";
 import { PropsWithChildren, ReactNode } from "react";
 
 const ETCPage = () => {
+  const routeToExternalWebview = useRouteToExternalWebviewBridge();
+
+  const handleClickServiceTerms = () => {
+    routeToExternalWebview(
+      "https://app.notion.com/p/2025-12-30-2d9ec90d98fc808392e3fe653e745dfa?source=copy_link",
+    );
+  };
+
   return (
     <div className="min-h-dvh bg-gray-300">
       <SafeArea>
@@ -56,6 +67,7 @@ const ETCPage = () => {
               icon={<FileTextIcon size={ICON_SIZE} />}
               title="서비스 이용약관"
               trailing={<RowChevron />}
+              onClick={handleClickServiceTerms}
             />
             <Divider />
             <InfoRow
@@ -117,11 +129,15 @@ interface InfoRowProps {
   title: string;
   value?: string;
   trailing?: ReactNode;
+  onClick?: () => void;
 }
 
-const InfoRow = ({ icon, title, value, trailing }: InfoRowProps) => {
+const InfoRow = ({ icon, title, value, trailing, onClick }: InfoRowProps) => {
   return (
-    <div className="flex h-13 w-full shrink-0 flex-row items-center gap-2.5">
+    <div
+      className="flex h-13 w-full shrink-0 flex-row items-center gap-2.5"
+      onClick={onClick}
+    >
       <div className="flex size-7.5 shrink-0 items-center justify-center rounded-lg bg-gray-300 text-black-800">
         {icon}
       </div>

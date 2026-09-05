@@ -1,4 +1,4 @@
-import ROUTE from "@/shared/constants/route";
+import ROUTE from "@shared/constants/route";
 import { useBridge } from "@geongyu/react-native-bridge/web";
 import type {
   MessageEventRequestData,
