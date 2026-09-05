@@ -33,7 +33,9 @@ const MudeungsanWeatherNotice = () => {
             무등산 날씨
           </h3>
         </div>
-        <p className="text-xs font-normal text-gray-900">기상청 · 실시간</p>
+        <p className="text-xs font-normal text-gray-900">
+          OpenWeatherMap · 실시간
+        </p>
       </div>
 
       <div className="flex items-end gap-3">
