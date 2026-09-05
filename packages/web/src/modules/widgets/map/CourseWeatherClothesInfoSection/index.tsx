@@ -23,7 +23,10 @@ export default function CourseWeatherClothesInfoSection() {
         />
       </InfoTile>
 
-      <InfoTile label="날씨" sub={`체감 ${weather?.feelsLike?.toFixed(1) ?? "-"}℃`}>
+      <InfoTile
+        label="날씨"
+        sub={`체감 ${weather?.feelsLike?.toFixed(1) ?? "-"}℃`}
+      >
         <div className="flex h-full w-full flex-col items-center justify-center bg-green-500 text-primary">
           <SunIcon size={22} />
           <p className="text-base font-bold">
@@ -32,7 +35,7 @@ export default function CourseWeatherClothesInfoSection() {
         </div>
       </InfoTile>
 
-      <InfoTile label="식당" sub="근처 3곳">
+      <InfoTile label="식당" sub="부곡정">
         <Image
           src="/images/thumb-food.webp"
           alt="음식"
