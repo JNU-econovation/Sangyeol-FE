@@ -1,9 +1,29 @@
+"use client";
+
 import FootprintsIcon from "@icons/FootprintsIcon";
 import NavigationIcon from "@icons/NavigationIcon";
 import TimerIcon from "@icons/TimerIcon";
+import { getCourseById } from "@shared/api/proto";
 import NormalDifficultyBadge from "@shared/components/primitives/ui/NormalDifficultyBadge";
+import useOpenNaverMapRouteBridge from "@shared/hooks/domain/bridge/useOpenNaverMapRouteBridge";
+import { useParams } from "next/navigation";
 
 const CourseHeroSection = () => {
+  const { courseId } = useParams<{
+    courseId: string;
+  }>();
+
+  const { startPoint } = getCourseById(courseId);
+  const openNaverMapRoute = useOpenNaverMapRouteBridge();
+
+  const handleFindRouteClick = () => {
+    openNaverMapRoute({
+      dlat: startPoint.latitude,
+      dlng: startPoint.longitude,
+      dname: startPoint.name,
+    });
+  };
+
   return (
     <section className="flex w-full flex-col gap-3">
       <img
@@ -32,10 +52,10 @@ const CourseHeroSection = () => {
         <NormalDifficultyBadge />
       </div>
 
-      {/* TODO(#106): 길찾기 브릿지 연동 전까지 동작 없는 정적 버튼 */}
       <button
         type="button"
         className="flex h-11 w-full items-center justify-center gap-2 rounded-[10px] bg-primary"
+        onClick={handleFindRouteClick}
       >
         <NavigationIcon size={16} className="shrink-0 text-main-white" />
         <span className="text-sm font-semibold text-main-white">길찾기</span>
